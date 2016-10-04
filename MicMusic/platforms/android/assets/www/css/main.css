@@ -1,0 +1,55 @@
+.settingFieldSet {
+	margin-top: 10px;
+}
+
+.settingsTab.active{
+	background: rgba(74, 197, 185, 0.42);
+}
+
+#plot1{
+	height:800px;
+	width:5000py;
+}
+
+#plot1down{
+	position:absolute;
+	width:100%;
+	bottom:0px;
+}
+
+#chatContent{
+	overflow: auto;
+	min-height:90px;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+	max-height:200px; width:100%;
+	background:rgb(250, 249, 233);
+}
+
+#chatInput{
+	width:100%;
+}
+
+.row{
+	margin-top: 5px;
+}
+.effectcircle{
+	text-align: center;
+}
+#sProfilePic{
+	max-width: 70px;
+}
+
+#settingFieldSet{
+	style="display:none;"
+}
+#momentMaxGaintop{
+	height: 20px;
+	border:1px solid black;
+	margin-bottom:0px;
+}
+#momentMaxGain{
+	width: 60%;
+	height: 100%;
+	background:#009587;
+}

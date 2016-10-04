@@ -1,0 +1,7 @@
+var client = '{ //is observerd
+	"pp" : "../img/profile.jpg", //Profil Pic
+	"nn" : "Fuck U", //Nickname
+	"mg" : 4/100, // minGain
+	"mic" : true,
+	"sound" : true
+}';
