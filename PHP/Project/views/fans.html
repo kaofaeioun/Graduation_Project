@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Micmusic</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="http://fonts.googleapis.com/css?family=Cabin:400,500,600,bold" rel="stylesheet" type="text/css" >
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold" rel="stylesheet" type="text/css" >
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/fans.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<script type='text/javascript'>
+		document.createElement("b1")
+	</script>
+	<title>MicMusic</title>
 </head>
 <body>
 	<div class="wrap">
 		<div class="header">
 			<h1><div class="Logo"><img src="image/Logo2.png"></div></h1>
 			<div class="menu">
+			<div class="user"></div>
 				<div class="search">
 					<input type="text" class="search_blank" placeholder="輸入id找歌手">
 					<input type="image" class="search_image" src="image/search.png">
@@ -27,22 +31,58 @@
 					<li><a href="setting.html"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
 				</ul>
 			</div>
-	
+
 		</div>
 	</div>
-	<!-- 1111111111111111111 -->
 	<hr>
 	<div class="wrap">
-		<div class="content">
-			<div class="fansfile">
-				
+		<div id="content">
+			<div class="topbar">
+				<div class="leftbar">
+					<ul>
+						<li>ID<div class="blank">AREYOUOK</div></li>
+						<li>名字<div class="blank">洋洋</div></li>
+						<li>
+							<ul id="track_list">
+								<a href="">
+									<li>
+									<div class="hide">追蹤名單</div>
+									<img src="image/track.png" alt="">33
+									</li>
+								</a>
+								<a href="">
+									<li>粉絲名單
+									<img src="image/tracked.png" alt="">87
+									</li>
+								</a>
+									<li>勝場數
+									<img src="image/win.png" alt="">87
+									</li>						
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="rightbar">
+					<img src="image/profilepic.jpg" alt="">
+					<div class="trackbutton">追蹤</div>					
+				</div>
+				<div class="clear"></div>
 			</div>
-			<div class="fanspic">
-				<img src="image/profilepic.jpg" alt="">
+			<br>
+			<div class="downbar">
+				<ul>	
+					<li>興趣<div class="blank">打LOL、商業英文、趙建雄</div></li>
+					<li>喜歡的歌<div class="blank">外面的世界、社會搖</div></li>
+					<li>喜歡的歌手<div class="blank">重力可可、熱狗</div></li>
+					<li>擅長歌路<div class="blank">奇幻搖滾風</div></li>
+					<li>Level<div class="blank">13</div></li>
+
+				</ul>
 			</div>
-		</div>
+		</div>	
 	</div>
-	<!-- ------------------------ -->
+
+	<!-- 11111111111111111111111111111111111111111111 -->
 	<div class="footer_space">
 	<footer>
 		<h3>MicMusic</h3>
