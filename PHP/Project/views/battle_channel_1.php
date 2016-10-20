@@ -58,16 +58,16 @@
 						<div class="circle_area">
 								<div class="circle_1" id="circle"></div>
 								<div class="circle_2" id="CountDown"></div>
+								<div class="vote_like" id="like"><p id="likeresult"></div>
+								<div class="vote_dislike" id="dislike"><p id="dislikeresult"></div>
 						</div>
-						<div class="vote_like" id="like"><p id="likeresult"></div>
-						<div class="vote_dislike" id="dislike"><p id="dislikeresult"></div>
 					</div>
-
+					<!-- 小視窗 -->
 					<script>
 						$(document).ready(function(){
   							$('.square').hide();
-  							//隱藏要呼叫的div
-  							$('#track img').click(function() {
+  								//隱藏要呼叫的div
+  							$('#pic').click(function() {
   								//指定呼叫按鈕
     							$('.square').fadeToggle(500);
     							//顯示隱藏的div
@@ -75,20 +75,25 @@
   							});
 						});
 					</script>
-
+					<!-- 圖變色 -->
 					<script>
-     				 	$(document).ready(function(){
-     				 		$("#track img").click(function(){
-         						$("#track img").attr("src","image/like.png");
-            				});
-           				});
+						function changeSrc(){
+							var imgObj = document.getElementById("pic");
+							if (imgObj.getAttribute("src",2) == "image/cancerlike.png"){
+	  							imgObj.src = "image/like.png";
+							}
+							else{
+								imgObj.src = "image/cancerlike.png";
+							}
+						}
 					</script>
 
-					<div class="square">
-						<span class="arrow_top_int"></span>
-						追蹤成功!
+					<div class="track"><img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()"><p id="singer">
+						<div class="square">
+							<span class="arrow_top_int"></span>
+							追蹤成功!
+						</div>
 					</div>
-					<div id="track"><img src="image/cancerlike.png" original title="我要追蹤"><p id="singer"></div>
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數">87</li>
@@ -223,8 +228,8 @@ document.getElementById("dislike").onclick = function() {
 					<li><img src="image/line.png"></li>
 					<li><p id="MicCount"></li>
 				</div>
-				<div id="get_mic">
-					<li><input type="button" onclick="show(this)" value="我要排MIC" id="Mic"><p id="qwer"></li>
+				<div class="get_mic">
+					<li><input type="button" value="我要排MIC" id="Mic"><p id="qwer"></li>
 				</div>
 	<script type="text/javascript">
 	function ArrangeMicCheck(){

@@ -99,6 +99,29 @@ h2{
     padding-top: 40px;
 }
 
+/*Footer-----------------------------------------------------------------------------*/
+.footer_space{
+    height: 100px;
+}
+footer{
+    text-align: center;
+    color: white;
+    background: #01abad;
+    height: 80px;
+    line-height: 25px;
+    padding-top: 5px;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+footer li{
+    display: none;
+}
+h3{
+    font-size: 25px;
+}
+
 /*-------------------------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width:800px) {

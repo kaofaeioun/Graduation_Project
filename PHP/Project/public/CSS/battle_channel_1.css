@@ -80,6 +80,7 @@ table {
 .circle_area{
     display: inline-block;
     width: 200px;
+    position:relative;
 }
 .circle_1{
     background-color:#25CED1;
@@ -105,9 +106,9 @@ table {
 .vote_like{
     width: 50px;
     height: 50px;
-    position: relative;
-    top: -90px;
-    left:100px;
+    position: absolute;;
+    top: 50%;
+    left:-55%;
     background-image: url("../image/vote_like_1.png");
     background-size:contain;
     cursor: pointer;
@@ -115,9 +116,9 @@ table {
 .vote_dislike{
     width: 50px;
     height: 50px;
-    position: relative;
-    top: -140px;
-    left: 445px;
+    position: absolute;;
+    top: 48%;
+    left: 120%;
     background-image: url("../image/vote_dislike_1.png");
     background-size:contain;
     cursor: pointer;
@@ -125,18 +126,15 @@ table {
 .square{
     width:90px;
     height:27px;
-    text-align:center;
     background-color:#01abad;
-    position:relative;
+    text-align: center;
     border-radius: 5px;
     line-height: 27px;
     font-size: 16px;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-    margin-left: 30px;
     color: #fff;
     position: absolute;
-    top:445px;
+    top:-40px;
+    left: 35px;
 }
 /*------- 框框主體 -------*/
 .square .arrow_top_int{
@@ -150,14 +148,15 @@ table {
     left:10px;
 }
 /*------- Top 箭頭 -------*/
-#track{
+.track{
     padding-left: 40px;
     width: 150px;
     font-size: 20px;
     float: left;
     text-align: left;
+    position: relative;
 }
-#track img{
+.track img{
     width:30px;
     margin-right: 10px;
     cursor: pointer;
@@ -214,7 +213,7 @@ table {
 .mic_queue img{
     display: none;
 }
-#get_mic{
+.get_mic{
     width: 40%;
     float: right;
     height: 100px;
@@ -224,7 +223,7 @@ table {
     box-sizing: border-box;
     color: #3B3B3B;
 }
-#get_mic [type='button']{
+#Mic{
     font-size: 20px;
     font-family: 微軟正黑體;
     background-color: #F06D63;
@@ -234,13 +233,14 @@ table {
     border: none;
     color: #fff;
     cursor: pointer;
-}
-#get_mic [type='button']:hover{
     opacity: 0.8;
+}
+#Mic:hover{
+    opacity: 1;
     -webkit-transition: 1s;
     box-shadow:inset 3px 3px 3px rgba(20%,20%,40%,0.5);
 }
-#get_mic li{
+.get_mic li{
     list-style: none;
 }
 .chatroom{
@@ -271,30 +271,6 @@ table {
 }
 .reply::-webkit-input-placeholder{
     color: #F5F5F5;
-}
-
-/*Footer-----------------------------------------------------------------------------*/
-.footer_space{
-    height: 120px;
-}
-footer{
-    text-align: center;
-    color: white;
-    background: #01abad;
-    height: 90px;
-    line-height: 25px;
-    padding-top: 20px;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-footer li{
-    display: none;
-}
-h3{
-    font-size: 25px;
-    margin-bottom: 10px;
 }
 
 /*-------------------------------------------------------------------------------------*/
@@ -349,7 +325,7 @@ h3{
         border-bottom: 1px solid #4A4A4A;
         height: 260px;
     }
-    #track{
+    .track{
         padding: 0px;
         font-size: 18px;
         width: 40%;
@@ -377,9 +353,8 @@ h3{
         border-bottom: none;
         font-size: 18px;
     }
-    #get_mic{
+    .get_mic{
         width: 33%;
-        font-size: 20px;
     }
     .reply{
         border-bottom-left-radius: 0px;
@@ -412,11 +387,11 @@ h3{
 /*------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width:500px){
-    #track img{
+    .track img{
         margin-right: 5px;
         width: 25px;
     }
-    #track{
+    .track{
         font-size: 16px;
     }
     .vote_info img{
@@ -440,10 +415,13 @@ h3{
         display: inline-block;
         width: 45px;
     }
-    #get_mic{
+    .get_mic{
+        font-size: 18px;
+    }
+    #mic_btn{
         font-size: 18px;
     }
     .chatroom{
-        font-size: 18px;
+        font-size: 16px;
     }
 }
