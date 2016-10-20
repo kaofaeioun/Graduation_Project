@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--唱歌頁面-->
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -7,25 +6,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	<script>
-		var client = { //is observerd
-			"pp" : "../img/profile.jpg", //Profil Pic
-			"nn" : "Fuck U", //Nickname
-			"mg" : 4/100, // minGain
-			"mic" : true,
-			"sound" : false
-		}
-	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="js/show.js"></script>
-	<script type="text/javascript" src="./js/jquery.nouislider.min.js"></script>
-	<script type="text/javascript" src="./js/material.min.js"></script>
-	<script type="text/javascript" src="./js/main.js"></script>
-	<script type="text/javascript" src="./js/ripples.min.js"></script>
-	<script type="text/javascript" src="./js/smooth.js"></script>
-	<script type="text/javascript" src="./js/resampler.js"></script>
-	<script type="text/javascript" src="./js/voip.js"></script>
-	<script type="text/javascript" src="./js/d3.min.js"></script>
 	<title>MicMusic</title>
 </head>
 <body>
@@ -40,10 +22,10 @@
 				</div>
 				<br>
 				<ul>
-					<li><a href="battle"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
-					<li><a href="channel"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
-					<li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
-					<li><a href="setting"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
+					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
+					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
+					<li><a href="personalinfo.html"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
+					<li><a href="setting.html"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
 				</ul>
 			</div>
 		</div>
@@ -65,9 +47,9 @@
 
 					<script>
 						$(document).ready(function(){
-  							$('.square').hide();
+  							$('.square').hide(); 
   							//隱藏要呼叫的div
-  							$('#track img').click(function() {
+  							$('#track img').click(function() { 
   								//指定呼叫按鈕
     							$('.square').fadeToggle(500);
     							//顯示隱藏的div
@@ -79,7 +61,7 @@
 					<script>
      				 	$(document).ready(function(){
      				 		$("#track img").click(function(){
-         						$("#track img").attr("src","image/like.png");
+         						$("#track img").attr("src","image/like.png");  					
             				});
            				});
 					</script>
@@ -94,11 +76,10 @@
 						<li><img src="image/like.png" original title="追蹤人數">87</li>
 					</div>
 				</div>
-				<?php
-					 date_default_timezone_set("Asia/Taipei");
+				<?php 
 				   $DateTime_Now = gmdate("Y-m-d H:i:s"); //取回伺服器 GMT 標準時間
 				   $DataTime_Begin = "1970-01-01 00:00:00"; //設定時間起始格式
-				   $TimeSpan = (strtotime($DateTime_Now) - strtotime($DataTime_Begin)) * 1000;
+				   $TimeSpan = (strtotime($DateTime_Now) - strtotime($DataTime_Begin)) * 1000; 
 				?>
 				<script type="text/javascript">
 				   var systemTime = parseInt('<?=$TimeSpan;?>');
@@ -107,9 +88,9 @@
 				    s = "0" + t.getSeconds();
 				    s = s.substring(s.length - 2, s.length + 1);
 				    s = 60-s;
-				    console.log(s);
+				    console.log(s);		
 				   }
-				   calculate();
+				   calculate();	
 					function showTime()
 						{
 						    document.getElementById('CountDown').innerHTML= s+"s";
@@ -126,27 +107,27 @@
 								document.getElementById("like").style.visibility= "hidden";
 							}
 							s -= 1;
-							setTimeout("showTime()",1000);
+							setTimeout("showTime()",1000);				
 						}
 						showTime();
 		function CheckMic(){
 			if (s==0){
 				var request = new XMLHttpRequest();
     			request.open("POST", "checkmic.php");
-    			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");     
     			request.send();
 				}
 				setTimeout("CheckMic()",1000);
 			}
-						CheckMic();
+						CheckMic();						
 					</script>
-
+					
 <script type="text/javascript">
 	document.getElementById("like").onclick = function() {
     // 發送 Ajax 查詢請求並處理
     var request = new XMLHttpRequest();
     request.open("POST", "voteconnect.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");     
     request.send();
 
     request.onreadystatechange = function() {
@@ -157,17 +138,17 @@
                 var type = request.getResponseHeader("Content-Type");   // 取得回應類型
 
                 // 判斷回應類型，這裡使用 JSON
-                if (type.indexOf("application/json") === 0) {
+                if (type.indexOf("application/json") === 0) {               
                     var data = JSON.parse(request.responseText);
 
                     if (data.like) {
                         document.getElementById("likeresult").innerHTML = data.like;
-                    }
+                    } 
                     else if(data.havevote){
                     	document.getElementById("likeresult").innerHTML = data.havevote + "  您已經投過票";
                     }
                     else {
-                        document.getElementById("likeresult").innerHTML = data.msg;
+                        document.getElementById("likeresult").innerHTML = data.msg;  
                     }
                 }
             } else {
@@ -180,7 +161,7 @@ document.getElementById("dislike").onclick = function() {
     // 發送 Ajax 查詢請求並處理
     var request = new XMLHttpRequest();
     request.open("GET", "voteconnect.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");     
     request.send();
 
     request.onreadystatechange = function() {
@@ -191,17 +172,17 @@ document.getElementById("dislike").onclick = function() {
                 var type = request.getResponseHeader("Content-Type");   // 取得回應類型
 
                 // 判斷回應類型，這裡使用 JSON
-                if (type.indexOf("application/json") === 0) {
+                if (type.indexOf("application/json") === 0) {               
                     var data = JSON.parse(request.responseText);
 
                     if (data.dislike) {
                         document.getElementById("dislikeresult").innerHTML = data.dislike;
-                    }
+                    } 
                     else if(data.havevote){
                     	document.getElementById("dislikeresult").innerHTML = data.havevote + "  您已經投過票";
                     }
                     else {
-                        document.getElementById("dislikeresult").innerHTML = data.msg;
+                        document.getElementById("dislikeresult").innerHTML = data.msg;  
                     }
                 }
             } else {
@@ -229,13 +210,13 @@ document.getElementById("dislike").onclick = function() {
 	<script type="text/javascript">
 	function test33(){
 			<?php
-				//include("mysql_connect.php");
+				include("mysql_connect.php");
 				$sql="SELECT count(Mic_ID) FROM Mic where Mic_ID is not null";
 				$result=mysql_query($sql);
 				$row=mysql_fetch_row($result);
 				$sql2="SELECT User_ID From Mic Where Mic_ID is not null ORDER BY  `Mic_ID` ASC ";
 				$result2=mysql_query($sql2);
-
+				
 			?>
 			var CountMic='<?php echo $row[0] ?>';
 			var singer='<?php echo mysql_result($result2, 0)?>';
@@ -243,7 +224,7 @@ document.getElementById("dislike").onclick = function() {
 			var queue2='<?php echo mysql_result($result2, 2)?>';
 			var queue3='<?php echo mysql_result($result2, 3)?>';
 			document.getElementById("MicCount").innerHTML = CountMic;
-			document.getElementById("singer").innerHTML=singer;
+			document.getElementById("singer").innerHTML=singer;	
 			document.getElementById("queue1").innerHTML = queue1;
 			document.getElementById("queue2").innerHTML = queue2;
 			document.getElementById("queue3").innerHTML = queue3;
@@ -253,7 +234,7 @@ document.getElementById("dislike").onclick = function() {
     // 發送 Ajax 查詢請求並處理
     var request = new XMLHttpRequest();
     request.open("POST", "micconnect.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");     
     request.send();
 
     request.onreadystatechange = function() {
@@ -264,7 +245,7 @@ document.getElementById("dislike").onclick = function() {
                 var type = request.getResponseHeader("Content-Type");   // 取得回應類型
 
                 // 判斷回應類型，這裡使用 JSON
-                if (type.indexOf("application/json") === 0) {
+                if (type.indexOf("application/json") === 0) {               
                     var data = JSON.parse(request.responseText);
 
                     if (data.aaa) {
@@ -272,9 +253,9 @@ document.getElementById("dislike").onclick = function() {
                     }
                     else if(data.bbb){
                     	document.getElementById("qwer").innerHTML = data.bbb;
-                    }
+                    } 
                     else {
-                        document.getElementById("qwer").innerHTML = data.msg;
+                        document.getElementById("qwer").innerHTML = data.msg;  
                     }
                 }
             } else {
@@ -283,15 +264,17 @@ document.getElementById("dislike").onclick = function() {
         }
     }
 }
-</script>
+</script>		
 				<div class="clear"></div>
-				<div id="chatContent" class="chatroom">
 
+				<div class="chatroom">
+					小羅：靠杯喔<br>
+					劭竑：下去領五百啦廢物<br>
+					岳陽：媽的統神你敢嘴?
 				</div>
-				<input id="chatInput" type="text" placeholder="留言......" class="reply"></input>
-
+				<input type="text" placeholder="留言......" class="reply"></input>
 			</div>
-		</div>
+		</div>	
 	</div>
 	<div class="footer_space">
 	<footer>
@@ -299,10 +282,10 @@ document.getElementById("dislike").onclick = function() {
 		<p>© 2016 All rights reserved.</p>
 		<p>NUKIM 106專題開發</p>
 		<ul>
-			<li><a href="battle"><img src="image/battle_chosen.png"></a></li>
-			<li><a href="channel"><img src="image/personal.png"></a></li>
-			<li><a href="personalinf"><img src="image/person_info.png"></a></li>
-			<li><a href="setting"><img src="image/setting.png"></a></li>
+			<li><a href="battle.html"><img src="image/battle_chosen.png"></a></li>
+			<li><a href="channel.html"><img src="image/personal.png"></a></li>
+			<li><a href="personalinfo.html"><img src="image/person_info.png"></a></li>
+			<li><a href="setting.html"><img src="image/setting.png"></a></li>
 		</ul>
 	</footer>
 	</div>
