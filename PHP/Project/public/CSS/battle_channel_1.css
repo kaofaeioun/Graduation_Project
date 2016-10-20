@@ -1,0 +1,449 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+#content b{
+    font-weight: 200;
+}
+#content h2>br{
+    display: none;
+}
+.clear{
+    clear: both;
+}
+.main{
+    border-radius: 10px;
+    color: #4A4A4A;
+    margin-bottom: 20px;
+    background-color: #FEFFEF;
+}
+.vote{
+    width: 60%;
+    height: 300px;
+    float: left;
+}
+.board{
+    width:100%;
+    height: 250px;
+    text-align: center;
+    padding-top: 25px;
+    box-sizing: border-box;
+}
+.circle_area{
+    display: inline-block;
+    width: 200px;
+}
+.circle_1{
+    background-color:#25CED1;
+    width: 200px;
+    height: 200px;
+    margin: 0px 0 0 0px;
+    border-radius: 50%;
+}
+.circle_2{
+    background-color:white;
+    width: 150px;
+    height: 150px;
+    margin: -175px 0 0 25px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 150px;
+}
+.circle_2 b1{
+    font-size: 25px;
+}
+.vote_like{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: -90px;
+    left:100px;
+    background-image: url("../image/vote_like_1.png");
+    background-size:contain;
+    cursor: pointer;
+}
+.vote_dislike{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: -140px;
+    left: 445px;
+    background-image: url("../image/vote_dislike_1.png");
+    background-size:contain;
+    cursor: pointer;
+}
+.square{
+    width:90px;
+    height:27px;
+    text-align:center;
+    background-color:#01abad;
+    position:relative;
+    border-radius: 5px;
+    line-height: 27px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    color: #fff;
+    position: absolute;
+    top:445px;
+}
+/*------- 框框主體 -------*/
+.square .arrow_top_int{
+    width:0px;
+    height:0px;
+    border-width:10px;
+    border-style:solid;
+    border-color:#01abad transparent transparent transparent ;
+    position:absolute;
+    top:25px;
+    left:10px;
+}
+/*------- Top 箭頭 -------*/
+#track{
+    padding-left: 40px;
+    width: 150px;
+    font-size: 20px;
+    float: left;
+    text-align: left;
+}
+#track img{
+    width:30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.vote_info{
+    width: 250px;
+    float: right;
+    font-size: 20px;
+    text-align: right;
+    padding-right: 40px;
+}
+.vote_info li{
+    float: left;
+    list-style: none;
+    width: 125px;
+    display:table-cell;
+}
+.vote_info img{
+    width:30px;
+    margin-right: 10px;
+}
+.queue{
+    width: 40%;
+    float: right;
+    height: 100px;
+    border-left: 1px dotted #4A4A4A;
+    border-bottom: 1px dotted #4A4A4A;
+    text-align: center;
+    padding-top: 10px;
+    box-sizing: border-box;
+    line-height: 25px;
+    font-size: 20px;
+    color: #3B3B3B;
+}
+.queue li{
+    list-style: none;
+}
+.mic_queue{
+    width: 40%;
+    float: right;
+    height: 100px;
+    border-left: 1px dotted #4A4A4A;
+    border-bottom: 1px dotted #4A4A4A;
+    text-align: center;
+    padding-top: 10px;
+    line-height: 40px;
+    box-sizing: border-box;
+    font-size: 22px;
+    color: #3B3B3B;
+}
+.mic_queue li{
+    list-style: none;
+}
+.mic_queue img{
+    display: none;
+}
+#get_mic{
+    width: 40%;
+    float: right;
+    height: 100px;
+    border-left: 1px dotted #4A4A4A;
+    text-align: center;
+    line-height: 100px;
+    box-sizing: border-box;
+    color: #3B3B3B;
+}
+#get_mic [type='button']{
+    font-size: 20px;
+    font-family: 微軟正黑體;
+    background-color: #F06D63;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+#get_mic [type='button']:hover{
+    opacity: 0.8;
+    -webkit-transition: 1s;
+    box-shadow:inset 3px 3px 3px rgba(20%,20%,40%,0.5);
+}
+#get_mic li{
+    list-style: none;
+}
+.chatroom{
+    width: 100%;
+    height: 210px;
+    border-top: 1px solid #4A4A4A;
+    padding-top: 10px;
+    padding-left: 10px;
+    line-height: 25px;
+    font-size: 20px;
+    box-sizing: border-box;
+    overflow: scroll;
+}
+.reply{
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    line-height: 35px;
+    border-left: none;
+    border-right: none;
+    padding-left: 7px;
+    box-sizing: border-box;
+    background-color: #25CED1;
+    font-family: 微軟正黑體;
+    color: #F5F5F5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.reply::-webkit-input-placeholder{
+    color: #F5F5F5;
+}
+
+/*Footer-----------------------------------------------------------------------------*/
+.footer_space{
+    height: 120px;
+}
+footer{
+    text-align: center;
+    color: white;
+    background: #01abad;
+    height: 90px;
+    line-height: 25px;
+    padding-top: 20px;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+footer li{
+    display: none;
+}
+h3{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:800px) {
+    #content{
+        width: 100%;
+    }
+    #content b{
+        display: none;
+    }
+    #content h2>br{
+        display: block;
+    }
+    h3{
+        display: none;
+    }
+    .main{
+        border-left: none;
+        border-right: none;
+        border-radius: 0px;
+        margin-bottom: 0px;
+        height: 100%;
+    }
+    .circle_area{
+        height: 150px;
+        width: 150px;
+    }
+    .circle_1{
+        width: 150px;
+        height: 150px;
+    }
+    .circle_2{
+        width: 125px;
+        height: 125px;
+        margin: -137.5px 0 0 12.5px;
+        font-size: 40px;
+        line-height: 125px;
+    }
+    .circle_2 b1{
+        font-size: 20px;
+    }
+    .board{
+        margin-bottom: 15px;
+        height: 200px;
+        padding-top: 20px;
+    }
+    .vote{
+        width: 100%;
+        text-align: center;
+        float: none;
+        border-bottom: 1px solid #4A4A4A;
+        height: 260px;
+    }
+    #track{
+        padding: 0px;
+        font-size: 18px;
+        width: 40%;
+        padding-left: 3%;
+    }
+    .vote_info{
+        width: 54%;
+        padding-right: 3%;
+        max-width: 300px;
+    }
+    .vote_info li{
+        width:50%;
+    }
+    .queue{
+        float: left;
+        width: 33%;
+        text-align: center;
+        border-left: none;
+        border-bottom: none;
+        font-size: 16px;
+    }
+    .mic_queue{
+        float: left;
+        width: 34%;
+        border-bottom: none;
+        font-size: 18px;
+    }
+    #get_mic{
+        width: 33%;
+        font-size: 20px;
+    }
+    .reply{
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+    @media only screen and (max-height:700px){
+        .chatroom{
+            height: 150px;
+        }
+        .board{
+            height: 190px;
+        }
+        .vote{
+            height: 250px;
+        }
+    }
+    @media only screen and (max-height:650px){
+        .queue b1{
+            display: none;
+        }
+        .board{
+            height: 170px;
+        }
+        .vote{
+            height: 230px;
+        }
+    }
+}
+
+/*------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:500px){
+    #track img{
+        margin-right: 5px;
+        width: 25px;
+    }
+    #track{
+        font-size: 16px;
+    }
+    .vote_info img{
+        width: 25px;
+    }
+    .vote_info{
+        font-size: 16px;
+    }
+    .queue{
+        font-size: 16px;
+    }
+    .mic_queue{
+        padding-top: 7px;
+        line-height: 30px;
+        width: 33%;
+    }
+    .mic_queue p{
+        display: none;
+    }
+    .mic_queue img{
+        display: inline-block;
+        width: 45px;
+    }
+    #get_mic{
+        font-size: 18px;
+    }
+    .chatroom{
+        font-size: 18px;
+    }
+}

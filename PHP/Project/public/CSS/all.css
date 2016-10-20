@@ -1,0 +1,221 @@
+.wrap{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    min-height: 100%;
+}
+.header{
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.menu{
+    width: 1000px;
+    height: 50px;
+    line-height: 50px;
+}
+h1{
+    margin-top: 15px;
+    float: left;
+    margin-right: 100px;
+    width:220px;
+    cursor: pointer;
+}
+h1 img{
+     width:100%;
+}
+.search{
+    float: right;
+    margin-right: 35px;
+}
+.search_blank{
+    width: 220px;
+    height: 27px;
+    padding-left: 6px;
+    border: 0.5px solid #BEBEBE;
+    font-size: 16px;
+    float: left;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px;
+}
+.search_image[type='image']{
+    width: 31px;
+    height: 31px;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color:#02C39A;
+    float: left;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+.search_image[type='image']:hover{
+    background-color:  #1AFD9C;
+    -webkit-transition: 1s;
+}
+.user{
+    background-image:url('../image/profilepic.jpg');
+    width: 40px;
+    height: 40px;
+    background-size:contain;
+    float: right;
+    border-radius: 100px;
+    margin-right: 50px;
+    margin-top: -5px;
+    cursor: pointer;
+}
+.menu li{
+    width: 165px;
+    text-align: center;
+    display: inline-block;
+    list-style: none;
+    cursor: pointer;
+}
+.menu b{
+    font-size: 18px;
+    font-weight: 200;
+    letter-spacing: 3px;
+}
+.menu a{
+    color: #3B3B3B;
+    text-decoration:none;
+}
+.menu li:hover{
+    border-bottom:2px solid #FF3366;
+}
+hr{
+    border:2px solid #3B3B3B;
+    margin: 0px;
+}
+h2{
+    font-weight: 200;
+    text-align: center;
+    margin-bottom:30px;
+    font-size: 24px;
+    display: block;
+    padding-top: 40px;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:800px) {
+    .wrap{
+        width: 100%;
+    }
+    body{
+        width: 100%;
+    }
+    .header{
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        display: block;
+        background: #01abad;
+        height: 25px;
+        margin-bottom: 0px;
+    }
+    h1{
+        display: none;
+    }    
+    h2{
+        margin-bottom: 20px;
+        margin-right: 10%;
+        margin-left: 10%;
+        width: 80%;
+        font-size: 22px;
+        text-align: left;
+        border-bottom:0.01px grey dotted ;
+        line-height: 24px;
+        padding-top: 20px;
+        margin-bottom: 10px;
+    }
+    .menu{
+        width: 80%;
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-bottom: 0px;
+    }
+    .menu ul{
+        display: none;
+    }
+    .user{
+        margin:-8px 0px 0px 10px;
+    }
+    .search{
+        float: none;
+        margin: 0px;
+    }
+    .search_blank{
+        background-image: url('../image/search.png');
+        background-size:23px 23px;
+        background-repeat: no-repeat;
+        width: 85%;
+        padding-left: 25px;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+    .search_image{
+        display: none;
+    }
+    hr{
+        display: none;
+    }
+    h4{
+        display: none;
+    }
+    h3{
+        display: none;
+    }
+    .footer_space{
+        min-height: 60px;
+        height: 100%;
+    }
+    footer{
+        padding-top: 5px;
+        padding-bottom: 5px;
+        min-height: 60px;
+        height: 7%;
+        box-sizing: border-box;
+    }
+    footer p{
+        display: none;
+    }
+    footer li{
+        margin-top: 1.5%;
+        line-height: 50px;
+        display: inline-block; 
+        width:23%;
+    }
+    footer img{
+        max-width:30px;
+        max-height: 30px;
+        padding-top: 2px;
+        box-sizing: border-box;
+        width: 90%;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:500px){
+    .menu{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .user{
+        margin-left: 4%;
+    }
+    h2{
+        font-size: 20px;
+    }
+    .search_blank{
+        width: 80%;
+    }
+}

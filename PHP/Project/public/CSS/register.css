@@ -1,0 +1,408 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+.wrap{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    min-height: 100%;
+}
+.header{
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+.menu{
+    width: 1000px;
+    height: 50px;
+    line-height: 50px;
+}
+h1{
+    margin-top: 15px;
+    float: left;
+    margin-right: 100px;
+    width:220px;
+    cursor: pointer;
+}
+h1 img{
+     width:100%;
+}
+.search{
+    float: right;
+    margin-right: 35px;
+}
+.search_blank{
+    width: 220px;
+    height: 27px;
+    padding-left: 6px;
+    border: 0.5px solid #BEBEBE;
+    font-size: 16px;
+    float: left;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    border-top-left-radius:5px;
+    border-bottom-left-radius:5px;
+}
+.search_image[type='image']{
+    width: 31px;
+    height: 31px;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color:#02DF82;
+    float: left;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+.search_image[type='image']:hover{
+    background-color:  #1AFD9C;
+}
+.menu li{
+    width: 165px;
+    text-align: center;
+    display: inline-block;
+    list-style: none;
+    cursor: pointer;
+}
+.menu b{
+    font-size: 18px;
+    font-weight: 200;
+    letter-spacing: 3px;
+}
+.menu a{
+    color: #3B3B3B;
+    text-decoration:none;
+}
+.menu li:hover{
+    border-bottom:2px solid #FF3366;
+}
+hr{
+    border:2px solid #3B3B3B;
+    margin-bottom: 40px;
+}
+#content{
+    width: 100%;
+}
+h2{
+    margin-bottom:30px;
+    font-size: 24px;
+    font-weight: 200;
+    text-align: center;
+}
+#content b{
+    font-weight: 200;
+}
+#content br{
+    display: none;
+}
+.bar{
+    margin-bottom: 10px;
+    text-align: center;
+}
+.bar li{
+    display: inline-block;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    cursor: pointer;
+    text-align: center;
+    width:200px;
+}
+.bar_item{
+    width:200px;
+    height: 200px;
+    border-radius: 10px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.bar_item:hover{
+    opacity: 0.8;
+}
+.clear{
+    clear: both;
+}
+.footer_space{
+    height: 120px;
+}
+footer{
+    z-index: 20;
+    text-align: center;
+    color: white;
+    background: #01abad;
+    height: 90px;
+    line-height: 25px;
+    padding-top: 20px;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+h3{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.profile_pic{
+    text-align: center;
+}
+.profile_pic img{
+    width: 25%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.profile{
+    font-family: 'Quicksand', sans-serif,微軟正黑體; 
+    color: #696969;
+    line-height: 35px;
+    text-align: center;
+}
+.profile li{
+    display: block;
+    width: 70%;
+    border-bottom: 1px solid grey;
+    text-align: left;
+    display: inline-block;
+
+}
+.name_blank{
+    text-align: right;
+    float: right;
+    font-style: border;
+}
+.profile input{
+    width: 200px;
+    border-style: none;
+    text-align: right;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    font-weight: lighter;
+}
+#track_list{
+    text-align: center;
+}
+#track_list li{
+    line-height: 200%;
+    width: 32%;
+    font-size: 120%;
+    border-bottom: none;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 5px;
+}
+#track_list img{
+    display: none;
+}
+footer li{
+    display: none;
+}
+
+/*----------------------------------------------button--------------------------------------------------*/
+                                        
+.typ-subhed {
+  z-index: 1;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 25px;
+  line-height: 20px;
+  letter-spacing: 0;
+  padding:5px;
+  font-weight: bold;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+.ctrl-standard.fx-sliderIn {
+  color: #00bfff;
+  border-color: #87ceeb;
+  background: white;
+}
+.ctrl-standard.fx-sliderIn::after {
+  background: #7fffd4;
+}
+.ctrl-standard.fx-sliderIn.is-reversed::after {
+  width: 300%;
+}
+.ctrl-standard.fx-sliderIn.is-reversed:hover {
+  color: #87ceeb;
+}
+.ctrl-standard.fx-sliderIn.is-reversed:hover::after {
+  width: 0;
+}
+[class*="ctrl-"] {
+  padding: 5ox 10px;
+  border-radius: 2px;
+  border: 1px solid white;
+}
+[class*="ctrl-"][class*="fx-"]:hover,
+[class*="ctrl-"][class*="fx-"].active {
+  color: white;
+}
+[class*="ctrl-"][class*="fx-"].is-reversed {
+  color: white;
+}
+
+  [class*="fx-"],
+[class*="fx-"]:hover {
+    -webkit-transition: color 0.5s  ease-in-out;
+    transition: color 0.5s  ease-in-out;
+  }
+  [class*="fx-"]:not(.fx-dyna) {
+    position: relative;
+    z-index: 1;
+    -webkit-transition-delay: 0.2s !important;
+            transition-delay: 0.2s !important;
+    overflow: hidden;
+  }
+  [class*="fx-"]:not(.fx-dyna)::after,
+[class*="fx-"]:not(.fx-dyna)::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+  }
+  [class*="fx-bubble"]::after {
+    -webkit-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+  }
+  [class*="fx-bubble"]:hover::after,
+[class*="fx-bubble"].active::after {
+    -webkit-transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out;
+    height: 300%;
+  }
+  [class*="fx-bubble"]:disabled:hover::after {
+    height: 0;
+  }
+  .fx-sliderIn::after {
+    -webkit-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 0;
+  }
+  .fx-sliderIn:hover::after,
+.fx-sliderIn.active::after {
+    -webkit-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+    width: 100%;
+  }
+  :checked + .fx-sliderIn::after,
+.fx-sliderIn.active::after {
+    width: 300%;
+  }
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:800px) {
+    
+   
+    #content{
+        width: 60%;
+        min-width: 200px;
+    }
+    
+    #content br{
+        display: block;
+    }
+    .bar_item{
+        margin-bottom: 10px;
+    }
+    .bar li{
+        margin-top: 20px;
+        line-height: 20px;
+    }
+    h3{
+        display: none;
+    }
+    #content{
+        width: 100%;
+    }
+
+    .profile li{
+        margin-top:12px;
+        font-size: 130%;
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+    .profile input{
+        text-align: center;
+        font-size:80%;
+        width: 100%;
+    }
+    .name_blank{
+        float: none;
+        text-align: center;
+    }
+    
+
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:500px){
+    .menu{
+        width: 70%;
+        margin-left: 5%;
+    }
+    #content{
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+}

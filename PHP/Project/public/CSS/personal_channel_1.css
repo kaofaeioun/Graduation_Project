@@ -1,0 +1,308 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+    outline: 0;
+}
+
+
+/* remember to highlight inserts somehow! */
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+#content b{
+    font-weight: 200;
+}
+#content h2>br{
+    display: none;
+}
+.clear{
+    clear: both;
+}
+.main{
+    background-color: #AD8DC9;
+    border-radius: 10px;
+    color: #E0E2DE;
+    margin-bottom: 20px;
+}
+.personal_area{
+    width: 100%;
+    height: 380px;
+    float: left;
+}
+.tool_bar{
+    width: 220px;
+    height: 40px;
+    float: right;
+    margin-right: 30px;
+}
+.tool_bar li{
+    list-style: none;
+    float: left;
+    width: 33.3%;
+    cursor: pointer;
+}
+.tool_bar img{
+    width:40px;
+    opacity: 0.3;
+}
+.tool_bar img:hover{
+    opacity: 1;
+    -webkit-transition: 1s;
+}
+.board{
+    width:100%;
+    height: 330px;
+    text-align: center;
+    padding-top: 15px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+.square{
+    width:90px;
+    height:27px;
+    text-align:center;
+    background-color:#01abad;
+    position:relative;
+    border-radius: 5px;
+    line-height: 27px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    color: #fff;
+    position: absolute;
+    top:525px;
+}
+/*------- 框框主體 -------*/
+.square .arrow_top_int{
+    width:0px;
+    height:0px;
+    border-width:10px;
+    border-style:solid;
+    border-color:#01abad transparent transparent transparent ;
+    position:absolute;
+    top:25px;
+    left:10px;
+}
+/*------- Top 箭頭 -------*/
+
+.track{
+    padding-left: 40px;
+    width: 200px;
+    font-size: 20px;
+    float: left;
+    text-align: left;
+}
+.track img{
+    width:30px; 
+    margin-right: 10px;
+    cursor: pointer;
+}
+.personal_info{
+    width: 300px;
+    float: right;
+    font-size: 20px;
+    text-align: right;
+    padding-right: 40px;
+}
+.personal_info li{
+    float: left;
+    list-style: none;
+    width: 50%;
+    display:table-cell;
+}
+.personal_info img{
+    width:30px; 
+    margin-right: 10px;
+}
+.chatroom{   
+    width: 100%;
+    height: 150px;
+    border-top: 1px solid #ACFDC7;
+    padding-top: 10px;
+    padding-left: 10px;
+    line-height: 25px;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+.reply{
+    width: 100%;
+    height: 35px;
+    font-size: 16px;
+    line-height: 35px;
+    border-left: none;
+    border-right: none;
+    padding-left: 7px;
+    box-sizing: border-box;
+    background-color: #F25F5C;
+    font-family: 微軟正黑體;
+    color: #F5F5F5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.reply::-webkit-input-placeholder{
+    color: #F5F5F5;
+}
+
+/*Footer-----------------------------------------------------------------------------*/
+.footer_space{
+    height: 120px;
+}
+footer{
+    text-align: center;
+    color: white;
+    background: #01abad;
+    height: 90px;
+    line-height: 25px;
+    padding-top: 20px;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+footer li{
+    display: none;
+}
+h3{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:800px) {
+    #content{
+        width: 100%;
+    }
+    #content b{
+        display: none;
+    }
+    #content b1{
+        display: none;
+    }
+    #content h2>br{
+        display: block;
+    }
+    h3{
+        display: none;
+    }
+    .main{
+        border-left: none;
+        border-right: none;
+        border-radius: 0px;
+        margin-bottom: 0px;
+    }
+    .board{
+        margin-bottom: 15px;
+    }
+    .personal_area{
+        width: 100%;
+        text-align: center;
+        float: none;
+    }
+    .tool_bar{
+        margin-right: 20px;
+    }
+    .track{
+        padding: 0px;
+        font-size: 18px;
+        width: 40%;
+        padding-left: 3%;
+    }
+    .personal_info{
+        width: 54%;
+        padding-right: 3%;
+        max-width: 300px;
+    }
+    .personal_info li{
+        width:50%;
+    }
+    .reply{
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px; 
+    }
+}
+
+/*------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:500px){
+    .tool_bar{
+        margin-right: 5px;
+    }
+    .track img{
+        margin-right: 5px;
+        width: 25px;
+    }
+    .personal_info img{
+        width: 25px;
+    }
+    .chatroom{
+        font-size: 18px;
+    }
+}
+@media only screen and (max-height:720px){
+    .personal_area{
+        height: 360px;
+    }
+    .board{
+        height: 300px;
+    }
+}
+@media only screen and (max-height:700px){
+    .personal_area{
+        height: 350px;
+    }
+    .board{
+        height: 290px;
+    }
+}
+@media only screen and (max-height:650px){
+    .personal_area{
+        height: 335px;
+    }
+    .board{
+        height: 275px;
+    }
+}
