@@ -88,27 +88,6 @@ table {
 .clear{
     clear: both;
 }
-.footer_space{
-    height: 120px;
-}
-footer{
-    z-index: 20;
-    text-align: center;
-    color: white;
-    background: #01abad;
-    height: 90px;
-    line-height: 25px;
-    padding-top: 20px;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-
-h3{
-    font-size: 25px;
-    margin-bottom: 10px;
-}
 .profile_pic{
     text-align: center;
 }
@@ -158,9 +137,6 @@ h3{
     letter-spacing: 5px;
 }
 #track_list img{
-    display: none;
-}
-footer li{
     display: none;
 }
 

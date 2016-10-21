@@ -65,7 +65,6 @@ table {
 .bar li{
     display: inline-block;
     margin-right: 8%;
-    cursor: pointer;
     text-align: center;
     width:250px;
     margin-left: 8%;
@@ -75,41 +74,22 @@ table {
     height: 250px;
     border-radius: 10px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 .battle_channel:hover{
     opacity: 0.8;
 }
-h3{
+.bar p{
     font-weight: 400;
     text-align: center;
     margin-bottom:15px;
-    font-size: 20px;
+    font-size: 22px;
     padding-bottom: 5px;
-    border-bottom: 1.5px solid #272727;
+    border-bottom: 1.5px dotted #272727;
 }
 .clear{
     float: none;
 }
-footer{
-    text-align: center;
-    color: white;
-    background: #01abad;
-    height: 90px;
-    line-height: 25px;
-    padding-top: 20px;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-footer li{
-    display: none;
-}
-h4{
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-
 /*-------------------------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width:800px) {

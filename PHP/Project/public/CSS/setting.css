@@ -165,31 +165,6 @@ h2{
     width: 100%;
     background: green;
 }
-/*Footer---------------------------------------------------------------------*/
-.footer_space{
-    height: 120px;
-}
-footer{
-    text-align: center;
-    color: white;
-    background: #01abad;
-    height: 90px;
-    line-height: 25px;
-    padding-top: 20px;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-footer li{
-    display: none;
-}
-h3{
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-
-
 .switch {
     width: 180px;
     height: 50px;
@@ -214,7 +189,6 @@ h3{
   height: 100%;
   cursor: pointer;
 }
-
 
 .switch label {
     display: block;
