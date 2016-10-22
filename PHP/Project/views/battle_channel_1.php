@@ -7,25 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico" />
-	<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
 	<script>
-	  // Initialize Firebase
-	  var config = {
-	    apiKey: "AIzaSyAVtn4QK14i_8UhzOR3hqQkwcdo1zGhyJE",
-	    authDomain: "micmusic-69fe1.firebaseapp.com",
-	    databaseURL: "https://micmusic-69fe1.firebaseio.com",
-	    storageBucket: "micmusic-69fe1.appspot.com",
-	    messagingSenderId: "16912515697"
-	  };
-	  firebase.initializeApp(config);
-		var userId = firebase.auth().currentUser.uid;
-		return firebase.database().ref("/MicMusic/User/1/").once('value').then(function(snapshot) {
-	  	var client_name = snapshot.val().User_Name;
-		});
-		console.log(client_name);
-		</script>
-		<script>
 		var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
 			"nn" : "Fuck U", //Nickname
@@ -58,7 +40,7 @@
 				</div>
 				<br>
 				<ul>
-					<li><a href="battle"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
+					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
 					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
 					<li><a href="personalinfo.html"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
 					<li><a href="setting.html"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
@@ -76,8 +58,8 @@
 						<div class="circle_area">
 								<div class="circle_1" id="circle"></div>
 								<div class="circle_2" id="CountDown"></div>
-								<div class="vote_like" id="like"><p id="likeresult"></div>
-								<div class="vote_dislike" id="dislike"><p id="dislikeresult"></div>
+								<div class="vote_like" id="like"><p id="likeresult"></p></div>
+								<div class="vote_dislike" id="dislike"><p id="dislikeresult"></p></div>
 						</div>
 					</div>
 					<!-- 小視窗 -->
@@ -85,7 +67,7 @@
 						$(document).ready(function(){
   							$('.square').hide();
   								//隱藏要呼叫的div
-  							$('#pic').click(function() {
+  							$('#pic').click(function(){
   								//指定呼叫按鈕
     							$('.square').fadeToggle(500);
     							//顯示隱藏的div
@@ -106,7 +88,7 @@
 						}
 					</script>
 
-					<div class="track"><img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()"><p id="singer">
+					<div class="track"><img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()"><p id="singer"></p>
 						<div class="square">
 							<span class="arrow_top_int"></span>
 							追蹤成功!
@@ -133,121 +115,120 @@
 				    console.log(s);
 				   }
 				   calculate();
-					function showTime()
-						{
-						    document.getElementById('CountDown').innerHTML= s+"s";
-							if(s==0){
+						function showTime()
+							{
+							    document.getElementById('CountDown').innerHTML= s+"s";
+								if(s==0){
 
-								location.reload();
+									location.reload();
+								}
+								if(s<30){
+									document.getElementById("dislike").style.visibility = "visible";
+									document.getElementById("like").style.visibility ="visible";
+								}
+								if(s>30){
+									document.getElementById("dislike").style.visibility = "hidden";
+									document.getElementById("like").style.visibility= "hidden";
+								}
+								s -= 1;
+								setTimeout("showTime()",1000);
 							}
-							if(s<30){
-								document.getElementById("dislike").style.visibility = "visible";
-								document.getElementById("like").style.visibility ="visible";
-							}
-							if(s>30){
-								document.getElementById("dislike").style.visibility = "hidden";
-								document.getElementById("like").style.visibility= "hidden";
-							}
-							s -= 1;
-							setTimeout("showTime()",1000);
-						}
 						showTime();
-		function CheckMic(){
-			if (s==0){
-				var request = new XMLHttpRequest();
-    			request.open("POST", "checkmic.php");
-    			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    			request.send();
-				}
-				setTimeout("CheckMic()",1000);
-			}
-						CheckMic();
+						function CheckMic(){
+							if (s==0){
+								var request = new XMLHttpRequest();
+				    			request.open("POST", "checkmic.php");
+				    			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				    			request.send();
+								}
+								setTimeout("CheckMic()",1000);
+							}
+										CheckMic();
 					</script>
 
-<script type="text/javascript">
-	document.getElementById("like").onclick = function() {
-    // 發送 Ajax 查詢請求並處理
-    var request = new XMLHttpRequest();
-    request.open("POST", "voteconnect.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send();
+					<script type="text/javascript">
+						document.getElementById("like").onclick = function() {
+					    // 發送 Ajax 查詢請求並處理
+					    var request = new XMLHttpRequest();
+					    request.open("POST", "voteconnect.php");
+					    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					    request.send();
 
-    request.onreadystatechange = function() {
-        // 伺服器請求完成
-        if (request.readyState === 4) {
-            // 伺服器回應成功
-            if (request.status === 200) {
-                var type = request.getResponseHeader("Content-Type");   // 取得回應類型
+					    request.onreadystatechange = function() {
+					        // 伺服器請求完成
+					        if (request.readyState === 4) {
+					            // 伺服器回應成功
+					            if (request.status === 200) {
+					                var type = request.getResponseHeader("Content-Type");   // 取得回應類型
 
-                // 判斷回應類型，這裡使用 JSON
-                if (type.indexOf("application/json") === 0) {
-                    var data = JSON.parse(request.responseText);
+					                // 判斷回應類型，這裡使用 JSON
+					                if (type.indexOf("application/json") === 0) {
+					                    var data = JSON.parse(request.responseText);
 
-                    if (data.like) {
-                        document.getElementById("likeresult").innerHTML = data.like;
-                    }
-                    else if(data.havevote){
-                    	document.getElementById("likeresult").innerHTML = data.havevote + "  您已經投過票";
-                    }
-                    else {
-                        document.getElementById("likeresult").innerHTML = data.msg;
-                    }
-                }
-            } else {
-                alert("發生錯誤: " + request.status);
-            }
-        }
-    }
-}
-document.getElementById("dislike").onclick = function() {
-    // 發送 Ajax 查詢請求並處理
-    var request = new XMLHttpRequest();
-    request.open("GET", "voteconnect.php");
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send();
+					                    if (data.like) {
+					                        document.getElementById("likeresult").innerHTML = data.like;
+					                    }
+					                    else if(data.havevote){
+					                    	document.getElementById("likeresult").innerHTML = data.havevote + "  您已經投過票";
+					                    }
+					                    else {
+					                        document.getElementById("likeresult").innerHTML = data.msg;
+					                    }
+					                }
+					            } else {
+					                alert("發生錯誤: " + request.status);
+					            }
+					        }
+					    }
+					}
+						document.getElementById("dislike").onclick = function() {
+						    // 發送 Ajax 查詢請求並處理
+						    var request = new XMLHttpRequest();
+						    request.open("GET", "voteconnect.php");
+						    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+						    request.send();
 
-    request.onreadystatechange = function() {
-        // 伺服器請求完成
-        if (request.readyState === 4) {
-            // 伺服器回應成功
-            if (request.status === 200) {
-                var type = request.getResponseHeader("Content-Type");   // 取得回應類型
+						    request.onreadystatechange = function() {
+						        // 伺服器請求完成
+						        if (request.readyState === 4) {
+						            // 伺服器回應成功
+						            if (request.status === 200) {
+						                var type = request.getResponseHeader("Content-Type");   // 取得回應類型
 
-                // 判斷回應類型，這裡使用 JSON
-                if (type.indexOf("application/json") === 0) {
-                    var data = JSON.parse(request.responseText);
+						                // 判斷回應類型，這裡使用 JSON
+						                if (type.indexOf("application/json") === 0) {
+						                    var data = JSON.parse(request.responseText);
 
-                    if (data.dislike) {
-                        document.getElementById("dislikeresult").innerHTML = data.dislike;
-                    }
-                    else if(data.havevote){
-                    	document.getElementById("dislikeresult").innerHTML = data.havevote + "  您已經投過票";
-                    }
-                    else {
-                        document.getElementById("dislikeresult").innerHTML = data.msg;
-                    }
-                }
-            } else {
-                alert("發生錯誤: " + request.status);
-            }
-        }
-    }
-}
-
-</script>
+						                    if (data.dislike) {
+						                        document.getElementById("dislikeresult").innerHTML = data.dislike;
+						                    }
+						                    else if(data.havevote){
+						                    	document.getElementById("dislikeresult").innerHTML = data.havevote + "  您已經投過票";
+						                    }
+						                    else {
+						                        document.getElementById("dislikeresult").innerHTML = data.msg;
+						                    }
+						                }
+						            } else {
+						                alert("發生錯誤: " + request.status);
+						            }
+						        }
+						    }
+						}
+					</script>
 
 				<div class="queue">
-					<li><p id='queue1'></li>
-					<li><p id='queue2'></li>
-					<li><p id='queue3'></li>
+					<li><p id='queue1'></p></li>
+					<li><p id='queue2'></p></li>
+					<li><p id='queue3'></p></li>
 				</div>
 				<div class="mic_queue">
 					<li><p>目前排麥人數</p></li>
 					<li><img src="image/line.png"></li>
-					<li><p id="MicCount"></li>
+					<li><p id="MicCount"></p></li>
 				</div>
 				<div class="get_mic">
-					<li><input type="button" value="我要排MIC" id="Mic"><p id="qwer"></li>
+					<li><input type="button" value="我要排MIC" id="Mic"><p id="qwer"></p></li>
 				</div>
 	<script type="text/javascript">
 	function ArrangeMicCheck(){
@@ -309,8 +290,9 @@ document.getElementById("dislike").onclick = function() {
 </script>
 				<div class="clear"></div>
 				<div id="chatContent" class="chatroom">
+
 				</div>
-				<input id="chatInput" type="text" placeholder="留言......" class="reply"></input>
+				<input id="chatInput" type="text" placeholder="留言......" class="reply">
 			</div>
 		</div>
 	</div>
