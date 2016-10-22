@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="CSS/setting.css">
     <link rel="stylesheet" href="CSS/all.css">
     <title>MicMusic</title>
@@ -13,6 +14,7 @@
         <div class="header">
             <h1><img src="image/Logo2.png"></h1>
             <div class="menu">
+            <div class="user"></div>
                 <div class="search">
                     <input type="text" class="search_blank" placeholder="輸入id找歌手">
                     <input type="image" class="search_image" src="image/search.png">
@@ -31,19 +33,57 @@
     <div class="wrap">
         <div id="content">
             <h2>設定/Settings</h2>
-            <ul>
-                <li>
-                    <div class="switch">
-                        <input type="checkbox">
-                        <label><i></i></label>
-                    </div> 
-
-                </li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+            <h3>個人帳號設定</h3>
+            <div class="setting_person">
+                <ul>
+                    <li>
+                        編輯個人資料
+                        <div class="four">
+                          <div class="button-wrap">
+                            <div class="button-bg">
+                              <div class="button-out"></div>
+                              <div class="button-in"></div>
+                              <div class="button-switch"></div>
+                            </div>
+                          </div>
+                        </div>
+                            <script>
+                            $('.button-wrap').on("click", function(){
+                              $(this).toggleClass('button-active');
+                            });
+                            </script>
+                    </li>
+                    <li>
+                        活動紀錄
+                        <div class="four">
+                          <div class="button-wrap">
+                            <div class="button-bg">
+                              <div class="button-out"></div>
+                              <div class="button-in"></div>
+                              <div class="button-switch"></div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                    </li>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+                
+            <h3>頻道設定</h3>
+            <div class="setting_person">
+                <ul>
+                    <li>
+                        追蹤通知
+                    </li>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+                
         </div>  
     </div>
     <div class="footer_space">
