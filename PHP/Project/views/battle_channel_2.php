@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
 	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
+	
 	<script>
 		var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
