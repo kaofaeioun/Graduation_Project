@@ -7,13 +7,14 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico" />
 	<script>
 		var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
 			"nn" : "Fuck U", //Nickname
 			"mg" : 4/100, // minGain
-			"mic" : false,
-			"sound" : true
+			"mic" : true,
+			"sound" : false
 		}
 	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -229,7 +230,7 @@ document.getElementById("dislike").onclick = function() {
 	<script type="text/javascript">
 	function test33(){
 			<?php
-				include("mysql_connect.php");
+				//include("mysql_connect.php");
 				$sql="SELECT count(Mic_ID) FROM Mic where Mic_ID is not null";
 				$result=mysql_query($sql);
 				$row=mysql_fetch_row($result);

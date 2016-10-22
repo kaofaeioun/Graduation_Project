@@ -7,7 +7,25 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico" />
+	<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
 	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAVtn4QK14i_8UhzOR3hqQkwcdo1zGhyJE",
+	    authDomain: "micmusic-69fe1.firebaseapp.com",
+	    databaseURL: "https://micmusic-69fe1.firebaseio.com",
+	    storageBucket: "micmusic-69fe1.appspot.com",
+	    messagingSenderId: "16912515697"
+	  };
+	  firebase.initializeApp(config);
+		var userId = firebase.auth().currentUser.uid;
+		return firebase.database().ref("/MicMusic/User/1/").once('value').then(function(snapshot) {
+	  	var client_name = snapshot.val().User_Name;
+		});
+		console.log(client_name);
+		</script>
+		<script>
 		var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
 			"nn" : "Fuck U", //Nickname
@@ -291,7 +309,6 @@ document.getElementById("dislike").onclick = function() {
 </script>
 				<div class="clear"></div>
 				<div id="chatContent" class="chatroom">
-
 				</div>
 				<input id="chatInput" type="text" placeholder="留言......" class="reply"></input>
 			</div>
