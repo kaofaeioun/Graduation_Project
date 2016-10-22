@@ -48,7 +48,7 @@
 						$(document).ready(function(){
   							$('.square').hide(); 
   							//隱藏要呼叫的div
-  							$('.track img').click(function() { 
+  							$('#pic').click(function() { 
   								//指定呼叫按鈕
     							$('.square').fadeToggle(500);
     							//顯示隱藏的div
@@ -57,15 +57,27 @@
 						});
 					</script>
 
-					<div class="square">
-						<span class="arrow_top_int"></span>
-						追蹤成功!
-					</div>
+					<script>
+						function changeSrc(){
+							var imgObj = document.getElementById("pic");
+							if (imgObj.getAttribute("src",2) == "image/cancerlike.png"){
+	  							imgObj.src = "image/like.png";
+							}
+							else{
+								imgObj.src = "image/cancerlike.png";
+							}
+						}
+					</script>
+
 					<div class="track">
-						<img src="image/cancerlike_2.png" original title="我要追蹤">咭咭三比靈
+						<div class="square">
+							<span class="arrow_top_int"></span>
+							追蹤成功!
+						</div>
+						<img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()">咭咭三比靈
 					</div>
 					<div class="personal_info">
-						<li><img src="image/watcher_2.png" original title="目前觀看人數">8888</li>
+						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數">87</li>
 					</div>
 				</div>
@@ -73,9 +85,7 @@
 				<div class="clear"></div>
 
 				<div class="chatroom">
-					小羅：B嘴!<br>
-					劭竑：6666666666666666666<br>
-					岳陽：太神啦
+
 				</div>
 				<input type="text" placeholder="留言......" class="reply"></input>
 			</div>

@@ -7,13 +7,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
+	
 	<script>
 		var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
 			"nn" : "Fuck U", //Nickname
 			"mg" : 4/100, // minGain
-			"mic" : false,
-			"sound" : true
+			"mic" : true,
+			"sound" : false
 		}
 	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -58,16 +60,16 @@
 						<div class="circle_area">
 							<div class="circle_1"></div>
 							<div class="circle_2" id="CountDown"></div>
+							<div class="vote_like" id="like"><p id="likeresult"></p></div>
+							<div class="vote_dislike" id="dislike"><p id="dislikeresult"></p></div>
 						</div>
-						<div class="vote_like" id="like"><p id="likeresult"></div>
-						<div class="vote_dislike" id="dislike"><p id="dislikeresult"></div>
 					</div>
-
+					<!-- 小視窗 -->
 					<script>
 						$(document).ready(function(){
   							$('.square').hide();
-  							//隱藏要呼叫的div
-  							$('#track img').click(function() {
+  								//隱藏要呼叫的div
+  							$('#pic').click(function(){
   								//指定呼叫按鈕
     							$('.square').fadeToggle(500);
     							//顯示隱藏的div
@@ -75,20 +77,25 @@
   							});
 						});
 					</script>
-
+					<!-- 圖變色 -->
 					<script>
-     				 	$(document).ready(function(){
-     				 		$("#track img").click(function(){
-         						$("#track img").attr("src","image/like.png");
-            				});
-           				});
+						function changeSrc(){
+							var imgObj = document.getElementById("pic");
+							if (imgObj.getAttribute("src",2) == "image/cancerlike.png"){
+	  							imgObj.src = "image/like.png";
+							}
+							else{
+								imgObj.src = "image/cancerlike.png";
+							}
+						}
 					</script>
 
-					<div class="square">
-						<span class="arrow_top_int"></span>
-						追蹤成功!
+					<div class="track"><img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()"><p id="singer"></p>
+						<div class="square">
+							<span class="arrow_top_int"></span>
+							追蹤成功!
+						</div>
 					</div>
-					<div id="track"><img src="image/cancerlike.png" original title="我要追蹤"><p id="singer"></div>
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數">87</li>
@@ -214,22 +221,22 @@ document.getElementById("dislike").onclick = function() {
 </script>
 
 				<div class="queue">
-					<li><p id='queue1'></li>
-					<li><p id='queue2'></li>
-					<li><p id='queue3'></li>
+					<li><p id='queue1'></p></li>
+					<li><p id='queue2'></p></li>
+					<li><p id='queue3'></p></li>
 				</div>
 				<div class="mic_queue">
 					<li><p>目前排麥人數</p></li>
 					<li><img src="image/line.png"></li>
-					<li><p id="MicCount"></li>
+					<li><p id="MicCount"></p></li>
 				</div>
-				<div id="get_mic">
-					<li><input type="button" onclick="show(this)" value="我要排MIC" id="Mic"><p id="qwer"></li>
+				<div class="get_mic">
+					<li><input type="button" value="我要排MIC" id="Mic"><p id="qwer"></p></li>
 				</div>
 	<script type="text/javascript">
 	function test33(){
 			<?php
-				include("mysql_connect.php");
+				//include("mysql_connect.php");
 				$sql="SELECT count(Mic_ID) FROM Mic where Mic_ID is not null";
 				$result=mysql_query($sql);
 				$row=mysql_fetch_row($result);
@@ -288,7 +295,7 @@ document.getElementById("dislike").onclick = function() {
 				<div id="chatContent" class="chatroom">
 
 				</div>
-				<input id="chatInput" type="text" placeholder="留言......" class="reply"></input>
+				<input id="chatInput" type="text" placeholder="留言......" class="reply">
 			</div>
 		</div>
 	</div>

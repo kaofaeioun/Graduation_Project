@@ -11,7 +11,7 @@ mysqli_query("SET NAMES utf8");
 
 if(!mysqli_select_db($db_name))
         die("無法使用資料庫");*/
-$servername = "140.127.218.201:3306";
+$servername = "140.127.218.201";
 $username = "kaofaeioun";
 $password = "qwerqwer";
 $dbnamne = "MICMUSIC";
