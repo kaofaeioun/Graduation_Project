@@ -52,93 +52,19 @@ table {
 
 /*-------------------------------------------------------------------------------------------------------------*/
 
-.wrap{
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    min-height: 100%;
-}
-.header{
-    display: inline-block;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    text-align: center;
-}
-.menu{
-    width: 1000px;
-    height: 50px;
-    line-height: 50px;
-}
-h1{
-    margin-top: 15px;
-    float: left;
-    margin-right: 100px;
-    width:220px;
-    cursor: pointer;
-}
-h1 img{
-     width:100%;
-}
-.search{
-    float: right;
-    margin-right: 35px;
-}
-.search_blank{
-    width: 220px;
-    height: 27px;
-    padding-left: 6px;
-    border: 0.5px solid #BEBEBE;
-    font-size: 16px;
-    float: left;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    border-top-left-radius:5px;
-    border-bottom-left-radius:5px;
-}
-.search_image[type='image']{
-    width: 31px;
-    height: 31px;
-    padding: 5px;
-    box-sizing: border-box;
-    background-color:#02DF82;
-    float: left;
-    border-top-right-radius:5px;
-    border-bottom-right-radius:5px;
-}
-.search_image[type='image']:hover{
-    background-color:  #1AFD9C;
-}
-.menu li{
-    width: 165px;
-    text-align: center;
-    display: inline-block;
-    list-style: none;
-    cursor: pointer;
-}
-.menu b{
-    font-size: 18px;
-    font-weight: 200;
-    letter-spacing: 3px;
-}
-.menu a{
-    color: #3B3B3B;
-    text-decoration:none;
-}
-.menu li:hover{
-    border-bottom:2px solid #FF3366;
-}
-hr{
-    border:2px solid #3B3B3B;
-    margin-bottom: 40px;
-}
 #content{
-    width: 100%;
+    width: 70%;
+    text-align: center;
+    margin: auto;
 }
 h2{
     margin-bottom:30px;
     font-size: 24px;
     font-weight: 200;
     text-align: center;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 #content b{
     font-weight: 200;
@@ -146,68 +72,186 @@ h2{
 #content br{
     display: none;
 }
-.bar{
-    margin-bottom: 10px;
-    text-align: center;
-}
-.bar li{
-    display: inline-block;
-    margin-right: 2.5%;
-    margin-left: 2.5%;
-    cursor: pointer;
-    text-align: center;
-    width:200px;
-}
-.bar_item{
-    width:200px;
-    height: 200px;
-    border-radius: 10px;
-    position: relative;
-    margin-bottom: 20px;
-}
-.bar_item:hover{
-    opacity: 0.8;
-}
 .clear{
     clear: both;
 }
-.footer_space{
-    height: 120px;
-}
-footer{
-    z-index: 20;
+/*--------------------------------------*/
+.topbar{
+    display: block;
+    height: 100%;
     text-align: center;
-    color: white;
-    background: #01abad;
-    height: 90px;
-    line-height: 25px;
-    padding-top: 20px;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
+.leftbar{
+    float: right;
+    width: 70%;
+    height: 100%;
+}
+.leftbar li{
+    line-height: 50px;
+    text-align: left;
 
-h3{
-    font-size: 25px;
+}
+#info{
+    line-height: 65px;
+    letter-spacing: 4px;
+}
+a{
+    text-decoration: none;
+}
+/*---------追蹤清單--------------*/
+#track_list{
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px dotted grey;
+}
+#track_list li{
+    width: 32%;
+    font-size: 120%;
+    display: inline-block;
+    text-align: center;
+    letter-spacing: 3px;
+    float: none;
+    margin-top: 5px;
     margin-bottom: 10px;
+    cursor: default;
 }
-
-footer li{
+#track_list li:hover{
+    border-right: 1px dotted #636363;
+    border-left: 1px dotted #636363;
+    background: #C3DDF4;
+}
+#track_list img{
     display: none;
 }
+#track_list a{
+    text-decoration: none;
+}
+/*--------------------------*/
+.rightbar{
+    float: left;
+    width: 30%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.rightbar img{
+    float: none;
+    width: 40%;
+    min-width: 10%;
+    max-width: 100%;
+    border-radius: 100px;
+}
+.trackbutton{
+    display: block;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+/*-----------------------------------------*/
+@-webkit-keyframes follow-animation {
+  from {background: white; color: #3399FF; width: 100px; left: 50px;}
+  to {background: #00CDCD; border-color: #00CDCD; color: #ffffff; width: 100px; left: 35px;}
+}
+@-webkit-keyframes unfollow-animation {
+  from {background: #00CDCD; color: #ffffff; width: 100px; left: 35px;}
+  to {background: white; border-color: #3399FF; color: #3399FF; width: 100px; left: 50px;}
+}
 
+/* Standard syntax */
+@keyframes follow-animation {
+  from {background: white; color: #3399FF; width: 100px; left: 50px;}
+  to {background: #00CDCD; border-color: #00CDCD; color: #ffffff; width: 100px; left: 35px;}
+}
+@keyframes unfollow-animation {
+  from {background: #00CDCD; color: #ffffff; width: 100px; left: 35px;}
+  to {background: white; border-color: #3399FF; color: #3399FF; width: 100px; left: 50px;}
+}
+
+input {
+  -webkit-appearance: none;
+}
+
+input:after {
+  color: #3399FF;
+  font-family: "微軟正黑體";
+  font-size: 12pt;
+  background-color: #ffffff;
+  border: 1px solid;
+  border-color: #3399FF;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 5px 15px;
+
+
+  content: '追蹤';
+  -webkit-animation: unfollow-animation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-animation-fill-mode:forwards;
+  animation: unfollow-animation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-fill-mode:forwards;
+}
+
+input:checked:after {
+  content: '已追蹤';
+  -webkit-animation: follow-animation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-animation-fill-mode:forwards;
+  animation: follow-animation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation-fill-mode:forwards;
+}
+/*-------------------------------------------*/
+.downbar{
+}
+.downbar li {
+    display: block;
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    line-height: 30px;
+    padding-bottom:25px;
+    border-bottom: 1px solid    #E0EEEE;
+    border-bottom-width: 80%;
+}
+.downbar p{
+    color:#03A89E;
+    float: left;
+    font-weight: bolder;
+    width: 40%;
+    font-size: 16px;
+    cursor: default;
+}
+.blank{
+    text-align: right;
+    display: inline-block;
+    float: right;
+    margin: auto;
+}
+
+.blankz{
+    text-align: left;
+    display: inline-block;
+    float: right;
+    width: 60%;
+    cursor: default;  
+}
+
+b1{
+    background: url(http://2.bp.blogspot.com/-WLxu_AFXwl4/UAQdpqrlDxI/AAAAAAAADFg/fCQgtBFv41I/s1600/green.png) repeat no-repeat bottom;
+    line-height: 22px;
+}
+
+/*-----------------------------------------------------*/
 
 @media only screen and (max-width:800px) {
     
-   
     #content{
         width: 60%;
         min-width: 200px;
-    }
-    #content b{
-        display: none;
-    }
+    }  
     #content br{
         display: block;
     }
@@ -222,21 +266,17 @@ footer li{
         display: none;
     }
     #content{
-        width: 100%;
+        width: 95%;
+        margin-left: 2.5%;
+        margin-right: 2.5%;
     }
-
-    .profile li{
-        margin-top:8px;
-        font-size: 130%;
-        width: 100%;
-        float: none;
-        text-align: center;
+    #content b{
+        display: none;
     }
-    .profile input{
-        text-align: center;
-        font-size: 110%;
-        width: 100%;
+    #content h2>br{
+        display: block;
     }
+    
     .name_blank{
         float: none;
         text-align: center;
@@ -248,12 +288,12 @@ footer li{
         line-height: 200%;
         width: 25%;
         font-size:100%;
-        border-bottom: none;
+        border: none;
         display: inline-block;
         text-align: center;
         letter-spacing: 5px;
     }
-    #track_list b{
+    #track_list b1{
         display: none;
     }  
     #track_list img{
@@ -261,4 +301,10 @@ footer li{
         width: 50%;
     }
 
+}
+
+/*-------------------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width:500px){
+    
 }

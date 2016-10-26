@@ -34,8 +34,6 @@ q:before, q:after {
 :focus {
     outline: 0;
 }
-
-
 /* remember to highlight inserts somehow! */
 ins {
     text-decoration: none;
@@ -51,100 +49,11 @@ table {
 }
 
 /*-------------------------------------------------------------------------------------------------------------*/
-
-.wrap{
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    min-height: 100%;
-}
-.header{
-    display: inline-block;
-    padding-top: 20px;
-    padding-bottom: 30px;
-    text-align: center;
-}
-.menu{
-    width: 1000px;
-    height: 50px;
-    line-height: 50px;
-}
-h1{
-    margin-top: 15px;
-    float: left;
-    margin-right: 100px;
-    width:220px;
-    cursor: pointer;
-}
-h1 img{
-     width:100%;
-}
-.search{
-    float: right;
-    margin-right: 35px;
-}
-.search_blank{
-    width: 220px;
-    height: 27px;
-    padding-left: 6px;
-    border: 0.5px solid #BEBEBE;
-    font-size: 16px;
-    float: left;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    border-top-left-radius:5px;
-    border-bottom-left-radius:5px;
-}
-.search_image[type='image']{
-    width: 31px;
-    height: 31px;
-    padding: 5px;
-    box-sizing: border-box;
-    background-color:#02DF82;
-    float: left;
-    border-top-right-radius:5px;
-    border-bottom-right-radius:5px;
-}
-.search_image[type='image']:hover{
-    background-color:  #1AFD9C;
-}
-.menu li{
-    width: 165px;
-    text-align: center;
-    display: inline-block;
-    list-style: none;
-    cursor: pointer;
-}
-.menu b{
-    font-size: 18px;
-    font-weight: 200;
-    letter-spacing: 3px;
-}
-.menu a{
-    color: #3B3B3B;
-    text-decoration:none;
-}
-.menu li:hover{
-    border-bottom:2px solid #FF3366;
-}
-hr{
-    border:2px solid #3B3B3B;
-    margin-bottom: 40px;
-}
 #content{
     width: 70%;
     text-align: center;
     margin: auto;
     min-height: 600px;
-}
-h2{
-    margin-bottom:30px;
-    font-size: 24px;
-    font-weight: 200;
-    text-align: center;
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
 }
 #content b{
     font-weight: 200;
@@ -174,47 +83,14 @@ h2{
     width: 100px;
     height: 100px;
     margin-top: 5px;
-    border-radius: 20px;fl
+    border-radius: 20px;
 }
 .userid a{
     text-decoration: none;
 }
-
-
 b1{
 background: url(http://2.bp.blogspot.com/-WLxu_AFXwl4/UAQdpqrlDxI/AAAAAAAADFg/fCQgtBFv41I/s1600/green.png) repeat no-repeat bottom;
 line-height: 22px;
-}
-
-
-
-
-/*--------------------------------------*/
-.footer_s.clear{
-    clear: both;
-}pace{
-    height: 120px;
-}
-footer{
-    z-index: 20;
-    text-align: center;
-    color: white;
-    background: #01abad;
-    height: 90px;
-    line-height: 25px;
-    padding-top: 20px;
-    font-family: 'Quicksand', sans-serif,微軟正黑體;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-}
-
-h3{
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-footer li{
-    display: none;
 }
 
 /*----------------------------------------------button--------------------------------------------------*/
@@ -408,17 +284,11 @@ footer li{
     .userid a{
         line-height: 50px;
     }
-
-
 }
 
 /*-------------------------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width:500px){
-    .menu{
-        width: 70%;
-        margin-left: 5%;
-    }
     #content{
         width: 70%;
         margin-left: 15%;

@@ -55,6 +55,12 @@ table {
     width: 80%;
     margin: auto;
 }
+.content b{
+    font-weight: 200;
+}
+.content h2>br{
+    display: none;
+}
 .clear{
     clear: both;
 }
@@ -132,6 +138,12 @@ h4{
 @media only screen and (max-width:800px) {
     .content{
         width: 100%;
+    }
+    .content b{
+        display: none;
+    }
+    .content h2>br{
+        display: block;
     }
     .setting_person{
         margin-left: 5%;

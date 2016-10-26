@@ -10,22 +10,19 @@
     padding-top: 20px;
     padding-bottom: 30px;
     text-align: center;
-    margin-bottom: 10px;
-}
-.menu{
-    width: 1000px;
-    height: 50px;
-    line-height: 50px;
 }
 h1{
-    margin-top: 15px;
+    margin-top: 25px;
     float: left;
-    margin-right: 100px;
-    width:220px;
+    margin-right: 80px;
+    width:240px;
     cursor: pointer;
 }
 h1 img{
      width:100%;
+}
+.toolbar{
+    height: 60px;
 }
 .search{
     float: right;
@@ -66,9 +63,62 @@ h1 img{
     margin-right: 50px;
     margin-top: -5px;
     cursor: pointer;
+    position: relative;
+}
+.user_info{
+    width:270px;
+    height:180px;
+    background-color:#fff;
+    text-align: center;
+    line-height: 30px;
+    padding-top: 10px; 
+    color: #4A4A4A;
+    position: absolute;
+    top:60px;
+    left: -40px;
+    border: 0.5px solid #c5c5c5;
+    box-shadow: 0 0 15px rgba(0,0,0,.18);
+    z-index: 2;
+}
+.user_info ul>li{
+    list-style: none;
+    float: left;
+    width: 90px;
+    font-size: 28px;
+}
+.user_info p{
+    font-size: 22px;
+}
+.user_info img{
+    width: 55px;
+}
+.user_info .arrow_bottom_int{
+    width:0px;
+    height:0px;
+    border-width:16px;
+    border-style:solid;
+    border-color:transparent transparent #c5c5c5 transparent;
+    position:absolute;
+    top:-32px;
+    left:45px;
+}
+.user_info .arrow_bottom_out{
+    width:0px;
+    height:0px;
+    border-width:16px;
+    border-style:solid;
+    border-color:transparent transparent #fff transparent;
+    position:absolute;
+    top:-31px;
+    left:45px;
+}
+.menu{
+    width: 1000px;
+    height: 45px;
 }
 .menu li{
     width: 165px;
+    height: 40px;
     text-align: center;
     display: inline-block;
     list-style: none;
@@ -157,14 +207,11 @@ h3{
         padding-top: 20px;
         margin-bottom: 10px;
     }
-    .menu{
+    .toolbar{
         width: 80%;
         margin-right: 10%;
         margin-left: 10%;
         margin-bottom: 0px;
-    }
-    .menu ul{
-        display: none;
     }
     .user{
         margin:-8px 0px 0px 10px;
@@ -183,6 +230,9 @@ h3{
         border-radius: 5px;
     }
     .search_image{
+        display: none;
+    }
+    .menu ul{
         display: none;
     }
     hr{
@@ -228,7 +278,7 @@ h3{
 /*-------------------------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width:500px){
-    .menu{
+    .toolbar{
         width: 90%;
         margin-left: 5%;
     }
