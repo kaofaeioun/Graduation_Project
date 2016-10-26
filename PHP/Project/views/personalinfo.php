@@ -11,18 +11,42 @@ include("mysql_connect.php");
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/personalinfo.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<title>MicMusic</title>
 </head>
 <body>
 	<div class="wrap">
 		<div class="header">
-			<h1><div class="Logo"><img src="image/Logo2.png"></div></h1>
-			<div class="menu">
+			<h1><img src="image/Logo2.png"></h1>
+			<script type="text/javascript">
+				$(document).ready(function(){
+  					$('.user_info').hide(); 
+  					//隱藏要呼叫的div
+  					$('#user').click(function() { 
+  						//指定呼叫按鈕
+    					$('.user_info').fadeToggle(300);
+    					//顯示隱藏的div
+    					return false;
+  					});
+				});
+			</script>
+			<div class="toolbar">
+				<div class="user" id="user">
+					<div class="user_info">
+						<ul>
+							<li><p>Rank</p><img src="image/medal.png"></li>
+							<li><img src="image/success.png">66</li>
+						</ul>
+						<span class="arrow_bottom_int"></span>
+						<span class="arrow_bottom_out"></span>		
+					</div>
+				</div>
 				<div class="search">
 					<input type="text" class="search_blank" placeholder="輸入id找歌手">
 					<input type="image" class="search_image" src="image/search.png">
 				</div>
-				<br>
+			</div>
+			<div class="menu">
 				<ul>
 					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
 					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
@@ -30,9 +54,9 @@ include("mysql_connect.php");
 					<li><a href="setting.html"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
 				</ul>
 			</div>
-
 		</div>
-	</div><hr>
+	</div>
+	<hr>
 	<?php
 	$id=$_COOKIE['userid'];
 	$sql = "SELECT * FROM User where User_ID = $id";

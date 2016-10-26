@@ -8,6 +8,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/fans.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type='text/javascript'>
 		document.createElement("b1")
 	</script>
@@ -16,14 +17,36 @@
 <body>
 	<div class="wrap">
 		<div class="header">
-			<h1><div class="Logo"><img src="image/Logo2.png"></div></h1>
-			<div class="menu">
-			<div class="user"></div>
+			<h1><img src="image/Logo2.png"></h1>
+			<script type="text/javascript">
+				$(document).ready(function(){
+  					$('.user_info').hide(); 
+  					//隱藏要呼叫的div
+  					$('#user').click(function() { 
+  						//指定呼叫按鈕
+    					$('.user_info').fadeToggle(300);
+    					//顯示隱藏的div
+    					return false;
+  					});
+				});
+			</script>
+			<div class="toolbar">
+				<div class="user" id="user">
+					<div class="user_info">
+						<ul>
+							<li><p>Rank</p><img src="image/medal.png"></li>
+							<li><img src="image/success.png">66</li>
+						</ul>
+						<span class="arrow_bottom_int"></span>	
+						<span class="arrow_bottom_out"></span>	
+					</div>
+				</div>
 				<div class="search">
 					<input type="text" class="search_blank" placeholder="輸入id找歌手">
 					<input type="image" class="search_image" src="image/search.png">
 				</div>
-				<br>
+			</div>
+			<div class="menu">
 				<ul>
 					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
 					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
@@ -40,42 +63,57 @@
 			<div class="topbar">
 				<div class="leftbar">
 					<ul>
-						<li>ID<div class="blank">AREYOUOK</div></li>
-						<li>名字<div class="blank">洋洋</div></li>
-						<li>
-							<ul id="track_list">
-								<a href="">
-									<li>
-									<div class="hide">追蹤名單</div>
-									<img src="image/track.png" alt="">33
-									</li>
-								</a>
-								<a href="">
-									<li>粉絲名單
-									<img src="image/tracked.png" alt="">87
-									</li>
-								</a>
-									<li>勝場數
-									<img src="image/win.png" alt="">87
-									</li>						
-							</ul>
-						</li>
+						<li id="info">ID<div class="blank">AREYOUOK</div></li>
+						<li id="info">名字<div class="blank">洋洋</div></li>
+						
 					</ul>
 				</div>
 				<div class="rightbar">
 					<img src="image/profilepic.jpg" alt="">
-					<div class="trackbutton">追蹤</div>					
+					<div class="trackbutton">
+						<input type="checkbox">	
+					</div>					
 				</div>
 				<div class="clear"></div>
 			</div>
-			<br>
+			<ul id="track_list">
+				<li>
+					<a href="">追蹤名單<img src="image/track.png" alt="">33</a>
+				</li>
+				<li>
+					<a href="">粉絲名單<img src="image/tracked.png" alt="">87</a>
+				</li>
+				<li>勝場數<img src="image/win.png" alt="">87
+				</li>						
+			</ul>
+
 			<div class="downbar">
 				<ul>	
-					<li>興趣<div class="blank">打LOL、商業英文、趙建雄</div></li>
-					<li>喜歡的歌<div class="blank">外面的世界、社會搖</div></li>
-					<li>喜歡的歌手<div class="blank">重力可可、熱狗</div></li>
-					<li>擅長歌路<div class="blank">奇幻搖滾風</div></li>
-					<li>Level<div class="blank">13</div></li>
+					<li>
+						<p>興趣</p>
+						<div class="blankz">想要裝文青愛看書
+						但是看到密密麻麻又沒有劇情的就會睡著天生吃貨一個喜歡四處遊蕩吃喝玩樂對美食有厲害的雷達應該算是專長哈哈哈</div>
+					</li>
+					<div class="clear"></div>
+					<li>
+						<p>喜歡的歌</p>
+						<div class="blankz">可以吃喝玩樂跟老師喇咧的課啊~♡</div>
+					</li>
+					<div class="clear"></div>
+					<li>
+						<p>喜歡的歌手</p>
+						<div class="blankz">想要環遊世界想要把全世界的美景都看完想要沒有煩惱想要一個不會低潮的宣宣想要有一個安全感。</div>
+					</li>
+					<div class="clear"></div>
+					<li>
+						<p>擅長歌路</p>
+						<div class="blankz">天生公關料最厲害的就是喇咧跟屁話~</div>
+					</li>
+					<div class="clear"></div>
+					<li>
+						<p>Level</p>
+						<div class="blankz">13</div>
+					</li>
 
 				</ul>
 			</div>

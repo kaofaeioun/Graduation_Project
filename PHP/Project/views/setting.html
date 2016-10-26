@@ -4,22 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="CSS/setting.css">
     <link rel="stylesheet" href="CSS/all.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <title>MicMusic</title>
 </head>
 <body>
     <div class="wrap">
         <div class="header">
             <h1><img src="image/Logo2.png"></h1>
-            <div class="menu">
-            <div class="user"></div>
-            <div class="search">
-                <input type="text" class="search_blank" placeholder="輸入id找歌手">
-                <input type="image" class="search_image" src="image/search.png" alt="submit">
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $('.user_info').hide(); 
+                    //隱藏要呼叫的div
+                    $('#user').click(function() { 
+                        //指定呼叫按鈕
+                        $('.user_info').fadeToggle(300);
+                        //顯示隱藏的div
+                        return false;
+                    });
+                });
+            </script>
+            <div class="toolbar">
+                <div class="user" id="user">
+                    <div class="user_info">
+                        <ul>
+                            <li><p>Rank</p><img src="image/medal.png"></li>
+                            <li><img src="image/success.png">66</li>
+                        </ul>
+                        <span class="arrow_bottom_int"></span>
+                        <span class="arrow_bottom_out"></span>      
+                    </div>   
+                </div>
+                <div class="search">
+                    <input type="text" class="search_blank" placeholder="輸入ID找歌手">
+                    <input type="image" class="search_image" src="image/search.png" alt="submit">
+                </div>
             </div>
-            <br>
+            <div class="menu">
                 <ul>
                     <li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
                     <li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
@@ -32,7 +54,7 @@
     <hr>
     <div class="wrap">
         <div class="content">
-            <h2>設定/Settings</h2>
+            <h2>設定<b>/</b><br>Settings</h2>
             <h4>個人帳號設定</h4>
             <div class="setting_person">
                 <ul>
@@ -96,17 +118,17 @@
     </div>
 
     <div class="footer_space">
-    <footer>
-        <h3>MicMusic</h3>
-        <p>© 2016 All rights reserved.</p>
-        <p>NUKIM 106專題開發</p>
-        <ul>
-            <li><a href="battle.html"><img src="image/menu_battle.png"></a></li>
-            <li><a href="channel.html"><img src="image/personal.png"></a></li>
-            <li><a href="personalinfo.html"><img src="image/person_info.png"></a></li>
-            <li><a href="setting.html"><img src="image/setting_chosen.png"></a></li>
-        </ul>
-    </footer>
+        <footer>
+            <h3>MicMusic</h3>
+            <p>© 2016 All rights reserved.</p>
+            <p>NUKIM 106專題開發</p>
+            <ul>
+                <li><a href="battle.html"><img src="image/menu_battle.png"></a></li>
+                <li><a href="channel.html"><img src="image/personal.png"></a></li>
+                <li><a href="personalinfo.html"><img src="image/person_info.png"></a></li>
+                <li><a href="setting.html"><img src="image/setting_chosen.png"></a></li>
+            </ul>
+        </footer>
     </div>
-</body>
+    </body>
 </html>

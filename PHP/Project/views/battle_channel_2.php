@@ -8,6 +8,25 @@
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
 	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
+ 	<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+ 	<script>
+ 	// Initialize Firebase
+ 	var config = {
+ 		apiKey: "AIzaSyAVtn4QK14i_8UhzOR3hqQkwcdo1zGhyJE",
+ 		authDomain: "micmusic-69fe1.firebaseapp.com",
+ 		databaseURL: "https://micmusic-69fe1.firebaseio.com",
+ 		storageBucket: "micmusic-69fe1.appspot.com",
+ 		messagingSenderId: "16912515697"
+ 	};
+ 	firebase.initializeApp(config);
+ 	var client_name;
+ 	firebase.database().ref("/MicMusic/User/1/").once('value').then(function(snapshot){
+ 		client_name = snapshot.val().User_Name;
+ 		console.log(client_name);
+ 	});
+ 	console.log(client_name);
+ 	</script>
+	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
 	
 	<script>
 		var client = { //is observerd
@@ -34,13 +53,35 @@
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
-			<div class="menu">
-				<div class="user"></div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+  					$('.user_info').hide(); 
+  					//隱藏要呼叫的div
+  					$('#user').click(function() { 
+  						//指定呼叫按鈕
+    					$('.user_info').fadeToggle(300);
+    					//顯示隱藏的div
+    					return false;
+  					});
+				});
+			</script>
+			<div class="toolbar">
+				<div class="user" id="user">
+					<div class="user_info">
+						<ul>
+							<li><p>Rank</p><img src="image/medal.png"></li>
+							<li><img src="image/success.png">66</li>
+						</ul>
+						<span class="arrow_bottom_int"></span>	
+						<span class="arrow_bottom_out"></span>	
+					</div>	
+				</div>
 				<div class="search">
 					<input type="text" class="search_blank" placeholder="輸入ID找歌手">
 					<input type="image" class="search_image" src="image/search.png" alt="submit">
 				</div>
-				<br>
+			</div>
+			<div class="menu">
 				<ul>
 					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
 					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
@@ -121,7 +162,6 @@
 						{
 						    document.getElementById('CountDown').innerHTML= s+"s";
 							if(s==0){
-
 								location.reload();
 							}
 							if(s<30){
@@ -155,18 +195,15 @@
     request.open("POST", "voteconnect.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
-
     request.onreadystatechange = function() {
         // 伺服器請求完成
         if (request.readyState === 4) {
             // 伺服器回應成功
             if (request.status === 200) {
                 var type = request.getResponseHeader("Content-Type");   // 取得回應類型
-
                 // 判斷回應類型，這裡使用 JSON
                 if (type.indexOf("application/json") === 0) {
                     var data = JSON.parse(request.responseText);
-
                     if (data.like) {
                         document.getElementById("likeresult").innerHTML = data.like;
                     }
@@ -189,18 +226,15 @@ document.getElementById("dislike").onclick = function() {
     request.open("GET", "voteconnect.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
-
     request.onreadystatechange = function() {
         // 伺服器請求完成
         if (request.readyState === 4) {
             // 伺服器回應成功
             if (request.status === 200) {
                 var type = request.getResponseHeader("Content-Type");   // 取得回應類型
-
                 // 判斷回應類型，這裡使用 JSON
                 if (type.indexOf("application/json") === 0) {
                     var data = JSON.parse(request.responseText);
-
                     if (data.dislike) {
                         document.getElementById("dislikeresult").innerHTML = data.dislike;
                     }
@@ -217,7 +251,6 @@ document.getElementById("dislike").onclick = function() {
         }
     }
 }
-
 </script>
 
 				<div class="queue">
@@ -242,7 +275,6 @@ document.getElementById("dislike").onclick = function() {
 				$row=mysql_fetch_row($result);
 				$sql2="SELECT User_ID From Mic Where Mic_ID is not null ORDER BY  `Mic_ID` ASC ";
 				$result2=mysql_query($sql2);
-
 			?>
 			var CountMic='<?php echo $row[0] ?>';
 			var singer='<?php echo mysql_result($result2, 0)?>';
@@ -262,18 +294,15 @@ document.getElementById("dislike").onclick = function() {
     request.open("POST", "micconnect.php");
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send();
-
     request.onreadystatechange = function() {
         // 伺服器請求完成
         if (request.readyState === 4) {
             // 伺服器回應成功
             if (request.status === 200) {
                 var type = request.getResponseHeader("Content-Type");   // 取得回應類型
-
                 // 判斷回應類型，這裡使用 JSON
                 if (type.indexOf("application/json") === 0) {
                     var data = JSON.parse(request.responseText);
-
                     if (data.aaa) {
                         document.getElementById("qwer").innerHTML = data.aaa;
                     }
