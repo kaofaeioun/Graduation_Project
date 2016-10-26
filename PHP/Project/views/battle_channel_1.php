@@ -20,20 +20,30 @@
 	};
 	firebase.initializeApp(config);
 	var client_name;
+	var client;
+	//var client_name = firebase.database().ref("/MicMusic/User/1/").once("value");
 	firebase.database().ref("/MicMusic/User/1/").once('value').then(function(snapshot){
 		client_name = snapshot.val().User_Name;
-		console.log(client_name);
+		client = {
+			"nn" : client_name, //Nickname
+		}
 	});
-	console.log(client_name);
+	client = {
+		"pp" : "img/profile.jpg", //Profil Pic
+		"mg" : 4/100, // minGain
+		"mic" : false,
+		"sound" : true
+	};
+
 	</script>
 	<script>
-		var client = { //is observerd
+		/*var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
 			"nn" : "Fuck U", //Nickname
 			"mg" : 4/100, // minGain
 			"mic" : false,
 			"sound" : true
-		}
+		}*/
 	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="js/show.js"></script>
@@ -53,9 +63,9 @@
 			<h1><img src="image/Logo2.png"></h1>
 			<script type="text/javascript">
 				$(document).ready(function(){
-  					$('.user_info').hide(); 
+  					$('.user_info').hide();
   					//隱藏要呼叫的div
-  					$('#user').click(function() { 
+  					$('#user').click(function() {
   						//指定呼叫按鈕
     					$('.user_info').fadeToggle(300);
     					//顯示隱藏的div
@@ -70,8 +80,8 @@
 							<li><p>Rank</p><img src="image/medal.png"></li>
 							<li><img src="image/success.png">66</li>
 						</ul>
-						<span class="arrow_bottom_int"></span>	
-						<span class="arrow_bottom_out"></span>	
+						<span class="arrow_bottom_int"></span>
+						<span class="arrow_bottom_out"></span>
 					</div>
 				</div>
 				<div class="search">
