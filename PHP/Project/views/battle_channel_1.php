@@ -20,21 +20,18 @@
 	};
 	firebase.initializeApp(config);
 	var client_name;
-	var client;
+	var client = new Object();
 	//var client_name = firebase.database().ref("/MicMusic/User/1/").once("value");
 	firebase.database().ref("/MicMusic/User/1/").once('value').then(function(snapshot){
 		client_name = snapshot.val().User_Name;
-		client = {
-			"nn" : client_name, //Nickname
-		}
-	});
-	client = {
-		"pp" : "img/profile.jpg", //Profil Pic
-		"mg" : 4/100, // minGain
-		"mic" : false,
-		"sound" : true
-	};
 
+	});
+	client.nn=client_name; //Nickname
+	client.pp = "img/profile.jpg";//Profil Pic
+	client.mg = 4/100;// minGain
+	client.mic = false;
+	client.sound = true;
+	JSON.stringify(client);
 	</script>
 	<script>
 		/*var client = { //is observerd
