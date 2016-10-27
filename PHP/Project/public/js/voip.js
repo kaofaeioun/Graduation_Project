@@ -40,25 +40,25 @@ function hasGetUserMedia() {
 
 var downSampleWorker = new Worker('./js/voipWorker.js');
 var upSampleWorker = new Worker('./js/voipWorker.js');
-var steamBuffer = {}; //Buffers incomeing audio
-var wsConnect = false; //is true if client is connected
+var steamBuffer = {}; //聲音串流Buffer
+var wsConnect = false; //預設關閉，當用戶連接則開啟
 
 var myWebSocket = new WebSocket("ws://"+serverIp+":"+serverPort);
 myWebSocket.binaryType = "arraybuffer";
 
 myWebSocket.onopen = function(evt) {
-	wsConnect = true;
+	wsConnect = true;//用戶連接，開啟Ws server連線
 	if(typeof(client) != "undefined") {
-		wsSendStrings(["client", "nn", client["nn"]]);
-		wsSendStrings(["client", "pp", client["pp"]]);
+		wsSendStrings(["client", "nn", client["nn"]]);//傳送用戶ID
+		wsSendStrings(["client", "pp", client["pp"]]);//傳送用戶個人大頭貼
 	}
 };
 
 myWebSocket.onclose = function(evt) {
-	wsConnect = false;
+	wsConnect = false;//用戶關閉連線，關閉Ws server連線
 };
 
-//聊天室訊息傳送
+//-----------聊天室訊息傳送
 function wsSendStrings(msg) {
 	if(wsConnect) {
 		var sendSting = "";
@@ -73,6 +73,7 @@ function wsSendStrings(msg) {
 			myWebSocket.send(sendSting);
 	}
 }
+//---------
 
 myWebSocket.onmessage = function(evt) {
 	if(typeof(evt.data)==="object") {
