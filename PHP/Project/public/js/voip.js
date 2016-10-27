@@ -216,7 +216,7 @@ if (hasGetUserMedia()) {
 
 		//Lowpass
   		biquadFilter = context.createBiquadFilter();
-  		biquadFilter.type = "Lowpass";
+  		biquadFilter.type = "lowpass";
   		biquadFilter.frequency.value = 3000;
 
   		liveSource.connect(biquadFilter);
