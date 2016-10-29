@@ -12,7 +12,7 @@ $.ajax({
   success: function(Jdata) {
     alert("SUCCESS!!!");
   },
-  
+
   error: function() {
     alert("ERROR!!!");
   }
@@ -68,7 +68,7 @@ function writeToChat(clientName,text) {
 $(document).ready(function() {
 	$.material.init();
 
-	
+
 	/*---------------------------------------------------
 		--- Settings UI Functions ---
 	---------------------------------------------------*/
@@ -111,7 +111,7 @@ $(document).ready(function() {
 		}
 	}
 	checkMicAndSound();
-	
+
 
 	function chatSend(text) {
 		text = $.trim(text);
@@ -151,7 +151,7 @@ $(document).ready(function() {
 		        FR.onload = function(e) {
 		        	client.pp = e.target.result;
 		             $('#sProfilePic').attr( "src", e.target.result );
-		        };       
+		        };
 		        FR.readAsDataURL(input.files[0] );
 	    	}
 	    }
@@ -177,7 +177,7 @@ $(document).ready(function() {
 			client.mg = myMinGain;
 		}
 	});
-	
+
 
 	for(var i=0;i<commonBitRates.length;i++) {
 		if(commonBitRates[i] <= 16) {
