@@ -27,7 +27,7 @@
  	console.log(client_name);
  	</script>
 	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
-	
+
 	<script>
 		var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
@@ -54,9 +54,9 @@
 			<h1><img src="image/Logo2.png"></h1>
 			<script type="text/javascript">
 				$(document).ready(function(){
-  					$('.user_info').hide(); 
+  					$('.user_info').hide();
   					//隱藏要呼叫的div
-  					$('#user').click(function() { 
+  					$('#user').click(function() {
   						//指定呼叫按鈕
     					$('.user_info').fadeToggle(300);
     					//顯示隱藏的div
@@ -72,12 +72,12 @@
 							<li><p>勝場數</p><b2>94</b2>場</li>
 							<li><p>勝場率</p><b3>87</b3>%</li>
 						</ul>
-						<span class="arrow_bottom_int"></span>	
+						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
 								<input type="button" class="logout" value="登出">
-							</div>		
-					</div>	
+							</div>
+					</div>
 				</div>
 				<div class="search">
 					<input type="text" class="search_blank" placeholder="輸入ID找歌手">

@@ -27,6 +27,13 @@
 		client.nn=client_name; //Nickname
 	});
 
+	var test = firebase.database().ref("/MicMusic/User/1/");
+  test.once('value', function(snapshot) {
+    //updateStarCount(postElement, snapshot.val());
+    test_name = snapshot.val().User_Name;
+    console.log(test_name);
+  });
+
 	client.pp = "img/profile.jpg";//Profil Pic
 	client.mg = 4/100;// minGain
 	client.mic = false;
@@ -82,7 +89,7 @@
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
 								<input type="button" class="logout" value="登出">
-							</div>	
+							</div>
 					</div>
 				</div>
 				<div class="search">

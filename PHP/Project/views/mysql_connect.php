@@ -1,5 +1,5 @@
 <?php
-/*$db_server = "140.127.218.201";
+$db_server = "140.127.220.144";
 $db_name = "MICMUSIC";
 $db_user = "kaofaeioun";
 $db_passwd = "qwerqwer";
@@ -10,8 +10,8 @@ if(!mysqli_connect($db_server, $db_user, $db_passwd,$db_name))
 mysqli_query("SET NAMES utf8");
 
 if(!mysqli_select_db($db_name))
-        die("無法使用資料庫");*/
-$servername = "140.127.218.201";
+        die("無法使用資料庫");
+/*$servername = "140.127.220.144";
 $username = "kaofaeioun";
 $password = "qwerqwer";
 $dbnamne = "MICMUSIC";
@@ -28,5 +28,5 @@ if(!mysql_ping ($conn)){
   $conn->close();
 }else{
   echo "無法連線....";
-}
+}*/
 ?>

@@ -1,0 +1,85 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+  <title>FireBase</title>
+  <script>
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyAVtn4QK14i_8UhzOR3hqQkwcdo1zGhyJE",
+		authDomain: "micmusic-69fe1.firebaseapp.com",
+		databaseURL: "https://micmusic-69fe1.firebaseio.com",
+		storageBucket: "micmusic-69fe1.appspot.com",
+		messagingSenderId: "16912515697"
+	};
+	firebase.initializeApp(config);
+	var client_name;
+	var client = new Object();
+	//var client_name = firebase.database().ref("/MicMusic/User/1/").once("value");
+  var test = firebase.database().ref("/MicMusic/User/1/");
+  console.log(test);
+  test.once('value', function(snapshot) {
+    //updateStarCount(postElement, snapshot.val());
+    test_name = snapshot.val().User_Name;
+    console.log(test_name);
+  });
+  firebase.database().ref("/MicMusic/User/1/").once('value').then(function(snapshot){
+		client_name = snapshot.val().User_Name;
+		client.nn=client_name; //Nickname
+    console.log(client_name);
+	});
+  	client.pp = "img/profile.jpg";//Profil Pic
+  	client.mg = 4/100;// minGain
+  	client.mic = false;
+  	client.sound = true;
+  	JSON.stringify(client);
+  	console.log(client);
+	</script>
+</head>
+<body>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Firebase Realtime Database 取資料</title>
+    <script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        // 初始化 Firebase
+        var config = {
+      		apiKey: "AIzaSyAVtn4QK14i_8UhzOR3hqQkwcdo1zGhyJE",
+      		authDomain: "micmusic-69fe1.firebaseapp.com",
+      		databaseURL: "https://micmusic-69fe1.firebaseio.com",
+      		storageBucket: "micmusic-69fe1.appspot.com",
+      		messagingSenderId: "16912515697"
+      	};
+        firebase.initializeApp(config);
+        // 建立 DB
+        var database = firebase.database();
+
+        $(document).ready(function(){
+            function display_data(data_val){
+                $('#date').text(data_val);
+            }
+
+           firebase.database().ref('/MicMusic/User/1/User_Name').once('value', function(snapshot) {
+              console.log(snapshot.val())
+              display_data(snapshot.val());
+            });
+        });
+    </script>
+    <script>
+      var client = new Object();
+
+    </script>
+  </head>
+  <body>
+    <h1>Firebase Realtime Database 取資料</h1>
+    <label  id="date"></label><br>
+  </body>
+</html>
