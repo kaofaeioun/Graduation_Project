@@ -35,10 +35,14 @@ include("mysql_connect.php");
 					<div class="user_info">
 						<ul>
 							<li><p>Rank</p><img src="image/medal.png"></li>
-							<li><img src="image/success.png">66</li>
+							<li><p>勝場數</p><b2>94</b2>場</li>
+							<li><p>勝場率</p><b3>87</b3>%</li>
 						</ul>
 						<span class="arrow_bottom_int"></span>
-						<span class="arrow_bottom_out"></span>		
+						<span class="arrow_bottom_out"></span>	
+							<div class="bot_area">
+								<input type="button" class="logout" value="登出">
+							</div>		
 					</div>
 				</div>
 				<div class="search">
