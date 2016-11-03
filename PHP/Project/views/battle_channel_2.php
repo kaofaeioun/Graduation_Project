@@ -38,7 +38,6 @@
 		}
 	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script type="text/javascript" src="js/show.js"></script>
 	<script type="text/javascript" src="./js/jquery.nouislider.min.js"></script>
 	<script type="text/javascript" src="./js/material.min.js"></script>
 	<script type="text/javascript" src="./js/main.js"></script>
@@ -268,7 +267,7 @@ document.getElementById("dislike").onclick = function() {
 					<li><p id="MicCount"></p></li>
 				</div>
 				<div class="get_mic">
-					<li><input type="button" value="我要排MIC" id="Mic"><p id="qwer"></p></li>
+					<li><input type="checkbox"><p id="qwer"></p></li>
 				</div>
 	<script type="text/javascript">
 	function test33(){
