@@ -67,7 +67,7 @@ h1 img{
 }
 .user_info{
     width:270px;
-    height:180px;
+    height:160px;
     background-color:#fff;
     text-align: center;
     line-height: 30px;
@@ -75,16 +75,25 @@ h1 img{
     color: #4A4A4A;
     position: absolute;
     top:60px;
-    left: -40px;
+    left: -200px;
     border: 0.5px solid #c5c5c5;
     box-shadow: 0 0 15px rgba(0,0,0,.18);
     z-index: 2;
+    cursor: default;
 }
 .user_info ul>li{
     list-style: none;
     float: left;
     width: 90px;
+    font-size: 16px;
+}
+.user_info b2{
     font-size: 28px;
+    line-height: 50px;
+}
+.user_info b3{
+    font-size: 28px;
+    line-height: 50px;
 }
 .user_info p{
     font-size: 22px;
@@ -100,7 +109,7 @@ h1 img{
     border-color:transparent transparent #c5c5c5 transparent;
     position:absolute;
     top:-32px;
-    left:45px;
+    left:200px;
 }
 .user_info .arrow_bottom_out{
     width:0px;
@@ -110,7 +119,29 @@ h1 img{
     border-color:transparent transparent #fff transparent;
     position:absolute;
     top:-31px;
-    left:45px;
+    left:200px;
+}
+.user_info .bot_area{
+    position: absolute;
+    background: #f5f5f5;
+    width: 270px;
+    height: 60px;
+    top:110px;
+}
+.logout{
+    font-family: 微軟正黑體;
+    font-size: 14px;
+    width: 60px;
+    height: 35px;
+    position: absolute;
+    top:12px;
+    left: 190px;
+    cursor: pointer;
+    border: 1px solid #C6C6C6;
+    background-color: #F9F9F9;   
+}
+.logout:hover{
+    background-color: #EAEAEA;
 }
 .menu{
     width: 1000px;
