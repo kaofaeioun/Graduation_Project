@@ -223,23 +223,56 @@ table {
     box-sizing: border-box;
     color: #3B3B3B;
 }
-#Mic{
+/*-----------------------------------------*/
+@-webkit-keyframes getmic-animation {
+  from {background-color: #F06D63; width: 120px; left: 50px;}
+  to {background-color: #02C39A; width: 120px; left: 35px;}
+}
+@-webkit-keyframes cancermic-animation {
+  from {background-color: #02C39A; width: 120px; left: 35px;}
+  to {background-color: #F06D63; width: 120px; left: 50px;}
+}
+
+/* Standard syntax */
+@keyframes getmic-animation {
+  from {background-color: #F06D63; width: 120px; left: 50px;}
+  to {background-color: #02C39A; width: 120px; left: 35px;}
+}
+@keyframes cancermic-animation {
+  from {background-color: #02C39A; width: 120px; left: 35px;}
+  to {background-color: #F06D63; width: 120px; left: 50px;}
+}
+.get_mic input {
+  -webkit-appearance: none;
+}
+.get_mic input:after{
     font-size: 20px;
     font-family: 微軟正黑體;
     background-color: #F06D63;
     border-radius: 5px;
     padding-top: 5px;
     padding-bottom: 10px;
+    display: inline-block;
     border: none;
     color: #fff;
     cursor: pointer;
     opacity: 0.8;
+    text-align: center;
+
+    content: '我要排麥';
+    -webkit-animation: cancermic-animation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-animation-fill-mode:forwards;
+    animation: cancermic-animation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-fill-mode:forwards;
 }
-#Mic:hover{
-    opacity: 1;
-    -webkit-transition: 1s;
-    box-shadow:inset 3px 3px 3px rgba(20%,20%,40%,0.5);
+.get_mic input:checked:after{
+    content: '取消排麥';
+    -webkit-animation: getmic-animation 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -webkit-animation-fill-mode:forwards;
+    animation: getmic-animation 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation-fill-mode:forwards;
 }
+/*-----------------------------------------*/
 .get_mic li{
     list-style: none;
 }
