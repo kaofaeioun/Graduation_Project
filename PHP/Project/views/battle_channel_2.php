@@ -272,7 +272,7 @@ document.getElementById("dislike").onclick = function() {
 	<script type="text/javascript">
 	function test33(){
 			<?php
-				//include("mysql_connect.php");
+				include("mysql_connect.php");
 				$sql="SELECT count(Mic_ID) FROM Mic where Mic_ID is not null";
 				$result=mysql_query($sql);
 				$row=mysql_fetch_row($result);
