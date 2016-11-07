@@ -5,7 +5,7 @@
 	<?php
 		include("mysql_connect.php");
 		$id=$_COOKIE['userid'];
-		$sql = "SELECT User_Name FROM User where User_ID = $id";
+		$sql = "SELECT User_Name FROM User where User_ID = '666'";
 		$result = mysql_query($sql);
 		$row = mysql_fetch_row($result);
 	?>
