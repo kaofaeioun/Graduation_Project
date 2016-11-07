@@ -207,22 +207,17 @@ h3{
     text-align: center;
 }
 .profile li{
-    display: block;
     width: 70%;
     border-bottom: 1px solid grey;
     text-align: left;
     display: inline-block;
-
 }
 .name_blank{
-    text-align: right;
-    float: right;
     font-style: border;
 }
 .profile input{
-    width: 200px;
+    font-size: 20px;
     border-style: none;
-    text-align: right;
     font-family: 'Quicksand', sans-serif,微軟正黑體;
     font-weight: lighter;
 }
@@ -260,11 +255,11 @@ footer li{
 }
 .ctrl-standard.fx-sliderIn {
   color: #00bfff;
-  border-color: #87ceeb;
+  border-color: #00bfff;
   background: white;
 }
 .ctrl-standard.fx-sliderIn::after {
-  background: #7fffd4;
+  background: #00bfff;
 }
 .ctrl-standard.fx-sliderIn.is-reversed::after {
   width: 300%;
