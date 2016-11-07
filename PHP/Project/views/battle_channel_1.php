@@ -2,15 +2,22 @@
 <!--聽歌頁面-->
 <html lang="en">
 <head>
+	<?php
+		include("mysql_connect.php");
+		$id=$_COOKIE['userid'];
+		$sql = "SELECT User_Name FROM User where User_ID = $id";
+		$result = mysql_query($sql);
+		$row = mysql_fetch_row($result);
+	?>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
-	<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
+	<!--<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>-->
 	<script>
-	// Initialize Firebase
+	/*// Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyAVtn4QK14i_8UhzOR3hqQkwcdo1zGhyJE",
 		authDomain: "micmusic-69fe1.firebaseapp.com",
@@ -40,15 +47,16 @@
 	client.sound = true;
 	JSON.stringify(client);
 	console.log(client);
+	*/
 	</script>
 	<script>
-		/*var client = { //is observerd
+		var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
-			"nn" : "Fuck U", //Nickname
+			"nn" : "<?php echo $row[0]?>", //Nickname
 			"mg" : 4/100, // minGain
 			"mic" : false,
 			"sound" : true
-		}*/
+		}
 	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/jquery.nouislider.min.js"></script>
@@ -285,7 +293,6 @@
 	<script type="text/javascript">
 	function ArrangeMicCheck(){
 			<?php
-				//include("mysql_connect.php");
 				$sql="SELECT count(Mic_ID) FROM Mic where Mic_ID is not null";
 				$result=mysql_query($sql);
 				$row=mysql_fetch_row($result);
