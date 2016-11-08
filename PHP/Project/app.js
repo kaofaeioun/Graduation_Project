@@ -29,6 +29,11 @@ app.get('/channel',function(req,res,next){
 app.get('/setting',function(req,res,next){
   res.sendfile('views/setting.html');
 });
+app.get('/login',function(req,res,next){
+  res.sendfile('views/login.html');
+});
+
+
 
 // routing all .php file to php-express
 app.all(/.+\.php$/, phpExpress.router);

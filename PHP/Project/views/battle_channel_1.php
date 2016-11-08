@@ -48,6 +48,15 @@
 	JSON.stringify(client);
 	console.log(client);
 	*/
+	$.ajax({
+    url: url,
+    type: 'POST',
+    data:{action:'getDivHtml'},
+    dataType: 'html',
+    success: function(result){
+        $(".vote").html(result);
+    }
+	});
 	</script>
 	<script>
 		var client = { //is observerd
