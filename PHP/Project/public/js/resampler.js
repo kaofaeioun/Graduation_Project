@@ -1,4 +1,3 @@
-
 function downSample(fromSampleRate, toSampleRate, buffer) {
 	var outLength = buffer.length/(fromSampleRate / toSampleRate);
 	var outBuffer = [];
