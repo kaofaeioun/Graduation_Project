@@ -3,9 +3,9 @@ var serverPort = "9002";
 
 var commonSampleRates = [8000,11025,12000,16000,22050,24000,32000,37800,44100,44056,47250,48000,50000,50400,88200,96000,176400,192000,2822400,5644800];
 var commonBitRates = [8,16,32];
-var mySampleRate = 12000;
+var mySampleRate = 44100;
 var myBitRate = 16; //8,16,32
-var myMinGain = 3/100;
+var myMinGain = 4/100;
 var micEnabled = false;
 var chunkSize = 1024;
 
@@ -218,13 +218,12 @@ if (hasGetUserMedia()) {
 		}
 
 		//Lowpass
-  		biquadFilter = context.createBiquadFilter();
-  		biquadFilter.type = "lowpass";
-  		biquadFilter.frequency.value = 3000;
+  	biquadFilter = context.createBiquadFilter();
+  	biquadFilter.type = "lowpass";
+  	biquadFilter.frequency.value = 3000;
+		liveSource.connect(biquadFilter);
 
-  		liveSource.connect(biquadFilter);
-
-  		//Dynamic Compression
+  	//Dynamic Compression
 		dynCompressor = context.createDynamicsCompressor();
 		dynCompressor.threshold.value = -25;
 		dynCompressor.knee.value = 9;

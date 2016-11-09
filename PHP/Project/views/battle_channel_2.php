@@ -7,7 +7,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
  	<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
  	<script>
  	// Initialize Firebase
