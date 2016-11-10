@@ -234,6 +234,9 @@ table {
     .personal_info li{
         width:50%;
     }
+    .square{
+        left: 15px;
+    }
     .reply{
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px; 
@@ -252,6 +255,9 @@ table {
     }
     .personal_info img{
         width: 25px;
+    }
+    .square{
+        left: 0px;
     }
     .chatroom{
         font-size: 18px;

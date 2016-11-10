@@ -207,22 +207,24 @@ h3{
     text-align: center;
 }
 .profile li{
-    width: 60%;
+    display: block;
+    width: 70%;
     border-bottom: 1px solid grey;
-    text-align: center;
+    text-align: left;
     display: inline-block;
-    margin-top: 7px;
+
 }
 .name_blank{
+    text-align: right;
+    float: right;
     font-style: border;
 }
 .profile input{
-    font-size: 20px;
-    width: 500px   ;
+    width: 200px;
     border-style: none;
+    text-align: right;
     font-family: 'Quicksand', sans-serif,微軟正黑體;
     font-weight: lighter;
-    text-align: center;
 }
 #track_list{
     text-align: center;

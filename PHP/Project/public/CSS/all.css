@@ -322,4 +322,52 @@ h3{
     .search_blank{
         width: 80%;
     }
+    .user_info{
+        width: 210px;
+        height: 120px;
+        left: -160px;
+    }
+    .user_info ul>li{
+        width: 70px;
+        font-size: 12px;
+    }
+    .user_info b2{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .user_info b3{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .user_info p{
+        font-size: 18px;
+    }
+    .user_info img{
+        width: 40px;
+    }
+    .user_info .arrow_bottom_int{
+        left: 165px;
+    }
+    .user_info .arrow_bottom_out{
+        left: 165px;
+    }
+    .user_info .bot_area{
+        width: 210px;
+        height: 40px;
+        top:90px;
+    }
+    .logout{
+        border: none;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 16px;
+    }
+    .logout:hover{
+        background-color: #02C8CC;
+        -webkit-transition: 1s;
+        color: #fff;
+    }
 }
