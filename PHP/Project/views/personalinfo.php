@@ -1,5 +1,8 @@
 <?php
 include("mysql_connect.php");
+if(!isset($_COOKIE['account'])){
+	echo '<meta http-equiv=REFRESH CONTENT=0;url=login.php>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,15 +65,18 @@ include("mysql_connect.php");
 	</div>
 	<hr>
 	<?php
-	$id=$_COOKIE['userid'];
+	header("Content-Type: text/html; charset=utf-8");
+	if(isset($_COOKIE['account'])){
+	$id=$_COOKIE['account'];
 	$sql = "SELECT * FROM User where User_ID = $id";
-	$result = mysql_query($sql);
-	$row = mysql_fetch_row($result);
+	$result = mysqli_query($link,$sql);
+	$row = mysqli_fetch_row($result);
 	$name=$row[2];
 	$email=$row[3];
 	$hobby=$row[4];
 	$favsinger=$row[5];
 	$level=$row[8];
+}
 	?>
 	<div class="wrap">
 		<div id="content">
@@ -111,7 +117,7 @@ include("mysql_connect.php");
 							<div class="name_blank" ><?php echo $hobby; ?></div></li>
 						<li>
 							<b>喜歡的歌手/Favorate Singer</b>
-							<div class="name_blank" ><?php echo $favsinger ;?></div></li>
+							<div class="name_blank" ><?php echo $favsinger;?></div></li>
 						<div class="clear"></div>	
 						
 							
