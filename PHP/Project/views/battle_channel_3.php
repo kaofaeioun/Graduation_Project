@@ -90,7 +90,7 @@
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<input type="button" class="logout" value="登出">
+								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
 							</div>
 					</div>
 				</div>
