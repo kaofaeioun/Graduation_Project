@@ -38,25 +38,22 @@ include('mysql_connect.php');
 		<div id="content">
 			<h2>登入<b>/</b><br>Login</h2>
 				<div class="profile_pic"><img src="image/icon.PNG"></div>
-				<div class="profile">
-				
-					<ul>
-					<form method="post" action="">
-
-						<li>
-							<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" required="">
-						</li>
-						<li>
-							<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" required="">
-						</li>
-						
-						<div class="clear"></div>	
-						
-
-						<div class="clear"></div>
-						<button type="submit" class="ctrl-standard typ-subhed fx-sliderIn" id ="sub">Submit</button>
-					</form>
-					</ul>
+				<div class="profile">		
+						<form method="post" action="">
+							<div class="profile_blank">
+								<ul>
+									<li>
+										<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" required="">
+									</li>
+									<li>
+										<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" required="">
+									</li>
+									<div id="msg"></div>
+									<div class="clear"></div>	
+									<button type="submit" class="ctrl-standard typ-subhed fx-sliderIn" id ="sub">Submit</button>
+								</ul>
+							</div>
+						</form>
 					
 					<?php
 					header("Content-Type: text/html; charset=utf-8");
@@ -71,11 +68,11 @@ include('mysql_connect.php');
 	        					setcookie('account',$account,time()+3600);
 	        					echo '<meta http-equiv=REFRESH CONTENT=0;url=battle.html>';
 	      					}else if($row['User_PWD']!=$passwd){
-	        					echo "<script>alert('密碼錯誤！')</script>";
+	        					echo "<script>document.getElementById('msg').innerHTML = ('密碼輸入錯誤!')</script>";
 	      					}
 	      				}	
 	    				else{
-	    					echo "<script>alert('無此帳號！')</script>";
+	    					echo "<script>document.getElementById('msg').innerHTML = ('無此帳號!')</script>";
   							}
   						
   					}	
@@ -86,17 +83,17 @@ include('mysql_connect.php');
 	</div>
 
 	<div class="footer_space">
-	<footer>
-		<h3>MicMusic</h3>
-		<p>© 2016 All rights reserved.</p>
-		<p>NUKIM 106專題開發</p>
-		<ul>
-			<li><a href="battle.html"><img src="image/menu_battle.png"></a></li>
-			<li><a href="channel.html"><img src="image/personal.png"></a></li>
-			<li><a href="personalinfo.php"><img src="image/person_info_chosen.png"></a></li>
-			<li><a href="setting.html"><img src="image/setting.png"></a></li>
-		</ul>
-	</footer>
+		<footer>
+			<h3>MicMusic</h3>
+			<p>© 2016 All rights reserved.</p>
+			<p>NUKIM 106專題開發</p>
+			<ul>
+				<li><a href="battle.html"><img src="image/menu_battle.png"></a></li>
+				<li><a href="channel.html"><img src="image/personal.png"></a></li>
+				<li><a href="personalinfo.php"><img src="image/person_info_chosen.png"></a></li>
+				<li><a href="setting.html"><img src="image/setting.png"></a></li>
+			</ul>
+		</footer>
 	</div>
 </body>
 </html>
