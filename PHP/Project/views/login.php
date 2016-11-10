@@ -36,7 +36,7 @@ include('mysql_connect.php');
 	<div class="wrap">
 		<div id="content">
 			<h2>登入<b>/</b><br>Login</h2>
-				<div class="profile_pic"><img src="image/profilepic.jpg" alt=""></div>
+				<div class="profile_pic"><img src="image/icon.PNG" alt=""></div>
 				<div class="profile">
 				
 					<ul>
