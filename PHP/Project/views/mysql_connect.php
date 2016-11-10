@@ -8,8 +8,6 @@ if(mysqli_connect_errno($link)){
 	die("Can not connect DB");
 }
         
-
 if(!mysqli_select_db($link, $db_name))
         die("Can not use DB");
-
 ?>

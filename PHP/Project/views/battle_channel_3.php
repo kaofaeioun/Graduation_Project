@@ -2,13 +2,7 @@
 <!--聽歌頁面-->
 <html lang="en">
 <head>
-	<?php
-		include("mysql_connect.php");
-		$id=$_COOKIE['userid'];
-		$sql = "SELECT User_Name FROM User where User_ID = '9487'";
-		$result = mysql_query($sql);
-		$row = mysql_fetch_row($result);
-	?>
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -122,11 +116,26 @@
 			<div class="main">
 				<div class="vote">
 					<div class="board">
+					<script>
+						[].slice.call( document.querySelectorAll( '.progress-circle' ) ).forEach( function( bttn, pos ) {
+							new UIProgressButton( bttn, {
+								callback : function( instance ) {
+									var progress = 0,
+										interval = setInterval( function() {
+											progress = Math.min( progress + 1/150, 1 );
+											instance.setProgress( progress );
+										}, 150);
+								}
+							} );
+						} );
+					</script>
 						<div class="circle_area">
-								<div class="circle_1" id="circle"></div>
-								<div class="circle_2" id="CountDown"></div>
-								<div class="vote_like" id="like"><p id="likeresult"></p></div>
-								<div class="vote_dislike" id="dislike"><p id="dislikeresult"></p></div>
+							<svg class="progress-circle" width="200" height="200">
+								<circle cx="100" cy="100" r="90" stroke="#25CED1" stroke-width="20" fill="white">
+								<path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,-32.5 32.5,-32.5z"/>
+							</svg>
+							<div class="vote_like" id="like"><p id="likeresult"></p></div>
+							<div class="vote_dislike" id="dislike"><p id="dislikeresult"></p></div>
 						</div>
 					</div>
 					<!-- 小視窗 -->

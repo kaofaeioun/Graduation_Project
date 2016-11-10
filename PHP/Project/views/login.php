@@ -16,13 +16,14 @@ include('mysql_connect.php');
 <body>
 	<div class="wrap">
 		<div class="header">
-			<h1><div class="Logo"><img src="image/Logo2.png"></div></h1>
-			<div class="menu">
+			<h1><img src="image/Logo2.png"></h1>
+			<div class="toolbar">
 				<div class="search">
 					<input type="text" class="search_blank" placeholder="輸入id找歌手">
 					<input type="image" class="search_image" src="image/search.png">
 				</div>
-				<br>
+			</div>
+			<div class="menu">
 				<ul>
 					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
 					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
@@ -36,7 +37,7 @@ include('mysql_connect.php');
 	<div class="wrap">
 		<div id="content">
 			<h2>登入<b>/</b><br>Login</h2>
-				<div class="profile_pic"><img src="image/icon.PNG" alt=""></div>
+				<div class="profile_pic"><img src="image/icon.PNG"></div>
 				<div class="profile">
 				
 					<ul>
