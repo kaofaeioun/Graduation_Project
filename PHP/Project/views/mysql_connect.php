@@ -4,6 +4,7 @@ $db_name = "MICMUSIC";
 $db_user = "kaofaeioun";
 $db_passwd = "qwerqwer";
 $link = mysqli_connect($db_server, $db_user, $db_passwd,$db_name);
+mysqli_query($link,"SET NAMES UTF8");
 if(mysqli_connect_errno($link)){
 	die("Can not connect DB");
 }
