@@ -23,6 +23,8 @@ h1 img{
 }
 .toolbar{
     height: 60px;
+    padding-right: 40px;
+    box-sizing: border-box;
 }
 .search{
     float: right;
@@ -53,7 +55,24 @@ h1 img{
     background-color:  #1AFD9C;
     -webkit-transition: 1s;
 }
-.user{
+#login{
+    width: 75px;
+    height: 35px;
+    font-size: 16px;
+    font-family: 微軟正黑體;
+    color: #01abad;
+    border-radius: 8px;
+    border: 1px solid #02CBCE;
+    background-color: #fff;
+    float: right;
+    cursor: pointer;
+}
+#login:hover{
+    background-color: #02CBCE;
+    color: #fff;
+     -webkit-transition: 1s;
+ }   
+#user{
     background-image:url('../image/profilepic.jpg');
     width: 40px;
     height: 40px;
