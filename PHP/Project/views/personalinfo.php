@@ -1,9 +1,3 @@
-<?php
-include("mysql_connect.php");
-if(!isset($_COOKIE['account'])){
-	echo '<meta http-equiv=REFRESH CONTENT=0;url=login.php>';
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +12,18 @@ if(!isset($_COOKIE['account'])){
 	<title>MicMusic</title>
 </head>
 <body>
+	<script type="text/javascript">
+		<?php include("mysql_connect.php");
+			if(!isset($_COOKIE['account'])): ?>	
+				location.replace("login.php");
+		<?php else: ?>
+			$(document).ready(function(){
+				$('#user').show();
+				$('#login').hide();
+			});
+		<?php endif; ?>
+	</script>
+	
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
@@ -34,7 +40,8 @@ if(!isset($_COOKIE['account'])){
 				});
 			</script>
 			<div class="toolbar">
-				<div class="user" id="user">
+				<a href="login.php"><input type="button" id="login" value="登入"></a>
+				<div id="user">
 					<div class="user_info">
 						<ul>
 							<li><p>Rank</p><img src="image/medal.png"></li>
