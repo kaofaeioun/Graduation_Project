@@ -25,10 +25,10 @@ include('mysql_connect.php');
 			</div>
 			<div class="menu">
 				<ul>
-					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
-					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
+					<li><a href="battle.php"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
+					<li><a href="channel.php"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
 					<li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
-					<li><a href="setting.html"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
+					<li><a href="setting.php"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
 				</ul>
 			</div>
 
@@ -43,10 +43,10 @@ include('mysql_connect.php');
 							<div class="profile_blank">
 								<ul>
 									<li>
-										<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" required="">
+										<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" onkeyup="value=value.replace(/[\W]/g,'')" Maxlength="20" required="">
 									</li>
 									<li>
-										<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" required="">
+										<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" Maxlength="20" required="">
 									</li>
 									<div id="msg"></div>
 									<div class="clear"></div>	
@@ -56,26 +56,26 @@ include('mysql_connect.php');
 						</form>
 					
 					<?php
-					header("Content-Type: text/html; charset=utf-8");
   					if(isset($_POST['id'])&& isset($_POST['pwd'])){
 		        		$account = $_POST['id'];
 		    			$passwd = $_POST['pwd'];
     					//搜尋資料庫資料
 		    			$sql = "SELECT * FROM User where User_ID =$account";
 		    			$result = mysqli_query($link,$sql);
-					 	if($row=mysqli_fetch_assoc($result)){
-					 		if($row['User_PWD']==$passwd){
+					 	$row=mysqli_fetch_assoc($result);
+					 	if (!preg_match ("/^[a-z0-9]+$/i", $_POST["id"])) {
+					 		echo "<script>document.getElementById('msg').innerHTML = ('請輸入英文或數字!')</script>";
+					 	}
+					 	else if($row['User_ID']==null){
+					 		echo "<script>document.getElementById('msg').innerHTML = ('無此帳號!')</script>";
+					 	}
+					 	else if($row['User_PWD']==$passwd && $row['User_ID']==$account){
 	        					setcookie('account',$account,time()+3600);
 	        					echo '<meta http-equiv=REFRESH CONTENT=0;url=battle.html>';
-	      					}else if($row['User_PWD']!=$passwd){
+	      				}else if($row['User_PWD']!=$passwd){
 	        					echo "<script>document.getElementById('msg').innerHTML = ('密碼輸入錯誤!')</script>";
-	      					}
-	      				}	
-	    				else{
-	    					echo "<script>document.getElementById('msg').innerHTML = ('無此帳號!')</script>";
-  							}
-  						
-  					}	
+	      				}
+      				}		
   					?>
 				</div>
 			<div class="clear"></div>
@@ -88,10 +88,10 @@ include('mysql_connect.php');
 			<p>© 2016 All rights reserved.</p>
 			<p>NUKIM 106專題開發</p>
 			<ul>
-				<li><a href="battle.html"><img src="image/menu_battle.png"></a></li>
-				<li><a href="channel.html"><img src="image/personal.png"></a></li>
+				<li><a href="battle.php"><img src="image/menu_battle.png"></a></li>
+				<li><a href="channel.php"><img src="image/personal.png"></a></li>
 				<li><a href="personalinfo.php"><img src="image/person_info_chosen.png"></a></li>
-				<li><a href="setting.html"><img src="image/setting.png"></a></li>
+				<li><a href="setting.php"><img src="image/setting.png"></a></li>
 			</ul>
 		</footer>
 	</div>
