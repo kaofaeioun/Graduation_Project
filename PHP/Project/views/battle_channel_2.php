@@ -49,6 +49,18 @@
 	<title>MicMusic</title>
 </head>
 <body>
+	<script type="text/javascript">
+		<?php include("mysql_connect.php");
+			if(!isset($_COOKIE['account'])): ?>	
+				location.replace("login.php");
+		<?php else: ?>
+			$(document).ready(function(){
+				$('#user').show();
+				$('#login').hide();
+			});
+		<?php endif; ?>
+	</script>
+
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
@@ -65,6 +77,7 @@
 				});
 			</script>
 			<div class="toolbar">
+				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
 					<div class="user_info">
 						<ul>
@@ -86,10 +99,10 @@
 			</div>
 			<div class="menu">
 				<ul>
-					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
-					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
-					<li><a href="personalinfo.html"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
-					<li><a href="setting.html"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
+					<li><a href="battle.php"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
+					<li><a href="channel.php"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
+					<li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
+					<li><a href="setting.php"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
 				</ul>
 			</div>
 		</div>
@@ -337,10 +350,10 @@ document.getElementById("dislike").onclick = function() {
 		<p>© 2016 All rights reserved.</p>
 		<p>NUKIM 106專題開發</p>
 		<ul>
-			<li><a href="battle"><img src="image/battle_chosen.png"></a></li>
-			<li><a href="channel"><img src="image/personal.png"></a></li>
-			<li><a href="personalinfo.html"><img src="image/person_info.png"></a></li>
-			<li><a href="setting.html"><img src="image/setting.png"></a></li>
+			<li><a href="battle.php"><img src="image/battle_chosen.png"></a></li>
+			<li><a href="channel.php"><img src="image/personal.png"></a></li>
+			<li><a href="personalinfo.php"><img src="image/person_info.png"></a></li>
+			<li><a href="setting.php"><img src="image/setting.png"></a></li>
 		</ul>
 	</footer>
 	</div>
