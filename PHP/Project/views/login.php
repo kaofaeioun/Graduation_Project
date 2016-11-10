@@ -41,14 +41,14 @@ include('mysql_connect.php');
 				
 					<ul>
 					<form method="post" action="">
+
 						<li>
-							<b>請輸入用戶/ID</b>
-							<div class="name_blank"><input type="text" name="id" required=""></div>
+							<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" required="">
 						</li>
 						<li>
-							<b>請輸入密碼/Password</b>
-							<div class="name_blank"><input type="password" name="pwd" required=""></div>
+							<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" required="">
 						</li>
+						
 						<div class="clear"></div>	
 						
 
