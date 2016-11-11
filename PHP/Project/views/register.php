@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+	include('mysql_connect.php');
+?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -38,69 +41,69 @@
 					<form action="" method="post">
 					<ul>
 						<li>
-							<input type="text" class="name_blank" id="id" placeholder="請輸入用戶/ID" required="">
+							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID" required="">
 						</li>
 						<li>
-							<input type="password" class="name_blank" id="pwd" placeholder="請輸入密碼/Password" required="">
+							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password" required="">
 						</li>
 						<li>
-							<input type="password" class="name_blank" id="repwd" placeholder="確認密碼/Confirm Password" required="">
+							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password" required="">
 						</li>
 						<li>
-							<input type="text" class="name_blank" id="name" placeholder="請輸入姓名/Name" required="">
+							<input type="text" class="name_blank" name="name" placeholder="請輸入姓名/Name" required="">
 						</li>
 						<li>
-							<input type="text" class="name_blank" id="mail" placeholder="請輸入電子郵件/E-mail" required="">
+							<input type="text" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail" required="">
 						</li>
 						<li>
-							<input type="text" class="name_blank" id="hobby" placeholder="請輸入興趣/Hobby(如:唱歌、運動)" required="">
+							<input type="text" class="name_blank" name="hobby" placeholder="請輸入興趣/Hobby(如:唱歌、運動)" required="">
 						</li>
 						<li>
-							<input type="text" class="name_blank" id="favsinger" placeholder="請輸入喜歡的歌手/Favorate Singer(如:羅百吉)" required="">
+							<input type="text" class="name_blank" name="favsinger" placeholder="請輸入喜歡的歌手/Favorate Singer(如:羅百吉)" required="">
 						</li>
+						<div id="msg"></div>
 						<div class="clear"></div>	
 						
 							
 						<div class="clear"></div>
 						
-						<button class="ctrl-standard typ-subhed fx-sliderIn" id="sub">Submit</button>
-						<p id="submitresult"></p>
+						<button type="Submit" class="ctrl-standard typ-subhed fx-sliderIn" id="sub">Submit</button>
 					</ul>
 					</form>
+<?php
+	if (isset($_POST['id'])&&isset($_POST['pwd'])&&isset($_POST['repwd'])&&isset($_POST['name'])&&isset($_POST['mail'])&&isset($_POST['hobby'])&&isset($_POST['favsinger'])) { 
+			$id = $_POST['id'];
+			$pwd = $_POST['pwd'];
+			$repwd = $_POST['repwd'];
+			$name = $_POST['name'];
+			$mail = $_POST['mail'];
+			$hobby = $_POST['hobby'];
+			$favsinger = $_POST['favsinger'];
+
+			$sql = "SELECT * FROM User where User_ID = $id";
+			$result = mysqli_query($link,$sql);
+			$row = mysqli_fetch_row($result);
+			if($row[0] == $id ){
+				echo "<script>document.getElementById('msg').innerHTML = ('此帳號已有人使用過!')</script>";
+				echo "<script>alert('此帳號已有人使用過!')</script>";
+			}
+			else if($pwd!=$repwd){ 
+	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";
+	      	 	echo "<script>alert('確認密碼錯誤!')</script>";
+			}
+			else{
+				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer) VALUES($id,$pwd,$name,$mail,$hobby,$favsinger)";
+				$result2=mysqli_query($link,$sql2);
+				echo "<script>document.getElementById('msg').innerHTML = ('註冊成功!')</script>";
+				echo "<script>alert('註冊成功!')</script>";
+			}
+		}
+?>
 				</div>
 			<div class="clear"></div>
 		</div>	
 	</div>
-<?php
-	header('Content-Type: application/json; charset=UTF-8');
-	include("mysql_connect.php");
-	if (isset($_POST['id'])&&isset($_POST['pwd'])&&isset($_POST['repwd'])&&isset($_POST['name'])&&isset($_POST['mail'])&&isset($_POST['hobby'])&&isset($_POST['favsinger'])) { 
 
-		$id = $_POST['id'];
-		$pwd = $_POST['pwd'];
-		$repwd = $_POST['repwd'];
-		$name = $_POST['name'];
-		$mail = $_POST['mail'];
-		$hobby = $_POST['hobby'];
-		$favsinger = $_POST['favsinger'];
-
-		$sql = "SELECT * FROM User where User_ID = $id";
-		$result = mysqli_query($sql);
-		$row = mysqli_fetch_row($result);
-		if($row[0] == $id ){
-			echo '此帳戶已有人用過！';
-		}
-		else if($pwd!=$repwd){ 
-      	 	echo '再次確認密碼！';
-		}
-		else{
-			$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer) VALUES($id,$pwd,$name,$mail,$hobby,$favsinger)";
-			$result2=mysqli_query($link,$sql2);
-		}
-
-	}
-
-?>
 	<div class="footer_space">
 	<footer>
 		<h3>MicMusic</h3>
