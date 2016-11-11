@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<link rel="stylesheet"href="CSS/personal_channel_1.css">
+	<link rel="stylesheet" href="CSS/personal_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<title>MicMusic</title>
@@ -12,11 +12,11 @@
 <body>
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
-			if(!isset($_COOKIE['account'])): ?>
-				$(document).ready(function(){
-					$('#user').hide();
-					$('#login').show();
-				});		
+		if(!isset($_COOKIE['account'])): ?>
+			$(document).ready(function(){
+				$('#user').hide();
+				$('#login').show();
+			});		
 		<?php else: ?>
 			$(document).ready(function(){
 				$('#user').show();
@@ -41,8 +41,8 @@
 				});
 			</script>
 			<div class="toolbar">
-				<div class="user" id="user">
-					<a href="login.php"><input type="button" id="login" value="登入"></a>
+				<a href="login.php"><input type="button" id="login" value="登入"></a>
+				<div id="user">					
 					<div class="user_info">
 						<ul>
 							<li><p>Rank</p><img src="image/medal.png"></li>
@@ -52,7 +52,7 @@
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>	
 							<div class="bot_area">
-								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
+								<input type="button" class="logout" value="登出" onclick="location='logoutconnect.php'">
 							</div>	
 					</div>
 				</div>
