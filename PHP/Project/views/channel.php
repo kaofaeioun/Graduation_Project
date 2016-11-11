@@ -41,7 +41,7 @@
 				});
 			</script>
 			<div class="toolbar">
-				<a href="login.php"><input type="button" id="login" value="登入"onclick="location='logoutconnect.php'"></a>
+				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
 					<div class="user_info">
 						<ul>
@@ -52,7 +52,7 @@
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<input type="button" class="logout" value="登出">
+								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
 							</div>			
 					</div>
 				</div>
