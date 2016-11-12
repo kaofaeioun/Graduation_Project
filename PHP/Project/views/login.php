@@ -19,7 +19,7 @@ include('mysql_connect.php');
 			<h1><img src="image/Logo2.png"></h1>
 			<div class="toolbar">
 				<div class="search">
-					<input type="text" class="search_blank" placeholder="輸入id找歌手">
+					<input type="text" class="search_blank" placeholder="輸入ID找歌手">
 					<input type="image" class="search_image" src="image/search.png">
 				</div>
 			</div>
@@ -54,7 +54,7 @@ include('mysql_connect.php');
 								</ul>
 							</div>
 						</form>
-					
+					<a href="register.php"><button type="submit" class="gg-standard tmd-subhed wp-sliderIn">註冊</button></a>
 					<?php
   					if(isset($_POST['id'])&& isset($_POST['pwd'])){
 		        		$account = $_POST['id'];
