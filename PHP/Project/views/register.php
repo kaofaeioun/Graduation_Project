@@ -16,18 +16,20 @@
 <body>
 	<div class="wrap">
 		<div class="header">
-			<h1><div class="Logo"><img src="image/Logo2.png"></div></h1>
-			<div class="menu">
+			<h1><img src="image/Logo2.png"></h1>
+			
+			<div class="toolbar">
 				<div class="search">
 					<input type="text" class="search_blank" placeholder="輸入id找歌手">
 					<input type="image" class="search_image" src="image/search.png">
 				</div>
-				<br>
+			</div>
+			<div class="menu">
 				<ul>
-					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
-					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
+					<li><a href="battle.php"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
+					<li><a href="channel.php"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
 					<li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
-					<li><a href="setting.html"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
+					<li><a href="setting.php"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
 				</ul>
 			</div>
 
@@ -36,30 +38,32 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>註冊<b>/</b><br>Register</h2>
-				<div class="profile_pic"><img src="image/profilepic.jpg" alt=""></div>
+				<div class="userimg" onclick="">
+					<a href="#"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 5px;" onclick=""> 更換大頭貼照</a>
+				</div>	
 				<div class="profile">
 					<form action="" method="post">
 					<ul>
 						<li>
-							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID" required="">
+							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID">
 						</li>
 						<li>
-							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password" required="">
+							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password">
 						</li>
 						<li>
-							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password" required="">
+							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="name" placeholder="請輸入姓名/Name" required="">
+							<input type="text" class="name_blank" name="name" placeholder="請輸入姓名/Name">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail" required="">
+							<input type="text" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="hobby" placeholder="請輸入興趣/Hobby(如:唱歌、運動)" required="">
+							<input type="text" class="name_blank" name="hobby" placeholder="請輸入興趣/Hobby(如:唱歌、運動)">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="favsinger" placeholder="請輸入喜歡的歌手/Favorate Singer(如:羅百吉)" required="">
+							<input type="text" class="name_blank" name="favsinger" placeholder="請輸入喜歡的歌手/Favorate Singer(如:羅百吉)">
 						</li>
 						<div id="msg"></div>
 						<div class="clear"></div>	
@@ -110,10 +114,10 @@
 		<p>© 2016 All rights reserved.</p>
 		<p>NUKIM 106專題開發</p>
 		<ul>
-			<li><a href="battle.html"><img src="image/menu_battle.png"></a></li>
-			<li><a href="channel.html"><img src="image/personal.png"></a></li>
+			<li><a href="battle.php"><img src="image/menu_battle.png"></a></li>
+			<li><a href="channel.php"><img src="image/personal.png"></a></li>
 			<li><a href="personalinfo.php"><img src="image/person_info_chosen.png"></a></li>
-			<li><a href="setting.html"><img src="image/setting.png"></a></li>
+			<li><a href="setting.php"><img src="image/setting.png"></a></li>
 		</ul>
 	</footer>
 	</div>
