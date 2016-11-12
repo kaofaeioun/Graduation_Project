@@ -150,16 +150,17 @@ table {
   letter-spacing: 0;
   padding:5px;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 10px;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 .ctrl-standard.fx-sliderIn {
   color: #00bfff;
-  border-color: #87ceeb;
+  border-color: #00bfff;
   background: white;
 }
 .ctrl-standard.fx-sliderIn::after {
-  background: #7fffd4;
+  background: #00bfff;
 }
 .ctrl-standard.fx-sliderIn.is-reversed::after {
   width: 300%;
@@ -239,7 +240,7 @@ table {
   :checked + .fx-sliderIn::after,
 .fx-sliderIn.active::after {
     width: 300%;
-  }
+}
 
 /*-------------------------------------------------------------------------------------------------------------*/
 
