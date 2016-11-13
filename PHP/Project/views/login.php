@@ -59,23 +59,7 @@
 								</b1>
 							</ul>
 						</div>
-					</form>
-				<div class="profile">
-						<form method="post" action="">
-							<div class="profile_blank">
-								<ul>
-									<li>
-										<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" required="">
-									</li>
-									<li>
-										<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" required="">
-									</li>
-									<div id="msg"></div>
-									<div class="clear"></div>
-									<button type="submit" class="ctrl-standard typ-subhed fx-sliderIn" id ="sub">Submit</button>
-								</ul>
-							</div>
-						</form>
+					</form>		
 					<?php
   					if(isset($_POST['id'])&& isset($_POST['pwd'])){
 		        		$account = $_POST['id'];
