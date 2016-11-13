@@ -41,55 +41,56 @@
 			<div class="photo">
 				<img id="userimg" src="image/user_image.png">					
 					<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
-					<input type="file" id="upload" onchange="loadImageFile();"/>
+					<input type="file" id="upload" onchange="loadImageFile()" />
 			</div>
-
-				<script type="text/javascript">
-					oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
-
-					oFReader.onload = function (oFREvent) {
-					  document.getElementById("userimg").src = oFREvent.target.result;
-					};
-
-					function loadImageFile() {
-					  if (document.getElementById("upload").files.length === 0) { return; }
-					  var oFile = document.getElementById("upload").files[0];
-					  if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
-					  oFReader.readAsDataURL(oFile);
-					}	
-				</script>
-
+			<form action="" method="post">
 				<div class="profile">
-					<form action="" method="post">
 					<ul>
 						<li>
-							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID">
+							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID" onkeyup="value=value.replace(/[\W]/g,'')"	onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/)"	maxlength="20" required="">
 						</li>
 						<li>
-							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password">
+							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password" maxlength="20" required="">
 						</li>
 						<li>
-							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password">
+							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password" maxlength="20" required="">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="name" placeholder="請輸入姓名/Name">
+							<input type="text" class="name_blank" name="name" placeholder="請輸入暱稱/Name" maxlength="20" required="">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail">
+							<input type="email" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail" maxlength="50" required="">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="hobby" placeholder="請輸入興趣/Hobby(如:唱歌、運動)">
+							<input type="text" class="name_blank" name="hobby" placeholder="請輸入興趣/Hobby(如:唱歌、運動)" maxlength="20">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="favsinger" placeholder="請輸入喜歡的歌手/Favorate Singer(如:羅百吉)">
+							<input type="text" class="name_blank" name="favsinger" placeholder="請輸入喜歡的歌手/Favorate Singer(如:羅百吉)" maxlength="20">
+						</li>
+						<li>
+							<input type="text" class="name_blank" name="favsong" placeholder="請輸入喜歡的歌/Favorate Song(如:六個姐姐一個哥哥)" maxlength="20">
 						</li>
 						<div id="msg"></div>
 						<div class="clear"></div>	
 						<button type="Submit" class="ctrl-standard typ-subhed fx-sliderIn" id="sub">Submit</button>
 					</ul>
-					</form>
+				</div>
+			</form>
+		<script type="text/javascript">
+			oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
+
+			oFReader.onload = function (oFREvent) {
+		    document.getElementById("userimg").src = oFREvent.target.result;
+					}; //檔名
+			function loadImageFile() {
+				if (document.getElementById("upload").files.length === 0) { return; }//沒有上傳即return
+					var oFile = document.getElementById("upload").files[0];
+				if (!rFilter.test(oFile.type)) { alert("請上傳圖片"); return; }
+					  oFReader.readAsDataURL(oFile);
+			}	
+		</script>
 <?php
-	if (isset($_POST['id'])&&isset($_POST['pwd'])&&isset($_POST['repwd'])&&isset($_POST['name'])&&isset($_POST['mail'])&&isset($_POST['hobby'])&&isset($_POST['favsinger'])) { 
+	if (isset($_POST['id'])&&isset($_POST['pwd'])&&isset($_POST['repwd'])&&isset($_POST['name'])&&isset($_POST['mail'])&&isset($_POST['hobby'])&&isset($_POST['favsinger'])&&isset($_POST['favsong'])) { 
 			$id = $_POST['id'];
 			$pwd = $_POST['pwd'];
 			$repwd = $_POST['repwd'];
@@ -97,27 +98,25 @@
 			$mail = $_POST['mail'];
 			$hobby = $_POST['hobby'];
 			$favsinger = $_POST['favsinger'];
+			$favsong=$_POST['favsong'];
 
 			$sql = "SELECT * FROM User where User_ID = '$id'";
 			$result = mysqli_query($link,$sql);
 			$row = mysqli_fetch_row($result);
 			if($row[0] == $id ){
 				echo "<script>document.getElementById('msg').innerHTML = ('此帳號已有人使用過!')</script>";
-				echo "<script>alert('此帳號已有人使用過!')</script>";
 			}
 			else if($pwd!=$repwd){ 
 	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";
-	      	 	echo "<script>alert('確認密碼錯誤!')</script>";
 			}
 			else{
-				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer) VALUES($id,$pwd,$name,$mail,$hobby,$favsinger)";
+				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer,Fav_Songs) VALUES('$id','$pwd','$name','$mail','$hobby','$favsinger','$favsong')";
 				$result2=mysqli_query($link,$sql2);
 				echo "<script>document.getElementById('msg').innerHTML = ('註冊成功!')</script>";
-				echo "<script>alert('註冊成功!')</script>";
+				echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
 			}
 		}
 ?>
-				</div>
 			<div class="clear"></div>
 		</div>	
 	</div>
