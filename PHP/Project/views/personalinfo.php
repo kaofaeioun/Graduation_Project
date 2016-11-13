@@ -29,9 +29,9 @@
 			<h1><img src="image/Logo2.png"></h1>
 			<script type="text/javascript">
 				$(document).ready(function(){
-  					$('.user_info').hide(); 
+  					$('.user_info').hide();
   					//隱藏要呼叫的div
-  					$('#user').click(function() { 
+  					$('#user').click(function() {
   						//指定呼叫按鈕
     					$('.user_info').fadeToggle(300);
     					//顯示隱藏的div
@@ -49,10 +49,15 @@
 							<li><p>勝場率</p><b3>87</b3>%</li>
 						</ul>
 						<span class="arrow_bottom_int"></span>
-						<span class="arrow_bottom_out"></span>	
+						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
+<<<<<<< Updated upstream
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
 							</div>		
+=======
+								<input type="button" class="logout" value="登出">
+							</div>
+>>>>>>> Stashed changes
 					</div>
 				</div>
 				<div class="search">
@@ -102,7 +107,7 @@
 								<img src="image/win.png" alt=""><br>87
 								</li>
 							</ul>
-						</li>	
+						</li>
 					<ul>
 						<li>
 							<b>姓名/Name</b>
@@ -124,18 +129,25 @@
 							<div class="name_blank" ><?php echo $hobby; ?></div></li>
 						<li>
 							<b>喜歡的歌手/Favorate Singer</b>
+<<<<<<< Updated upstream
 							<div class="name_blank" ><?php echo $favsinger;?></div></li>
 						<div class="clear"></div>	
 						
 							
+=======
+							<div class="name_blank" ><?php echo $favsinger ;?></div></li>
+>>>>>>> Stashed changes
 						<div class="clear"></div>
-						
+
+
+						<div class="clear"></div>
+
 						<button class="ctrl-standard typ-subhed fx-sliderIn">Submit</button>
 
 					</ul>
 				</div>
 			<div class="clear"></div>
-		</div>	
+		</div>
 	</div>
 	<div class="footer_space">
 	<footer>

@@ -20,7 +20,7 @@ app.engine('php', phpExpress.engine);
 app.set('view engine', 'php');
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.get('/battle',function(req,res,next){
+app.get('/battle.html',function(req,res,next){
   res.sendfile('views/battle.html');
 });
 app.get('/channel',function(req,res,next){
