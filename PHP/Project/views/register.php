@@ -38,27 +38,44 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>註冊<b>/</b><br>Register</h2>
-				<div class="userimg" onclick="">					
+			<div class="photo">
+				<img id="userimg" src="image/user_image.png">					
 					<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
-					<input type="file" id="upload" />
-				</div>	
+					<input type="file" id="upload" onchange="loadImageFile();"/>
+			</div>
+
+				<script type="text/javascript">
+					oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+					oFReader.onload = function (oFREvent) {
+					  document.getElementById("userimg").src = oFREvent.target.result;
+					};
+
+					function loadImageFile() {
+					  if (document.getElementById("upload").files.length === 0) { return; }
+					  var oFile = document.getElementById("upload").files[0];
+					  if (!rFilter.test(oFile.type)) { alert("You must select a valid image file!"); return; }
+					  oFReader.readAsDataURL(oFile);
+					}	
+				</script>
+
 				<div class="profile">
 					<form action="" method="post">
 					<ul>
 						<li>
-							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID" onkeyup="value=value.replace(/[\W]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/)"	maxlength="20" required="">
+							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID">
 						</li>
 						<li>
-							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password" maxlength="20" required="">
+							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password">
 						</li>
 						<li>
-							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password" maxlength="20" required="">
+							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="name" placeholder="請輸入暱稱/Name" required="" maxlength="20">
+							<input type="text" class="name_blank" name="name" placeholder="請輸入姓名/Name">
 						</li>
 						<li>
-							<input type="email" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail" required="" maxlength="50">
+							<input type="text" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail">
 						</li>
 						<li>
 							<input type="text" class="name_blank" name="hobby" placeholder="請輸入興趣/Hobby(如:唱歌、運動)">
@@ -85,16 +102,18 @@
 			$result = mysqli_query($link,$sql);
 			$row = mysqli_fetch_row($result);
 			if($row[0] == $id ){
-				echo "<script>document.getElementById('msg').innerHTML = ('此帳號已有人使用過!')</script>";			
+				echo "<script>document.getElementById('msg').innerHTML = ('此帳號已有人使用過!')</script>";
+				echo "<script>alert('此帳號已有人使用過!')</script>";
 			}
 			else if($pwd!=$repwd){ 
-	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";	      	 	
+	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";
+	      	 	echo "<script>alert('確認密碼錯誤!')</script>";
 			}
 			else{
-				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer) VALUES('$id','$pwd','$name','$mail','$hobby','$favsinger')";
+				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer) VALUES($id,$pwd,$name,$mail,$hobby,$favsinger)";
 				$result2=mysqli_query($link,$sql2);
 				echo "<script>document.getElementById('msg').innerHTML = ('註冊成功!')</script>";
-				echo "<meta http-equiv=REFRESH CONTENT=2;url=login.php>";
+				echo "<script>alert('註冊成功!')</script>";
 			}
 		}
 ?>
