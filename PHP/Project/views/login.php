@@ -38,7 +38,6 @@
 		<div id="content">
 			<h2>登入<b>/</b><br>Login</h2>
 				<div class="profile_pic"><img src="image/icon.PNG"></div>
-<<<<<<< Updated upstream
 				<div class="profile">		
 					<form method="post" action="">
 						<div class="profile_blank">
@@ -61,8 +60,6 @@
 							</ul>
 						</div>
 					</form>
-					
-=======
 				<div class="profile">
 						<form method="post" action="">
 							<div class="profile_blank">
@@ -79,11 +76,9 @@
 								</ul>
 							</div>
 						</form>
->>>>>>> Stashed changes
-
 					<?php
   					if(isset($_POST['id'])&& isset($_POST['pwd'])){
-		        	$account = $_POST['id'];
+		        		$account = $_POST['id'];
 		    			$passwd = $_POST['pwd'];
     					//搜尋資料庫資料
 		    			$sql = "SELECT * FROM User where User_ID ='$account'";
@@ -97,18 +92,11 @@
 	        					echo '<meta http-equiv=REFRESH CONTENT=0;url=battle.php>';
 	      				}else if($row[1]!=$passwd){
 	        					echo "<script>document.getElementById('msg').innerHTML = ('密碼輸入錯誤!')</script>";
-<<<<<<< Updated upstream
-	      				}
-      				}		
-=======
-	      					}
-	      				}
-	    				else{
+	      				}else{
 	    					echo "<script>document.getElementById('msg').innerHTML = ('無此帳號!')</script>";
   							}
 
   					}
->>>>>>> Stashed changes
   					?>
 				</div>
 			<div class="clear"></div>
