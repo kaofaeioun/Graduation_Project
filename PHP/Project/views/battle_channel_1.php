@@ -17,7 +17,7 @@
 	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<!--<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>-->
 	<script>
-	/*// Initialize Firebase
+	/* Initialize Firebase
 	var config = {
 		apiKey: "AIzaSyAVtn4QK14i_8UhzOR3hqQkwcdo1zGhyJE",
 		authDomain: "micmusic-69fe1.firebaseapp.com",

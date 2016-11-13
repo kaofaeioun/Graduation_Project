@@ -1,3 +1,9 @@
+<?php
+	include("mysql_connect.php");
+	if (!isset($_COOKIE['account'])) {
+		echo "<meta http-equiv=REFRESH CONTENT=0;url=login.php>";
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +23,8 @@
 <body>
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
-			if(!isset($_COOKIE['account'])): ?>
-				$(document).ready(function(){
-					$('#user').hide();
-					$('#login').show();
-				});		
+			if(!isset($_COOKIE['account'])): ?>	
+				location.replace("login.php");
 		<?php else: ?>
 			$(document).ready(function(){
 				$('#user').show();
@@ -36,11 +39,8 @@
 			<script type="text/javascript">
 				$(document).ready(function(){
   					$('.user_info').hide(); 
-  					//隱藏要呼叫的div
   					$('#user').click(function() { 
-  						//指定呼叫按鈕
     					$('.user_info').fadeToggle(300);
-    					//顯示隱藏的div
     					return false;
   					});
 				});
@@ -57,7 +57,7 @@
 						<span class="arrow_bottom_int"></span>	
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
+								<input type="button" class="logout" value="登出">
 							</div>
 					</div>
 				</div>
@@ -83,25 +83,61 @@
 			<div class="topbar">
 				<div class="leftbar">
 					<ul>
-						<li id="info">ID<div class="blank">AREYOUOK</div></li>
-						<li id="info">名字<div class="blank">洋洋</div></li>
+						<?php
+							if (isset($_GET['name'])) {
+								$an = $_GET['name'];
+								$sql= "SELECT * FROM User where User_ID = '$an'";
+								$result = mysqli_query($link,$sql);
+								$row = mysqli_fetch_assoc($result);
+							}
+							
+						echo "
+						<li id='info'>ID<div class='blank'>".$row['User_ID']."</div></li>
+						<li id='info'>名字<div class='blank'>".$row['User_Name']."</div></li>
 						
+						";
+						?>
 					</ul>
 				</div>
 				<div class="rightbar">
 					<img src="image/profilepic.jpg" alt="">
 					<div class="trackbutton">
-						<input type="checkbox">	
-					</div>					
+						<input type="checkbox" onclick="track()">	
+					</div>		
+
+					<script>
+						function track(){
+							
+						}
+					</script>
+
 				</div>
 				<div class="clear"></div>
 			</div>
 			<ul id="track_list">
 				<li>
-					<a href="">追蹤名單<img src="image/track.png" alt="">33</a>
+					<?php 
+						$an = $_GET['name'];
+						echo "<a href='fansMenu_tagFollowers.php?name=".$an."'>追蹤名單<img src='image/track.png' >";
+						$sql = "SELECT COUNT(Track_name) as total FROM Track where Track_name='$an'";
+						$result = mysqli_query($link,$sql);
+						$row2 = mysqli_fetch_assoc($result);
+						echo $row2['total'];
+						echo "</a>";
+					?>
+					
 				</li>
 				<li>
-					<a href="">粉絲名單<img src="image/tracked.png" alt="">87</a>
+					<?php
+						$an = $_GET['name'];
+						echo "<a href='fansMenu_tagFans.php?name=".$an."'>粉絲名單<img src='image/tracked.png' >";
+						
+							$sql = "SELECT COUNT(Track_name) as total FROM Track where Tracked_name='$an'";
+							$result = mysqli_query($link,$sql);
+							$row2 = mysqli_fetch_assoc($result);
+							echo $row2['total'];
+						?>
+					</a>
 				</li>
 				<li>勝場數<img src="image/win.png" alt="">87
 				</li>						
@@ -109,32 +145,38 @@
 
 			<div class="downbar">
 				<ul>	
-					<li>
-						<p>興趣</p>
-						<div class="blankz">想要裝文青愛看書
-						但是看到密密麻麻又沒有劇情的就會睡著天生吃貨一個喜歡四處遊蕩吃喝玩樂對美食有厲害的雷達應該算是專長哈哈哈</div>
-					</li>
-					<div class="clear"></div>
-					<li>
-						<p>喜歡的歌</p>
-						<div class="blankz">可以吃喝玩樂跟老師喇咧的課啊~♡</div>
-					</li>
-					<div class="clear"></div>
-					<li>
-						<p>喜歡的歌手</p>
-						<div class="blankz">想要環遊世界想要把全世界的美景都看完想要沒有煩惱想要一個不會低潮的宣宣想要有一個安全感。</div>
-					</li>
-					<div class="clear"></div>
-					<li>
-						<p>擅長歌路</p>
-						<div class="blankz">天生公關料最厲害的就是喇咧跟屁話~</div>
-					</li>
-					<div class="clear"></div>
-					<li>
-						<p>Level</p>
-						<div class="blankz">13</div>
-					</li>
+					<?php
+							if (isset($_GET['name'])) {
+								$an = $_GET['name'];
+								$sql= "SELECT * FROM User where User_ID = '$an'";
+								$result = mysqli_query($link,$sql);
+								$row = mysqli_fetch_assoc($result);
+							}
+							
+						echo "
+						<li>
+							<p>興趣</p>
+							<div class='blankz'>".$row['Hobby']."</div>
+						</li>
 
+						<li>
+							<p>喜歡的歌</p>
+							<div class='blankz'>".$row['Fav_Songs']."</div>
+						</li>
+
+						<li>
+							<p>喜歡的歌手</p>
+							<div class='blankz'>".$row['Fav_Singer']."</div>
+						</li>
+
+						<li>
+							<p>Level</p>
+							<div class='blankz'>".$row['Level']."</div>
+						</li>
+
+						<div class='clear'></div>
+						";
+					?>
 				</ul>
 			</div>
 		</div>	

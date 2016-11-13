@@ -46,19 +46,19 @@
 					<form action="" method="post">
 					<ul>
 						<li>
-							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID">
+							<input type="text" class="name_blank" name="id" placeholder="請輸入用戶/ID" onkeyup="value=value.replace(/[\W]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/)"	maxlength="20" required="">
 						</li>
 						<li>
-							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password">
+							<input type="password" class="name_blank" name="pwd" placeholder="請輸入密碼/Password" maxlength="20" required="">
 						</li>
 						<li>
-							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password">
+							<input type="password" class="name_blank" name="repwd" placeholder="確認密碼/Confirm Password" maxlength="20" required="">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="name" placeholder="請輸入姓名/Name">
+							<input type="text" class="name_blank" name="name" placeholder="請輸入暱稱/Name" required="" maxlength="20">
 						</li>
 						<li>
-							<input type="text" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail">
+							<input type="email" class="name_blank" name="mail" placeholder="請輸入電子郵件/E-mail" required="" maxlength="50">
 						</li>
 						<li>
 							<input type="text" class="name_blank" name="hobby" placeholder="請輸入興趣/Hobby(如:唱歌、運動)">
@@ -85,18 +85,16 @@
 			$result = mysqli_query($link,$sql);
 			$row = mysqli_fetch_row($result);
 			if($row[0] == $id ){
-				echo "<script>document.getElementById('msg').innerHTML = ('此帳號已有人使用過!')</script>";
-				echo "<script>alert('此帳號已有人使用過!')</script>";
+				echo "<script>document.getElementById('msg').innerHTML = ('此帳號已有人使用過!')</script>";			
 			}
 			else if($pwd!=$repwd){ 
-	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";
-	      	 	echo "<script>alert('確認密碼錯誤!')</script>";
+	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";	      	 	
 			}
 			else{
-				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer) VALUES($id,$pwd,$name,$mail,$hobby,$favsinger)";
+				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer) VALUES('$id','$pwd','$name','$mail','$hobby','$favsinger')";
 				$result2=mysqli_query($link,$sql2);
 				echo "<script>document.getElementById('msg').innerHTML = ('註冊成功!')</script>";
-				echo "<script>alert('註冊成功!')</script>";
+				echo "<meta http-equiv=REFRESH CONTENT=2;url=login.php>";
 			}
 		}
 ?>
