@@ -86,13 +86,22 @@ h2{
 }
 .profile_blank{
     display: inline-block;
-    width: 250px;
+    width: 300px;
+}
+.profile_blank a{
+    text-decoration: none;
 }
 .profile_blank li{
-    width: 100%;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
     border-bottom: 1px solid grey;
     text-align: center;
     margin-top: 15px;
+}
+.profile_blank b1{
+  width: 50%;
+  float: left;
 }
 #msg{
     margin-top: 10px;
@@ -109,21 +118,6 @@ h2{
     font-family: 'Quicksand', sans-serif,微軟正黑體;
     font-weight: lighter;
     text-align: center;
-}
-#track_list{
-    text-align: center;
-}
-#track_list li{
-    line-height: 200%;
-    width: 32%;
-    font-size: 120%;
-    border-bottom: none;
-    display: inline-block;
-    text-align: center;
-    letter-spacing: 5px;
-}
-#track_list img{
-    display: none;
 }
 
 /*----------------------------------------------button--------------------------------------------------*/
@@ -241,6 +235,8 @@ h2{
   letter-spacing: 1px;
   cursor: pointer;
   width: 107px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .gg-standard.wp-sliderIn {
   color: #02CBCE;
@@ -338,7 +334,9 @@ h2{
         width: 60%;
         min-width: 200px;
     }
-    
+    #content b{
+        display: none;
+    }
     #content br{
         display: block;
     }

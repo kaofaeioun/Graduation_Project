@@ -39,23 +39,29 @@ include('mysql_connect.php');
 			<h2>登入<b>/</b><br>Login</h2>
 				<div class="profile_pic"><img src="image/icon.PNG"></div>
 				<div class="profile">		
-						<form method="post" action="">
-							<div class="profile_blank">
-								<ul>
-									<li>
-										<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" onkeyup="value=value.replace(/[\W]/g,'')" 
+					<form method="post" action="">
+						<div class="profile_blank">
+							<ul>
+								<li>
+									<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" onkeyup="value=value.replace(/[\W]/g,'')" 
 										onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/)"	maxlength="20" required="">
-									</li>
-									<li>
-										<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" Maxlength="20" required="">
-									</li>
-									<div id="msg"></div>
-									<div class="clear"></div>	
+								</li>
+								<li>
+									<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" Maxlength="20" required="">
+								</li>
+								<div id="msg"></div>
+								<div class="clear"></div>				
+								<b1>
 									<button type="submit" class="ctrl-standard typ-subhed fx-sliderIn" id ="sub">Submit</button>
-								</ul>
-							</div>
-						</form>
-					<a href="register.php"><button type="submit" class="gg-standard tmd-subhed wp-sliderIn">註冊</button></a>
+								</b1>
+								<b1>
+									<a href="register.php"><div class="gg-standard tmd-subhed wp-sliderIn">註冊</div></a>
+								</b1>
+							</ul>
+						</div>
+					</form>
+					
+
 					<?php
   					if(isset($_POST['id'])&& isset($_POST['pwd'])){
 		        		$account = $_POST['id'];
