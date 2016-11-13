@@ -89,8 +89,9 @@
 						$now = $_GET['name'];
 						$sql = "SELECT Tracked_Name FROM Track where Track_Name = '$now' order by Tracked_Name";
 						$result=mysqli_query($link,$sql);
-						
-						for ($i = 0; $i < 3; $i++) { 
+						$row2=mysqli_num_rows($result);
+						for ($i = 0; $i < $row2; $i++) { 
+
 							$row=mysqli_fetch_row($result);
 							echo "
 							<li>

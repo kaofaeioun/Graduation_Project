@@ -101,15 +101,19 @@
 				</div>
 				<div class="rightbar">
 					<img src="image/profilepic.jpg" alt="">
+					<?php
+						// $usernow = $_COOKIE['account'];
+						// $sql2 = "SELECT Tracked_name FROM Track where Track_name='$usernow'";
+						// $result = mysqli_query($link,$sql);
+						// $row = mysqli_fetch_row($result);
+						// echo $row;
+						// $row = mysqli_fetch_row()
+
+					?>
 					<div class="trackbutton">
-						<input type="checkbox" onclick="track()">	
+						<input type="checkbox">	
 					</div>		
 
-					<script>
-						function track(){
-							
-						}
-					</script>
 
 				</div>
 				<div class="clear"></div>
@@ -136,7 +140,7 @@
 							$result = mysqli_query($link,$sql);
 							$row2 = mysqli_fetch_assoc($result);
 							echo $row2['total'];
-						?>
+					?>
 					</a>
 				</li>
 				<li>勝場數<img src="image/win.png" alt="">87

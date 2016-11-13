@@ -89,19 +89,19 @@
 						$now = $_COOKIE['account'];
 						$sql = "SELECT Tracked_Name FROM Track where Track_Name = '$now' order by Tracked_Name";
 						$result=mysqli_query($link,$sql);
-						
-						for ($i = 0; $i < 3; $i++) { 
-							$row=mysqli_fetch_array($result);
+						$row=mysqli_num_rows($result);
+						for ($i = 0; $i < $row; $i++) { 
+							$row2=mysqli_fetch_row($result);
 							echo "
 							<li>
 							<a>
 							<div class='userimg'>
-								<a href='fans.php?name=".$row[0]."'>
+								<a href='fans.php?name=".$row2[0]."'>
 									<img src='https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/s960x960/14409377_1191095007613889_6213881852130567120_o.jpg' alt=''>
 								</a>
 							</div>
 							<div class='userid'>
-								<a href='fans.php?name=".$row[0]."'>" .$row[0]."
+								<a href='fans.php?name=".$row2[0]."'>" .$row2[0]."
 									</a>
 							</div>
 							<a>

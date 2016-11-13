@@ -67,10 +67,10 @@
 			</div>
 			<div class="menu">	
 				<ul>
-					<li><a href="battle.html"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
-					<li><a href="channel.html"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
-					<li><a href="personalinfo.html"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
-					<li><a href="setting.html"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
+					<li><a href="battle.php"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
+					<li><a href="channel.php"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
+					<li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
+					<li><a href="setting.php"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
 				</ul>
 			</div>
 		</div>
@@ -89,19 +89,20 @@
 						$now = $_COOKIE['account'];
 						$sql = "SELECT Track_Name FROM Track where Tracked_Name = '$now' order by Track_Name";
 						$result=mysqli_query($link,$sql);
-						
-						for ($i = 0; $i < count($result); $i++) { 
-							$row=mysqli_fetch_row($result);
+						$row=mysqli_num_rows($result);
+
+						for ($i = 0; $i < $row ; $i++) { 
+							$row2=mysqli_fetch_row($result);
 							echo "
 							<li>
 							<a>
 							<div class='userimg'>
-								<a href='fans.php?name=".$row[0]."'>
+								<a href='fans.php?name=".$row2[0]."'>
 									<img src='https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/s960x960/14409377_1191095007613889_6213881852130567120_o.jpg' alt=''>
 								</a>
 							</div>
 							<div class='userid'>
-								<a href='fans.php?name=".$row[0]."'>" .$row[0]."
+								<a href='fans.php?name=".$row2[0]."'>" .$row2[0]."
 									</a>
 							</div>
 							<a>
@@ -129,10 +130,10 @@
 			<p>© 2016 All rights reserved.</p>
 			<p>NUKIM 106專題開發</p>
 			<ul>
-				<li><a href="battle.html"><img src="image/menu_battle.png"></a></li>
-				<li><a href="channel.html"><img src="image/personal.png"></a></li>
-				<li><a href="personalinfo.html"><img src="image/person_info_chosen.png"></a></li>
-				<li><a href="setting.html"><img src="image/setting.png"></a></li>
+				<li><a href="battle.php"><img src="image/menu_battle.png"></a></li>
+				<li><a href="channel.php"><img src="image/personal.png"></a></li>
+				<li><a href="personalinfo.php"><img src="image/person_info_chosen.png"></a></li>
+				<li><a href="setting.php"><img src="image/setting.png"></a></li>
 			</ul>
 		</footer>
 	</div>

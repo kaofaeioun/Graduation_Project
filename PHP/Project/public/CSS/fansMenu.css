@@ -253,7 +253,6 @@ line-height: 22px;
 
     
     .list{
-        display: block;
         width: 80%;
         margin: auto;
         line-height: 30px;
@@ -263,6 +262,7 @@ line-height: 22px;
         width: 100%;
         height: 50px;
         border-bottom: 1px solid #EBEBEB;
+        float: left;
     }
     .userimg{
         display: block;

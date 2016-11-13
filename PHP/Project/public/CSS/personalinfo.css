@@ -127,6 +127,9 @@ table {
 #track_list{
     text-align: center;
 }
+#track_list a{
+    text-decoration: none;
+}
 #track_list li{
     line-height: 200%;
     width: 32%;
@@ -150,17 +153,16 @@ table {
   letter-spacing: 0;
   padding:5px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 20px;
   letter-spacing: 1px;
-  cursor: pointer;
 }
 .ctrl-standard.fx-sliderIn {
   color: #00bfff;
-  border-color: #00bfff;
+  border-color: #87ceeb;
   background: white;
 }
 .ctrl-standard.fx-sliderIn::after {
-  background: #00bfff;
+  background: #7fffd4;
 }
 .ctrl-standard.fx-sliderIn.is-reversed::after {
   width: 300%;
@@ -240,7 +242,7 @@ table {
   :checked + .fx-sliderIn::after,
 .fx-sliderIn.active::after {
     width: 300%;
-}
+  }
 
 /*-------------------------------------------------------------------------------------------------------------*/
 
