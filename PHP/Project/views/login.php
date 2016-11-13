@@ -19,7 +19,7 @@ include('mysql_connect.php');
 			<h1><img src="image/Logo2.png"></h1>
 			<div class="toolbar">
 				<div class="search">
-					<input type="text" class="search_blank" placeholder="輸入ID找歌手">
+					<input type="text" class="search_blank" placeholder="輸入id找歌手">
 					<input type="image" class="search_image" src="image/search.png">
 				</div>
 			</div>
@@ -43,7 +43,8 @@ include('mysql_connect.php');
 							<div class="profile_blank">
 								<ul>
 									<li>
-										<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" onkeyup="value=value.replace(/[\W]/g,'')" Maxlength="20" required="">
+										<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" onkeyup="value=value.replace(/[\W]/g,'')" 
+										onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/)"	maxlength="20" required="">
 									</li>
 									<li>
 										<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" Maxlength="20" required="">
@@ -60,19 +61,16 @@ include('mysql_connect.php');
 		        		$account = $_POST['id'];
 		    			$passwd = $_POST['pwd'];
     					//搜尋資料庫資料
-		    			$sql = "SELECT * FROM User where User_ID =$account";
+		    			$sql = "SELECT * FROM User where User_ID ='$account'";
 		    			$result = mysqli_query($link,$sql);
-					 	$row=mysqli_fetch_assoc($result);
-					 	if (!preg_match ("/^[a-z0-9]+$/i", $_POST["id"])) {
-					 		echo "<script>document.getElementById('msg').innerHTML = ('請輸入英文或數字!')</script>";
-					 	}
-					 	else if($row['User_ID']==null){
+					 	$row=mysqli_fetch_row($result);
+					 	if($row[0]==null){
 					 		echo "<script>document.getElementById('msg').innerHTML = ('無此帳號!')</script>";
 					 	}
-					 	else if($row['User_PWD']==$passwd && $row['User_ID']==$account){
+					 	else if($row[1]==$passwd && $row[0]==$account){
 	        					setcookie('account',$account,time()+3600);
 	        					echo '<meta http-equiv=REFRESH CONTENT=0;url=battle.php>';
-	      				}else if($row['User_PWD']!=$passwd){
+	      				}else if($row[1]!=$passwd){
 	        					echo "<script>document.getElementById('msg').innerHTML = ('密碼輸入錯誤!')</script>";
 	      				}
       				}		
