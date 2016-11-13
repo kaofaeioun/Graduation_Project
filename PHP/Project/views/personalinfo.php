@@ -77,18 +77,18 @@
 	</div>
 	<hr>
 	<?php
-	header("Content-Type: text/html; charset=utf-8");
-	if(isset($_COOKIE['account'])){
-	$id=$_COOKIE['account'];
-	$sql = "SELECT * FROM User where User_ID = $id";
-	$result = mysqli_query($link,$sql);
-	$row = mysqli_fetch_row($result);
-	$name=$row[2];
-	$email=$row[3];
-	$hobby=$row[4];
-	$favsinger=$row[5];
-	$level=$row[8];
-}
+		header("Content-Type: text/html; charset=utf-8");
+		if(isset($_COOKIE['account'])){
+		$id=$_COOKIE['account'];
+		$sql = "SELECT * FROM User where User_ID = '$id'";
+		$result = mysqli_query($link,$sql);
+		$row = mysqli_fetch_row($result);
+		$name=$row[2];
+		$email=$row[3];
+		$hobby=$row[4];
+		$favsinger=$row[5];
+		$level=$row[8];
+	}
 	?>
 	<div class="wrap">
 		<div id="content">
@@ -97,11 +97,28 @@
 				<div class="profile">
 					<li>
 							<ul id="track_list">
-								<li><b>追蹤名單</b>
-								<img src="image/track.png" alt=""><br>33
+								<li>
+									<a href="fansMenu_Followers.php"><b>追蹤名單</b>
+									<img src="image/track.png" alt=""><br>
+									<?php
+										$sql2="SELECT COUNT(Track_name) as total FROM Track where Track_name='$id'";
+										$trackresult = mysqli_query($link,$sql2);
+										$row2 = mysqli_fetch_assoc($trackresult);
+										echo $row2['total'];
+									?>
+									
 								</li>
-								<li><b>粉絲名單</b>
-								<img src="image/tracked.png" alt=""><br>87
+
+								<li>
+									<a href="fansMenu_Fans.php"><b>粉絲名單</b>
+									<img src="image/tracked.png" alt=""><br>
+									<?php
+										$sql2="SELECT COUNT(Track_name) as total FROM Track where Tracked_name='$id'";
+										$trackresult = mysqli_query($link,$sql2);
+										$row2 = mysqli_fetch_assoc($trackresult);
+										echo $row2['total'];
+									?>
+									</a>
 								</li>
 								<li><b>勝場數</b>
 								<img src="image/win.png" alt=""><br>87
