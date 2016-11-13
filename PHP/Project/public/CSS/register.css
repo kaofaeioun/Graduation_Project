@@ -102,7 +102,7 @@ h2{
     position: relative;
     cursor: pointer;
 }
-.userimg a{
+.upload_area{
 	width: 200px;
 	height: 40px;
 	line-height: 40px;
@@ -120,9 +120,16 @@ h2{
 	border-bottom-right-radius:5px;
 	border-bottom-left-radius:5px;
 }
-.userimg a:hover{
-	opacity: 1;
-	-webkit-transition: 1s;
+#upload{
+	 cursor: pointer;
+	 font-size: 100px;
+	 height: 100%;
+	 filter: alpha(opacity=1);
+	 -moz-opacity: 0.01;
+	 opacity: 0.01;
+	 position: absolute;
+	 right: 0;
+	 top: 0;
 }
 .profile{
     font-family: 'Quicksand', sans-serif,微軟正黑體; 

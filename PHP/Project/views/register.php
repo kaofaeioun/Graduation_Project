@@ -14,13 +14,14 @@
 	<title>MicMusic</title>
 </head>
 <body>
+
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
 			
 			<div class="toolbar">
 				<div class="search">
-					<input type="text" class="search_blank" placeholder="輸入id找歌手">
+					<input type="text" class="search_blank" placeholder="輸入ID找歌手">
 					<input type="image" class="search_image" src="image/search.png">
 				</div>
 			</div>
@@ -32,14 +33,14 @@
 					<li><a href="setting.php"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
 				</ul>
 			</div>
-
 		</div>
 	</div><hr>
 	<div class="wrap">
 		<div id="content">
 			<h2>註冊<b>/</b><br>Register</h2>
-				<div class="userimg" onclick="">
-					<a href="#"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 5px;" onclick=""> 更換大頭貼照</a>
+				<div class="userimg" onclick="">					
+					<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
+					<input type="file" id="upload" />
 				</div>	
 				<div class="profile">
 					<form action="" method="post">
@@ -67,10 +68,6 @@
 						</li>
 						<div id="msg"></div>
 						<div class="clear"></div>	
-						
-							
-						<div class="clear"></div>
-						
 						<button type="Submit" class="ctrl-standard typ-subhed fx-sliderIn" id="sub">Submit</button>
 					</ul>
 					</form>
@@ -84,7 +81,7 @@
 			$hobby = $_POST['hobby'];
 			$favsinger = $_POST['favsinger'];
 
-			$sql = "SELECT * FROM User where User_ID = $id";
+			$sql = "SELECT * FROM User where User_ID = '$id'";
 			$result = mysqli_query($link,$sql);
 			$row = mysqli_fetch_row($result);
 			if($row[0] == $id ){
