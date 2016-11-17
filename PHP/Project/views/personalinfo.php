@@ -89,7 +89,7 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>個人資料<b>/</b><br>Personal Infomation</h2>
-				<div class="profile_pic"><img src="image/profilepic.jpg" alt=""></div>
+				<div class="profile_pic"><img src="photo.php?id=<?php echo $id?>" alt=""></div>
 				<div class="profile">
 					<li>
 							<ul id="track_list">

@@ -38,12 +38,12 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>註冊<b>/</b><br>Register</h2>
+			<form action="" method="post" enctype="multipart/form-data">
 			<div class="photo">
 				<img id="userimg" src="image/user_image.png">					
 					<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
-					<input type="file" id="upload" onchange="loadImageFile()" />
+					<input type="file" name="upload" id="upload" onchange="loadImageFile()"  required="" />
 			</div>
-			<form action="" method="post">
 				<div class="profile">
 					<ul>
 						<li>
@@ -75,7 +75,7 @@
 						<button type="Submit" class="ctrl-standard typ-subhed fx-sliderIn" id="sub">Submit</button>
 					</ul>
 				</div>
-			</form>
+			</form>   			
 		<script type="text/javascript">
 			oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
 
@@ -110,13 +110,21 @@
 	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";
 			}
 			else{
-				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer,Fav_Songs) VALUES('$id','$pwd','$name','$mail','$hobby','$favsinger','$favsong')";
+				if (isset($_FILES["upload"]["size"])){
+		        $file = fopen($_FILES["upload"]["tmp_name"], "rb");
+		        $fileContents = fread($file, filesize($_FILES["upload"]["tmp_name"]));
+		        fclose($file);
+		        $fileContents = base64_encode($fileContents);
+   			}
+				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer,Fav_Songs,Photo) VALUES('$id','$pwd','$name','$mail','$hobby','$favsinger','$favsong','$fileContents')";
 				$result2=mysqli_query($link,$sql2);
 				echo "<script>document.getElementById('msg').innerHTML = ('註冊成功!')</script>";
-				echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
+				//echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
 			}
 		}
+	
 ?>
+
 			<div class="clear"></div>
 		</div>	
 	</div>
