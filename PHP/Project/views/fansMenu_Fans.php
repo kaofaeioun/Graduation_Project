@@ -46,6 +46,7 @@
                 });
             </script>
 			<div class="toolbar">
+				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
 					<div class="user_info">
                         <ul>
