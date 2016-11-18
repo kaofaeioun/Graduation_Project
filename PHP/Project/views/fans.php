@@ -3,7 +3,7 @@
 	if (!isset($_COOKIE['account'])) {
 		echo "<meta http-equiv=REFRESH CONTENT=0;url=login.php>";
 	}
-?>
+?>		
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +44,13 @@
     					return false;
   					});
 				});
+			</script>
+			<script type="text/javascript">
+				<?php if ($_COOKIE['account'] == $_GET['name']): ?>
+					$(document).ready(function(){
+						$('.trackbutton').hide();
+					});
+				<?php endif; ?>
 			</script>
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
@@ -90,7 +97,6 @@
 								$result = mysqli_query($link,$sql);
 								$row = mysqli_fetch_assoc($result);
 							}
-							
 						echo "
 						<li id='info'>ID<div class='blank'>".$row['User_ID']."</div></li>
 						<li id='info'>名字<div class='blank'>".$row['User_Name']."</div></li>
@@ -102,19 +108,48 @@
 				<div class="rightbar">
 					<img src="image/profilepic.jpg" alt="">
 					<?php
-						// $usernow = $_COOKIE['account'];
-						// $sql2 = "SELECT Tracked_name FROM Track where Track_name='$usernow'";
-						// $result = mysqli_query($link,$sql);
-						// $row = mysqli_fetch_row($result);
-						// echo $row;
-						// $row = mysqli_fetch_row()
+						$usernow = $_COOKIE['account'];
+						$an = $_GET['name'];
+						$sql = "SELECT Track_time FROM Track where Track_Name='$usernow' && Tracked_Name='$an'";
+						$result = mysqli_query($link,$sql);
+						$row = mysqli_fetch_row($result);
+						if (isset($row[0])) {
+							echo "
+								<div class='trackbutton' >
+									<input type='checkbox' checked id='followed'>
+								</div>
+							";
 
+						}else{
+							echo "
+								<div class='trackbutton' >
+									<input type='checkbox' id='follow'>
+								</div>
+							";
+						}
+						
 					?>
-					<div class="trackbutton">
-						<input type="checkbox">	
-					</div>		
-
-
+					<script type="text/JavaScript">
+						if(document.getElementById("followed")){
+							document.getElementById("followed").onclick = function() {
+							    // 發送 Ajax 查詢請求並處理
+							    var request = new XMLHttpRequest();
+							    request.open("GET", "followcancel.php?Track_name=<?php echo $usernow;?>&Tracked_name=<?php echo $an;?>");
+							    request.send();
+							    $('#followed').attr('id','follow');
+							    $('#follow').prop('checked',false);
+							}
+						}else if(document.getElementById("follow")){
+							document.getElementById("follow").onclick = function() {
+							    // 發送 Ajax 查詢請求並處理
+							    var request = new XMLHttpRequest();
+							    request.open("GET", "follow.php?Track_name=<?php echo $usernow;?>&Tracked_name=<?php echo $an;?>");
+							    request.send();
+							    $('#follow').attr('id','followed');
+							    $('#follow').prop('checked',true);
+							}
+						}
+					</script>
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -136,7 +171,7 @@
 						$an = $_GET['name'];
 						echo "<a href='fansMenu_tagFans.php?name=".$an."'>粉絲名單<img src='image/tracked.png' >";
 						
-							$sql = "SELECT COUNT(Track_name) as total FROM Track where Tracked_name='$an'";
+							$sql = "SELECT COUNT(DISTINCT Track_name) as total FROM Track where Tracked_name='$an'";
 							$result = mysqli_query($link,$sql);
 							$row2 = mysqli_fetch_assoc($result);
 							echo $row2['total'];
