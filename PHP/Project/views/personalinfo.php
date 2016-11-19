@@ -124,11 +124,9 @@
 					<ul>
 					<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 						<script>
-							$(document).ready(function(){
-							    $("#change").click(function(){
+							$( document ).on( "click", "#change", function() {
 							        $("#changename").slideToggle("slow");
 							    });
-							});
 						</script>
 						<li>
 							<b>姓名/Name</b>
@@ -139,7 +137,7 @@
 							<div id="change_name_blank">
 							<form>
 									<input type="text" id="correctinfo" value=<?php echo $name; ?>>
-									<input type="submit" id="changeinfoName" value="確定修改">
+									<input type="button" id="changeinfoName" value="確定修改">
 							
 							</form>		
 							<script type="text/JavaScript">
@@ -147,7 +145,10 @@
 											var request = new XMLHttpRequest();
 											request.open("GET", "changeinfo.php?changed=User_Name&correctinfo="+ document.getElementById("correctinfo").value);
 												request.send();
- 									document.getElementById("showName").innerHTML=document.getElementById("correctinfo").value;
+ 											document.getElementById("showName").innerHTML=document.getElementById("correctinfo").value+
+ 											"<img id='change' src='image/pen.png'>";
+
+ 											$("#changename").slideUp();
 											}
 							</script>
 
@@ -160,11 +161,9 @@
 						</li>
 						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 						<script>
-							$(document).ready(function(){
-							    $("#change1").click(function(){
+							$( document ).on( "click", "#change1", function() {
 							        $("#changeemail").slideToggle("slow");
 							    });
-							});
 						</script>
 						<li>
 							<b>電子郵件/E-mail</b>
@@ -175,7 +174,7 @@
 							<div id="change_name_blank">
 							<form>
 									<input type="text" id="correctinfoEmail" value=<?php echo $email; ?>>
-									<input type="submit" id="changeinfoEmail" value="確定修改">
+									<input type="button" id="changeinfoEmail" value="確定修改">
 							
 							</form>		
 							<script type="text/JavaScript">
@@ -183,7 +182,10 @@
 											var request = new XMLHttpRequest();
 											request.open("GET", "changeinfo.php?changed=Email&correctinfo="+ document.getElementById("correctinfoEmail").value);
 												request.send();
- 									document.getElementById("showemail").innerHTML=document.getElementById("correctinfoEmail").value;
+ 									document.getElementById("showemail").innerHTML=document.getElementById("correctinfoEmail").value+
+ 											"<img id='change1' src='image/pen.png'>";
+
+ 											$("#changeemail").slideUp();
 											}
 							</script>
 
@@ -192,11 +194,9 @@
 
 						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 						<script>
-							$(document).ready(function(){
-							    $("#change2").click(function(){
+							$( document ).on( "click", "#change2", function() {
 							        $("#changeHobby").slideToggle("slow");
 							    });
-							});
 						</script>
 						<li>
 							<b>興趣/Hobby</b>
@@ -207,7 +207,7 @@
 							<div id="change_name_blank">
 							<form>
 									<input type="text" id="correctinfoHobby" value=<?php echo $hobby; ?>>
-									<input type="submit" id="changeinfoHobby" value="確定修改">
+									<input type="button" id="changeinfoHobby" value="確定修改">
 							
 							</form>		
 							<script type="text/JavaScript">
@@ -215,7 +215,10 @@
 											var request = new XMLHttpRequest();
 											request.open("GET", "changeinfo.php?changed=Hobby&correctinfo="+ document.getElementById("correctinfoHobby").value);
 												request.send();
- 									document.getElementById("showHobby").innerHTML=document.getElementById("correctinfoHobby").value;
+ 									document.getElementById("showHobby").innerHTML=document.getElementById("correctinfoHobby").value+
+ 											"<img id='change2' src='image/pen.png'>";
+
+ 											$("#changeHobby").slideUp();
 											}
 							</script>
 
@@ -223,11 +226,9 @@
 						</li>
 						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666- -->
 						<script>
-							$(document).ready(function(){
-							    $("#change3").click(function(){
+							$( document ).on( "click", "#change3", function() {
 							        $("#changeFavSinger").slideToggle("slow");
 							    });
-							});
 						</script>
 						<li>
 							<b>喜歡的歌手/Favorate Singer</b>
@@ -238,7 +239,7 @@
 							<div id="change_name_blank">
 							<form>
 									<input type="text" id="correctinfoFavSinger" value=<?php echo $favsinger;?>>
-									<input type="submit" id="changeinfoFavSinger" value="確定修改">
+									<input type="button" id="changeinfoFavSinger" value="確定修改">
 							
 							</form>		
 							<script type="text/JavaScript">
@@ -246,7 +247,10 @@
 											var request = new XMLHttpRequest();
 											request.open("GET", "changeinfo.php?changed=Fav_Singer&correctinfo="+ document.getElementById("correctinfoFavSinger").value);
 												request.send();
- 									document.getElementById("showFavSinger").innerHTML=document.getElementById("correctinfoFavSinger").value;
+ 									document.getElementById("showFavSinger").innerHTML=document.getElementById("correctinfoFavSinger").value+
+ 											"<img id='change3' src='image/pen.png'>";
+
+ 											$("#changeFavSinger").slideUp();
 											}
 							</script>
 
@@ -254,11 +258,9 @@
 						</li>
 						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666- -->
 						<script>
-							$(document).ready(function(){
-							    $("#change4").click(function(){
+							$( document ).on( "click", "#change4", function() {
 							        $("#changeFav_Songs").slideToggle("slow");
 							    });
-							});
 						</script>
 						<li>
 							<b>喜歡的歌/Favorate Songs</b>
@@ -269,7 +271,7 @@
 							<div id="change_name_blank">
 							<form>
 									<input type="text" id="correctinfoFav_Songs" value=<?php echo $favsong;?>>
-									<input type="submit" id="changeinfoFav_Songs" value="確定修改">
+									<input type="button" id="changeinfoFav_Songs" value="確定修改">
 							
 							</form>		
 							<script type="text/JavaScript">
@@ -277,7 +279,10 @@
 											var request = new XMLHttpRequest();
 											request.open("GET", "changeinfo.php?changed=Fav_Songs&correctinfo="+ document.getElementById("correctinfoFav_Songs").value);
 												request.send();
- 									document.getElementById("showFav_Songs").innerHTML=document.getElementById("correctinfoFav_Songs").value;
+ 									document.getElementById("showFav_Songs").innerHTML=document.getElementById("correctinfoFav_Songs").value+
+ 											"<img id='change4' src='image/pen.png'>";
+
+ 											$("#changeFav_Songs").slideUp();
 											}
 							</script>
 
