@@ -101,7 +101,7 @@ myWebSocket.onmessage = function(evt) {
 			}
 		}
 	}
-	
+
 };
 
 
@@ -160,9 +160,9 @@ if (hasGetUserMedia()) {
 					outData[i] = inData[i];
 			}
 
-			var color = Math.round(amp*255);
+			/*var color = Math.round(amp*255);
 			color = 'rgb(' + color*1 + ',' + color*171 + ',' + color*173 + ')';
-			d3.select("#circle").attr("r",80+(amp*100)).attr("fill",color);
+			d3.select("#circle").attr("r",80+(amp*100)).attr("fill",color);*/
 
 			if(settingsModalOpen) {
 				var max = 0;

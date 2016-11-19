@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 960px;
+  height: 500px;
+  position: relative;
+}
+
+svg {
+	width: 100%;
+	height: 100%;
+}
+
+
+</style>
+<body>
+<button class="randomize">randomize</button>
+<button class="Like">Like</button>
+<button class="Unlike">Unlike</button>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+
+var svg = d3.select("body")
+	.append("svg")
+	.append("g")
+
+svg.append("g")
+	.attr("class", "slices");
+
+/*var width = 200,
+    height = 200,
+	radius = Math.min(width, height) / 2;*/
+
+var width = 200,
+    height = 200,
+    radius = 100;
+
+var pie = d3.layout.pie()
+	.sort(null)
+	.value(function(d) {
+		return d.value;
+	});
+
+var arc = d3.svg.arc()
+	.outerRadius(radius * 1)
+	.innerRadius(radius * 0.75);
+
+svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var key = function(d){ return d.data.label; };
+
+var color = d3.scale.ordinal()
+	.domain(["UnLike", "Like"])
+	.range(["#ED1B2E", "#376FFF"]);
+
+function randomData (){
+	var labels = color.domain();
+	return labels.map(function(label){
+		return { label: label, value: Math.random() }
+	});
+}
+
+var like_vote = 10,
+    unlike_vote = 5,
+    total_vote = like_vote + unlike_vote,
+    like_R = like_vote / total_vote,
+    unlike_R = unlike_vote / total_vote;
+
+
+function like() {
+  var labels = color.domain();
+  return labels.map(function(label){
+      return {label:label, value:like_R}
+  });
+}
+function unlike() {
+  var labels = color.domain();
+  return labels.map(function(label){
+      return {label:label, value:unlike_R}
+  });
+}
+
+change(randomData());
+
+d3.select(".randomize")
+	.on("click", function(){
+		change(randomData());
+	});
+
+d3.select(".Like").on("click", function(){
+    change(like());
+});
+
+d3.select(".Unlike").on("click", function(){
+    change(unlike());
+});
+
+function change(data) {
+
+	/* ------- PIE SLICES -------*/
+	var slice = svg.select(".slices").selectAll("path.slice")
+		.data(pie(data), key);
+
+	slice.enter()
+		.insert("path")
+		.style("fill", function(d) { return color(d.data.label);})//塞顏色
+		.attr("class", "slice");//加class
+
+	slice.transition().duration(1000)
+		.attrTween("d", function(d) {
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(0);
+      console.log(this._current)
+			return function(t) {
+				return arc(interpolate(t));
+			};
+		})
+
+	slice.exit()
+		.remove();
+};
+
+</script>
+</body>
