@@ -116,39 +116,31 @@
 						if (isset($row[0])) {
 							echo "
 								<div class='trackbutton' >
-									<input type='checkbox' checked id='followed'>
+									<input type='checkbox' id='followed' checked>
 								</div>
 							";
-
 						}else{
 							echo "
 								<div class='trackbutton' >
 									<input type='checkbox' id='follow'>
 								</div>
 							";
-						}
-						
+						}						
 					?>
-					<script type="text/JavaScript">
-						if(document.getElementById("followed")){
-							document.getElementById("followed").onclick = function() {
-							    // 發送 Ajax 查詢請求並處理
-							    var request = new XMLHttpRequest();
+					<script type="text/javascript">
+							$( document ).on( "click", "#followed", function() {
+  									
+  								var request = new XMLHttpRequest();
 							    request.open("GET", "followcancel.php?Track_name=<?php echo $usernow;?>&Tracked_name=<?php echo $an;?>");
 							    request.send();
-							    $('#followed').attr('id','follow');
-							    $('#follow').prop('checked',false);
-							}
-						}else if(document.getElementById("follow")){
-							document.getElementById("follow").onclick = function() {
-							    // 發送 Ajax 查詢請求並處理
-							    var request = new XMLHttpRequest();
+							    $('#followed').attr('id','follow');		
+								});
+							$( document ).on( "click", "#follow", function() {
+  								var request = new XMLHttpRequest();
 							    request.open("GET", "follow.php?Track_name=<?php echo $usernow;?>&Tracked_name=<?php echo $an;?>");
 							    request.send();
 							    $('#follow').attr('id','followed');
-							    $('#follow').prop('checked',true);
-							}
-						}
+								});
 					</script>
 				</div>
 				<div class="clear"></div>
