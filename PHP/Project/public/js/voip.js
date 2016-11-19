@@ -101,6 +101,7 @@ myWebSocket.onmessage = function(evt) {
 			}
 		}
 	}
+	
 };
 
 
