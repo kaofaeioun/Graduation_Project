@@ -136,7 +136,7 @@
 							<b>修改姓名/Edit Name:</b>
 							<div id="change_name_blank">
 							<form>
-									<input type="text" id="correctinfo" value=<?php echo $name; ?>>
+									<input type="text" id="correctinfo" placeholder="按此編輯喜你的姓名" value=<?php echo $name; ?>>
 									<input type="button" id="changeinfoName" value="確定修改">
 							
 							</form>		
@@ -173,7 +173,7 @@
 							<b>修改電子郵件/Edit E-mail:</b>
 							<div id="change_name_blank">
 							<form>
-									<input type="text" id="correctinfoEmail" value=<?php echo $email; ?>>
+									<input type="text" id="correctinfoEmail" placeholder="按此編輯你的E-mail" value=<?php echo $email; ?>>
 									<input type="button" id="changeinfoEmail" value="確定修改">
 							
 							</form>		
@@ -206,7 +206,7 @@
 							<b>修改興趣/Edit Hobby:</b>
 							<div id="change_name_blank">
 							<form>
-									<input type="text" id="correctinfoHobby" value=<?php echo $hobby; ?>>
+									<input type="text" id="correctinfoHobby" placeholder="按此編輯你的興趣" value=<?php echo $hobby; ?>>
 									<input type="button" id="changeinfoHobby" value="確定修改">
 							
 							</form>		
@@ -238,7 +238,7 @@
 							<b>修改喜歡的歌手/Edit Favorate Singer:</b>
 							<div id="change_name_blank">
 							<form>
-									<input type="text" id="correctinfoFavSinger" value=<?php echo $favsinger;?>>
+									<input type="text" id="correctinfoFavSinger" placeholder="按此編輯喜歡的歌手" value=<?php echo $favsinger;?>>
 									<input type="button" id="changeinfoFavSinger" value="確定修改">
 							
 							</form>		
@@ -270,7 +270,7 @@
 							<b>修改喜歡的歌/Edit Favorate Songs:</b>
 							<div id="change_name_blank">
 							<form>
-									<input type="text" id="correctinfoFav_Songs" value=<?php echo $favsong;?>>
+									<input type="text" id="correctinfoFav_Songs" placeholder="按此編輯喜歡的歌" value=<?php echo $favsong;?>>
 									<input type="button" id="changeinfoFav_Songs" value="確定修改">
 							
 							</form>		

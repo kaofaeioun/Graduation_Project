@@ -117,17 +117,13 @@ table {
     float: right;
     font-style: border;
 }
-
-#changename, #change {
-    text-align: left;
-}
-
 #changename {
     height: 60px;
     margin-left: 15%;
     display: none;
     background: #F8F8FF;
 }
+
 #changeemail {
     height: 60px;
     margin-left: 15%;
@@ -155,14 +151,50 @@ table {
 #change_name_blank{
     text-align: right;
     float: right;
+
 }
 #change_name_blank input{
     width: 200px;
     display: block;
     border-style: none;
     line-height: 25px;
+    font-size: 14px;
 }
-
+#changeinfoName{
+    background-color: #25CED1;
+    color: #fff;
+    border-radius: 2px;
+    width: 100px;
+    cursor: pointer;
+}
+#changeinfoEmail{
+    background-color: #25CED1;
+    color: #fff;
+    border-radius: 2px;
+    width: 100px;
+    cursor: pointer;
+}
+#changeinfoHobby{
+    background-color: #25CED1;
+    color: #fff;
+    border-radius: 2px;
+    width: 100px;
+    cursor: pointer;
+}
+#changeinfoFavSinger{
+    background-color: #25CED1;
+    color: #fff;
+    border-radius: 2px;
+    width: 100px;
+    cursor: pointer;
+}
+#changeinfoFav_Songs{
+    background-color: #25CED1;
+    color: #fff;
+    border-radius: 2px;
+    width: 100px;
+    cursor: pointer;
+}
 .profile input{
     width: 200px;
     border-style: none;
