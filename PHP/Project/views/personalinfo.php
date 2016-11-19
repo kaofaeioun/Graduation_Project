@@ -122,34 +122,179 @@
 							</ul>
 						</li>
 					<ul>
+					<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
+						<script>
+							$(document).ready(function(){
+							    $("#change").click(function(){
+							        $("#changename").slideToggle("slow");
+							    });
+							});
+						</script>
 						<li>
 							<b>姓名/Name</b>
-							<div class="name_blank"><?php echo $name; ?></div>
+							<div class="name_blank" id="showName"><?php echo $name; ?><img id="change" src="image/pen.png" alt=""></div>
 						</li>
+						<li id="changename">
+							<b>修改姓名/Edit Name:</b>
+							<div id="change_name_blank">
+							<form>
+									<input type="text" id="correctinfo" value=<?php echo $name; ?>>
+									<input type="submit" id="changeinfoName" value="確定修改">
+							
+							</form>		
+							<script type="text/JavaScript">
+									document.getElementById("changeinfoName").onclick = function() {
+											var request = new XMLHttpRequest();
+											request.open("GET", "changeinfo.php?changed=User_Name&correctinfo="+ document.getElementById("correctinfo").value);
+												request.send();
+ 									document.getElementById("showName").innerHTML=document.getElementById("correctinfo").value;
+											}
+							</script>
+
+							</div>
+						</li>
+						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 						<li>
 							<b>用戶/ID</b>
 							<div class="name_blank"><?php echo $id; ?></div>
 						</li>
+						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
+						<script>
+							$(document).ready(function(){
+							    $("#change1").click(function(){
+							        $("#changeemail").slideToggle("slow");
+							    });
+							});
+						</script>
 						<li>
 							<b>電子郵件/E-mail</b>
-							<div class="name_blank"><?php echo $email; ?></div>
+							<div class="name_blank" id="showemail"><?php echo $email; ?><img id="change1" src="image/pen.png" alt=""></div>
 						</li>
-						<li>
-							<b>等級/Level</b>
-							<div class="name_blank" ><?php echo $level; ?></div></li>
+						<li id="changeemail">
+							<b>修改電子郵件/Edit E-mail:</b>
+							<div id="change_name_blank">
+							<form>
+									<input type="text" id="correctinfoEmail" value=<?php echo $email; ?>>
+									<input type="submit" id="changeinfoEmail" value="確定修改">
+							
+							</form>		
+							<script type="text/JavaScript">
+									document.getElementById("changeinfoEmail").onclick = function() {
+											var request = new XMLHttpRequest();
+											request.open("GET", "changeinfo.php?changed=Email&correctinfo="+ document.getElementById("correctinfoEmail").value);
+												request.send();
+ 									document.getElementById("showemail").innerHTML=document.getElementById("correctinfoEmail").value;
+											}
+							</script>
+
+							</div>
+						</li>
+
+						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
+						<script>
+							$(document).ready(function(){
+							    $("#change2").click(function(){
+							        $("#changeHobby").slideToggle("slow");
+							    });
+							});
+						</script>
 						<li>
 							<b>興趣/Hobby</b>
-							<div class="name_blank" ><?php echo $hobby; ?></div></li>
+							<div class="name_blank" id="showHobby"><?php echo $hobby; ?><img id="change2" src="image/pen.png" alt=""></div>
+						</li>
+						<li id="changeHobby">
+							<b>修改興趣/Edit Hobby:</b>
+							<div id="change_name_blank">
+							<form>
+									<input type="text" id="correctinfoHobby" value=<?php echo $hobby; ?>>
+									<input type="submit" id="changeinfoHobby" value="確定修改">
+							
+							</form>		
+							<script type="text/JavaScript">
+									document.getElementById("changeinfoHobby").onclick = function() {
+											var request = new XMLHttpRequest();
+											request.open("GET", "changeinfo.php?changed=Hobby&correctinfo="+ document.getElementById("correctinfoHobby").value);
+												request.send();
+ 									document.getElementById("showHobby").innerHTML=document.getElementById("correctinfoHobby").value;
+											}
+							</script>
+
+							</div>
+						</li>
+						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666- -->
+						<script>
+							$(document).ready(function(){
+							    $("#change3").click(function(){
+							        $("#changeFavSinger").slideToggle("slow");
+							    });
+							});
+						</script>
 						<li>
 							<b>喜歡的歌手/Favorate Singer</b>
-							<div class="name_blank" ><?php echo $favsinger;?></div></li>
+							<div class="name_blank" id="showFavSinger"><?php echo $favsinger;?><img id="change3" src="image/pen.png" alt=""></div>
+						</li>
+						<li id="changeFavSinger">
+							<b>修改喜歡的歌手/Edit Favorate Singer:</b>
+							<div id="change_name_blank">
+							<form>
+									<input type="text" id="correctinfoFavSinger" value=<?php echo $favsinger;?>>
+									<input type="submit" id="changeinfoFavSinger" value="確定修改">
+							
+							</form>		
+							<script type="text/JavaScript">
+									document.getElementById("changeinfoFavSinger").onclick = function() {
+											var request = new XMLHttpRequest();
+											request.open("GET", "changeinfo.php?changed=Fav_Singer&correctinfo="+ document.getElementById("correctinfoFavSinger").value);
+												request.send();
+ 									document.getElementById("showFavSinger").innerHTML=document.getElementById("correctinfoFavSinger").value;
+											}
+							</script>
+
+							</div>
+						</li>
+						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666- -->
+						<script>
+							$(document).ready(function(){
+							    $("#change4").click(function(){
+							        $("#changeFav_Songs").slideToggle("slow");
+							    });
+							});
+						</script>
 						<li>
-							<b>喜歡的歌/Favorate Song</b>
-							<div class="name_blank" ><?php echo $favsong;?></div></li>	
+							<b>喜歡的歌/Favorate Songs</b>
+							<div class="name_blank" id="showFav_Songs"><?php echo $favsong;?><img id="change4" src="image/pen.png" alt=""></div>
+						</li>
+						<li id="changeFav_Songs">
+							<b>修改喜歡的歌/Edit Favorate Songs:</b>
+							<div id="change_name_blank">
+							<form>
+									<input type="text" id="correctinfoFav_Songs" value=<?php echo $favsong;?>>
+									<input type="submit" id="changeinfoFav_Songs" value="確定修改">
+							
+							</form>		
+							<script type="text/JavaScript">
+									document.getElementById("changeinfoFav_Songs").onclick = function() {
+											var request = new XMLHttpRequest();
+											request.open("GET", "changeinfo.php?changed=Fav_Songs&correctinfo="+ document.getElementById("correctinfoFav_Songs").value);
+												request.send();
+ 									document.getElementById("showFav_Songs").innerHTML=document.getElementById("correctinfoFav_Songs").value;
+											}
+							</script>
+
+							</div>
+						</li>
+						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666- -->
+						<li>
+							<b>等級/Level</b>
+							<div class="name_blank" ><?php echo $level; ?></div>
+						</li>
+						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
+
+						<div class="clear"></div>	
+						
+							
 						<div class="clear"></div>
 
-						<div class="clear"></div>
-						<button class="ctrl-standard typ-subhed fx-sliderIn">Submit</button>
 
 					</ul>
 				</div>

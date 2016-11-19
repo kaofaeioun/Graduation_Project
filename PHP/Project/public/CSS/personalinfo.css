@@ -117,10 +117,56 @@ table {
     float: right;
     font-style: border;
 }
+
+#changename, #change {
+    text-align: left;
+}
+
+#changeUser_Name {
+    height: 60px;
+    margin-left: 15%;
+    display: none;
+    background: #F8F8FF;
+}
+#changeemail {
+    height: 60px;
+    margin-left: 15%;
+    display: none;
+    background: #F8F8FF;
+}
+#changeHobby {
+    height: 60px;
+    margin-left: 15%;
+    display: none;
+    background: #F8F8FF;
+}
+#changeFavSinger {
+    height: 60px;
+    margin-left: 15%;
+    display: none;
+    background: #F8F8FF;
+}
+#changeFav_Songs {
+    height: 60px;
+    margin-left: 15%;
+    display: none;
+    background: #F8F8FF;
+}
+#change_name_blank{
+    text-align: right;
+    float: right;
+}
+#change_name_blank input{
+    width: 200px;
+    display: block;
+    border-style: none;
+    line-height: 25px;
+}
+
 .profile input{
     width: 200px;
     border-style: none;
-    text-align: right;
+    text-align: center;
     font-family: 'Quicksand', sans-serif,微軟正黑體;
     font-weight: lighter;
 }
