@@ -6,9 +6,10 @@
 	<link href="http://fonts.googleapis.com/css?family=Cabin:400,500,600,bold" rel="stylesheet" type="text/css" >
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold" rel="stylesheet" type="text/css" >
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="CSS/personalinfo.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	
 	<title>MicMusic</title>
 </head>
 <body>
@@ -89,7 +90,27 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>個人資料<b>/</b><br>Personal Infomation</h2>
-				<div class="profile_pic"><img src="photo.php?id=<?php echo $id?>" alt=""></div>
+
+			<div class="profile_pic">
+				<img src="photo.php?id=<?php echo $id?>">
+				<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
+				<input type="file" name="upload" id="upload" onchange="loadImageFile()"  required="" />
+			</div>
+
+			<script type="text/javascript">
+			oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
+
+			oFReader.onload = function (oFREvent) {
+		    document.getElementById("userimg").src = oFREvent.target.result;
+					}; //檔名
+			function loadImageFile() {
+				if (document.getElementById("upload").files.length === 0) { return; }//沒有上傳即return
+					var oFile = document.getElementById("upload").files[0];
+				if (!rFilter.test(oFile.type)) { alert("請上傳圖片"); return; }
+					  oFReader.readAsDataURL(oFile);
+			}	
+		</script>
+		
 				<div class="profile">
 					<li>
 							<ul id="track_list">
