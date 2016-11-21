@@ -66,6 +66,7 @@ h1 img{
     float: right;
     cursor: pointer;
     margin-left: 35px;
+    display: none;
 }
 #login:hover{
     background-color: #02CBCE;
@@ -83,6 +84,7 @@ h1 img{
     cursor: pointer;
     position: relative;
     margin-left: 35px;
+    display: none;
 }
 .user_info{
     width:270px;
@@ -99,6 +101,7 @@ h1 img{
     box-shadow: 0 0 15px rgba(0,0,0,.18);
     z-index: 2;
     cursor: default;
+    display: none;
 }
 .user_info ul>li{
     list-style: none;
