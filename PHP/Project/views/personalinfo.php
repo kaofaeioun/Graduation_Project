@@ -6,10 +6,10 @@
 	<link href="http://fonts.googleapis.com/css?family=Cabin:400,500,600,bold" rel="stylesheet" type="text/css" >
 	<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:regular,bold" rel="stylesheet" type="text/css" >
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="CSS/personalinfo.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	
+
 	<title>MicMusic</title>
 </head>
 <body>
@@ -20,7 +20,6 @@
 		<?php else: ?>
 			$(document).ready(function(){
 				$('#user').show();
-				$('#login').hide();
 			});
 		<?php endif; ?>
 	</script>
@@ -30,8 +29,6 @@
 			<h1><img src="image/Logo2.png"></h1>
 			<script type="text/javascript">
 				$(document).ready(function(){
-  					$('.user_info').hide();
-  					//隱藏要呼叫的div
   					$('#user').click(function() {
   						//指定呼叫按鈕
     					$('.user_info').fadeToggle(300);
@@ -92,10 +89,15 @@
 			<h2>個人資料<b>/</b><br>Personal Infomation</h2>
 
 			<div class="profile_pic">
-				<img src="photo.php?id=<?php echo $id?>">
+				<div class="dialog">
+					<input type="submit" class="send" value="確定">
+					<input type="button" class="cancel" value="取消">
+				</div>
+				<img src="photo.php?id=<?php echo $id?>" id="userimg">
 				<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
-				<input type="file" name="upload" id="upload" onchange="loadImageFile()"  required="" />
+				<input type="file" name="upload" id="upload" onchange="loadImageFile()"/>
 			</div>
+
 
 			<script type="text/javascript">
 			oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
@@ -107,7 +109,12 @@
 				if (document.getElementById("upload").files.length === 0) { return; }//沒有上傳即return
 					var oFile = document.getElementById("upload").files[0];
 				if (!rFilter.test(oFile.type)) { alert("請上傳圖片"); return; }
-					  oFReader.readAsDataURL(oFile);
+				else { 
+					$(function checkwindow(){
+						$(".dialog").fadeIn();
+						oFReader.readAsDataURL(oFile);
+					});
+				}				
 			}	
 		</script>
 		
@@ -157,7 +164,7 @@
 							<b>修改姓名/Edit Name:</b>
 							<div id="change_name_blank">
 							<form>
-									<input type="text" id="correctinfo" placeholder="按此編輯喜你的姓名" value=<?php echo $name; ?>>
+									<input type="text" id="correctinfo" placeholder="按此編輯你的姓名" value=<?php echo $name; ?>>
 									<input type="button" id="changeinfoName" value="確定修改">
 							
 							</form>		
