@@ -99,7 +99,7 @@
 							<a>
 							<div class='userimg'>
 								<a href='fans.php?name=".$row2[0]."'>
-									<img src='https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/s960x960/14409377_1191095007613889_6213881852130567120_o.jpg' alt=''>
+									<img src='photo.php?id=".$row2[0]."'>
 								</a>
 							</div>
 							<div class='userid'>
