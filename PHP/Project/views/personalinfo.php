@@ -89,15 +89,29 @@
 			<h2>個人資料<b>/</b><br>Personal Infomation</h2>
 
 			<div class="profile_pic">
+				<form action="" method="POST" enctype="multipart/form-data">
 				<div class="dialog">
 					<input type="submit" class="send" value="確定">
-					<input type="button" class="cancel" value="取消">
+					<input type="button" class="cancel" value="取消" onclick="loadImageFileCancel()">				
 				</div>
 				<img src="photo.php?id=<?php echo $id?>" id="userimg">
 				<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
 				<input type="file" name="upload" id="upload" onchange="loadImageFile()"/>
+				</form>
 			</div>
-
+			<?php
+			if(isset($_COOKIE['account'])){
+				if (isset($_FILES["upload"]["size"])){
+				$id=$_COOKIE['account'];	
+		        $file = fopen($_FILES["upload"]["tmp_name"], "rb");
+		        $fileContents = fread($file, filesize($_FILES["upload"]["tmp_name"]));
+		        fclose($file);
+		        $fileContents = base64_encode($fileContents);
+		        $sql="UPDATE User SET Photo='$fileContents' Where User_ID='$id'";
+		        $result=mysqli_query($link,$sql);
+				}
+			}	
+			?>
 
 			<script type="text/javascript">
 			oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
@@ -115,6 +129,10 @@
 						oFReader.readAsDataURL(oFile);
 					});
 				}				
+			}
+			function loadImageFileCancel(){
+				$(".dialog").fadeOut();
+				document.getElementById("userimg").src ="photo.php?id=<?php echo $id?>" ;
 			}	
 		</script>
 		
