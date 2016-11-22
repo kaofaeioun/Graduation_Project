@@ -57,7 +57,8 @@
                         <span class="arrow_bottom_int"></span>
                         <span class="arrow_bottom_out"></span>  
                         	<div class="bot_area">
-								<input type="button" class="logout" value="登出">
+								<input type="button" class="logout" value="登出"
+								onclick="location='logoutconnect.php'">
 							</div>	    
                     </div>	
 				</div>
@@ -88,7 +89,7 @@
 				<ul>
 					<?php
 						$now = $_GET['name'];
-						$sql = "SELECT Tracked_Name FROM Track where Track_Name = '$now' order by Tracked_Name";
+						$sql = "SELECT Tracked_ID FROM Track where Track_ID = '$now' order by Tracked_ID";
 						$result=mysqli_query($link,$sql);
 						$row2=mysqli_num_rows($result);
 						for ($i = 0; $i < $row2; $i++) { 
@@ -99,7 +100,7 @@
 							<a>
 							<div class='userimg'>
 								<a href='fans.php?name=".$row[0]."'>
-									<img src='https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/s960x960/14409377_1191095007613889_6213881852130567120_o.jpg' alt=''>
+									<img src='photo.php?id=".$row[0]."''>
 								</a>
 							</div>
 							<div class='userid'>

@@ -143,7 +143,7 @@
 									<a href="fansMenu_Followers.php"><b>追蹤名單</b>
 									<img src="image/track.png" alt=""><br>
 									<?php
-										$sql2="SELECT COUNT(Track_name) as total FROM Track where Track_name='$id'";
+										$sql2="SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$id'";
 										$trackresult = mysqli_query($link,$sql2);
 										$row2 = mysqli_fetch_assoc($trackresult);
 										echo $row2['total'];
@@ -155,7 +155,7 @@
 									<a href="fansMenu_Fans.php"><b>粉絲名單</b>
 									<img src="image/tracked.png" alt=""><br>
 									<?php
-										$sql2="SELECT COUNT(Track_name) as total FROM Track where Tracked_name='$id'";
+										$sql2="SELECT COUNT(Track_ID) as total FROM Track where Tracked_ID='$id'";
 										$trackresult = mysqli_query($link,$sql2);
 										$row2 = mysqli_fetch_assoc($trackresult);
 										echo $row2['total'];

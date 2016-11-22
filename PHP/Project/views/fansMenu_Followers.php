@@ -57,7 +57,7 @@
                         <span class="arrow_bottom_int"></span>
                         <span class="arrow_bottom_out"></span>  
                         	<div class="bot_area">
-								<input type="button" class="logout" value="登出">
+								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
 							</div>	    
                     </div>	
 				</div>
@@ -98,7 +98,7 @@
 							<a>
 							<div class='userimg'>
 								<a href='fans.php?name=".$row2[0]."'>
-									<img src='https://scontent-tpe1-1.xx.fbcdn.net/t31.0-8/s960x960/14409377_1191095007613889_6213881852130567120_o.jpg' alt=''>
+									<img src='photo.php?id=".$row2[0]."' alt=''>
 								</a>
 							</div>
 							<div class='userid'>

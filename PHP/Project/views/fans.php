@@ -64,7 +64,8 @@
 						<span class="arrow_bottom_int"></span>	
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<input type="button" class="logout" value="登出">
+								<input type="button" class="logout" value="登出"
+								onclick="location='logoutconnect.php'">
 							</div>
 					</div>
 				</div>
@@ -106,11 +107,11 @@
 					</ul>
 				</div>
 				<div class="rightbar">
-					<img src="image/profilepic.jpg" alt="">
+					<img src="photo.php?id=<?php echo $row['User_ID'];?>" alt="">
 					<?php
 						$usernow = $_COOKIE['account'];
 						$an = $_GET['name'];
-						$sql = "SELECT Track_time FROM Track where Track_Name='$usernow' && Tracked_Name='$an'";
+						$sql = "SELECT Track_time FROM Track where Track_ID='$usernow' && Tracked_ID='$an'";
 						$result = mysqli_query($link,$sql);
 						$row = mysqli_fetch_row($result);
 						if (isset($row[0])) {
@@ -131,13 +132,13 @@
 							$( document ).on( "click", "#followed", function() {
   									
   								var request = new XMLHttpRequest();
-							    request.open("GET", "followcancel.php?Track_name=<?php echo $usernow;?>&Tracked_name=<?php echo $an;?>");
+							    request.open("GET", "followcancel.php?Track_ID=<?php echo $usernow;?>&Tracked_ID=<?php echo $an;?>");
 							    request.send();
 							    $('#followed').attr('id','follow');		
 								});
 							$( document ).on( "click", "#follow", function() {
   								var request = new XMLHttpRequest();
-							    request.open("GET", "follow.php?Track_name=<?php echo $usernow;?>&Tracked_name=<?php echo $an;?>");
+							    request.open("GET", "follow.php?Track_ID=<?php echo $usernow;?>&Tracked_ID=<?php echo $an;?>");
 							    request.send();
 							    $('#follow').attr('id','followed');
 								});
@@ -150,7 +151,7 @@
 					<?php 
 						$an = $_GET['name'];
 						echo "<a href='fansMenu_tagFollowers.php?name=".$an."'>追蹤名單<img src='image/track.png' >";
-						$sql = "SELECT COUNT(Track_name) as total FROM Track where Track_name='$an'";
+						$sql = "SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$an'";
 						$result = mysqli_query($link,$sql);
 						$row2 = mysqli_fetch_assoc($result);
 						echo $row2['total'];
@@ -163,7 +164,7 @@
 						$an = $_GET['name'];
 						echo "<a href='fansMenu_tagFans.php?name=".$an."'>粉絲名單<img src='image/tracked.png' >";
 						
-							$sql = "SELECT COUNT(DISTINCT Track_name) as total FROM Track where Tracked_name='$an'";
+							$sql = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID='$an'";
 							$result = mysqli_query($link,$sql);
 							$row2 = mysqli_fetch_assoc($result);
 							echo $row2['total'];

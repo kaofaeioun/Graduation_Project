@@ -57,7 +57,7 @@
                         <span class="arrow_bottom_int"></span>
                         <span class="arrow_bottom_out"></span>  
                         	<div class="bot_area">
-								<input type="button" class="logout" value="登出">
+								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
 							</div>	    
                     </div>	
 				</div>
@@ -88,7 +88,7 @@
 				<ul>
 					<?php
 						$now = $_COOKIE['account'];
-						$sql = "SELECT Track_Name FROM Track where Tracked_Name = '$now' order by Track_Name";
+						$sql = "SELECT Track_ID FROM Track where Tracked_ID = '$now' order by Track_ID";
 						$result=mysqli_query($link,$sql);
 						$row=mysqli_num_rows($result);
 
