@@ -72,7 +72,7 @@
 					 		echo "<script>document.getElementById('msg').innerHTML = ('無此帳號!')</script>";
 					 	}
 					 	else if($row[1]==$passwd && $row[0]==$account){
-	        					setcookie('account',$account,time()+3600);
+	        					setcookie('account',$account,time()+3600*10);
 	        					echo '<meta http-equiv=REFRESH CONTENT=0;url=battle.php>';
 	      				}else if($row[1]!=$passwd){
 	        					echo "<script>document.getElementById('msg').innerHTML = ('密碼輸入錯誤!')</script>";

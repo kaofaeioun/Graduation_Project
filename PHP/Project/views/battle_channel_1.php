@@ -5,9 +5,9 @@
 	<?php
 		include("mysql_connect.php");
 		$id=$_COOKIE['account'];
-		$sql = "SELECT User_Name FROM User where User_ID = $id";
-		$result = mysqli_query($link, $sql);
-		$row = mysql_fetch_row($result);
+		$sql1 = "SELECT User_Name FROM User where User_ID = $id";
+		$result1 = mysqli_query($link, $sql1);
+		$row1 = mysqli_fetch_row($result1);
 	?>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -18,7 +18,7 @@
 	<script>
 		var client = { //is observerd
 			"pp" : "../img/profile.jpg", //Profil Pic
-			"nn" : "<?php echo $row[0]?>", //Nickname
+			"nn" : "<?php echo $row1[0];?>", //Nickname
 			"mg" : 4/100, // minGain
 			"mic" : false,
 			"sound" : true
@@ -182,7 +182,7 @@
 								setTimeout("showTime()",1000);
 							}
 						showTime();
-						function CheckMic(){
+					/*	function CheckMic(){
 							if (s==0){
 								var request = new XMLHttpRequest();
 				    			request.open("POST", "checkmic.php");
@@ -191,7 +191,7 @@
 								}
 								setTimeout("CheckMic()",1000);
 							}
-										CheckMic();
+										CheckMic();*/
 					</script>
 
 					<script type="text/javascript">
@@ -269,31 +269,63 @@
 					<li><img src="image/line.png"></li>
 					<li><p id="MicCount"></p></li>
 				</div>
-				<div class="get_mic">
-					<li><input type="checkbox"><p id="qwer"></p></li>
-				</div>
-	<script type="text/javascript">
-	function ArrangeMicCheck(){
-			<?php
-				$sql="SELECT count(Mic_ID) FROM Mic where Mic_ID is not null";
-				$result=mysql_query($sql);
-				$row=mysql_fetch_row($result);
-				$sql2="SELECT User_ID From Mic Where Mic_ID is not null ORDER BY  `Mic_ID` ASC ";
-				$result2=mysql_query($sql2);
-			?>
-			var CountMic='<?php echo $row[0] ?>';
-			var singer='<?php echo mysql_result($result2, 0)?>';
-			var queue1='<?php echo mysql_result($result2, 1)?>';
-			var queue2='<?php echo mysql_result($result2, 2)?>';
-			var queue3='<?php echo mysql_result($result2, 3)?>';
-			document.getElementById("MicCount").innerHTML = CountMic;
-			document.getElementById("singer").innerHTML=singer;
-			document.getElementById("queue1").innerHTML = queue1;
-			document.getElementById("queue2").innerHTML = queue2;
-			document.getElementById("queue3").innerHTML = queue3;
+				<?php
+					$id = $_COOKIE['account'];
+					$sql = "SELECT User_ID FROM Mic where User_ID='$id'";
+					$result=mysqli_query($link,$sql);
+					$row = mysqli_fetch_row($result);
+					if (isset($row[0])) {
+					echo "<div class='get_mic'>
+						<li><input type='checkbox' id='GottentMic' checked><p id='qwer' chec></p></li>
+					</div>";
+					}
+					else{
+					echo "<div class='get_mic'>
+						<li><input type='checkbox' id='GetMic'><p id='qwer'></p></li>
+					</div>";
+					}
+				?>		
+<script type="text/javascript">
+function CountMic(){
+		var request = new XMLHttpRequest();
+		request.open("POST", "countmic.php");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+	request.onreadystatechange = function() {
+						        // 伺服器請求完成
+		if (request.readyState === 4) {
+						            // 伺服器回應成功
+			if (request.status === 200) {
+				var type = request.getResponseHeader("Content-Type");   // 取得回應類型
+				if (type.indexOf("application/json") === 0) {
+					var data = JSON.parse(request.responseText);
+					if (data.MicCount) {
+						document.getElementById("MicCount").innerHTML = data.MicCount;
+					}
+					if(data.Singer){
+						document.getElementById("singer").innerHTML = data.Singer;
+					}
+					if(data.Singer1){
+						document.getElementById("queue1").innerHTML = data.Singer1;
+					}
+					if(data.Singer2){
+						document.getElementById("queue2").innerHTML = data.Singer2;
+					}
+					if(data.Singer3){
+						document.getElementById("queue3").innerHTML = data.Singer3;
+					}
+				}
+			} else {
+				alert("發生錯誤: " + request.status);
+			}
 		}
-		ArrangeMicCheck();
-	document.getElementById("Mic").onclick = function() {
+	}
+}	
+	CountMic();
+	</script>
+
+	<script>	
+	$( document ).on( "click", "#GetMic", function() {
     // 發送 Ajax 查詢請求並處理
     var request = new XMLHttpRequest();
     request.open("POST", "micconnect.php");
@@ -308,14 +340,8 @@
                 // 判斷回應類型，這裡使用 JSON
                 if (type.indexOf("application/json") === 0) {
                     var data = JSON.parse(request.responseText);
-                    if (data.aaa) {
-                        document.getElementById("qwer").innerHTML = data.aaa;
-                    }
-                    else if(data.bbb){
-                    	document.getElementById("qwer").innerHTML = data.bbb;
-                    }
-                    else {
-                        document.getElementById("qwer").innerHTML = data.msg;
+                    if(data.Count_A){
+                        document.getElementById("MicCount").innerHTML = data.Count_A;
                     }
                 }
             } else {
@@ -323,7 +349,34 @@
             }
         }
     }
-}
+    $('#GetMic').attr('id','GottentMic');
+});
+	$( document ).on( "click", "#GottentMic", function() {
+    // 發送 Ajax 查詢請求並處理
+    var request = new XMLHttpRequest();
+    request.open("GET", "micconnect.php");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send();
+    request.onreadystatechange = function() {
+        // 伺服器請求完成
+        if (request.readyState === 4) {
+            // 伺服器回應成功
+            if (request.status === 200) {
+                var type = request.getResponseHeader("Content-Type");   // 取得回應類型
+                // 判斷回應類型，這裡使用 JSON
+                if (type.indexOf("application/json") === 0) {
+                    var data = JSON.parse(request.responseText);
+                    if(data.Count_B){
+                        document.getElementById("MicCount").innerHTML = data.Count_B;
+                    }
+                }
+            } else {
+                alert("發生錯誤: " + request.status);
+            }
+        }
+    }
+    $('#GottentMic').attr('id','GetMic');
+});
 </script>
 				<div class="clear"></div>
 				<div id="chatContent" class="chatroom">
