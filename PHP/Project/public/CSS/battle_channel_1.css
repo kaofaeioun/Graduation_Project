@@ -76,6 +76,7 @@ table {
     text-align: center;
     padding-top: 25px;
     box-sizing: border-box;
+    position: relative;
 }
 .circle_area{
     display: inline-block;
@@ -105,8 +106,11 @@ table {
 }
 svg{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 25px;
+    left: 200px;
+    width: 200px;
+    height: 200px;
+    display: block;
 }
 .vote_like{
     width: 50px;
