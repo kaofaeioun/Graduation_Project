@@ -212,7 +212,6 @@ table {
     display: none;
     background: #F8F8FF;
 }
-
 #changeemail {
     height: 60px;
     margin-left: 15%;
@@ -248,12 +247,30 @@ table {
     line-height: 25px;
     font-size: 14px;
 }
+#change{
+    cursor: pointer;
+}
+#change1{
+    cursor: pointer;
+}
+#change2{
+    cursor: pointer;
+}
+#change3{
+    cursor: pointer;
+}
+#change4{
+    cursor: pointer;
+}
 #changeinfoName{
     background-color: #25CED1;
     color: #fff;
     border-radius: 2px;
     width: 100px;
     cursor: pointer;
+}
+#changeinfoName:hover{
+    background-color: #16B7BA;
 }
 #changeinfoEmail{
     background-color: #25CED1;
@@ -262,12 +279,18 @@ table {
     width: 100px;
     cursor: pointer;
 }
+#changeinfoEmail:hover{
+    background-color: #16B7BA;
+}
 #changeinfoHobby{
     background-color: #25CED1;
     color: #fff;
     border-radius: 2px;
     width: 100px;
     cursor: pointer;
+}
+#changeinfoHobby:hover{
+    background-color: #16B7BA;
 }
 #changeinfoFavSinger{
     background-color: #25CED1;
@@ -276,12 +299,18 @@ table {
     width: 100px;
     cursor: pointer;
 }
+#changeinfoFavSinger:hover{
+    background-color: #16B7BA;
+}
 #changeinfoFav_Songs{
     background-color: #25CED1;
     color: #fff;
     border-radius: 2px;
     width: 100px;
     cursor: pointer;
+}
+#changeinfoFav_Songs:hover{
+    background-color: #16B7BA;
 }
 .profile input{
     width: 200px;
