@@ -21,14 +21,29 @@
 				$(document).ready(function(){
 					$('#user').hide();
 					$('#login').show();
-				});		
+				});
+		
 		<?php else: ?>
 			$(document).ready(function(){
 				$('#user').show();
 				$('#login').hide();
 			});
 		<?php endif; ?>
+// <!-- 這裡是登入時 寫入User_Status -->
+		<?php
+			$user_now=$_COOKIE['account'];
+			$sql="SELECT * From User Where User_ID='$user_now'";
+			$result=mysqli_query($link,$sql);
+			$row=mysqli_fetch_assoc($result);
+			
+			if ($row['User_Status']!="1") {
+				$sql2="UPDATE User SET User_Status='1' WHERE User_ID='$user_now'";
+				$result2=mysqli_query($link,$sql2);
+			}
+		?>
+// <!-- 這裡是登入時 寫入User_Status -->
 	</script>
+
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
@@ -60,6 +75,14 @@
 							</div>			
 					</div>	
 				</div>
+				在線人數:
+				<?PHP
+					include("mysql_connect.php");
+					$sql="SELECT COUNT(User_Status) From User WHERE User_Status='1'";
+					$result=mysqli_query($link,$sql);
+					$row= mysqli_fetch_row($result);
+					echo $row[0];
+				?>
 				<div class="search">
 					<form action="fans.php" method="GET" name="font1">
 						<script>
