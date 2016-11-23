@@ -103,10 +103,11 @@ table {
 .circle_2 b1{
     font-size: 25px;
 }
-.loading.progress-button svg.progress-circle path{
-    opacity: 1;
-    -webkit-transition: stroke-dashoffset 0.3s;
-    transition: stroke-dashoffset 0.3s;
+svg{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
 }
 .vote_like{
     width: 50px;
@@ -117,6 +118,7 @@ table {
     background-image: url("../image/vote_like_1.png");
     background-size:contain;
     cursor: pointer;
+    display: none;
 }
 .vote_dislike{
     width: 50px;
@@ -127,6 +129,7 @@ table {
     background-image: url("../image/vote_dislike_1.png");
     background-size:contain;
     cursor: pointer;
+    display: none;
 }
 .square{
     width:90px;
@@ -140,6 +143,7 @@ table {
     position: absolute;
     top:-40px;
     left: 35px;
+    display: none;
 }
 /*------- 框框主體 -------*/
 .square .arrow_top_int{
@@ -155,7 +159,7 @@ table {
 /*------- Top 箭頭 -------*/
 .track{
     padding-left: 40px;
-    width: 150px;
+    width: 160px;
     font-size: 20px;
     float: left;
     text-align: left;
@@ -163,7 +167,7 @@ table {
 }
 .track img{
     width:30px;
-    margin-right: 10px;
+    margin-right: 5px;
     cursor: pointer;
 }
 .vote_info{
@@ -247,7 +251,7 @@ table {
   from {background-color: #02C39A; width: 120px; left: 35px;}
   to {background-color: #F06D63; width: 120px; left: 50px;}
 }
-.get_mic input {
+.get_mic input{
   -webkit-appearance: none;
 }
 .get_mic input:after{
@@ -334,22 +338,22 @@ table {
         height: 100%;
     }
     .circle_area{
-        height: 150px;
-        width: 150px;
+        height: 180px;
+        width: 180px;
     }
     .circle_1{
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
     }
     .circle_2{
-        width: 125px;
-        height: 125px;
-        margin: -137.5px 0 0 12.5px;
-        font-size: 40px;
-        line-height: 125px;
+        width: 140px;
+        height: 140px;
+        margin: -160px 0 0 20px;
+        font-size: 50px;
+        line-height: 140px;
     }
     .circle_2 b1{
-        font-size: 20px;
+        font-size: 22px;
     }
     .board{
         margin-bottom: 15px;
@@ -423,11 +427,49 @@ table {
             height: 230px;
         }
     }
+    @-webkit-keyframes getmic-animation {
+      from {width: 90px;}
+      to {width: 90px;}
+    }
+    @-webkit-keyframes cancermic-animation {
+      from {width: 90px;}
+      to {width: 90px;}
+    }
+    /* Standard syntax */
+    @keyframes getmic-animation {
+      from {width: 90px;}
+      to {width: 90px;}
+    }
+    @keyframes cancermic-animation {
+      from {width: 90px;}
+      to {width: 90px;}
+    }
+    .get_mic input:after{
+        font-size: 18px;
+    }
 }
 
 /*------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width:500px){
+    .circle_area{
+        height: 150px;
+        width: 150px;
+    }
+    .circle_1{
+        width: 150px;
+        height: 150px;
+    }
+    .circle_2{
+        width: 125px;
+        height: 125px;
+        margin: -137.5px 0 0 12.5px;
+        font-size: 40px;
+        line-height: 125px;
+    }
+    .circle_2 b1{
+        font-size: 20px;
+    }
     .track img{
         margin-right: 5px;
         width: 25px;

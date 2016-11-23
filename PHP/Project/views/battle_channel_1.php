@@ -137,7 +137,7 @@
 						}
 					</script>
 
-					<div class="track"><img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()"><p id="singer"></p>
+					<div class="track"><img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()"><b id="singer"></b>
 						<div class="square">
 							<span class="arrow_top_int"></span>
 							追蹤成功!
