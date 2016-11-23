@@ -32,10 +32,17 @@
 	<script type="text/javascript" src="./js/smooth.js"></script>
 	<script type="text/javascript" src="./js/resampler.js"></script>
 	<script type="text/javascript" src="./js/voip.js"></script>
-	<script type="text/javascript" src="./js/d3.min.js"></script>
 	<title>MicMusic</title>
 </head>
+<style>
+svg {
+	width: 300px;
+	height: 300px;
+	display: block;
+}
+</style>
 <body>
+	<script src="http://d3js.org/d3.v3.min.js"></script>
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
 			if(!isset($_COOKIE['account'])): ?>
@@ -107,10 +114,88 @@
 						<div class="circle_area">
 								<div class="circle_1" id="circle"></div>
 								<div class="circle_2" id="CountDown"></div>
-								<div class="vote_like" id="like"><p id="likeresult"></p></div>
-								<div class="vote_dislike" id="dislike"><p id="dislikeresult"></p></div>
+								<div class="vote_like" id="like"></div>
+								<div class="vote_dislike" id="dislike"></div>
+								<!--測試用按鈕-->
+								<button class="like">Like</button>
+								<button class="dislike">Dislike</button>
+								<!--不用刪-->
 						</div>
 					</div>
+					<!--投票開始-->
+					<script>
+						var like_vote = 0,
+						    dislike_vote = 0,
+						    total_vote,like_R,dislike_R;
+
+						function CountLikeVote() {
+						  return like_R = like_vote / total_vote;
+						  console.log(like_R);
+						};
+						function CountDislikeVote() {
+						  return dislike_R = dislike_vote / total_vote;
+						  console.log(dislike_R);
+						};
+						/* Body插入svg g標籤*/
+						var svg = d3.select("body .board")
+							.append("svg")
+							.append("g");
+						/*設定長寬、圓半徑*/
+						var width = 200,
+						    height = 200,
+						    radius = 100;
+						/*D3內建layout Pie套件，並輸入資料。*/
+						var pie = d3.layout.pie()
+							.sort(null)
+							.value(function(d) {return d.value;});
+						/*D3內建svg Arc套件，並輸入內外圓半徑*/
+						var arc = d3.svg.arc()
+							.outerRadius(radius * 1)
+						  .innerRadius(radius * 0.75);
+
+						svg.append("g")
+							.attr("class", "fans");
+						svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+						var key = function(d){ return d.data.label; };
+
+						d3.select("#like").on("click", function(){
+						    like_vote = like_vote + 1;
+						    Votes(CountLikeVote());
+						});
+						d3.select("#dislike").on("click", function(){
+						    dislike_vote = dislike_vote + 1;
+						    Votes(CountDislikeVote());
+						});
+
+						function Votes(data) {
+						  total_vote = like_vote + dislike_vote;
+						  var dataset = [
+						  			{label:"Dislike", value:CountDislikeVote(), color:"#ED1B2E"},
+						        {label:"Like", value:CountLikeVote(), color:"#376FFF"}
+						  		];
+						  var fan = svg.select(".fans").selectAll("path.fan")
+						    .data(pie(dataset));
+
+						  fan.enter()
+						    .insert("path")
+						    .style("fill", function (d) {return d.data.color;})
+						    .attr("class", "fan");
+
+						  fan.transition().duration(1000)
+						  	.attrTween("d", function(d) {
+						  		this._current = this._current || d;
+						  		var interpolate = d3.interpolate(this._current, d);
+						  		this._current = interpolate(10);
+						  		return function(t) {
+						      	return arc(interpolate(t));
+						  		};
+						  	})
+
+						  fan.exit()
+						  	.remove();
+						}
+					</script>
 					<!-- 小視窗 -->
 					<script>
 						$(document).ready(function(){
@@ -194,71 +279,6 @@
 										CheckMic();*/
 					</script>
 
-					<script type="text/javascript">
-						document.getElementById("like").onclick = function() {
-					    // 發送 Ajax 查詢請求並處理
-					    var request = new XMLHttpRequest();
-					    request.open("POST", "voteconnect.php");
-					    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-					    request.send();
-					    request.onreadystatechange = function() {
-					        // 伺服器請求完成
-					        if (request.readyState === 4) {
-					            // 伺服器回應成功
-					            if (request.status === 200) {
-					                var type = request.getResponseHeader("Content-Type");   // 取得回應類型
-					                // 判斷回應類型，這裡使用 JSON
-					                if (type.indexOf("application/json") === 0) {
-					                    var data = JSON.parse(request.responseText);
-					                    if (data.like) {
-					                        document.getElementById("likeresult").innerHTML = data.like;
-					                    }
-					                    else if(data.havevote){
-					                    	document.getElementById("likeresult").innerHTML = data.havevote + "  您已經投過票";
-					                    }
-					                    else {
-					                        document.getElementById("likeresult").innerHTML = data.msg;
-					                    }
-					                }
-					            } else {
-					                alert("發生錯誤: " + request.status);
-					            }
-					        }
-					    }
-					}
-						document.getElementById("dislike").onclick = function() {
-						    // 發送 Ajax 查詢請求並處理
-						    var request = new XMLHttpRequest();
-						    request.open("GET", "voteconnect.php");
-						    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-						    request.send();
-						    request.onreadystatechange = function() {
-						        // 伺服器請求完成
-						        if (request.readyState === 4) {
-						            // 伺服器回應成功
-						            if (request.status === 200) {
-						                var type = request.getResponseHeader("Content-Type");   // 取得回應類型
-						                // 判斷回應類型，這裡使用 JSON
-						                if (type.indexOf("application/json") === 0) {
-						                    var data = JSON.parse(request.responseText);
-						                    if (data.dislike) {
-						                        document.getElementById("dislikeresult").innerHTML = data.dislike;
-						                    }
-						                    else if(data.havevote){
-						                    	document.getElementById("dislikeresult").innerHTML = data.havevote + "  您已經投過票";
-						                    }
-						                    else {
-						                        document.getElementById("dislikeresult").innerHTML = data.msg;
-						                    }
-						                }
-						            } else {
-						                alert("發生錯誤: " + request.status);
-						            }
-						        }
-						    }
-						}
-					</script>
-
 				<div class="queue">
 					<li><p id='queue1'></p></li>
 					<li><p id='queue2'></p></li>
@@ -284,7 +304,7 @@
 						<li><input type='checkbox' id='GetMic'><p id='qwer'></p></li>
 					</div>";
 					}
-				?>		
+				?>
 <script type="text/javascript">
 function CountMic(){
 		var request = new XMLHttpRequest();
@@ -320,11 +340,11 @@ function CountMic(){
 			}
 		}
 	}
-}	
+}
 	CountMic();
 	</script>
 
-	<script>	
+	<script>
 	$( document ).on( "click", "#GetMic", function() {
     // 發送 Ajax 查詢請求並處理
     var request = new XMLHttpRequest();
