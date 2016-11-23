@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="CSS/battle.css">
 	<link rel="stylesheet" href="CSS/all.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  
+
 	<title>MicMusic</title>
 </head>
 <body onunload="if(event.clientY<0) document.location=document.location.href">
@@ -57,8 +61,18 @@
 					</div>	
 				</div>
 				<div class="search">
-					<input type="text" class="search_blank" placeholder="輸入ID找歌手">
-					<input type="image" class="search_image" src="image/search.png">
+					<form action="fans.php" method="GET" name="font1">
+						<script>
+						    $(function() {
+						        $( "#searchinfo" ).autocomplete({
+						            source: 'search1.php'
+						        });
+						    });
+						</script>
+						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
+						<input type="image" class="search_image" src="image/search.png" id="search_image">
+						
+					</form>
 					
 				</div>
 			</div>
