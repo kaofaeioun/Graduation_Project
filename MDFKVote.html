@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 960px;
+  height: 500px;
+  position: relative;
+}
+svg {
+	width: 100%;
+	height: 100%;
+}
+</style>
+<body>
+<button class="randomize">randomize</button>
+<button class="Like">Like</button>
+<button class="Unlike">Unlike</button>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+var like_vote = 0,
+    unlike_vote = 0,
+    total_vote,like_R,unlike_R;
+
+function CountLikeVote() {
+
+  return like_R = like_vote / total_vote;
+  console.log(like_R);
+};
+function CountUnlikeVote() {
+  return unlike_R = unlike_vote / total_vote;
+  console.log(unlike_R);
+};
+
+/* 設定資料格式＆顏色*/
+
+/* Body插入svg g標籤*/
+var svg = d3.select("body")
+	.append("svg")
+	.append("g");
+/*設定長寬、圓半徑*/
+var width = 200,
+    height = 200,
+    radius = 100;
+/*D3內建layout Pie套件，並輸入資料。*/
+var pie = d3.layout.pie()
+	.sort(null)
+	.value(function(d) {return d.value;});
+/*D3內建svg Arc套件，並輸入內外圓半徑*/
+var arc = d3.svg.arc()
+	.outerRadius(radius * 1)
+  .innerRadius(radius * 0.75);
+/*g tag 加入
+var g = svg.selectAll(".fan")
+  .data(pie(dataset))
+  .enter()
+  .append("g")
+  .attr("class", "fan");
+
+g.append("path")
+  .attr("d", arc)
+  .attr("fill", function(d){ return d.data.color; });*/
+svg.append("g")
+	.attr("class", "fans");
+
+svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var key = function(d){ return d.data.label; };
+
+d3.select(".Like").on("click", function(){
+    like_vote = like_vote + 1000;
+    Votes(CountLikeVote());
+});
+
+d3.select(".Unlike").on("click", function(){
+    unlike_vote = unlike_vote + 1000;
+    Votes(CountUnlikeVote());
+});
+
+function Votes(data) {
+  total_vote = like_vote + unlike_vote;
+  var dataset = [
+  			{label:"Unlike", value:CountUnlikeVote(), color:"#ED1B2E"},
+        {label:"Like", value:CountLikeVote(), color:"#376FFF"}
+  		];
+  var fan = svg.select(".fans").selectAll("path.fan")
+    .data(pie(dataset));
+
+  fan.enter()
+    .insert("path")
+    .style("fill", function (d) {return d.data.color;})
+    .attr("class", "fan");
+
+  fan.transition().duration(1000)
+  	.attrTween("d", function(d) {
+  		this._current = this._current || d;
+  		var interpolate = d3.interpolate(this._current, d);
+  		this._current = interpolate(10);
+  		return function(t) {
+      	return arc(interpolate(t));
+  		};
+  	})
+
+  fan.exit()
+  	.remove();
+}
+function change(data) {
+  total_vote = like_vote + unlike_vote;
+
+	/* ------- PIE SLICES -------*/
+	var slice = svg.select(".slices").selectAll("path.slice")
+		.data(pie(data), key);
+
+	slice.enter()
+		.insert("path")
+		.style("fill", function(d) { return color(d.data.label);})//塞顏色
+		.attr("class", "slice");//加class
+
+	slice.transition().duration(1000)
+		.attrTween("d", function(d) {
+			this._current = this._current || d;
+			var interpolate = d3.interpolate(this._current, d);
+			this._current = interpolate(10);
+			return function(t) {
+				return arc(interpolate(t));
+			};
+		})
+
+	slice.exit()
+		.remove();
+};
+
+</script>
+</body>

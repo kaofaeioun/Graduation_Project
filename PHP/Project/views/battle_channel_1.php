@@ -284,7 +284,7 @@
 						<li><input type='checkbox' id='GetMic'><p id='qwer'></p></li>
 					</div>";
 					}
-				?>		
+				?>
 <script type="text/javascript">
 function CountMic(){
 		var request = new XMLHttpRequest();
@@ -320,11 +320,11 @@ function CountMic(){
 			}
 		}
 	}
-}	
+}
 	CountMic();
 	</script>
 
-	<script>	
+	<script>
 	$( document ).on( "click", "#GetMic", function() {
     // 發送 Ajax 查詢請求並處理
     var request = new XMLHttpRequest();

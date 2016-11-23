@@ -65,25 +65,25 @@ function randomData (){
 
 var like_vote = 10,
     unlike_vote = 5,
-    total_vote = like_vote + unlike_vote,
-    like_R = like_vote / total_vote,
-    unlike_R = unlike_vote / total_vote;
+    total_vote,like_R,unlike_R;
 
 
 function like() {
   var labels = color.domain();
   return labels.map(function(label){
-      return {label:label, value:like_R}
+      return {label:label, value:CountLikeVote()}
   });
 }
 function unlike() {
   var labels = color.domain();
   return labels.map(function(label){
-      return {label:label, value:unlike_R}
+      return {label:label, value:CountUnlikeVote()}
   });
 }
-
+//
 change(randomData());
+change(like());
+change(unlike());
 
 d3.select(".randomize")
 	.on("click", function(){
@@ -91,14 +91,24 @@ d3.select(".randomize")
 	});
 
 d3.select(".Like").on("click", function(){
+    ++like_vote;
     change(like());
 });
 
 d3.select(".Unlike").on("click", function(){
-    change(unlike());
+    ++unlike_vote;
+    change(like());
 });
 
+function CountLikeVote() {
+  return like_R = like_vote / total_vote;
+};
+function CountUnlikeVote() {
+  return unlike_R = unlike_vote / total_vote;
+};
+
 function change(data) {
+  total_vote = like_vote + unlike_vote;
 
 	/* ------- PIE SLICES -------*/
 	var slice = svg.select(".slices").selectAll("path.slice")
@@ -108,13 +118,12 @@ function change(data) {
 		.insert("path")
 		.style("fill", function(d) { return color(d.data.label);})//塞顏色
 		.attr("class", "slice");//加class
-
 	slice.transition().duration(1000)
 		.attrTween("d", function(d) {
 			this._current = this._current || d;
 			var interpolate = d3.interpolate(this._current, d);
-			this._current = interpolate(0);
-      console.log(this._current)
+			this._current = interpolate(10);
+      console.log(d);
 			return function(t) {
 				return arc(interpolate(t));
 			};
