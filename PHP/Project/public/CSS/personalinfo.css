@@ -135,6 +135,36 @@ table {
     background: #fff;
     cursor: pointer;
 }
+.change_ok{
+    width: 180px;
+    height: 30px;
+    border: 0.5px solid #c5c5c5;
+    box-shadow: 0 0 15px rgba(0,0,0,.18);
+    background: #fff;
+    font-size: 18px;
+    position: absolute;
+    top: 85px;
+    left: 10px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 2px;
+    display: none;
+}
+.change_fail{
+    width: 180px;
+    height: 30px;
+    border: 0.5px solid #c5c5c5;
+    box-shadow: 0 0 15px rgba(0,0,0,.18);
+    background: #fff;
+    font-size: 18px;
+    position: absolute;
+    top: 85px;
+    left: 10px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 2px;
+    display: none;
+}
 .send{
     float: left;
     border: 1px solid #00bfff;
