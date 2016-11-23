@@ -88,7 +88,7 @@
 				<ul>
 					<?php
 						$now = $_COOKIE['account'];
-						$sql = "SELECT Tracked_Name FROM Track where Track_Name = '$now' order by Tracked_Name";
+						$sql = "SELECT Tracked_ID FROM Track where Track_ID = '$now' order by Tracked_ID";
 						$result=mysqli_query($link,$sql);
 						$row=mysqli_num_rows($result);
 						for ($i = 0; $i < $row; $i++) { 
