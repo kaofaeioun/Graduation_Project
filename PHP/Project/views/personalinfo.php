@@ -238,7 +238,7 @@
 							<b>修改電子郵件/Edit E-mail:</b>
 							<div id="change_name_blank">
 							
-									<input type="email" id="correctinfoEmail" placeholder="按此編輯你的E-mail" required=""> value=<?php echo $email; ?>>
+									<input type="email" id="correctinfoEmail" placeholder="按此編輯你的E-mail" value="<?php echo $email; ?>">
 									<input type="button" id="changeinfoEmail" value="確定修改">
 								
 							<script type="text/JavaScript">
