@@ -132,44 +132,51 @@ svg{
     background-size:contain;
     cursor: pointer;
 }
-.square{
+#square{
     width:90px;
-    height:27px;
+    height:30px;
     background-color:#01abad;
     text-align: center;
     border-radius: 5px;
-    line-height: 27px;
+    line-height: 30px;
     font-size: 16px;
     color: #fff;
     position: absolute;
-    top:-40px;
-    left: 35px;
+    top:-35px;
+    left: 40px;
     display: none;
 }
-/*------- 框框主體 -------*/
-.square .arrow_top_int{
-    width:0px;
-    height:0px;
-    border-width:10px;
-    border-style:solid;
-    border-color:#01abad transparent transparent transparent ;
-    position:absolute;
-    top:25px;
-    left:10px;
-}
-/*------- Top 箭頭 -------*/
 .track{
     padding-left: 40px;
-    width: 160px;
-    font-size: 20px;
-    float: left;
     text-align: left;
     position: relative;
 }
-.track img{
+.track input{
+   -webkit-appearance: none;
+}
+.track input[type="checkbox"]{
+    background: url("../image/cancerlike.png") no-repeat;
+    background-size:contain;
     width:30px;
-    margin-right: 5px;
+    height: 30px;
     cursor: pointer;
+}
+.track input[type="checkbox"]:checked{
+    background: url("../image/like.png") no-repeat;
+    background-size:contain;
+    width:30px;
+    height: 30px;
+    cursor: pointer;
+}
+#pic{
+    float: left;
+}
+#singer{
+    margin-left: 5px;
+    width: 200px;
+    font-size: 20px;
+    width: 40px;
+    line-height: 40px;
 }
 .vote_info{
     width: 250px;

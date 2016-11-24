@@ -189,40 +189,103 @@
 							</script>
 						</div>
 					</div>
-					<!--投票開始-->
-					
+
 					<!-- 小視窗 -->
 					<script>
 						$(document).ready(function(){
-  							$('.square').hide();
-  								//隱藏要呼叫的div
   							$('#pic').click(function(){
   								//指定呼叫按鈕
-    							$('.square').fadeToggle(500);
+    							$('#square').fadeToggle(500);
     							//顯示隱藏的div
-    							$('.square').delay(800).fadeOut(500);
+    							$('#square').delay(500).fadeOut(500);
   							});
 						});
 					</script>
-					<!-- 圖變色 -->
-					<script>
-						function changeSrc(){
-							var imgObj = document.getElementById("pic");
-							if (imgObj.getAttribute("src",2) == "image/cancerlike.png"){
-	  							imgObj.src = "image/like.png";
-							}
-							else{
-								imgObj.src = "image/cancerlike.png";
-							}
-						}
-					</script>
+<script type="text/javascript">
+function CountMic(){
+		var request = new XMLHttpRequest();
+		request.open("POST", "countmic.php");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+	request.onreadystatechange = function() {
+						        // 伺服器請求完成
+		if (request.readyState === 4) {
+						            // 伺服器回應成功
+			if (request.status === 200) {
+				var type = request.getResponseHeader("Content-Type");   // 取得回應類型
+				if (type.indexOf("application/json") === 0) {
+					var data = JSON.parse(request.responseText);
+					if (data.MicCount) {
+						document.getElementById("MicCount").innerHTML = data.MicCount;
+					}
+					if(data.Singer){
+						document.getElementById("singer").innerHTML = data.Singer;
+					}
+					if(data.Singer1){
+						document.getElementById("queue1").innerHTML = data.Singer1;
+					}
+					if(data.Singer2){
+						document.getElementById("queue2").innerHTML = data.Singer2;
+					}
+					if(data.Singer3){
+						document.getElementById("queue3").innerHTML = data.Singer3;
+					}
+				}
+			} else {
+				alert("發生錯誤: " + request.status);
+			}
+		}
+	}
+}
+	CountMic();
+	</script>
+					<div class="track">
+						<?php
+							$usernow = $_COOKIE['account'];
+							$sql1 = "SELECT User_ID FROM Mic where 1";
+							$result1 =mysqli_query($link,$sql1);
+							$row1=mysqli_fetch_row($result1);
+							$singer=$row1[0];				
+							$sql2 = "SELECT Track_time FROM Track where Track_ID='$usernow' && Tracked_ID='$singer'";
+							$result2 = mysqli_query($link,$sql2);
+							$row2 = mysqli_fetch_row($result2);
+							if (isset($row2[0])) {
+								echo "
+									<div id='pic'>
+										<input type='checkbox' id='tracked' checked>
+									</div>
+								";
+							}else{
+								echo "
+									<div id='pic'>
+										<input type='checkbox' id='notrack'>
+									</div>
+								";
+							}						
+						?>
+						<div id="square"></div>
+						<script type="text/javascript">
+								$( document ).on( "click", "#tracked", function() {
+	  								var i = document.getElementById('singer').innerHTML;	
+	  								var request = new XMLHttpRequest();
+								    request.open("GET", "followcancel.php?Tracked_ID="+i+"&Track_ID=<?php echo $id;?>");
+								    request.send();
+								    $('#tracked').attr('id','notrack');
+								    document.getElementById("square").innerHTML = ("取消追蹤!");		
+								});
+								$( document ).on( "click", "#notrack", function() {
+									var i = document.getElementById('singer').innerHTML;
+	  								var request = new XMLHttpRequest();
+								    request.open("GET", "follow.php?Tracked_ID="+i+"&Track_ID=<?php echo $id;?>");
+								    request.send();
+								    $('#notrack').attr('id','tracked');
+								    document.getElementById("square").innerHTML = ("成功追蹤!");
+								});
+						</script>
 
-					<div class="track"><img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()"><b id="singer"></b>
-						<div class="square">
-							<span class="arrow_top_int"></span>
-							追蹤成功!
-						</div>
+						
 					</div>
+					<b id="singer"></b>
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數">87</li>
@@ -313,44 +376,7 @@
 					</div>";
 					}
 				?>
-<script type="text/javascript">
-function CountMic(){
-		var request = new XMLHttpRequest();
-		request.open("POST", "countmic.php");
-		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		request.send();
-	request.onreadystatechange = function() {
-						        // 伺服器請求完成
-		if (request.readyState === 4) {
-						            // 伺服器回應成功
-			if (request.status === 200) {
-				var type = request.getResponseHeader("Content-Type");   // 取得回應類型
-				if (type.indexOf("application/json") === 0) {
-					var data = JSON.parse(request.responseText);
-					if (data.MicCount) {
-						document.getElementById("MicCount").innerHTML = data.MicCount;
-					}
-					if(data.Singer){
-						document.getElementById("singer").innerHTML = data.Singer;
-					}
-					if(data.Singer1){
-						document.getElementById("queue1").innerHTML = data.Singer1;
-					}
-					if(data.Singer2){
-						document.getElementById("queue2").innerHTML = data.Singer2;
-					}
-					if(data.Singer3){
-						document.getElementById("queue3").innerHTML = data.Singer3;
-					}
-				}
-			} else {
-				alert("發生錯誤: " + request.status);
-			}
-		}
-	}
-}
-	CountMic();
-	</script>
+
 
 	<script>
 	$( document ).on( "click", "#GetMic", function() {
