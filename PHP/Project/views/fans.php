@@ -25,7 +25,7 @@
 		<?php include("mysql_connect.php");
 			if(!isset($_COOKIE['account'])): ?>	
 				location.replace("login.php");
-		<?php else: ?>
+		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
 				$('#login').hide();
@@ -55,6 +55,9 @@
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
+					<script type="text/javascript">
+						document.getElementById("user").style.backgroundImage = "url('photo.php?id=<?php echo $id;?>')";
+					</script>
 					<div class="user_info">
 						<ul>
 							<li><p>Rank</p><img src="image/medal.png"></li>

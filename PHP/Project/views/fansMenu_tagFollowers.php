@@ -22,7 +22,7 @@
 		<?php include("mysql_connect.php");
 			if(!isset($_COOKIE['account'])): ?>	
 				location.replace("login.php");
-		<?php else: ?>
+		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
 				$('#login').hide();

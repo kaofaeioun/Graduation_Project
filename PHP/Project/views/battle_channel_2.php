@@ -7,7 +7,26 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	<link rel="Shortcut icon" type="image/x-icon" href="img/favicon.ico">
+	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
+ 	<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
+ 	<script>
+ 	// Initialize Firebase
+ 	var config = {
+ 		apiKey: "AIzaSyAVtn4QK14i_8UhzOR3hqQkwcdo1zGhyJE",
+ 		authDomain: "micmusic-69fe1.firebaseapp.com",
+ 		databaseURL: "https://micmusic-69fe1.firebaseio.com",
+ 		storageBucket: "micmusic-69fe1.appspot.com",
+ 		messagingSenderId: "16912515697"
+ 	};
+ 	firebase.initializeApp(config);
+ 	var client_name;
+ 	firebase.database().ref("/MicMusic/User/1/").once('value').then(function(snapshot){
+ 		client_name = snapshot.val().User_Name;
+ 		console.log(client_name);
+ 	});
+ 	console.log(client_name);
+ 	</script>
+	<link rel="Shortcut icon" type="image/x-icon" href="favicon.ico">
 
 	<script>
 		var client = { //is observerd
@@ -32,12 +51,11 @@
 <body>
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
-			if(!isset($_COOKIE['account'])): ?>
+			if(!isset($_COOKIE['account'])): ?>	
 				location.replace("login.php");
-		<?php else: ?>
+		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
-				$('#login').hide();
 			});
 		<?php endif; ?>
 	</script>
@@ -47,8 +65,6 @@
 			<h1><img src="image/Logo2.png"></h1>
 			<script type="text/javascript">
 				$(document).ready(function(){
-  					$('.user_info').hide();
-  					//隱藏要呼叫的div
   					$('#user').click(function() {
   						//指定呼叫按鈕
     					$('.user_info').fadeToggle(300);
@@ -60,6 +76,9 @@
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
+					<script type="text/javascript">
+						document.getElementById("user").style.backgroundImage = "url('photo.php?id=<?php echo $id;?>')";
+					</script>
 					<div class="user_info">
 						<ul>
 							<li><p>Rank</p><img src="image/medal.png"></li>
