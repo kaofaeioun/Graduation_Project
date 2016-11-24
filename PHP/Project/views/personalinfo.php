@@ -91,7 +91,7 @@
 			<div class="profile_pic">
 				<form action="" method="POST" enctype="multipart/form-data">
 				<div class="dialog">
-					<input type="submit" class="send" value="確定">
+					<input type="submit" class="send" value="確定" id="send">
 					<input type="button" class="cancel" value="取消" onclick="loadImageFileCancel()">				
 				</div>
 				<div class="change_ok">更換成功!</div>
@@ -99,11 +99,11 @@
 				<img src="photo.php?id=<?php echo $id?>" id="userimg">
 				<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
 				<input type="file" name="upload" id="upload" onchange="loadImageFile()"/>
-				</form>
 			</div>
 			<?php
 				if(isset($_COOKIE['account'])){
-					if (isset($_FILES["upload"]["size"])){
+					if(isset($_FILES["upload"]["size"])){
+						if ($_FILES["upload"]["size"]<2000000&&$_FILES["upload"]["size"]>0){
 						$id=$_COOKIE['account'];	
 				        $file = fopen($_FILES["upload"]["tmp_name"], "rb");
 				        $fileContents = fread($file, filesize($_FILES["upload"]["tmp_name"]));
@@ -114,13 +114,13 @@
 				        echo "<script>$('.change_ok').fadeIn(500)</script>";
 				        echo "<script>$('.change_ok').delay(800).fadeOut(500)</script>";
 					}
-					else{
+					elseif($_FILES["upload"]["size"]>2000000||$_FILES["upload"]["size"]==0){
 						echo "<script>$('.change_fail').fadeIn(500)</script>";
 				        echo "<script>$('.change_fail').delay(800).fadeOut(500)</script>";
 					}
-				}	
+				}
+			}		
 			?>
-
 			<script type="text/javascript">
 			oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
 
@@ -142,7 +142,7 @@
 				$(".dialog").fadeOut();
 				document.getElementById("userimg").src ="photo.php?id=<?php echo $id?>" ;
 			}	
-		</script>
+			</script>
 		
 				<div class="profile">
 					<li>
