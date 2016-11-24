@@ -49,6 +49,7 @@
 				<?php if ($_COOKIE['account'] == $_GET['name']): ?>
 					$(document).ready(function(){
 						$('.trackbutton').hide();
+						$('.rightbar').css("margin-top","12px");
 					});
 				<?php endif; ?>
 			</script>
@@ -138,13 +139,13 @@
 							    request.open("GET", "followcancel.php?Track_ID=<?php echo $usernow;?>&Tracked_ID=<?php echo $an;?>");
 							    request.send();
 							    $('#followed').attr('id','follow');		
-								});
+							});
 							$( document ).on( "click", "#follow", function() {
   								var request = new XMLHttpRequest();
 							    request.open("GET", "follow.php?Track_ID=<?php echo $usernow;?>&Tracked_ID=<?php echo $an;?>");
 							    request.send();
 							    $('#follow').attr('id','followed');
-								});
+							});
 					</script>
 				</div>
 				<div class="clear"></div>
