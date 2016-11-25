@@ -26,8 +26,8 @@ app.get('/battle.html',function(req,res,next){
 app.get('/channel',function(req,res,next){
   res.sendfile('views/channel.html');
 });
-app.get('/setting',function(req,res,next){
-  res.sendfile('views/setting.html');
+app.get('/MDFKvote.html',function(req,res,next){
+  res.sendfile('views/MDFKvote.html');
 });
 app.get('/login',function(req,res,next){
   res.sendfile('views/login.html');

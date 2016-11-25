@@ -116,7 +116,6 @@
 							<script type="text/javascript" src="./js/vote.js"></script>
 						</div>
 					</div>
-
 					<!-- 小視窗 -->
 					<script>
 						$(document).ready(function(){

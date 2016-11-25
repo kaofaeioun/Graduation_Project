@@ -79,7 +79,6 @@ $(document).ready(function() {
 		    chatSend($("#chatInput").val());
 		}
 	});
-
 	for(var i=0;i<commonBitRates.length;i++) {
 		if(commonBitRates[i] <= 16) {
 			var s = "";

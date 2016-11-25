@@ -4,15 +4,14 @@ $.getJSON("js/vote.json", function(data){
   like_vote = data.like_vote;
   dislike_vote = data.dislike_vote;
 });
+
 var total_vote,like_R,dislike_R;
 
 function CountLikeVote() {
   return like_R = like_vote / total_vote;
-  console.log(like_R);
 };
 function CountDislikeVote() {
   return dislike_R = dislike_vote / total_vote;
-  console.log(dislike_R);
 };
 /* Body插入svg g標籤*/
 var svg = d3.select("body .board")
