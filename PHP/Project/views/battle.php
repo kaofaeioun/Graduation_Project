@@ -53,18 +53,6 @@
 				$('#login').hide();
 			});
 		<?php endif; ?>
-// <!-- 這裡是登入時 寫入User_Status -->
-		<?php
-			$user_now=$_COOKIE['account'];
-			$sql="SELECT * From User Where User_ID='$user_now'";
-			$result=mysqli_query($link,$sql);
-			$row=mysqli_fetch_assoc($result);
-			if ($row['User_Status']!="1") {
-				$sql2="UPDATE User SET User_Status='1' WHERE User_ID='$user_now'";
-				$result2=mysqli_query($link,$sql2);
-			}
-		?>
-// <!-- 這裡是登入時 寫入User_Status -->
 	</script>
 
 	<div class="wrap">
@@ -141,23 +129,33 @@
 
 		在線人數:
 				<div id="Countmanshow"></div>
+				<script type="text/javascript" src="countman.php"></script>
+
+				<!-- 66666666666666666666666666666666666666666666666666666666666666666666 -->
 				<script>
 					Countman();
 					function Countman(){
-						<?php
-							
-							date_default_timezone_set('Asia/Taipei');
-							$t = date("Y/m/d H:i:s");
-							$AT = strtotime($t)-60;
-							$t = date("Y/m/d H:i:s" ,$AT);
-							$sql="SELECT COUNT(User_ID) FROM UserStatus WHERE Status_Time > '$t'";
-							$result=mysqli_query($link,$sql);
-							$row1=mysqli_fetch_row($result);
-							
-						?>
-						var test = <?php echo $row1[0];?>;
-						document.getElementById('Countmanshow').innerHTML = test;
-						setTimeout("Countman()", 1000);
+						var request = new XMLHttpRequest();
+    					request.open("POST", "countman.php");
+    					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					    request.send();
+					    request.onreadystatechange = function() {
+					        if (request.readyState === 4) {
+					            if (request.status === 200) {
+					                var type = request.getResponseHeader("Content-Type");
+					                if (type.indexOf("application/json") === 0) {               
+					                    var data = JSON.parse(request.responseText);
+					                    if (data.msg) {
+					                        document.getElementById("Countmanshow").innerHTML = data.msg;
+					                    }
+					                }
+					            } else {
+					                alert("發生錯誤" + request.status);
+					            }
+					        }
+					    }
+						
+						setTimeout("Countman()", 180000);
 
 						// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
 						// $result3=mysqli_query($link,$sql3);
