@@ -1,21 +1,28 @@
 //自動padding置中 
 function PicAutoMid() {
-	var img_width = document.getElementById("userimg").width;
-	var img_height = document.getElementById("userimg").height;
+	var x = document.getElementById("userimg").complete;
+	if(x==true){
+		var img_width = document.getElementById("userimg").width;
+		var img_height = document.getElementById("userimg").height;
 
-	if (img_width > img_height){
-		var img_padding = (200-img_height)/2;
-		$(document).ready(function(){
-			$('.profile_pic').css("padding-top",img_padding);
-			$('.profile_pic').css("padding-bottom",img_padding);
-		});
-	}	
-	else if (img_width < img_height){
-		var img_padding = (200-img_width)/2;
-		$(document).ready(function(){
-			$('.profile_pic').css("padding-left",img_padding);
-			$('.profile_pic').css("padding-right",img_padding);
-		});
+		if (img_width > img_height){
+			var img_padding = (200-img_height)/2;
+			$(document).ready(function(){
+				$('.profile_pic').css("padding-top",img_padding);
+				$('.profile_pic').css("padding-bottom",img_padding);
+			});
+		}	
+		else if (img_width < img_height){
+			var img_padding = (200-img_width)/2;
+			$(document).ready(function(){
+				$('.profile_pic').css("padding-left",img_padding);
+				$('.profile_pic').css("padding-right",img_padding);
+			});
+		}
+		clearTimeout(); 
+	}
+	else{
+		setTimeout("PicAutoMid()", 50);
 	}
 }
 // END
