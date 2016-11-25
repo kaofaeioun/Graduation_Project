@@ -1,3 +1,28 @@
+<?php
+	include ("mysql_connect.php");
+	$Status="battle.php";
+	$user_now=$_COOKIE['account'];
+	$sql="SELECT Status_Time FROM UserStatus WHERE User_ID='$user_now' && Status='$Status'";
+	$result=mysqli_query($link,$sql);
+	$row=mysqli_fetch_assoc($result);
+	if (isset($row)){
+		// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
+		// $result3=mysqli_query($link,$sql3);
+		// $row3=mysqli_fetch_assoc($result3);
+		date_default_timezone_set('Asia/Taipei');
+		$t= date("Y/m/d H:i:s");
+		// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
+		$sql="UPDATE UserStatus SET Status_Time='$t' WHERE User_ID='$user_now' && Status='$Status'";
+		$result=mysqli_query($link,$sql);
+		
+	}else{
+		date_default_timezone_set('Asia/Taipei');
+		$t= date("Y/m/d H:i:s");
+		$sql="INSERT INTO UserStatus (Status,User_ID,Status_Time) VALUES ('$Status','$user_now','$t')";
+		$result2=mysqli_query($link,$sql);
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,15 +45,28 @@
 				$(document).ready(function(){
 					$('#user').hide();
 					$('#login').show();
-				});	
-					
-		<?php else: $id=$_COOKIE['account']; ?>
+				});
+		
+		<?php else: ?>
 			$(document).ready(function(){
 				$('#user').show();
 				$('#login').hide();
 			});
 		<?php endif; ?>
+// <!-- 這裡是登入時 寫入User_Status -->
+		<?php
+			$user_now=$_COOKIE['account'];
+			$sql="SELECT * From User Where User_ID='$user_now'";
+			$result=mysqli_query($link,$sql);
+			$row=mysqli_fetch_assoc($result);
+			if ($row['User_Status']!="1") {
+				$sql2="UPDATE User SET User_Status='1' WHERE User_ID='$user_now'";
+				$result2=mysqli_query($link,$sql2);
+			}
+		?>
+// <!-- 這裡是登入時 寫入User_Status -->
 	</script>
+
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
@@ -47,12 +85,6 @@
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div id="user">
-					<script type="text/javascript">
-						document.getElementById("user").style.backgroundImage = "url('photo.php?id=<?php echo $id;?>')";
-					</script>
-					<script type="text/javascript">
-						document.getElementById("user").style.backgroundImage = "url('photo.php?id=<?php echo $id;?>')";
-					</script>
 					<div class="user_info">
 						<ul>
 							<li><p>Rank</p><img src="image/medal.png"></li>
@@ -103,6 +135,35 @@
 				</ul>
 			</div>
 		</div>
+
+		在線人數:
+				<div id="Countmanshow"></div>
+				<script>
+					Countman();
+					function Countman(){
+						<?php
+							
+							date_default_timezone_set('Asia/Taipei');
+							$t = date("Y/m/d H:i:s");
+							$AT = strtotime($t)-60;
+							$t = date("Y/m/d H:i:s" ,$AT);
+							$sql="SELECT COUNT(User_ID) FROM UserStatus WHERE Status_Time > '$t'";
+							$result=mysqli_query($link,$sql);
+							$row1=mysqli_fetch_row($result);
+							
+						?>
+						var test = <?php echo $row1[0];?>;
+						document.getElementById('Countmanshow').innerHTML = test;
+						setTimeout("Countman()", 1000);
+
+						// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
+						// $result3=mysqli_query($link,$sql3);
+						// $row3=mysqli_fetch_assoc($result3);
+						
+						// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
+					}
+
+				</script>
 	</div>
 	<div class="footer_space">
 		<footer>
