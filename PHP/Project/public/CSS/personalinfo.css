@@ -72,13 +72,14 @@ table {
     width: 200px;
     height: 200px;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 #userimg{
-    width: 200px;
-    height: 200px;
-    margin-bottom: 20px;    
+    max-width: 200px;
+    max-height: 200px;    
     border-radius: 5px;   
     cursor: pointer;
+    text-align: center;
 }
 .upload_area{
     width: 200px;
