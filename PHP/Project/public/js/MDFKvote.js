@@ -91,8 +91,17 @@ $(function() {
     var bars = d3.select(".container")
       .selectAll(".bar-wrapper")
       .data(data);
-    var barEnter = bars
-      .enter()
+
+    var fan = svg.select(".fans").selectAll("path.fan")
+      .data(pie(data));
+
+    fan.enter()
+      .insert("path")
+      .style("fill", function (d) {return d.data.color;})
+      .attr("class", "fan");
+
+
+    var barEnter = bars.enter()
       .append("div")
       .attr("class", "bar-wrapper")
     barEnter.append("button")
