@@ -157,7 +157,7 @@ nav {
     margin-top: auto;
     margin-bottom: auto;
 }
-.rightbar img{
+.rightbar #userimg{
     float: none;
     width: 170px;
     height: 170px;
@@ -171,7 +171,7 @@ nav {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 5; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -181,11 +181,11 @@ nav {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
-.modal-content {
+.modal-content #img01 img{
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    width: 100%;
+    height: 100%;
 }
 #caption {
     margin: auto;
