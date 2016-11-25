@@ -1,22 +1,3 @@
-/*var client = { //is observerd
-	"pp" : "../img/profile.jpg", //Profil Pic
-	"nn" : "Fuck U", //Nickname
-	"mg" : 4/100, // minGain
-	"mic" : true,
-	"sound" : true
-}
-$.ajax({
-  url: "/client.json",
-  type: "GET",
-  dataType: "json",
-  success: function(Jdata) {
-    alert("SUCCESS!!!");
-  },
-
-  error: function() {
-    alert("ERROR!!!");
-  }
-});*/
 var settingsModalOpen = false;
 var clientMsgsForTimeout = [];
 
@@ -83,36 +64,6 @@ $(document).ready(function() {
 
 	$(".onlyIfMicInputIsOn").hide();
 
-	$("#toggleSound").click(function() {
-		client.sound = !client.sound;
-		checkMicAndSound();
-	});
-
-	$("#toggleMic").click(function() {
-		client.mic = !client.mic;
-		checkMicAndSound();
-	});
-
-	function checkMicAndSound() {
-		if(!client.sound){
-			$("#toggleSound").find("i").removeClass("mdi-av-volume-up");
-			$("#toggleSound").find("i").addClass("mdi-av-volume-off");
-		} else {
-			$("#toggleSound").find("i").addClass("mdi-av-volume-up");
-			$("#toggleSound").find("i").removeClass("mdi-av-volume-off");
-		}
-
-		if(!client.mic){
-			$("#toggleMic").find("i").removeClass("mdi-av-mic");
-			$("#toggleMic").find("i").addClass("mdi-av-mic-off");
-		} else {
-			$("#toggleMic").find("i").addClass("mdi-av-mic");
-			$("#toggleMic").find("i").removeClass("mdi-av-mic-off");
-		}
-	}
-	checkMicAndSound();
-
-
 	function chatSend(text) {
 		text = $.trim(text);
 		if(text!=="") {
@@ -122,62 +73,12 @@ $(document).ready(function() {
 		}
 	}
 
-	$("#chatSend").click(function() {
-		chatSend($("#chatInput").val());
-	});
 	$( "#chatInput" ).keyup(function( event ) {
 		if ( event.which == 13 ) {
 		    event.preventDefault();
 		    chatSend($("#chatInput").val());
 		}
 	});
-
-	$("#nickname").val(client.nn);
-	if(client.pp != null)
-		$('#sProfilePic').attr( "src", client.pp );
-
-	$("#inputProfilePic").change(function(){
-	    readImage( this );
-	});
-
-	function readImage(input) {
-	    if ( input.files && input.files[0] ) {
-	    	if(input.files[0].type.indexOf("image")===-1) {
-	    		alert("Bitte ein Bild wählen!");
-	    	} else if(input.files[0].size>500000) {
-	    		alert("Bitte ein Bild kleiner 0.5MB wählen!");
-	    	} else {
-	    		var FR= new FileReader();
-		        FR.onload = function(e) {
-		        	client.pp = e.target.result;
-		             $('#sProfilePic').attr( "src", e.target.result );
-		        };
-		        FR.readAsDataURL(input.files[0] );
-	    	}
-	    }
-	}
-
-	$("#nickname").focusout(function() {
-		var nick = $.trim($("#nickname").val());
-		if(nick !== "")
-			client.nn = nick;
-	});
-
-	$('.slider').noUiSlider({
-		start: [4],
-		range: {
-			'min': 0,
-			'max': 100
-		}
-	});
-
-	$(".slider").on({
-		set: function(){
-			myMinGain = Math.pow($(this).val()/100, 4);
-			client.mg = myMinGain;
-		}
-	});
-
 
 	for(var i=0;i<commonBitRates.length;i++) {
 		if(commonBitRates[i] <= 16) {
