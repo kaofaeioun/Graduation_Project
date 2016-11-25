@@ -169,14 +169,14 @@
 						var img_width = document.getElementById("bigphoto").width;
 						var img_height = document.getElementById("bigphoto").height;
 						if (img_width > img_height){
-							var img_padding = (500-img_height)/2;
+							var img_padding = (700-img_height)/2;
 							$(document).ready(function(){
 								$('.entire_photo').css("padding-top",img_padding);
 								$('.entire_photo').css("padding-bottom",img_padding);
 							});
 						}	
 						else if (img_width < img_height){
-							var img_padding = (750-img_width)/2;
+							var img_padding = (900-img_width)/2;
 							$(document).ready(function(){
 								$('.entire_photo').css("padding-left",img_padding);
 								$('.entire_photo').css("padding-right",img_padding);
@@ -190,7 +190,7 @@
 					if(isset($rowget['User_ID'])){
 					echo "<img src='photo.php?id=".$rowget['User_ID']."' id='userimg'>
 						<div id='myModal' class='modal'>
-							<div class='entire_photo' style='width: 750px;height: 500px;background-color:black;box-sizing: border-box;margin:auto;'>
+							<div class='entire_photo' style='width: 900px;height: 700px;background-color:black;box-sizing: border-box;margin:auto;'>
 								<img class='modal-content' id='bigphoto'>
 							</div>
 						</div>";

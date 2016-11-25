@@ -190,8 +190,8 @@ nav {
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
-    max-width: 750px;
-    max-height: 500px;
+    max-width: 900px;
+    max-height: 700px;
 }
 .trackbutton{
     display: block;
