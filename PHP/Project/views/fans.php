@@ -118,7 +118,50 @@
 						";
 						}
 						?>
+					<li>
+							<ul id="track_list">
+							<?php
+								if(!isset($rowget['User_ID'])){
+									echo "<p>查無此人</p>";
+								}
+							?>	
+							<li>
+								<?php 
+									if(isset($rowget['User_ID'])){
+									echo "<nav id='nav-1'><a href='fansMenu_tagFollowers.php?name=".$an."'class='link-1'>追蹤名單<img src='image/track.png' >";
+									$sql = "SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$an'";
+									$result = mysqli_query($link,$sql);
+									$row2 = mysqli_fetch_assoc($result);
+									echo $row2['total'];
+									echo "</a>";
+									}
+								?>
+								
+							</li>
+							<li>
+								<?php
+									if(isset($rowget['User_ID'])){
+									echo "<a href='fansMenu_tagFans.php?name=".$an."'class='link-1'>粉絲名單<img src='image/tracked.png' ></nav>";
+									
+										$sql = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID='$an'";
+										$result = mysqli_query($link,$sql);
+										$row2 = mysqli_fetch_assoc($result);
+										echo $row2['total'];
+										echo "</a>";
+									}
+								?>
+								</a>
+							</li>
+							<?php
+								if(isset($rowget['User_ID'])){ 
+									echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
+								}
+							?>						
+							</ul>
+						</li>
+
 					</ul>
+
 				</div>
 				<div class="rightbar">
 				<?php
@@ -188,42 +231,7 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			<ul id="track_list">
-			<?php
-				if(!isset($rowget['User_ID'])){
-					echo "<p>查無此人</p>";
-				}
-			?>	
-				<li>
-					<?php
-						if(isset($rowget['User_ID'])){
-						echo "<a href='fansMenu_tagFollowers.php?name=".$an."'>追蹤名單<img src='image/track.png' >";
-						$sql = "SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$an'";
-						$result = mysqli_query($link,$sql);
-						$row2 = mysqli_fetch_assoc($result);
-						echo $row2['total'];
-						echo "</a>";
-						}	
-					?>				
-				</li>
-				<li>
-					<?php
-						if(isset($rowget['User_ID'])){
-						echo "<a href='fansMenu_tagFans.php?name=".$an."'>粉絲名單<img src='image/tracked.png' >";
-							$sql = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID='$an'";
-							$result = mysqli_query($link,$sql);
-							$row2 = mysqli_fetch_assoc($result);
-							echo $row2['total'];
-							echo "</a>";
-						}	
-					?>
-				</li>
-				<?php
-					if(isset($rowget['User_ID'])){ 
-						echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
-					}
-				?>									
-			</ul>
+			
 
 			<div class="downbar">
 				<ul>	
