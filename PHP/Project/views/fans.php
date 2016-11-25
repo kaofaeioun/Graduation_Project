@@ -187,6 +187,15 @@
 								$sql= "SELECT * FROM User where User_ID = '$an'";
 								$result = mysqli_query($link,$sql);
 								$row = mysqli_fetch_assoc($result);
+								if($row['Hobby']==null){
+									$row['Hobby']="目前暫無資料";
+								}
+								if($row['Fav_Songs']==null){
+									$row['Fav_Songs']="目前暫無資料";
+								}
+								if($row['Fav_Singer']==null){
+									$row['Fav_Singer']="目前暫無資料";
+								}
 							}
 							
 						echo "
