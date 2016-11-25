@@ -3,12 +3,6 @@
 	if (!isset($_COOKIE['account'])) {
 		echo "<meta http-equiv=REFRESH CONTENT=0;url=login.php>";
 	}
-	if (isset($_GET['name'])) {
-		$an = $_GET['name'];
-		$sqlget= "SELECT * FROM User where User_ID = '$an'";
-		$resultget = mysqli_query($link,$sqlget);
-		$rowget = mysqli_fetch_assoc($resultget);
-	}
 ?>		
 <!DOCTYPE html>
 <html lang="en">
@@ -52,14 +46,13 @@
 				});
 			</script>
 			<script type="text/javascript">
-				<?php if ($_COOKIE['account'] == $_GET['name'] || !isset($rowget['User_ID'])): ?>
+				<?php if ($_COOKIE['account'] == $_GET['name']): ?>
 					$(document).ready(function(){
 						$('.trackbutton').hide();
 						$('.rightbar').css("margin-top","12px");
 					});
 				<?php endif; ?>
 			</script>
-
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
@@ -109,21 +102,46 @@
 								$result = mysqli_query($link,$sql);
 								$row = mysqli_fetch_assoc($result);
 							}
-						if($row['User_ID']){	
 						echo "
 						<li id='info'>ID<div class='blank'>".$row['User_ID']."</div></li>
 						<li id='info'>名字<div class='blank'>".$row['User_Name']."</div></li>
 						
 						";
-						}
 						?>
+						<li>
+							<ul id="track_list">
+							<li>
+								<?php 
+									$an = $_GET['name'];
+									echo "<nav id='nav-1'><a href='fansMenu_tagFollowers.php?name=".$an."'class='link-1'>追蹤名單<img src='image/track.png' >";
+									$sql = "SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$an'";
+									$result = mysqli_query($link,$sql);
+									$row2 = mysqli_fetch_assoc($result);
+									echo $row2['total'];
+									echo "</a>";
+								?>
+								
+							</li>
+							<li>
+								<?php
+									$an = $_GET['name'];
+									echo "<a href='fansMenu_tagFans.php?name=".$an."'class='link-1'>粉絲名單<img src='image/tracked.png' ></nav>";
+									
+										$sql = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID='$an'";
+										$result = mysqli_query($link,$sql);
+										$row2 = mysqli_fetch_assoc($result);
+										echo $row2['total'];
+								?>
+								</a>
+							</li>
+							<li>勝場數<img src="image/win.png" alt="">87</li>						
+							</ul>
+						</li>
 					</ul>
 				</div>
 				<div class="rightbar">
-				<?php
-					if(isset($rowget['User_ID'])){
-					echo "<img src='photo.php?id=".$rowget['User_ID']."'>";
-					}
+					<img src="photo.php?id=<?php echo $row['User_ID'];?>" alt="">
+					<?php
 						$usernow = $_COOKIE['account'];
 						$an = $_GET['name'];
 						$sql = "SELECT Track_time FROM Track where Track_ID='$usernow' && Tracked_ID='$an'";
@@ -161,42 +179,6 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			<ul id="track_list">
-			<?php
-				if(!isset($rowget['User_ID'])){
-					echo "<p>查無此人</p>";
-				}
-			?>	
-				<li>
-					<?php
-						if(isset($rowget['User_ID'])){
-						echo "<a href='fansMenu_tagFollowers.php?name=".$an."'>追蹤名單<img src='image/track.png' >";
-						$sql = "SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$an'";
-						$result = mysqli_query($link,$sql);
-						$row2 = mysqli_fetch_assoc($result);
-						echo $row2['total'];
-						echo "</a>";
-						}	
-					?>				
-				</li>
-				<li>
-					<?php
-						if(isset($rowget['User_ID'])){
-						echo "<a href='fansMenu_tagFans.php?name=".$an."'>粉絲名單<img src='image/tracked.png' >";
-							$sql = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID='$an'";
-							$result = mysqli_query($link,$sql);
-							$row2 = mysqli_fetch_assoc($result);
-							echo $row2['total'];
-							echo "</a>";
-						}	
-					?>
-				</li>
-				<?php
-					if(isset($rowget['User_ID'])){ 
-						echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
-					}
-				?>									
-			</ul>
 
 			<div class="downbar">
 				<ul>	
@@ -206,17 +188,17 @@
 								$sql= "SELECT * FROM User where User_ID = '$an'";
 								$result = mysqli_query($link,$sql);
 								$row = mysqli_fetch_assoc($result);
-								if(@$row['Hobby']==null){
+								if($row['Hobby']==null){
 									$row['Hobby']="目前暫無資料";
 								}
-								if(@$row['Fav_Songs']==null){
+								if($row['Fav_Songs']==null){
 									$row['Fav_Songs']="目前暫無資料";
 								}
-								if(@$row['Fav_Singer']==null){
+								if($row['Fav_Singer']==null){
 									$row['Fav_Singer']="目前暫無資料";
 								}
 							}
-						if(@$row['User_ID']){	
+							
 						echo "
 						<li>
 							<p>興趣</p>
@@ -240,7 +222,6 @@
 
 						<div class='clear'></div>
 						";
-					}	
 					?>
 				</ul>
 			</div>
