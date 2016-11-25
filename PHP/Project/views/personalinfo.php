@@ -9,6 +9,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="CSS/personalinfo.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<script type="text/javascript" src="./js/pic_adjust.js"></script>
 
 	<title>MicMusic</title>
 </head>
@@ -20,8 +21,10 @@
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
+				PicAutoMid();
 			});
 		<?php endif; ?>
+
 	</script>
 	
 	<div class="wrap">
@@ -84,7 +87,7 @@
 		$hobby=$row[4];
 		$favsong=$row[5];
 		$favsinger=$row[6];
-		$level=$row[9];
+		$level=$row[8];
 	}
 	?>
 	<div class="wrap">
@@ -103,6 +106,8 @@
 				<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
 				<input type="file" name="upload" id="upload" onchange="loadImageFile()"/>
 			</div>
+			
+			<!-- 傳圖片到資料庫 -->
 			<?php
 				if(isset($_COOKIE['account'])){
 					if(isset($_FILES["upload"]["size"])){
@@ -120,64 +125,76 @@
 					elseif($_FILES["upload"]["size"]>2000000||$_FILES["upload"]["size"]==0){
 						echo "<script>$('.change_fail').fadeIn(500)</script>";
 				        echo "<script>$('.change_fail').delay(800).fadeOut(500)</script>";
+						}
 					}
-				}
-			}		
+				}		
 			?>
-			<script type="text/javascript">
-			oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
+			<!-- END -->
 
-			oFReader.onload = function (oFREvent) {
-		    document.getElementById("userimg").src = oFREvent.target.result;
-					}; //檔名
-			function loadImageFile() {
-				if (document.getElementById("upload").files.length === 0) { return; }//沒有上傳即return
-					var oFile = document.getElementById("upload").files[0];
-				if (!rFilter.test(oFile.type)) { alert("請上傳圖片"); return; }
-				else { 
-					$(function checkwindow(){
-						$(".dialog").fadeIn();
-						oFReader.readAsDataURL(oFile);
-					});
-				}				
-			}
-			function loadImageFileCancel(){
-				$(".dialog").fadeOut();
-				document.getElementById("userimg").src ="photo.php?id=<?php echo $id?>" ;
-			}	
+
+			<!-- 預覽圖片 -->
+			<script type="text/javascript">
+				oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
+
+				oFReader.onload = function (oFREvent) {
+					ErasePadding();
+			    	document.getElementById("userimg").src = oFREvent.target.result;
+			    	PicAutoMid();
+				};//檔名
+				function loadImageFile() {
+					if (document.getElementById("upload").files.length === 0){return;}//沒有上傳即return
+						var oFile = document.getElementById("upload").files[0];
+					if (!rFilter.test(oFile.type)) { 
+						alert("請上傳圖片");
+						return;
+					}else {
+						$(function checkwindow(){
+							$(".dialog").fadeIn();
+							oFReader.readAsDataURL(oFile);
+							PicAutoMid();
+						});
+					}				
+				}
+
+				function loadImageFileCancel(){
+					$(".dialog").fadeOut();
+					document.getElementById("userimg").src ="photo.php?id=<?php echo $id?>" ;
+					PicAutoMid();
+				}	
 			</script>
-		
+			<!-- END -->
+
 				<div class="profile">
 					<li>
-							<ul id="track_list">
-								<li>
-									<a href="fansMenu_Followers.php"><b>追蹤名單</b>
-									<img src="image/track.png" alt=""><br>
-									<?php
-										$sql2="SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$id'";
-										$trackresult = mysqli_query($link,$sql2);
-										$row2 = mysqli_fetch_assoc($trackresult);
-										echo $row2['total'];
-									?>
-									
-								</li>
+						<ul id="track_list">
+							<li>
+								<a href="fansMenu_Followers.php"><b>追蹤名單</b>
+								<img src="image/track.png" alt=""><br>
+								<?php
+									$sql2="SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$id'";
+									$trackresult = mysqli_query($link,$sql2);
+									$row2 = mysqli_fetch_assoc($trackresult);
+									echo $row2['total'];
+								?>
+								</a>	
+							</li>
 
-								<li>
-									<a href="fansMenu_Fans.php"><b>粉絲名單</b>
-									<img src="image/tracked.png" alt=""><br>
-									<?php
-										$sql2="SELECT COUNT(Track_ID) as total FROM Track where Tracked_ID='$id'";
-										$trackresult = mysqli_query($link,$sql2);
-										$row2 = mysqli_fetch_assoc($trackresult);
-										echo $row2['total'];
-									?>
-									</a>
-								</li>
-								<li><b>勝場數</b>
-								<img src="image/win.png" alt=""><br>87
-								</li>
-							</ul>
-						</li>
+							<li>
+								<a href="fansMenu_Fans.php"><b>粉絲名單</b>
+								<img src="image/tracked.png" alt=""><br>
+								<?php
+									$sql2="SELECT COUNT(Track_ID) as total FROM Track where Tracked_ID='$id'";
+									$trackresult = mysqli_query($link,$sql2);
+									$row2 = mysqli_fetch_assoc($trackresult);
+									echo $row2['total'];
+								?>
+								</a>
+							</li>
+							<li><b>勝場數</b>
+							<img src="image/win.png" alt=""><br>87
+							</li>
+						</ul>
+					</li>
 					<ul>
 					<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 						<script>
@@ -366,11 +383,6 @@
 						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 
 						<div class="clear"></div>	
-						
-							
-						<div class="clear"></div>
-
-
 					</ul>
 				</div>
 			<div class="clear"></div>
