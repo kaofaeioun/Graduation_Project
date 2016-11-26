@@ -123,7 +123,7 @@ a{
 #track_list a{
     text-decoration: none;
 }
-#track_list p{
+.topbar p{
     margin-top: 30px;
     font-size: 20px;
 }

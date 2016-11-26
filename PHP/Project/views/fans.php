@@ -114,7 +114,6 @@
 	<div class="wrap">
 		<div id="content">
 			<div class="topbar">
-			<ul id="track_list">
 				<?php
 					if(!isset($rowget['User_ID']) || $rowget['User_ID']==null){
 						echo "<p>查無此人</p>";
@@ -129,15 +128,14 @@
 								$result = mysqli_query($link,$sql);
 								$row = mysqli_fetch_assoc($result);
 							}
-						if($row['User_ID']){	
-						echo "
-						<li id='info'>ID<div class='blank'>".$row['User_ID']."</div></li>
-						<li id='info'>名字<div class='blank'>".$row['User_Name']."</div></li>
-						
-						";
-						}
+							if(@$row['User_ID']){	
+								echo "
+								<li id='info'>ID<div class='blank'>".$row['User_ID']."</div></li>
+								<li id='info'>名字<div class='blank'>".$row['User_Name']."</div></li>";
+							}
 						?>
-						<li>
+					<li>
+						<ul id="track_list">
 							<li>
 								<?php 
 									if(isset($rowget['User_ID'])){
@@ -163,13 +161,14 @@
 										echo "</a>";
 									}
 								?>
+								</a>
 							</li>
-								<?php
-									if(isset($rowget['User_ID'])){ 
-										echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
-									}
-								?>						
-							</li>
+							<?php
+								if(isset($rowget['User_ID'])){ 
+									echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
+								}
+							?>						
+							</ul>
 						</li>
 
 					</ul>
@@ -218,23 +217,25 @@
 						</div>";
 					}
 						$usernow = $_COOKIE['account'];
-						$an = $_GET['name'];
+						$an = @$_GET['name'];
 						$sql = "SELECT Track_time FROM Track where Track_ID='$usernow' && Tracked_ID='$an'";
 						$result = mysqli_query($link,$sql);
 						$row = mysqli_fetch_row($result);
-						if (isset($row[0])) {
-							echo "
-								<div class='trackbutton' >
-									<input type='checkbox' id='followed' checked>
-								</div>
-							";
-						}else{
-							echo "
-								<div class='trackbutton' >
-									<input type='checkbox' id='follow'>
-								</div>
-							";
-						}						
+						if (isset($_GET['name'])){
+							if (isset($row[0])) {
+								echo "
+									<div class='trackbutton' >
+										<input type='checkbox' id='followed' checked>
+									</div>";
+							}
+							else{
+								echo "
+									<div class='trackbutton' >
+										<input type='checkbox' id='follow'>
+									</div>";
+							}
+						}
+												
 					?>
 	<script type="text/javascript">
 			var modal = document.getElementById('myModal');
