@@ -181,7 +181,17 @@
 					function AutoPadding() {
 						var img_width = document.getElementById("bigphoto").width;
 						var img_height = document.getElementById("bigphoto").height;
-						if (img_width > img_height){
+						if (img_width < 900 && img_height < 700){
+							$(document).ready(function(){
+								var img_padding_h = (700-img_height)/2;
+								var img_padding_w = (900-img_width)/2;
+								$('.entire_photo').css("padding-top",img_padding_h);
+								$('.entire_photo').css("padding-bottom",img_padding_h);
+								$('.entire_photo').css("padding-left",img_padding_w);
+								$('.entire_photo').css("padding-right",img_padding_w);
+							});	
+						}
+						else if (img_width > img_height){
 							var img_padding = (700-img_height)/2;
 							$(document).ready(function(){
 								$('.entire_photo').css("padding-top",img_padding);
