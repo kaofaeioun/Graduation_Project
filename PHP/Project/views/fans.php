@@ -22,12 +22,11 @@
 	<link rel="stylesheet" href="CSS/all.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/pic_adjust.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<script type='text/javascript'>
 		document.createElement("b1")
 	</script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- search -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<title>MicMusic</title>
 </head>
 <body>
@@ -84,7 +83,7 @@
 							</div>
 					</div>
 				</div>
-				<div class="search">
+			<div class="search">
 					<form action="fans.php" method="GET" name="font1">
 						<script>
 						    $(function() {
@@ -177,15 +176,36 @@
 					</ul>
 
 				</div>
+
+				<script type="text/javascript">
+					function AutoPadding() {
+						var img_width = document.getElementById("bigphoto").width;
+						var img_height = document.getElementById("bigphoto").height;
+						if (img_width > img_height){
+							var img_padding = (700-img_height)/2;
+							$(document).ready(function(){
+								$('.entire_photo').css("padding-top",img_padding);
+								$('.entire_photo').css("padding-bottom",img_padding);
+							});
+						}	
+						else if (img_width < img_height){
+							var img_padding = (900-img_width)/2;
+							$(document).ready(function(){
+								$('.entire_photo').css("padding-left",img_padding);
+								$('.entire_photo').css("padding-right",img_padding);
+							});
+						}
+					}
+				</script>
+
 				<div class="rightbar">
 				<?php
 					if(isset($rowget['User_ID'])){
 					echo "<img src='photo.php?id=".$rowget['User_ID']."' id='userimg'>
 						<div id='myModal' class='modal'>
-						<span class='close' onclick='document.getElementById('myModal').style.display='none'>&times;</span>
-						
-						<img class='modal-content' id='img01'>
-						<div id='caption'></div>
+							<div class='entire_photo' style='width: 900px;height: 700px;background-color:black;box-sizing: border-box;margin:auto;'>
+								<img class='modal-content' id='bigphoto'>
+							</div>
 						</div>";
 					}
 						$usernow = $_COOKIE['account'];
@@ -210,17 +230,20 @@
 	<script type="text/javascript">
 			var modal = document.getElementById('myModal');
 			var img = document.getElementById('userimg');
-			var modalImg = document.getElementById("img01");
-			var captionText = document.getElementById("caption");
-			img.onclick = function(){
+			var modalImg = document.getElementById("bigphoto");
+			img.onclick = function(e){
 			    modal.style.display = "block";
 			    modalImg.src = this.src;
-			    captionText.innerHTML = this.alt;
+			    AutoPadding();
 			}
-			var span = document.getElementsByClassName("close")[0];
-			span.onclick = function() { 
-			  modal.style.display = "none";
-			}
+			$(document).click(function(){
+				$('.modal').fadeOut(200);
+			});
+			$('#userimg').click(function(e){
+				e.stopPropagation();
+				e.preventDefault();
+				return false;
+			});
 	</script>	
 				<script type="text/javascript">
 					PicAutoMid();
