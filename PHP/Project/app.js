@@ -23,8 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/battle.html',function(req,res,next){
   res.sendfile('views/battle.html');
 });
-app.get('/channel',function(req,res,next){
-  res.sendfile('views/channel.html');
+app.get('/TestVote.html',function(req,res,next){
+  res.sendfile('views/TestVote.html');
 });
 app.get('/MDFKvote.html',function(req,res,next){
   res.sendfile('views/MDFKvote.html');

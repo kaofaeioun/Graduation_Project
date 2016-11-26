@@ -98,9 +98,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-						
+
 					</form>
-					
+
 				</div>
 			</div>
 			<div class="menu">
@@ -230,7 +230,7 @@ function CountMic(){
 
 
 					</div>
-						<a id='singerhref'><b id="singer"></b></a>	
+						<a id='singerhref'><b id="singer"></b></a>
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數">87</li>
@@ -248,28 +248,46 @@ function CountMic(){
 				    var t = new Date(systemTime);
 				    s = "0" + t.getSeconds();
 				    s = s.substring(s.length - 2, s.length + 1);
-				    s = 60-s;
-				    console.log(s);
+						s = 60-s;
 				   }
 				   calculate();
-						function showTime()
-							{
-							    document.getElementById('CountDown').innerHTML= s+"s";
+						/*function showTime(){
+							  document.getElementById('CountDown').innerHTML= s+"s";
 								if(s==0){
 									location.reload();
-								}
-								if(s<30){
+								}if(s<30){
 									document.getElementById("dislike").style.visibility = "visible";
 									document.getElementById("like").style.visibility ="visible";
-								}
-								if(s>30){
+								}if(s>30){
 									document.getElementById("dislike").style.visibility = "hidden";
 									document.getElementById("like").style.visibility= "hidden";
 								}
-								s -= 1;
-								setTimeout("showTime()",1000);
+								//setTimeout("showTime()",1000);
+							}*/
+						//showTime();
+						var startTime = new Date().getTime();
+						var count = 0;
+						function showTime() {
+							count++;
+							var offset = new Date().getTime() - (startTime + count * 1000);
+							var nextTime = 1000 - offset;
+							if (nextTime < 0) nextTime = 0;
+								setTimeout(showTime, nextTime);
+							//console.log(new Date().getTime() - (startTime + count * 1000));
+							s -= 1;
+							console.log(s);
+							document.getElementById('CountDown').innerHTML= s+"s";
+							if(s==0){
+								location.reload();
+							}if(s<30){
+								document.getElementById("dislike").style.visibility = "visible";
+								document.getElementById("like").style.visibility ="visible";
+							}if(s>30){
+								document.getElementById("dislike").style.visibility = "hidden";
+								document.getElementById("like").style.visibility= "hidden";
 							}
-						showTime();
+						}
+						setTimeout(showTime, 1000);
 					/*	function CheckMic(){
 							if (s==0){
 								var request = new XMLHttpRequest();
