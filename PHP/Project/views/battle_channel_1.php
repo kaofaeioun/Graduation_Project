@@ -160,15 +160,20 @@ function CountMic(){
 					}
 					if(data.Singer){
 						document.getElementById("singer").innerHTML = data.Singer;
+						document.getElementById("singerhref").href = "fans.php?name="+data.Singer;
 					}
 					if(data.Singer1){
 						document.getElementById("queue1").innerHTML = data.Singer1;
+						console.log(data.Singer1);
+						document.getElementById("queue1href").href = "fans.php?name="+data.Singer1;
 					}
 					if(data.Singer2){
 						document.getElementById("queue2").innerHTML = data.Singer2;
+						document.getElementById("queue2href").href = "fans.php?name="+data.Singer2;
 					}
 					if(data.Singer3){
 						document.getElementById("queue3").innerHTML = data.Singer3;
+						document.getElementById("queue3href").href = "fans.php?name="+data.Singer3;
 					}
 				}
 			} else {
@@ -225,7 +230,7 @@ function CountMic(){
 
 
 					</div>
-					<b id="singer"></b>
+						<a id='singerhref'><b id="singer"></b></a>	
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數">87</li>
@@ -291,9 +296,9 @@ function CountMic(){
 					</script>
 
 				<div class="queue">
-					<li><p id='queue1'></p></li>
-					<li><p id='queue2'></p></li>
-					<li><p id='queue3'></p></li>
+					<li><a id="queue1href"><p id='queue1'></p></a></li>
+					<li><a id="queue2href"><p id='queue2'></p></a></li>
+					<li><a id="queue3href"><p id='queue3'></p></a></li>
 				</div>
 				<div class="mic_queue">
 					<li><p>目前排麥人數</p></li>
@@ -307,7 +312,7 @@ function CountMic(){
 					$row = mysqli_fetch_row($result);
 					if (isset($row[0])) {
 					echo "<div class='get_mic'>
-						<li><input type='checkbox' id='GottentMic' checked><p id='qwer' chec></p></li>
+						<li><input type='checkbox' id='GottentMic' checked><p id='qwer'></p></li>
 					</div>";
 					}
 					else{
