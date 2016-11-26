@@ -114,6 +114,12 @@
 	<div class="wrap">
 		<div id="content">
 			<div class="topbar">
+			<ul id="track_list">
+				<?php
+					if(!isset($rowget['User_ID']) || $rowget['User_ID']==null){
+						echo "<p>查無此人</p>";
+					}
+				?>	
 				<div class="leftbar">
 					<ul>
 						<?php
@@ -131,13 +137,7 @@
 						";
 						}
 						?>
-					<li>
-							<ul id="track_list">
-							<?php
-								if(!isset($rowget['User_ID'])){
-									echo "<p>查無此人</p>";
-								}
-							?>	
+						<li>
 							<li>
 								<?php 
 									if(isset($rowget['User_ID'])){
@@ -163,14 +163,13 @@
 										echo "</a>";
 									}
 								?>
-								</a>
 							</li>
-							<?php
-								if(isset($rowget['User_ID'])){ 
-									echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
-								}
-							?>						
-							</ul>
+								<?php
+									if(isset($rowget['User_ID'])){ 
+										echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
+									}
+								?>						
+							</li>
 						</li>
 
 					</ul>

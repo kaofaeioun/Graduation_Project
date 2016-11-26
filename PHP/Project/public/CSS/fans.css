@@ -123,6 +123,10 @@ a{
 #track_list a{
     text-decoration: none;
 }
+#track_list p{
+    margin-top: 30px;
+    font-size: 20px;
+}
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 nav {
   text-align: center;
@@ -169,7 +173,7 @@ nav {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 5; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 30px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -177,13 +181,6 @@ nav {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-.model .entire_photo{
-    width: 750px;
-    height: 500px;
-    background-color: black;
-    display: none;
-    box-sizing: border-box;
 }
 .modal-content, .entire_photo { 
     -webkit-animation-name: zoom;
