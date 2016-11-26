@@ -99,7 +99,7 @@
 		$hobby=$row[4];
 		$favsong=$row[5];
 		$favsinger=$row[6];
-		$level=$row[8];
+		$level=$row[9];
 	}
 	?>
 	<div class="wrap">
