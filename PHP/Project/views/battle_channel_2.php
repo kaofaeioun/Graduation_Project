@@ -46,6 +46,8 @@
 	<script type="text/javascript" src="./js/resampler.js"></script>
 	<script type="text/javascript" src="./js/voip.js"></script>
 	<script type="text/javascript" src="./js/d3.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<title>MicMusic</title>
 </head>
 <body>
@@ -93,8 +95,19 @@
 					</div>
 				</div>
 				<div class="search">
-					<input type="text" class="search_blank" placeholder="輸入ID找歌手">
-					<input type="image" class="search_image" src="image/search.png" alt="submit">
+					<form action="fans.php" method="GET" name="font1">
+						<script>
+						    $(function() {
+						        $( "#searchinfo" ).autocomplete({
+						            source: 'search1.php'
+						        });
+						    });
+						</script>
+						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
+						<input type="image" class="search_image" src="image/search.png" id="search_image">
+						
+					</form>
+					
 				</div>
 			</div>
 			<div class="menu">

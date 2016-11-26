@@ -155,7 +155,7 @@
 					        }
 					    }
 						
-						setTimeout("Countman()", 180000);
+						setTimeout("Countman()",60000);
 
 						// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
 						// $result3=mysqli_query($link,$sql3);
