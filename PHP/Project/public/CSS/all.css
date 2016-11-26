@@ -74,17 +74,22 @@ h1 img{
      -webkit-transition: 1s;
  }   
 #user{
-    background-image:url('../image/profilepic.jpg');
     width: 40px;
     height: 40px;
-    background-size:contain;
     float: right;
-    border-radius: 100px;
+    
     margin-top: -5px;
     cursor: pointer;
     position: relative;
     margin-left: 35px;
+    box-sizing: border-box;
     display: none;
+}
+#user img{
+	border-radius: 100px;
+	width: 40px;
+    height: 40px;
+    box-shadow:2px 2px 5px rgba(20%,20%,40%,0.5);
 }
 .user_info{
     width:270px;

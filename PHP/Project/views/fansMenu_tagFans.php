@@ -27,7 +27,6 @@
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
-				$('#login').hide();
 			});
 		<?php endif; ?>
 	</script>
@@ -37,22 +36,18 @@
 			<h1><img src="image/Logo2.png"></h1>
 			<script type="text/javascript">
                 $(document).ready(function(){
-                    $('.user_info').hide(); 
                     //隱藏要呼叫的div
                     $('#user').click(function() { 
                         //指定呼叫按鈕
                         $('.user_info').fadeToggle(300);
                         //顯示隱藏的div
-                        return false;
                     });
                 });
             </script>
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
-					<script type="text/javascript">
-						document.getElementById("user").style.backgroundImage = "url('photo.php?id=<?php echo $id;?>')";
-					</script>
+					<img src="photo.php?id=<?php echo $id?>">
 					<div class="user_info">
                         <ul>
                             <li><p>Rank</p><img src="image/medal.png"></li>
