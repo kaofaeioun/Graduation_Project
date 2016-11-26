@@ -125,8 +125,10 @@ h1 img{
 .user_info p{
     font-size: 22px;
 }
-.user_info img{
+#user .user_info img{
     width: 55px;
+    height: 55px;
+    box-shadow: none;
 }
 .user_info .arrow_bottom_int{
     width:0px;
@@ -292,8 +294,9 @@ h3{
     .user_info p{
         font-size: 20px;
     }
-    .user_info img{
+    #user .user_info img{
         width: 45px;
+        height: 45px;
     }
     .user_info .arrow_bottom_int{
         left: 180px;
@@ -427,8 +430,9 @@ h3{
     .user_info p{
         font-size: 18px;
     }
-    .user_info img{
+    #user .user_info img{
         width: 40px;
+        height: 40px;
     }
     .user_info .arrow_bottom_int{
         left: 165px;
