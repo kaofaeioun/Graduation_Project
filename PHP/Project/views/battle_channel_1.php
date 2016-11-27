@@ -153,24 +153,24 @@ function CountMic(){
 						document.getElementById("MicCount").innerHTML = data.MicCount;
 					}
 					if(data.Singer){
-						document.getElementById("singer").innerHTML = data.Singer+"("+data.SingerName+")";
+						document.getElementById("singerid").innerHTML = data.Singer;
+						document.getElementById("singname").innerHTML = data.SingerName;
 						document.getElementById("singerhref").href = "fans.php?name="+data.Singer;
 					}
 					if(data.Singer1){
-						document.getElementById("queue1").innerHTML = data.Singer1+"("+data.Singer1Name+")";
-						console.log(data.Singer1);
+						document.getElementById("queue1id").innerHTML = data.Singer1+"("+data.Singer1Name+")";
 						document.getElementById("queue1href").href = "fans.php?name="+data.Singer1;
 					}
 					if(data.Singer2){
-						document.getElementById("queue2").innerHTML = data.Singer2+"("+data.Singer2Name+")";
+						document.getElementById("queue2id").innerHTML = data.Singer2+"("+data.Singer2Name+")";
 						document.getElementById("queue2href").href = "fans.php?name="+data.Singer2;
 					}
 					if(data.Singer3){
-						document.getElementById("queue3").innerHTML = data.Singer3+"("+data.Singer3Name+")";
+						document.getElementById("queue3id").innerHTML = data.Singer3+"("+data.Singer3Name+")";
 						document.getElementById("queue3href").href = "fans.php?name="+data.Singer3;
 					}
 					else if(!data.Singer3){
-						document.getElementById("queue3").innerHTML = null;
+						document.getElementById("queue3id").innerHTML = null;
 					}
 				}
 			} else {
@@ -208,7 +208,7 @@ function CountMic(){
 						<div id="square"></div>
 						<script type="text/javascript">
 								$( document ).on( "click", "#tracked", function() {
-	  								var i = document.getElementById('singer').innerHTML;
+	  								var i = document.getElementById('singerid').innerHTML;
 	  								var request = new XMLHttpRequest();
 								    request.open("GET", "followcancel.php?Tracked_ID="+i+"&Track_ID=<?php echo $id;?>");
 								    request.send();
@@ -227,11 +227,19 @@ function CountMic(){
 
 
 					</div>
-						<a id='singerhref'><b id="singer"></b></a>
+						<a id='singerhref'>
+						<b id="singerid"></b>
+						<b id="singname"></b>
+						</a>
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
-						<li><img src="image/like.png" original title="追蹤人數">87</li>
+						<li><img src="image/like.png" original title="追蹤人數"><b>87</b></li>
 					</div>
+					<?php
+						$sqlTrack = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID=''";
+						$resultTrack = mysqli_query($link,$sqlTrack);
+						$rowTrack = mysqli_fetch_assoc($resultTrack);
+					?>
 				</div>
 				<?php
 					date_default_timezone_set("Asia/Taipei");
@@ -245,23 +253,22 @@ function CountMic(){
 				    var t = new Date(systemTime);
 				    s = "0" + t.getSeconds();
 				    s = s.substring(s.length - 2, s.length + 1);
-						s = 60-s;
+					s = 60-s;
 					document.getElementById('CountDown').innerHTML= s+"s";
 				   }
 				   calculate();
-						var startTime = new Date().getTime();
-						var count = 0;
-						function showTime() {
+					var startTime = new Date().getTime();
+					var count = 0;
+					function showTime() {
+							s -= 1;
 							document.getElementById('CountDown').innerHTML= s+"s";
 							count++;
 							var offset = new Date().getTime() - (startTime + count * 1000);
 							var nextTime = 1000 - offset;
 							if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
-							s -= 1;
-
 							if(s==0){
-								location.reload();
+								s=s+60;
 							}if(s<30){
 								document.getElementById("dislike").style.visibility = "visible";
 								document.getElementById("like").style.visibility ="visible";
@@ -271,9 +278,7 @@ function CountMic(){
 							}
 						}
 						setTimeout(showTime, 1000);
-
 					</script>
-
 					<script>
 						$(document).ready(function(){
 							$("#like").click(function(){
@@ -288,9 +293,9 @@ function CountMic(){
 					</script>
 
 				<div class="queue">
-					<li><a id="queue1href"><p id='queue1'></p></a></li>
-					<li><a id="queue2href"><p id='queue2'></p></a></li>
-					<li><a id="queue3href"><p id='queue3'></p></a></li>
+					<li><a id="queue1href"><b id='queue1id'></b></a></li>
+					<li><a id="queue2href"><b id='queue2id'></b></a></li>
+					<li><a id="queue3href"><b id='queue3id'></b></a></li>
 				</div>
 				<div class="mic_queue">
 					<li><p>目前排麥人數</p></li>

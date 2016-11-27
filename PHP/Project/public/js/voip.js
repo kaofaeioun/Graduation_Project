@@ -51,7 +51,8 @@ myWebSocket.binaryType = "arraybuffer";
 myWebSocket.onopen = function(evt) {
 	wsConnect = true;//用戶連接，開啟Ws server連線
 	if(typeof(client) != "undefined") {
-		wsSendStrings(["client", "nn", client["nn"]]);//傳送用戶ID
+		wsSendStrings(["client", "nn", client["nn"]]);
+		wsSendStrings(["client", "userid", client["userid"]]);//傳送用戶ID
 		wsSendStrings(["client", "pp", client["pp"]]);//傳送用戶個人大頭貼
 	}
 };
@@ -92,7 +93,7 @@ myWebSocket.onmessage = function(evt) {
 		console.log("send",evt.data);
 		var msgs = evt.data.split("###");
 		if(msgs[0]==="chat") {
-			writeToChat(msgs[1],msgs[2])
+			writeToChat(msgs[1],msgs[2],msgs[3])
 		} else if(msgs[0] === "clientlist") {
 			var cliensObj = JSON.parse(msgs[1]);
 			$("#clientList").empty();
