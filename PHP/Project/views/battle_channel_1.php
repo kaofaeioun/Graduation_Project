@@ -153,21 +153,24 @@ function CountMic(){
 						document.getElementById("MicCount").innerHTML = data.MicCount;
 					}
 					if(data.Singer){
-						document.getElementById("singer").innerHTML = data.Singer;
+						document.getElementById("singer").innerHTML = data.Singer+"("+data.SingerName+")";
 						document.getElementById("singerhref").href = "fans.php?name="+data.Singer;
 					}
 					if(data.Singer1){
-						document.getElementById("queue1").innerHTML = data.Singer1;
+						document.getElementById("queue1").innerHTML = data.Singer1+"("+data.Singer1Name+")";
 						console.log(data.Singer1);
 						document.getElementById("queue1href").href = "fans.php?name="+data.Singer1;
 					}
 					if(data.Singer2){
-						document.getElementById("queue2").innerHTML = data.Singer2;
+						document.getElementById("queue2").innerHTML = data.Singer2+"("+data.Singer2Name+")";
 						document.getElementById("queue2href").href = "fans.php?name="+data.Singer2;
 					}
 					if(data.Singer3){
-						document.getElementById("queue3").innerHTML = data.Singer3;
+						document.getElementById("queue3").innerHTML = data.Singer3+"("+data.Singer3Name+")";
 						document.getElementById("queue3href").href = "fans.php?name="+data.Singer3;
+					}
+					else if(!data.Singer3){
+						document.getElementById("queue3").innerHTML = null;
 					}
 				}
 			} else {
@@ -243,34 +246,20 @@ function CountMic(){
 				    s = "0" + t.getSeconds();
 				    s = s.substring(s.length - 2, s.length + 1);
 						s = 60-s;
+					document.getElementById('CountDown').innerHTML= s+"s";
 				   }
 				   calculate();
-						/*function showTime(){
-							  document.getElementById('CountDown').innerHTML= s+"s";
-								if(s==0){
-									location.reload();
-								}if(s<30){
-									document.getElementById("dislike").style.visibility = "visible";
-									document.getElementById("like").style.visibility ="visible";
-								}if(s>30){
-									document.getElementById("dislike").style.visibility = "hidden";
-									document.getElementById("like").style.visibility= "hidden";
-								}
-								//setTimeout("showTime()",1000);
-							}*/
-						//showTime();
 						var startTime = new Date().getTime();
 						var count = 0;
 						function showTime() {
+							document.getElementById('CountDown').innerHTML= s+"s";
 							count++;
 							var offset = new Date().getTime() - (startTime + count * 1000);
 							var nextTime = 1000 - offset;
 							if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
-							//console.log(new Date().getTime() - (startTime + count * 1000));
 							s -= 1;
-							console.log(s);
-							document.getElementById('CountDown').innerHTML= s+"s";
+
 							if(s==0){
 								location.reload();
 							}if(s<30){
@@ -282,16 +271,7 @@ function CountMic(){
 							}
 						}
 						setTimeout(showTime, 1000);
-					/*	function CheckMic(){
-							if (s==0){
-								var request = new XMLHttpRequest();
-				    			request.open("POST", "checkmic.php");
-				    			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				    			request.send();
-								}
-								setTimeout("CheckMic()",1000);
-							}
-										CheckMic();*/
+
 					</script>
 
 					<script>
@@ -353,6 +333,7 @@ function CountMic(){
                     var data = JSON.parse(request.responseText);
                     if(data.Count_A){
                         document.getElementById("MicCount").innerHTML = data.Count_A;
+                        CountMic();
                     }
                 }
             } else {
@@ -379,6 +360,7 @@ function CountMic(){
                     var data = JSON.parse(request.responseText);
                     if(data.Count_B){
                         document.getElementById("MicCount").innerHTML = data.Count_B;
+                        CountMic();
                     }
                 }
             } else {

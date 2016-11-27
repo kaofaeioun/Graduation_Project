@@ -10,15 +10,26 @@ $sql2="SELECT count(Mic_ID) FROM Mic where Mic_ID is not null";
 	$singer1=mysqli_result($result3, 1,0);
 	$singer2=mysqli_result($result3, 2,0);
 	$singer3=mysqli_result($result3, 3,0);
+
+	$sql4="SELECT User_Name From User Where User_ID='$singer'";
+	$sql5="SELECT User_Name From User Where User_ID='$singer1'";
+	$sql6="SELECT User_Name From User Where User_ID='$singer2'";
+	$sql7="SELECT User_Name From User Where User_ID='$singer3'";
+	$result4=mysqli_query($link,$sql4);
+	$result5=mysqli_query($link,$sql5);
+	$result6=mysqli_query($link,$sql6);
+	$result7=mysqli_query($link,$sql7);
+	$singerName=mysqli_fetch_row($result4);
+	$singer1Name=mysqli_fetch_row($result5);
+	$singer2Name=mysqli_fetch_row($result6);
+	$singer3Name=mysqli_fetch_row($result7);
    
 function mysqli_result($res, $row, $field=0) { 
     $res->data_seek($row); 
     $datarow = $res->fetch_array(); 
     return $datarow[$field];    
 }	
-	
-
-	$data =array('MicCount'=>$row2[0],'Singer'=>$singer,'Singer1'=>$singer1,'Singer2'=>$singer2 ,'Singer3'=>$singer3);
+	$data =array('MicCount'=>$row2[0],'Singer'=>$singer,'SingerName'=>$singerName[0],'Singer1'=>$singer1,'Singer1Name'=>$singer1Name[0],'Singer2'=>$singer2,'Singer2Name'=>$singer2Name[0] ,'Singer3'=>$singer3,'Singer3Name'=>$singer3Name[0]);
 
  	echo isset($data) ? json_encode($data) : json_encode(array('msg' => 'error！'));
 

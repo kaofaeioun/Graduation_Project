@@ -45,7 +45,7 @@ function writeToChat(clientID,clientName,text) {
 	clientName = clientName.replace(/<\/?[^>]+(>|$)/g, "");
 	text = text.replace(/<\/?[^>]+(>|$)/g, "");
 	text = text.linkify();
-	$("#chatContent").append('<div><a href=\'fans.php?name='+clientID+'\'><b>'+clientName+'</a>: </b>'+text+'</div>');
+	$("#chatContent").append('<div><a href=\'fans.php?name='+clientID+'\'><b>'+clientID+'</a>('+clientName+'): </b>'+text+'</div>');
 	var objDiv = document.getElementById("chatContent");
 	
 	objDiv.scrollTop = objDiv.scrollHeight;

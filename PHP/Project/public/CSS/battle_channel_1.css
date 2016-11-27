@@ -128,6 +128,7 @@ svg{
     background-image: url("../image/vote_like_1.png");
     background-size:contain;
     cursor: pointer;
+    visibility: hidden
 }
 .vote_dislike{
     width: 50px;
@@ -138,6 +139,7 @@ svg{
     background-image: url("../image/vote_dislike_1.png");
     background-size:contain;
     cursor: pointer;
+    visibility: hidden;
 }
 #square{
     width:90px;
