@@ -65,6 +65,13 @@ table {
     margin-bottom: 20px;
     background-color: #FEFFEF;
 }
+.main a{
+    text-decoration: none;
+    color: #4B4B4B;
+}
+.main a:hover{
+    color: #01abad;
+}
 .vote{
     width: 60%;
     height: 300px;
