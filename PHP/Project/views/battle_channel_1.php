@@ -5,9 +5,9 @@
 	<?php
 		include("mysql_connect.php");
 		$id=$_COOKIE['account'];
-		$sql1 = "SELECT User_Name FROM User where User_ID = $id";
-		$result1 = mysqli_query($link, $sql1);
-		$row1 = mysqli_fetch_row($result1);
+		$sqlID = "SELECT User_Name FROM User where User_ID = '$id'";
+		$resultID = mysqli_query($link, $sqlID);
+		$rowID = mysqli_fetch_row($resultID);
 	?>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -17,8 +17,9 @@
 	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<script>
 		var client = { //is observerd
+			"userid" : "<?php echo $id;?>",
 			"pp" : "../img/profile.jpg", //Profil Pic
-			"nn" : "<?php echo $row1[0];?>", //Nickname
+			"nn" : "<?php echo $rowID[0];?>", //Nickname
 			"mg" : 4/100, // minGain
 			"mic" : false,
 			"sound" : true
@@ -66,7 +67,7 @@
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
-					<img src="photo.php?id=<?php echo $id?>">
+					<img src="photo.php?id=<?php echo $id;?>">
 					<div class="user_info">
 						<ul>
 							<li><p>Rank</p><img src="image/medal.png"></li>
@@ -318,10 +319,10 @@ function CountMic(){
 				</div>
 				<?php
 					$id = $_COOKIE['account'];
-					$sql = "SELECT User_ID FROM Mic where User_ID='$id'";
-					$result=mysqli_query($link,$sql);
-					$row = mysqli_fetch_row($result);
-					if (isset($row[0])) {
+					$sqlMic = "SELECT User_ID FROM Mic where User_ID='$id'";
+					$resultMic=mysqli_query($link,$sqlMic);
+					$rowMic = mysqli_fetch_row($resultMic);
+					if (isset($rowMic[0])) {
 					echo "<div class='get_mic'>
 						<li><input type='checkbox' id='GottentMic' checked><p id='qwer'></p></li>
 					</div>";

@@ -18,6 +18,9 @@ if(typeof(Object.observe)!=="undefined") {
 		console.log(changes);
 	});
 } else if(typeof(client.watch)!=="undefined") { //Firefox (NO Observe)
+	client.watch("userid", function(id, oldval, newval) {
+		observeInfo(id, newval);
+	});
 	client.watch("pp", function(id, oldval, newval) {
 		observeInfo(id, newval);
 	});
@@ -37,11 +40,12 @@ if(typeof(Object.observe)!=="undefined") {
 	}
 }
 
-function writeToChat(clientName,text) {
+function writeToChat(clientID,clientName,text) {
+	clientID= clientID.replace(/<\/?[^>]+(>|$)/g, "");
 	clientName = clientName.replace(/<\/?[^>]+(>|$)/g, "");
 	text = text.replace(/<\/?[^>]+(>|$)/g, "");
 	text = text.linkify();
-	$("#chatContent").append('<div><a href=\'fans.php?name='+clientName+'\'><b>'+clientName+'</a>: </b>'+text+'</div>');
+	$("#chatContent").append('<div><a href=\'fans.php?name='+clientID+'\'><b>'+clientName+'</a>: </b>'+text+'</div>');
 	var objDiv = document.getElementById("chatContent");
 	
 	objDiv.scrollTop = objDiv.scrollHeight;
@@ -69,7 +73,7 @@ $(document).ready(function() {
 		text = $.trim(text);
 		if(text!=="") {
 			wsSendStrings(["chat",text]);
-			writeToChat(client.nn,text);
+			writeToChat(client.userid,client.nn,text);
 			$("#chatInput").val("");
 		}
 	}
