@@ -121,8 +121,6 @@
 						<div class="circle_area">
 							<div class="circle_1" id="circle"></div>
 							<div class="circle_2" id="CountDown"></div>
-							<div class="vote_like" id="like"></div>
-							<div class="vote_dislike" id="dislike"></div>
 							<script src="http://d3js.org/d3.v3.min.js"></script>
 							<script type="text/javascript" src="./js/ArMen.js"></script>
 						</div>
@@ -220,7 +218,7 @@ function CountMic(){
 								    document.getElementById("square").innerHTML = ("取消追蹤!");
 								});
 								$( document ).on( "click", "#notrack", function() {
-									var i = document.getElementById('singer').innerHTML;
+									var i = document.getElementById('singerid').innerHTML;
 	  								var request = new XMLHttpRequest();
 								    request.open("GET", "follow.php?Tracked_ID="+i+"&Track_ID=<?php echo $id;?>");
 								    request.send();
@@ -285,17 +283,31 @@ function CountMic(){
 					</script>
 					<script>
 						$(document).ready(function(){
-							$("#like").click(function(){
-								$("#like").fadeOut();
-								$("#dislike").fadeOut();
+							$("#Like").click(function(){
+								$("#Like").fadeOut();
+								$("#Dislike").fadeOut();
 							});
-							$("#dislike").click(function(){
-									$("#like").fadeOut();
-									$("#dislike").fadeOut();
+							$("#Dislike").click(function(){
+									$("#Like").fadeOut();
+									$("#Dislike").fadeOut();
 							});
 						});
 					</script>
-
+				<script type="text/javascript">
+					$( document ).on( "click", "#Like", function() {
+	  					var i = document.getElementById("singerid").innerHTML;
+	  					console.log(i);
+	  					var request = new XMLHttpRequest();
+						request.open("GET", "voteconnect.php?singer="+i+"&id=<?php echo $id;?>");
+						 request.send();
+					});
+					$( document ).on( "click", "#Dislike", function() {
+						var i = document.getElementById("singerid").innerHTML;
+	  					var request = new XMLHttpRequest();
+						request.open("GET", "voteconnect.php?singer="+i+"&id=<?php echo $id;?>");
+						request.send();
+					});
+				</script>	
 				<div class="queue">
 					<li><a id="queue1href"><b id='queue1id'></b></a></li>
 					<li><a id="queue2href"><b id='queue2id'></b></a></li>
