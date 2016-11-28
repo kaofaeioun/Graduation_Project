@@ -44,15 +44,16 @@ $(function() {
   var key = function(d){ return d.name; };
 
   function draw(data) {
-    var bars = d3.select(".container")
+    var bars = d3.select(".circle_area")
       .selectAll(".bar-wrapper")
       .data(data);
     var barEnter = bars
       .enter()
       .append("div")
       .attr("class", "bar-wrapper")
-    barEnter.append("button")
-      .text(function(d) { return d.name; })
+    barEnter.append("div")
+      .attr("id", function (d) {return d.name;})
+      .attr("class", "")
       .on("click", function(d) {
         sendData(d.name);
       });
@@ -76,7 +77,7 @@ $(function() {
         };
       })
     fan.exit()
-      .remove();  
+      .remove();
 
     };
 

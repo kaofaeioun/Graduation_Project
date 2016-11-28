@@ -274,11 +274,11 @@ function CountMic(){
 							if(s==0){
 								s=s+60;
 							}if(s<30){
-								document.getElementById("dislike").style.visibility = "visible";
-								document.getElementById("like").style.visibility ="visible";
+								document.getElementById("Dislike").style.visibility = "visible";
+								document.getElementById("Like").style.visibility ="visible";
 							}if(s>30){
-								document.getElementById("dislike").style.visibility = "hidden";
-								document.getElementById("like").style.visibility= "hidden";
+								document.getElementById("Dislike").style.visibility = "hidden";
+								document.getElementById("Like").style.visibility= "hidden";
 							}
 						}
 						setTimeout(showTime, 1000);
