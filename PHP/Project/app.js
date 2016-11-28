@@ -23,14 +23,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/battle.html',function(req,res,next){
   res.sendfile('views/battle.html');
 });
-app.get('/TestVote.html',function(req,res,next){
-  res.sendfile('views/TestVote.html');
+app.get('/ArMen.html',function(req,res,next){
+  res.sendfile('views/ArMen.html');
 });
 app.get('/MDFKvote.html',function(req,res,next){
   res.sendfile('views/MDFKvote.html');
 });
-app.get('/login',function(req,res,next){
-  res.sendfile('views/login.html');
+app.get('/TestVote.html',function(req,res,next){
+  res.sendfile('views/TestVote.html');
 });
 
 

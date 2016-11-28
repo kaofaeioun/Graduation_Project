@@ -47,25 +47,19 @@ function writeToChat(clientID,clientName,text) {
 	text = text.linkify();
 	$("#chatContent").append('<div><a href=\'fans.php?name='+clientID+'\'><b>'+clientID+'</a>('+clientName+'): </b>'+text+'</div>');
 	var objDiv = document.getElementById("chatContent");
-	
+
 	objDiv.scrollTop = objDiv.scrollHeight;
+}
+function sendToVote(clientID, getVote) {
+	clientID= clientID.replace(/<\/?[^>]+(>|$)/g, "");
 }
 
 $(document).ready(function() {
 	$.material.init();
 
-
 	/*---------------------------------------------------
 		--- Settings UI Functions ---
 	---------------------------------------------------*/
-	window.setInterval(function() {
-		for(var i in clientMsgsForTimeout) {
-			if((+new Date()-clientMsgsForTimeout[i])>50) {
-				$("#sp_cl"+i).addClass("label-primary");
-				$("#sp_cl"+i).removeClass("label-info");
-			}
-		}
-	},500);
 
 	$(".onlyIfMicInputIsOn").hide();
 
@@ -75,6 +69,14 @@ $(document).ready(function() {
 			wsSendStrings(["chat",text]);
 			writeToChat(client.userid,client.nn,text);
 			$("#chatInput").val("");
+		}
+	}
+
+	function voteSend(text) {
+		text = $.trim(text);
+		if(text!==""){
+			wsSendStrings(["vote" ,text]);
+			sendToVote(client.userid,getVote);
 		}
 	}
 

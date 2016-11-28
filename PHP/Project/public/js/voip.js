@@ -51,9 +51,8 @@ myWebSocket.binaryType = "arraybuffer";
 myWebSocket.onopen = function(evt) {
 	wsConnect = true;//用戶連接，開啟Ws server連線
 	if(typeof(client) != "undefined") {
-		wsSendStrings(["client", "nn", client["nn"]]);
+		wsSendStrings(["client", "nn", client["nn"]]);//傳送用戶姓名
 		wsSendStrings(["client", "userid", client["userid"]]);//傳送用戶ID
-		wsSendStrings(["client", "pp", client["pp"]]);//傳送用戶個人大頭貼
 	}
 };
 
@@ -100,6 +99,8 @@ myWebSocket.onmessage = function(evt) {
 			for(var i=0;i<cliensObj.length;i++) {
 				$("#clientList").append('<li id="li_cl'+cliensObj[i]["clientId"]+'"><span id="sp_cl'+cliensObj[i]["clientId"]+'" class="label label-primary">'+cliensObj[i]["nn"]+'</span></li>');
 			}
+		}else if(msgs[0] === "vote"){
+			Vote(msgs[1],msgs[2])
 		}
 	}
 

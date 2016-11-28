@@ -26,6 +26,7 @@
 		}
 	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
 	<script type="text/javascript" src="./js/jquery.nouislider.min.js"></script>
 	<script type="text/javascript" src="./js/material.min.js"></script>
 	<script type="text/javascript" src="./js/main.js"></script>
@@ -45,11 +46,13 @@
 				$(document).ready(function(){
 					$('#login').show();
 				});
-		<?php else: $id=$_COOKIE['account']; ?>
+		<?php else: $id=$_COOKIE['account'];
+		?>
 			$(document).ready(function(){
 				$('#user').show();
 			});
-		<?php endif; ?>
+		<?php endif;
+		?>
 	</script>
 
 	<div class="wrap">
@@ -66,6 +69,7 @@
 			</script>
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
+				<div class="container"></div>
 				<div class="user" id="user">
 					<img src="photo.php?id=<?php echo $id;?>">
 					<div class="user_info">
@@ -120,7 +124,7 @@
 							<div class="vote_like" id="like"></div>
 							<div class="vote_dislike" id="dislike"></div>
 							<script src="http://d3js.org/d3.v3.min.js"></script>
-							<script type="text/javascript" src="./js/vote.js"></script>
+							<script type="text/javascript" src="./js/ArMen.js"></script>
 						</div>
 					</div>
 

@@ -86,7 +86,7 @@ $(function() {
         return (d.vote*10)+15 + "px";
       })
       .text(function(d) { return d.vote });
-      
+
     bars.selectAll("div")
       .text(function(d) { return d.vote })
       .style("width", function (d) {
