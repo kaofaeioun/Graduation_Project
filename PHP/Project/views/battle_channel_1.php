@@ -140,7 +140,7 @@
 <script type="text/javascript">
 function CountMic(){
 		var request = new XMLHttpRequest();
-		request.open("POST", "countmic.php");
+		request.open("GET", "countmic.php?id=<?php echo $id;?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
 	request.onreadystatechange = function() {
@@ -170,6 +170,9 @@ function CountMic(){
 					if(data.Singer3){
 						document.getElementById("queue3id").innerHTML = data.Singer3+"("+data.Singer3Name+")";
 						document.getElementById("queue3href").href = "fans.php?name="+data.Singer3;
+					}
+					if(data.VoteResult){
+						document.getElementById("vtresult").innerHTML="true";
 					}
 					else if(!data.Singer3){
 						document.getElementById("queue3id").innerHTML = null;
@@ -271,10 +274,12 @@ function CountMic(){
 								setTimeout(showTime, nextTime);
 							if(s==0){
 								s=s+60;
-								Countmic();
+								CountMic();
 							}if(s<30){
+								if(document.getElementById('vtresult').innerHTML!="true"){
 								document.getElementById("Dislike").style.visibility = "visible";
 								document.getElementById("Like").style.visibility ="visible";
+								}
 								document.getElementById("circleSvg").style.visibility ="visible";
 							}if(s>30){
 								document.getElementById("Dislike").style.visibility = "hidden";
@@ -320,6 +325,7 @@ function CountMic(){
 					<li><p>目前排麥人數</p></li>
 					<li><img src="image/line.png"></li>
 					<li><p id="MicCount"></p></li>
+					<li><p id="vtresult" hidden="hidden"></p></li>
 				</div>
 				<?php
 					$id = $_COOKIE['account'];
