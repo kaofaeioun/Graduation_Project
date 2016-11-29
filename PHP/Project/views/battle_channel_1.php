@@ -154,6 +154,9 @@ function CountMic(){
 					if (data.MicCount) {
 						document.getElementById("MicCount").innerHTML = data.MicCount;
 					}
+					if (!data.MicCount){
+						document.getElementById("MicCount").innerHTML = null;
+					}
 					if(data.Singer){
 						document.getElementById("singerid").innerHTML = data.Singer;
 						document.getElementById("singname").innerHTML = data.SingerName;
@@ -172,13 +175,13 @@ function CountMic(){
 						document.getElementById("queue3href").href = "fans.php?name="+data.Singer3;
 					}
 					if(!data.Singer){
-						document.getElementById("queue3id").innerHTML = null;
+						document.getElementById("singerid").innerHTML = null;
 					}
 					if(!data.Singer1){
-						document.getElementById("queue3id").innerHTML = null;
+						document.getElementById("queue1id").innerHTML = null;
 					}
 					if(!data.Singer2){
-						document.getElementById("queue3id").innerHTML = null;
+						document.getElementById("queue2id").innerHTML = null;
 					}
 					if(!data.Singer3){
 						document.getElementById("queue3id").innerHTML = null;
@@ -210,7 +213,7 @@ function CancelMic(){
 		request.open("GET", "cancelmic.php?singer="+document.getElementById('singerid').innerHTML+"");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
-}	
+}
 	</script>
 					<div class="track">
 						<?php
@@ -265,6 +268,32 @@ function CancelMic(){
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數"><b>87</b></li>
+						<button id="reset">龜苓膏</button>
+						<script type="text/javascript">
+						$(document).on("click", "#reset",function() {
+							function datareset(msg){
+								for (var i = 0; i<window.data.length; i++){
+									var el = window.data[i];
+									if (el.name == msg && el.vote !== 0){
+										el.vote--;
+									}
+								}
+							}
+							function resetvotes(){
+								pubnub.history({
+									channel:"Vote2",
+									start:0,
+									callback: function(msg) {
+										var vote_history = msg[0];
+										for (var i = 0; i < vote_history.length; i++) {
+											datareset(vote_history[i]);
+										}
+									}
+								});
+							}
+							resetvotes();
+						});
+						</script>
 					</div>
 					<?php
 						$sqlTrack = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID=''";
@@ -304,11 +333,13 @@ function CancelMic(){
 								CountMic();
 							}if(s<30){
 								if(document.getElementById('vtresult').innerHTML!="true"){
+								document.getElementById("circleSvg").style.visibility = "visible";
 								document.getElementById("Dislike").style.visibility = "visible";
 								document.getElementById("Like").style.visibility ="visible";
 								}
 								document.getElementById("circleSvg").style.visibility ="visible";
 							}if(s>30){
+								document.getElementById("circleSvg").style.visibility = "hidden";
 								document.getElementById("Dislike").style.visibility = "hidden";
 								document.getElementById("Like").style.visibility= "hidden";
 								document.getElementById("circleSvg").style.visibility ="hidden";
@@ -342,7 +373,7 @@ function CancelMic(){
 						request.open("GET", "voteconnect.php?singer="+i+"&id=<?php echo $id;?>");
 						request.send();
 					});
-				</script>	
+				</script>
 				<div class="queue">
 					<li><a id="queue1href"><b id='queue1id'></b></a></li>
 					<li><a id="queue2href"><b id='queue2id'></b></a></li>

@@ -103,6 +103,5 @@ $(function() {
       }
     });
   }
-  init_votes();
   draw(data);
 });
