@@ -23,6 +23,7 @@ $(function() {
   /* Body插入svg g標籤*/
   var svg = d3.select("body .board")
     .append("svg")
+    .attr("id","circleSvg")
     .append("g");
   /*設定長寬、圓半徑*/
   var width = 200,

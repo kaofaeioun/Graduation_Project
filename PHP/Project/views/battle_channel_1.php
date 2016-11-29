@@ -271,12 +271,15 @@ function CountMic(){
 								setTimeout(showTime, nextTime);
 							if(s==0){
 								s=s+60;
+								Countmic();
 							}if(s<30){
 								document.getElementById("Dislike").style.visibility = "visible";
 								document.getElementById("Like").style.visibility ="visible";
+								document.getElementById("circleSvg").style.visibility ="visible";
 							}if(s>30){
 								document.getElementById("Dislike").style.visibility = "hidden";
 								document.getElementById("Like").style.visibility= "hidden";
+								document.getElementById("circleSvg").style.visibility ="hidden";
 							}
 						}
 						setTimeout(showTime, 1000);

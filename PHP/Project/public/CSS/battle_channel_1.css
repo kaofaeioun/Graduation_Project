@@ -141,6 +141,9 @@ svg{
     cursor: pointer;
     visibility: hidden;
 }
+#circleSvg{
+    visibility: hidden;
+}
 #square{
     width:90px;
     height:30px;
