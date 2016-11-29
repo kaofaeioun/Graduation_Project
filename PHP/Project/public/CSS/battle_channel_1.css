@@ -111,14 +111,6 @@ table {
 .circle_2 b1{
     font-size: 25px;
 }
-svg{
-    position: absolute;
-    top: 25px;
-    left: 200px;
-    width: 200px;
-    height: 200px;
-    display: block;
-}
 #Like{
     width: 50px;
     height: 50px;
@@ -128,7 +120,7 @@ svg{
     background-image: url("../image/vote_like_1.png");
     background-size:contain;
     cursor: pointer;
-    visibility: hidden
+    visibility: hidden;
 }
 #Dislike{
     width: 50px;
@@ -143,6 +135,12 @@ svg{
 }
 #circleSvg{
     visibility: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: 200px;
+    display: block;
 }
 #square{
     width:90px;

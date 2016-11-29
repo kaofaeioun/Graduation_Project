@@ -331,6 +331,10 @@ function CancelMic(){
 								CancelMic();
 								s=s+60;
 								CountMic();
+								$(document).ready(function() {
+  									$(".board").load("/ArMen.html");
+  									console.log("HEY");
+								});
 							}if(s<30){
 								if(document.getElementById('vtresult').innerHTML!="true"){
 								document.getElementById("circleSvg").style.visibility = "visible";
@@ -342,7 +346,6 @@ function CancelMic(){
 								document.getElementById("circleSvg").style.visibility = "hidden";
 								document.getElementById("Dislike").style.visibility = "hidden";
 								document.getElementById("Like").style.visibility= "hidden";
-								document.getElementById("circleSvg").style.visibility ="hidden";
 							}
 						}
 						setTimeout(showTime, 1000);
@@ -354,8 +357,8 @@ function CancelMic(){
 								$("#Dislike").fadeOut();
 							});
 							$("#Dislike").click(function(){
-									$("#Like").fadeOut();
-									$("#Dislike").fadeOut();
+								$("#Like").fadeOut();
+								$("#Dislike").fadeOut();
 							});
 						});
 					</script>

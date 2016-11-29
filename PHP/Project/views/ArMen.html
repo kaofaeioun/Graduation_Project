@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" href="CSS/battle_channel_1.css">
+	<link rel="stylesheet" href="CSS/all.css">
+
+</head>
+<body>
+		<div class="circle_area">
+			<div class="circle_1" id="circle"></div>
+			<div class="circle_2" id="CountDown"></div>
+			<script src="http://d3js.org/d3.v3.min.js"></script>
+			<script type="text/javascript" src="./js/ArMen.js"></script>
+		</div>
+		<script>
+						$(document).ready(function(){
+							$("#Like").click(function(){
+								$("#Like").fadeOut();
+								$("#Dislike").fadeOut();
+							});
+							$("#Dislike").click(function(){
+								$("#Like").fadeOut();
+								$("#Dislike").fadeOut();
+							});
+						});
+					</script>
+</body>
+</html>
