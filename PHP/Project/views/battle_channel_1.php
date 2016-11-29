@@ -171,11 +171,31 @@ function CountMic(){
 						document.getElementById("queue3id").innerHTML = data.Singer3+"("+data.Singer3Name+")";
 						document.getElementById("queue3href").href = "fans.php?name="+data.Singer3;
 					}
+					if(!data.Singer){
+						document.getElementById("queue3id").innerHTML = null;
+					}
+					if(!data.Singer1){
+						document.getElementById("queue3id").innerHTML = null;
+					}
+					if(!data.Singer2){
+						document.getElementById("queue3id").innerHTML = null;
+					}
+					if(!data.Singer3){
+						document.getElementById("queue3id").innerHTML = null;
+					}
 					if(data.VoteResult){
 						document.getElementById("vtresult").innerHTML="true";
 					}
-					else if(!data.Singer3){
-						document.getElementById("queue3id").innerHTML = null;
+					if(data.StatusResult){
+						if(data.StatusResult==0){
+							client.sound=true;
+							client.mic=false;
+						}
+						else if(data.StatusResult==1)
+						{
+							client.sound=false;
+							client.mic=true;
+						}
 					}
 				}
 			} else {
@@ -185,6 +205,12 @@ function CountMic(){
 	}
 }
 	CountMic();
+function CancelMic(){
+	var request = new XMLHttpRequest();
+		request.open("GET", "cancelmic.php?singer="+document.getElementById('singerid').innerHTML+"");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+}	
 	</script>
 					<div class="track">
 						<?php
@@ -273,6 +299,7 @@ function CountMic(){
 							if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
 							if(s==0){
+								CancelMic();
 								s=s+60;
 								CountMic();
 							}if(s<30){
