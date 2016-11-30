@@ -457,7 +457,7 @@
 			<li><a href="battle.php"><img src="image/menu_battle.png"></a></li>
 			<li><a href="channel.php"><img src="image/personal.png"></a></li>
 			<li><a href="personalinfo.php"><img src="image/person_info_chosen.png"></a></li>
-			<li><a href="setting.php"><img src="image/rules.png"></a></li>
+			<li><a href="setting.php"><img src="image/rules_chosen.png"></a></li>
 		</ul>
 	</footer>
 	</div>
