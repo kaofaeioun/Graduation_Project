@@ -1,7 +1,7 @@
 <?php
 	include ("mysql_connect.php");
 	$Status="battle.php";
-	$user_now=$_COOKIE['account'];
+	$user_now=@$_COOKIE['account'];
 	$sql="SELECT Status_Time FROM UserStatus WHERE User_ID='$user_now' && Status='$Status'";
 	$result=mysqli_query($link,$sql);
 	$row=mysqli_fetch_assoc($result);
@@ -68,16 +68,22 @@
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div id="user">
-					<img src="photo.php?id=<?php echo $id?>">
+					<img src="photo.php?id=<?php echo $id;?>">
 					<div class="user_info">
 						<ul>
-							<li><p>Rank</p><img src="image/medal.png"></li>
+							<li><p>Rank</p><img src="image/golden_2.png"></li>
 							<li><p>勝場數</p><b2>94</b2>場</li>
 							<li><p>勝場率</p><b3>87</b3>%</li>
 						</ul>
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
+								<p><?php 
+								$sql="SELECT User_Name From User WHERE User_id='$id'";
+								$result=mysqli_query($link,$sql);
+								$row=mysqli_fetch_assoc($result);
+								$username=$row['User_Name'];
+								echo $username;?></p>
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
 							</div>			
 					</div>	
