@@ -173,7 +173,7 @@ function CountMic(){
 					if(!data.MicOrder){
 						if (data.MicCount) {
 							document.getElementById("MicTitle").innerHTML = "目前排麥人數";
-							document.getElementById("MicCount").innerHTML = data.MicCount-1;
+							document.getElementById("MicCount").innerHTML = data.MicCount;
 						}
 						if (!data.MicCount){
 							document.getElementById("MicTitle").innerHTML = "目前排麥人數";
@@ -336,15 +336,17 @@ function CancelMic(){
 								setTimeout(showTime, nextTime);
 							if(s==0){
 								CancelMic();
-								s=s+60;
-								CountMic();
 								$(document).ready(function() {
   									$(".board").load("/ArMen.php");
   									console.log("HEY");
 								});
-							}if(s<30){
+								s=s+60;
+							}
+							if(s==59){
+								CountMic();
+							}
+							if(s<30){
 								if(document.getElementById('vtresult').innerHTML!="true"){
-								document.getElementById("circleSvg").style.visibility = "visible";
 								document.getElementById("Dislike").style.visibility = "visible";
 								document.getElementById("Like").style.visibility ="visible";
 								}
