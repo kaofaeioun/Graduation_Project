@@ -79,74 +79,74 @@
 					<img src="photo.php?id=<?php echo $id?>">
 					<div class="user_info">
 						<ul>
-                            <li><p>Rank</p>
-                            <?PHP
-                                $an = $_COOKIE['account'];
-                                $sql="SELECT Level From User where User_ID= '$an'";
-                                $result = mysqli_query($link,$sql);
-                                $row = mysqli_fetch_assoc($result);
-                                if ($row['Level']=='無階級') {
-                                    echo "<img src='image/bronze.png'>";
-                                }elseif ($row['Level']=='銅MIC I') {
-                                    echo "<img src='image/bronze_1.png'>";
-                                }elseif ($row['Level']=='銅MIC II') {
-                                    echo "<img src='image/bronze_2.png'>";
-                                }elseif ($row['Level']=='銅MIC III') {
-                                    echo "<img src='image/bronze_3.png'>";
-                                }elseif ($row['Level']=='銀Mic I') {
-                                    echo "<img src='image/silver_1.png'>";
-                                }elseif ($row['Level']=='銀Mic II') {
-                                    echo "<img src='image/silver_2.png'>";
-                                }elseif ($row['Level']=='銀Mic III') {
-                                    echo "<img src='image/silver_3.png'>";
-                                }elseif ($row['Level']=='金Mic I') {
-                                    echo "<img src='image/golden_1.png'>";
-                                }elseif ($row['Level']=='金Mic II') {
-                                    echo "<img src='image/golden_2.png'>";
-                                }elseif ($row['Level']=='金Mic III') {
-                                    echo "<img src='image/golden_3.png'>";
-                                }elseif ($row['Level']=='白金Mic I') {
-                                    echo "<img src='image/platnum_1.png'>";
-                                }elseif ($row['Level']=='白金Mic II') {
-                                    echo "<img src='image/platnum_2.png'>";
-                                }elseif ($row['Level']=='白金Mic III') {
-                                    echo "<img src='image/platnum_3.png'>";
-                                }elseif ($row['Level']=='鑽石Mic I') {
-                                    echo "<img src='image/diamond_1.png'>";
-                                }elseif ($row['Level']=='鑽石Mic II') {
-                                    echo "<img src='image/diamond_2.png'>";
-                                }elseif ($row['Level']=='鑽石Mic III') {
-                                    echo "<img src='image/diamond_3.png'>";
-                                }
-                            ?>
-                            </li>
-                            <li><p>勝場數</p><b2>
-                                <?PHP
-                                    $an = $_COOKIE['account'];
-                                    $sql="SELECT User_Wins From User where User_ID= '$an'";
-                                    $result = mysqli_query($link,$sql);
-                                    $row = mysqli_fetch_assoc($result);
-                                    echo $row['User_Wins'];
-                                ?>
-                            </b2>場</li>
-                            <li><p>勝場率</p><b3>
-                                <?PHP
-                                    $an = $_COOKIE['account'];
-                                    $sql="SELECT User_Wins FROM User where User_ID= '$an'";
-                                    $result = mysqli_query($link,$sql);
-                                    $row=mysqli_fetch_assoc($result);
+							<li><p>Rank</p>
+							<?PHP
+								$an = $_COOKIE['account'];
+								$sql="SELECT Level From User where User_ID= '$an'";
+								$result = mysqli_query($link,$sql);
+								$row = mysqli_fetch_assoc($result);
+								if ($row['Level']=='無階級') {
+									echo "<img src='image/bronze.png'>";
+								}elseif ($row['Level']=='銅MIC I') {
+									echo "<img src='image/bronze_1.png'>";
+								}elseif ($row['Level']=='銅MIC II') {
+									echo "<img src='image/bronze_2.png'>";
+								}elseif ($row['Level']=='銅MIC III') {
+									echo "<img src='image/bronze_3.png'>";
+								}elseif ($row['Level']=='銀Mic I') {
+									echo "<img src='image/silver_1.png'>";
+								}elseif ($row['Level']=='銀Mic II') {
+									echo "<img src='image/silver_2.png'>";
+								}elseif ($row['Level']=='銀Mic III') {
+									echo "<img src='image/silver_3.png'>";
+								}elseif ($row['Level']=='金Mic I') {
+									echo "<img src='image/golden_1.png'>";
+								}elseif ($row['Level']=='金Mic II') {
+									echo "<img src='image/golden_2.png'>";
+								}elseif ($row['Level']=='金Mic III') {
+									echo "<img src='image/golden_3.png'>";
+								}elseif ($row['Level']=='白金Mic I') {
+									echo "<img src='image/platnum_1.png'>";
+								}elseif ($row['Level']=='白金Mic II') {
+									echo "<img src='image/platnum_2.png'>";
+								}elseif ($row['Level']=='白金Mic III') {
+									echo "<img src='image/platnum_3.png'>";
+								}elseif ($row['Level']=='鑽石Mic I') {
+									echo "<img src='image/diamond_1.png'>";
+								}elseif ($row['Level']=='鑽石Mic II') {
+									echo "<img src='image/diamond_2.png'>";
+								}elseif ($row['Level']=='鑽石Mic III') {
+									echo "<img src='image/diamond_3.png'>";
+								}
+							?>
+							</li>
+							<li><p>勝場數</p><b2>
+								<?PHP
+									$an = $_COOKIE['account'];
+									$sql="SELECT User_Wins From User where User_ID= '$an'";
+									$result = mysqli_query($link,$sql);
+									$row = mysqli_fetch_assoc($result);
+									echo $row['User_Wins'];
+								?>
+							</b2>場</li>
+							<li><p>勝場率</p><b3>
+								<?PHP
+									$an = $_COOKIE['account'];
+									$sql="SELECT User_Wins FROM User where User_ID= '$an'";
+									$result = mysqli_query($link,$sql);
+									$row=mysqli_fetch_assoc($result);
 
-                                    $sql2="SELECT User_Loses FROM User where User_ID= '$an'";
-                                    $result2= mysqli_query($link,$sql2);
-                                    $row2=mysqli_fetch_assoc($result2);
+									$sql2="SELECT User_Loses FROM User where User_ID= '$an'";
+									$result2= mysqli_query($link,$sql2);
+									$row2=mysqli_fetch_assoc($result2);
 
-                                    $wins=$row['User_Wins'];
-                                    $loses=$row2['User_Loses'];
-                                    @$percent=$wins/($wins+$loses)*100;
-                                    echo $percent;
-                                ?>
-                            </b3>%</li>
-                        </ul>
+									$wins=$row['User_Wins'];
+									$loses=$row2['User_Loses'];
+									@$percent=$wins/($wins+$loses)*100;
+									echo $percent;
+								?>
+							</b3>%</li>
+						</ul>
 						<span class="arrow_bottom_int"></span>	
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
@@ -199,6 +199,48 @@
 				?>	
 				<div class="leftbar">
 					<ul>
+					<div class="madelevel">
+						<?PHP
+							$an = $_GET['name'];
+							$sql="SELECT Level From User where User_ID= '$an'";
+							$result = mysqli_query($link,$sql);
+							$row = mysqli_fetch_assoc($result);
+							if ($row['Level']=='無階級') {
+								echo "<img src='image/bronze.png'>";
+							}elseif ($row['Level']=='銅MIC I') {
+								echo "<img src='image/bronze_1.png'>";
+							}elseif ($row['Level']=='銅MIC II') {
+								echo "<img src='image/bronze_2.png'>";
+							}elseif ($row['Level']=='銅MIC III') {
+								echo "<img src='image/bronze_3.png'>";
+							}elseif ($row['Level']=='銀Mic I') {
+								echo "<img src='image/silver_1.png'>";
+							}elseif ($row['Level']=='銀Mic II') {
+								echo "<img src='image/silver_2.png'>";
+							}elseif ($row['Level']=='銀Mic III') {
+								echo "<img src='image/silver_3.png'>";
+							}elseif ($row['Level']=='金Mic I') {
+								echo "<img src='image/golden_1.png'>";
+							}elseif ($row['Level']=='金Mic II') {
+								echo "<img src='image/golden_2.png'>";
+							}elseif ($row['Level']=='金Mic III') {
+								echo "<img src='image/golden_3.png'>";
+							}elseif ($row['Level']=='白金Mic I') {
+								echo "<img src='image/platnum_1.png'>";
+							}elseif ($row['Level']=='白金Mic II') {
+								echo "<img src='image/platnum_2.png'>";
+							}elseif ($row['Level']=='白金Mic III') {
+								echo "<img src='image/platnum_3.png'>";
+							}elseif ($row['Level']=='鑽石Mic I') {
+								echo "<img src='image/diamond_1.png'>";
+							}elseif ($row['Level']=='鑽石Mic II') {
+								echo "<img src='image/diamond_2.png'>";
+							}elseif ($row['Level']=='鑽石Mic III') {
+								echo "<img src='image/diamond_3.png'>";
+							}
+						?>
+						
+					</div>
 						<?php
 							if (isset($_GET['name'])) {
 								$an = $_GET['name'];

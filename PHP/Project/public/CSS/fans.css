@@ -91,20 +91,39 @@ h2{
 .leftbar li{
     line-height: 60px;
     text-align: left;
-
+}
+.madelevel{
+    width: 100px;
+    height: 100px;
+    margin-top: 25px;
+    margin-left: 30px;
+    display: block;
+    float: left;
+}
+.madelevel img{
+    width: 100px;
+    height: 100px;
 }
 #info{
     line-height: 70px;
     letter-spacing: 3px;
-    padding-left: 40px;
-    padding-right: 32px;
+    padding-left: 50px;
+    margin-left: 110px; 
+    width: 270px;
+    display: block;
 }
 a{
     text-decoration: none;
 }
+.blank{
+    text-align: right;
+    display: inline-block;
+    float: right;
+}
 /*---------追蹤清單--------------*/
 #track_list{
     text-align: center;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 #track_list li{
@@ -301,12 +320,7 @@ input:checked:after {
     font-size: 16px;
     cursor: default;
 }
-.blank{
-    text-align: right;
-    display: inline-block;
-    float: right;
-    margin: auto;
-}
+
 
 .blankz{
     text-align: left;
