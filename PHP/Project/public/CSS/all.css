@@ -125,9 +125,10 @@ h1 img{
     font-size: 20px;
 }
 #user .user_info img{
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     box-shadow: none;
+    border-radius: 0px;
 }
 .user_info .arrow_bottom_int{
     width:0px;
