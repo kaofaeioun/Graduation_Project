@@ -44,28 +44,6 @@ $(function() {
 
   var key = function(d){ return d.name; };
 
-  function increment(msg) {
-    for (var i=0; i<window.data.length; i++) {
-      var el = window.data[i];
-      if (el.name == msg) {
-        el.vote += 1;
-      }
-    }
-    draw(data);
-  }
-  function init_votes() {
-    pubnub.history({
-      channel: "Vote2",
-      start: 0,
-      callback: function(msg) {
-        var vote_history = msg[0];
-        for (var i=0; i<vote_history.length; i++) {
-          increment(vote_history[i]);
-        }
-      }
-    });
-  }
-
   function draw(data) {
     var bars = d3.select(".circle_area")
       .selectAll(".bar-wrapper")
@@ -104,6 +82,26 @@ $(function() {
 
     };
 
-
-  init_votes();
+  function increment(msg) {
+    for (var i=0; i<window.data.length; i++) {
+      var el = window.data[i];
+      if (el.name == msg) {
+        el.vote += 1;
+      }
+    }
+    draw(data);
+  }
+  function init_votes() {
+    pubnub.history({
+      channel: "Vote2",
+      start: 0,
+      callback: function(msg) {
+        var vote_history = msg[0];
+        for (var i=0; i<vote_history.length; i++) {
+          increment(vote_history[i]);
+        }
+      }
+    });
+  }
+  draw(data);
 });
