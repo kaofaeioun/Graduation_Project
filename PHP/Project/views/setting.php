@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- search -->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+    <link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
     <title>MicMusic</title>
 </head>
 <body>
     <script type="text/javascript">
         <?php include("mysql_connect.php");
-            if(!isset($_COOKIE['account'])): ?> 
+            if(!isset($_COOKIE['account'])): ?>
                 $(document).ready(function(){
                     $('#login').show();
                 });
@@ -121,17 +122,17 @@
                             </b3>%</li>
                         </ul>
                         <span class="arrow_bottom_int"></span>
-                        <span class="arrow_bottom_out"></span> 
+                        <span class="arrow_bottom_out"></span>
                             <div class="bot_area">
-                                <p><?php 
+                                <p><?php
                                 $sql="SELECT User_Name From User WHERE User_id='$id'";
                                 $result=mysqli_query($link,$sql);
                                 $row=mysqli_fetch_assoc($result);
                                 $username=$row['User_Name'];
                                 echo $username;?></p>
                                 <input type="button" class="logout" value="登出" onclick="location='logoutconnect.php'">
-                            </div>       
-                    </div>   
+                            </div>
+                    </div>
                 </div>
                 <div class="search">
                     <form action="fans.php" method="GET" name="font1">
@@ -144,9 +145,9 @@
                         </script>
                         <input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
                         <input type="image" class="search_image" src="image/search.png" id="search_image">
-                        
+
                     </form>
-                    
+
                 </div>
             </div>
             <div class="menu">
@@ -163,7 +164,7 @@
     <div class="wrap">
         <div class="content">
             <h2>常見問題<b>/</b><br>MicMusic 大亂鬥暨積分階級規則</h2>
-            <script> 
+            <script>
                 $(document).ready(function(){
                     $(".question1").click(function(){
                         $("#setting_person1").slideToggle("slow");
@@ -179,7 +180,7 @@
                 </ul>
             </div>
            <!--  6666666666666666666666666666666666 -->
-           <script> 
+           <script>
                 $(document).ready(function(){
                     $(".question2").click(function(){
                         $("#setting_person2").slideToggle("slow");
@@ -195,7 +196,7 @@
                 </ul>
             </div>
             <!-- 666666666666666666666666666666666666666666 -->
-            <script> 
+            <script>
                 $(document).ready(function(){
                     $(".question3").click(function(){
                         $("#setting_person3").slideToggle("slow");
@@ -221,7 +222,7 @@
                 </ul>
             </div>
             <!-- 666666666666666666666666666666666666666666666 -->
-            <script> 
+            <script>
                 $(document).ready(function(){
                     $(".question4").click(function(){
                         $("#setting_person4").slideToggle("slow");
@@ -238,8 +239,8 @@
                     </li>
                 </ul>
             </div>
-                
-        </div>         
+
+        </div>
     </div>
 
     <div class="footer_space">

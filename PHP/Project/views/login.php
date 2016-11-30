@@ -12,8 +12,9 @@
 	<link rel="stylesheet" href="CSS/login.css">
 	<link rel="stylesheet" href="CSS/all.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- search -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- search -->
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<title>MicMusic</title>
 </head>
 <body>
@@ -32,9 +33,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-						
+
 					</form>
-					
+
 				</div>
 			</div>
 			<div class="menu">
@@ -52,19 +53,19 @@
 		<div id="content">
 			<h2>登入<b>/</b><br>Login</h2>
 				<div class="profile_pic"><img src="image/icon.PNG"></div>
-				<div class="profile">		
+				<div class="profile">
 					<form method="post" action="">
 						<div class="profile_blank">
 							<ul>
 								<li>
-									<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" onkeyup="value=value.replace(/[\W]/g,'')" 
+									<input type="text" class="name_blank" placeholder="請輸入用戶/ID" name="id" onkeyup="value=value.replace(/[\W]/g,'')"
 										onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/)"	maxlength="20" required="">
 								</li>
 								<li>
 									<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" Maxlength="20" required="">
 								</li>
 								<div id="msg"></div>
-								<div class="clear"></div>				
+								<div class="clear"></div>
 								<b1>
 									<button type="submit" class="ctrl-standard typ-subhed fx-sliderIn" id ="sub">Submit</button>
 								</b1>
@@ -73,7 +74,7 @@
 								</b1>
 							</ul>
 						</div>
-					</form>		
+					</form>
 					<?php
   					if(isset($_POST['id'])&& isset($_POST['pwd'])){
 		        		$account = $_POST['id'];

@@ -14,7 +14,7 @@
 		// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
 		$sql="UPDATE UserStatus SET Status_Time='$t' WHERE User_ID='$user_now' && Status='$Status'";
 		$result=mysqli_query($link,$sql);
-		
+
 	}else{
 		date_default_timezone_set('Asia/Taipei');
 		$t= date("Y/m/d H:i:s");
@@ -34,8 +34,8 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  
-
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<title>MicMusic</title>
 </head>
 <body onunload="if(event.clientY<0) document.location=document.location.href">
@@ -45,7 +45,7 @@
 				$(document).ready(function(){
 					$('#login').show();
 				});
-		
+
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
@@ -150,15 +150,15 @@
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<p><?php 
+								<p><?php
 								$sql="SELECT User_Name From User WHERE User_id='$id'";
 								$result=mysqli_query($link,$sql);
 								$row=mysqli_fetch_assoc($result);
 								$username=$row['User_Name'];
 								echo $username;?></p>
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
-							</div>			
-					</div>	
+							</div>
+					</div>
 				</div>
 				<div class="search">
 					<form action="fans.php" method="GET" name="font1">
@@ -171,9 +171,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-						
+
 					</form>
-					
+
 				</div>
 			</div>
 			<div class="menu">
@@ -214,7 +214,7 @@
 					        if (request.readyState === 4) {
 					            if (request.status === 200) {
 					                var type = request.getResponseHeader("Content-Type");
-					                if (type.indexOf("application/json") === 0) {               
+					                if (type.indexOf("application/json") === 0) {
 					                    var data = JSON.parse(request.responseText);
 					                    if (data.msg) {
 					                        document.getElementById("Countmanshow").innerHTML = data.msg;
@@ -225,13 +225,13 @@
 					            }
 					        }
 					    }
-						
+
 						setTimeout("Countman()",60000);
 
 						// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
 						// $result3=mysqli_query($link,$sql3);
 						// $row3=mysqli_fetch_assoc($result3);
-						
+
 						// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
 					}
 

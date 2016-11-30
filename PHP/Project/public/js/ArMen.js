@@ -57,6 +57,7 @@ $(function() {
       .attr("class", "")
       .on("click", function(d) {
         sendData(d.name);
+        console.log(d.name+"SendVote");
       });
     bars.exit()
       .remove();
@@ -79,7 +80,6 @@ $(function() {
       })
     fan.exit()
       .remove();
-
     };
 
   function increment(msg) {
@@ -103,5 +103,27 @@ $(function() {
       }
     });
   }
+  function datareset(msg){
+    for (var i = 0; i<window.data.length; i++){
+      var el = window.data[i];
+      if (el.vote !== 0 && el.name === msg){
+        el.vote -= 1;
+        console.log(el.name+":"+el.vote);
+      }
+    }
+  }
+  function resetvotes(){
+    pubnub.history({
+      channel:"Vote2",
+      start:0,
+      callback: function(msg) {
+        var vote_history = msg[0];
+        for (var i = 0; i < vote_history.length; i++) {
+          datareset(vote_history[i]);
+        }
+      }
+    });
+  }
   draw(data);
+  resetvotes();
 });

@@ -12,8 +12,9 @@
 	<link rel="stylesheet" href="CSS/register.css">
 	<link rel="stylesheet" href="CSS/all.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- search -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- search -->
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<title>MicMusic</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
-			
+
 			<div class="toolbar">
 				<div class="search">
 					<form action="fans.php" method="GET" name="font1">
@@ -34,9 +35,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-						
+
 					</form>
-					
+
 				</div>
 			</div>
 			<div class="menu">
@@ -54,7 +55,7 @@
 			<h2>註冊<b>/</b><br>Register</h2>
 			<form action="" method="post" enctype="multipart/form-data">
 			<div class="photo">
-				<img id="userimg" src="image/user_image.png">					
+				<img id="userimg" src="image/user_image.png">
 					<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
 					<input type="file" name="upload" id="upload" onchange="loadImageFile()"  required="" />
 			</div>
@@ -85,11 +86,11 @@
 							<input type="text" class="name_blank" name="favsong" placeholder="請輸入喜歡的歌/Favorate Song(如:六個姐姐一個哥哥)" maxlength="20">
 						</li>
 						<div id="msg"></div>
-						<div class="clear"></div>	
+						<div class="clear"></div>
 						<button type="Submit" class="ctrl-standard typ-subhed fx-sliderIn" id="sub">Submit</button>
 					</ul>
 				</div>
-			</form>   			
+			</form>
 		<script type="text/javascript">
 			oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-windowdump)$/i;//判別檔案類型
 
@@ -101,10 +102,10 @@
 					var oFile = document.getElementById("upload").files[0];
 				if (!rFilter.test(oFile.type)) { alert("請上傳圖片"); return; }
 					  oFReader.readAsDataURL(oFile);
-			}	
+			}
 		</script>
 <?php
-	if (isset($_POST['id'])&&isset($_POST['pwd'])&&isset($_POST['repwd'])&&isset($_POST['name'])&&isset($_POST['mail'])&&isset($_POST['hobby'])&&isset($_POST['favsinger'])&&isset($_POST['favsong'])) { 
+	if (isset($_POST['id'])&&isset($_POST['pwd'])&&isset($_POST['repwd'])&&isset($_POST['name'])&&isset($_POST['mail'])&&isset($_POST['hobby'])&&isset($_POST['favsinger'])&&isset($_POST['favsong'])) {
 			$id = $_POST['id'];
 			$pwd = $_POST['pwd'];
 			$repwd = $_POST['repwd'];
@@ -120,7 +121,7 @@
 			if($row[0] == $id ){
 				echo "<script>document.getElementById('msg').innerHTML = ('此帳號已有人使用過!')</script>";
 			}
-			else if($pwd!=$repwd){ 
+			else if($pwd!=$repwd){
 	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";
 			}
 			else{
@@ -136,11 +137,11 @@
 				//echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
 			}
 		}
-	
+
 ?>
 
 			<div class="clear"></div>
-		</div>	
+		</div>
 	</div>
 
 	<div class="footer_space">

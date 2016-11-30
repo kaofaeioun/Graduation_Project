@@ -9,7 +9,7 @@
 		$resultget = mysqli_query($link,$sqlget);
 		$rowget = mysqli_fetch_assoc($resultget);
 	}
-?>		
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +22,9 @@
 	<link rel="stylesheet" href="CSS/all.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/pic_adjust.js"></script>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<script type='text/javascript'>
 		document.createElement("b1")
 	</script>
@@ -36,7 +37,7 @@
 				$(document).ready(function(){
 					$('#login').show();
 				});
-		
+
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
@@ -147,10 +148,10 @@
 								?>
 							</b3>%</li>
 						</ul>
-						<span class="arrow_bottom_int"></span>	
+						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<p><?php 
+								<p><?php
 								$sql="SELECT User_Name From User WHERE User_id='$id'";
 								$result=mysqli_query($link,$sql);
 								$row=mysqli_fetch_assoc($result);
@@ -172,9 +173,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-						
+
 					</form>
-					
+
 				</div>
 			</div>
 			<div class="menu">
@@ -196,7 +197,7 @@
 					if(!isset($rowget['User_ID']) || $rowget['User_ID']==null){
 						echo "<p>查無此人</p>";
 					}
-				?>	
+				?>
 				<div class="leftbar">
 					<ul>
 					<div class="madelevel">
@@ -239,7 +240,7 @@
 								echo "<img src='image/diamond_3.png'>";
 							}
 						?>
-						
+
 					</div>
 						<?php
 							if (isset($_GET['name'])) {
@@ -248,7 +249,7 @@
 								$result = mysqli_query($link,$sql);
 								$row = mysqli_fetch_assoc($result);
 							}
-							if(@$row['User_ID']){	
+							if(@$row['User_ID']){
 								echo "
 								<li id='info'>ID<div class='blank'>".$row['User_ID']."</div></li>
 								<li id='info'>名字<div class='blank'>".$row['User_Name']."</div></li>";
@@ -257,7 +258,7 @@
 					<li>
 						<ul id="track_list">
 							<li>
-								<?php 
+								<?php
 									if(isset($rowget['User_ID'])){
 									echo "<nav id='nav-1'><a href='fansMenu_tagFollowers.php?name=".$an."'class='link-1'>追蹤名單<img src='image/track.png' >";
 									$sql = "SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$an'";
@@ -267,13 +268,13 @@
 									echo "</a>";
 									}
 								?>
-								
+
 							</li>
 							<li>
 								<?php
 									if(isset($rowget['User_ID'])){
 									echo "<a href='fansMenu_tagFans.php?name=".$an."'class='link-1'>粉絲名單<img src='image/tracked.png' ></nav>";
-									
+
 										$sql = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID='$an'";
 										$result = mysqli_query($link,$sql);
 										$row2 = mysqli_fetch_assoc($result);
@@ -284,10 +285,10 @@
 								</a>
 							</li>
 							<?php
-								if(isset($rowget['User_ID'])){ 
+								if(isset($rowget['User_ID'])){
 									echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
 								}
-							?>						
+							?>
 							</ul>
 						</li>
 
@@ -307,7 +308,7 @@
 								$('.entire_photo').css("padding-bottom",img_padding_h);
 								$('.entire_photo').css("padding-left",img_padding_w);
 								$('.entire_photo').css("padding-right",img_padding_w);
-							});	
+							});
 						}
 						else if (img_width > img_height){
 							var img_padding = (700-img_height)/2;
@@ -315,7 +316,7 @@
 								$('.entire_photo').css("padding-top",img_padding);
 								$('.entire_photo').css("padding-bottom",img_padding);
 							});
-						}	
+						}
 						else if (img_width < img_height){
 							var img_padding = (900-img_width)/2;
 							$(document).ready(function(){
@@ -355,7 +356,7 @@
 									</div>";
 							}
 						}
-												
+
 					?>
 	<script type="text/javascript">
 			var modal = document.getElementById('myModal');
@@ -374,17 +375,17 @@
 				e.preventDefault();
 				return false;
 			});
-	</script>	
+	</script>
 				<script type="text/javascript">
 					PicAutoMid();
-				</script>	
+				</script>
 					<script type="text/javascript">
 							$( document ).on( "click", "#followed", function() {
-  									
+
   								var request = new XMLHttpRequest();
 							    request.open("GET", "followcancel.php?Track_ID=<?php echo $usernow;?>&Tracked_ID=<?php echo $an;?>");
 							    request.send();
-							    $('#followed').attr('id','follow');		
+							    $('#followed').attr('id','follow');
 							});
 							$( document ).on( "click", "#follow", function() {
   								var request = new XMLHttpRequest();
@@ -396,10 +397,10 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			
+
 
 			<div class="downbar">
-				<ul>	
+				<ul>
 					<?php
 							if (isset($_GET['name'])) {
 								$an = $_GET['name'];
@@ -416,7 +417,7 @@
 									$row['Fav_Singer']="目前暫無資料";
 								}
 							}
-						if(@$row['User_ID']){	
+						if(@$row['User_ID']){
 						echo "
 						<li>
 							<p>興趣</p>
@@ -440,11 +441,11 @@
 
 						<div class='clear'></div>
 						";
-					}	
+					}
 					?>
 				</ul>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 	<!-- 11111111111111111111111111111111111111111111 -->
