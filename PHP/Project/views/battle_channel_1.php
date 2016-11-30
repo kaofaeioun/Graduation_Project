@@ -162,6 +162,12 @@ function CountMic(){
 						document.getElementById("singname").innerHTML = data.SingerName;
 						document.getElementById("singerhref").href = "fans.php?name="+data.Singer;
 					}
+					if(data.TrackedNum){
+						document.getElementById('TrackedNum').innerHTML=data.TrackedNum;
+					}
+					if(!data.TrackedNum){
+						document.getElementById('TrackedNum').innerHTML=null;
+					}
 					if(data.Singer1){
 						document.getElementById("queue1id").innerHTML = data.Singer1+"("+data.Singer1Name+")";
 						document.getElementById("queue1href").href = "fans.php?name="+data.Singer1;
@@ -176,6 +182,7 @@ function CountMic(){
 					}
 					if(!data.Singer){
 						document.getElementById("singerid").innerHTML = null;
+						document.getElementById("singname").innerHTML = null;
 					}
 					if(!data.Singer1){
 						document.getElementById("queue1id").innerHTML = null;
@@ -267,7 +274,9 @@ function CancelMic(){
 						</a>
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
-						<li><img src="image/like.png" original title="追蹤人數"><b>87</b></li>
+						<li><img src="image/like.png" original title="追蹤人數"><b id="TrackedNum"></b></li>
+						<script type="text/javascript">
+						</script>
 					</div>
 					<?php
 						$sqlTrack = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID=''";
