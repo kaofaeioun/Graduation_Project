@@ -29,10 +29,18 @@
             <h1><img src="image/Logo2.png"></h1>
             <script type="text/javascript">
                 $(document).ready(function(){
-                    $('#user').click(function() { 
-                        //指定呼叫按鈕
-                        $('.user_info').fadeToggle(300);
-                        //顯示隱藏的div
+                    $('#user').click(function(e){
+                        $('.user_info').fadeIn();
+                        e.stopPropagation();
+                        e.preventDefault();
+                    });
+                    $(document).click(function(){
+                        $('.user_info').fadeOut();
+                    });
+                    $('.user_info').click(function(e){
+                        e.stopPropagation();
+                        e.preventDefault();
+                        return false;
                     });
                 });
             </script>
@@ -49,6 +57,12 @@
                         <span class="arrow_bottom_int"></span>
                         <span class="arrow_bottom_out"></span> 
                             <div class="bot_area">
+                                <p><?php 
+                                $sql="SELECT User_Name From User WHERE User_id='$id'";
+                                $result=mysqli_query($link,$sql);
+                                $row=mysqli_fetch_assoc($result);
+                                $username=$row['User_Name'];
+                                echo $username;?></p>
                                 <input type="button" class="logout" value="登出" onclick="location='logoutconnect.php'">
                             </div>       
                     </div>   
@@ -74,7 +88,7 @@
                     <li><a href="battle.php"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
                     <li><a href="channel.php"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
                     <li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
-                    <li><a href="setting.php"><img src="image/menu_setting.png" width="15%"> &nbsp<b>設定</b></a></li>
+                    <li><a href="setting.php"><img src="image/menu_setting.png" width="15%"> &nbsp<b>規則說明</b></a></li>
                 </ul>
             </div>
         </div>
@@ -82,66 +96,82 @@
     <hr>
     <div class="wrap">
         <div class="content">
-            <h2>設定<b>/</b><br>Settings</h2>
-            <h4>個人帳號設定</h4>
-            <div class="setting_person">
+            <h2>常見問題<b>/</b><br>MicMusic 大亂鬥暨積分階級規則</h2>
+            <script> 
+                $(document).ready(function(){
+                    $(".question1").click(function(){
+                        $("#setting_person1").slideToggle("slow");
+                    });
+                });
+            </script>
+            <h4 class="question1">Q1. 什麼是大亂鬥模式？</h4>
+            <div class="setting_person" id="setting_person1">
                 <ul>
                     <li>
-                        <p>公開個人資料</p>
-                        <div class="button-wrap" id="btn_1">
-                            <div class="button-bg">
-                              <div class="button-out"></div>
-                              <div class="button-in"></div>
-                              <div class="button-switch"></div>
-                            </div>
-                        </div>
-                        <script>
-                            $('#btn_1').on("click", function(){
-                              $(this).toggleClass('button-active');
-                            });
-                        </script>
-                        <div class="clear"></div>
+                       在大亂鬥模式裡排麥進行唱歌後，會有60秒的時間試唱。在這60秒時間的前30秒過後，系統將會顯示投票按鈕讓頻道內的觀眾進行投票。而60秒一到，系統則會計算投票結果，並依據觀眾的投票比例顯示「成功」或「失敗」，決定演唱者能否續唱。演唱者能夠藉由大亂鬥模式獲得積分，贏取階級。
+                    </li>
+                </ul>
+            </div>
+           <!--  6666666666666666666666666666666666 -->
+           <script> 
+                $(document).ready(function(){
+                    $(".question2").click(function(){
+                        $("#setting_person2").slideToggle("slow");
+                    });
+                });
+            </script>
+            <h4 class="question2">Q2. 階級如何決定？</h4>
+            <div class="setting_person" id="setting_person2">
+                <ul>
+                    <li>
+                       使用者的階級由大亂鬥模式中續唱次數獲得的積分決定。系統將會判斷您的大亂鬥續唱次數，經計算之後給予演唱者階級。例：無階級晉升到銅Mic需要獲得2場續唱次數。
+                    </li>
+                </ul>
+            </div>
+            <!-- 666666666666666666666666666666666666666666 -->
+            <script> 
+                $(document).ready(function(){
+                    $(".question3").click(function(){
+                        $("#setting_person3").slideToggle("slow");
+                    });
+                });
+            </script>
+            <h4 class="question3">Q3. 階級如何分別？</h4>
+            <div class="setting_person" id="setting_person3">
+                <ul>
+                    <li>
+                       階級由低到高，分別為：無階級、銅 Mic、銀 Mic、金 Mic、白金 Mic、鑽石 Mic。<br>
+                        <ul class="medalpic">
+                            <li><img src="image/bronze.png" ><div class="words">▲ 銅 Mic</div></li>
+                            <li><img src="image/silver.png" ><div class="words">▲ 銀 Mic</div></li>
+                            <li><img src="image/golden.png" ><div class="words">▲ 金 Mic</div></li>
+                            <li><img src="image/platnum.png" ><div class="words">▲ 白金 Mic</div></li>
+                            <li><img src="image/diamond.png" ><div class="words">▲ 鑽石 Mic</div></li>
+                        </ul>
+                       
+                       演唱者在每個階級，皆會有屬於該階級的徽章。
+                    </li>
+                </ul>
+            </div>
+            <!-- 666666666666666666666666666666666666666666666 -->
+            <script> 
+                $(document).ready(function(){
+                    $(".question4").click(function(){
+                        $("#setting_person4").slideToggle("slow");
+                    });
+                });
+            </script>
+            <h4 class="question4">Q4. 階級能為演唱者帶來什麼？</h4>
+            <div class="setting_person" id="setting_person4">
+                <ul>
+                    <li>
+                       個人台：演唱者需要金MIC階級以上，才能獲得開啟個人台經營的權利。 <br>
+                       排行榜：每月MicMusic將會依照階級推出新的排行榜，演唱者可以透過爬到更高的階級，在排行榜上嶄露頭角，吸引更多追隨者。
+
                     </li>
                 </ul>
             </div>
                 
-            <h4>頻道設定</h4>
-            <div class="setting_person">
-                <ul>
-                    <li>
-                        <p>追蹤通知</p>
-                        <div class="button-wrap" id="btn_2">
-                            <div class="button-bg">
-                              <div class="button-out"></div>
-                              <div class="button-in"></div>
-                              <div class="button-switch"></div>
-                            </div>
-                        </div>
-                        <script>
-                            $('#btn_2').on("click", function(){
-                              $(this).toggleClass('button-active');
-                            });
-                        </script>
-                    </li>
-                    <div class="clear"></div>
-                    <li>
-                        <p>被追蹤通知</p>
-                        <div class="button-wrap" id="btn_3">
-                            <div class="button-bg">
-                              <div class="button-out"></div>
-                              <div class="button-in"></div>
-                              <div class="button-switch"></div>
-                            </div>
-                        </div>
-                        <script>
-                            $('#btn_3').on("click", function(){
-                              $(this).toggleClass('button-active');
-                            });
-                        </script>
-                    </li>
-                    <div class="clear"></div>
-                </ul>
-            </div>
         </div>         
     </div>
 
