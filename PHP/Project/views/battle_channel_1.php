@@ -89,12 +89,13 @@
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<p><?php 
+							<p><?php 
 								$sql="SELECT User_Name From User WHERE User_id='$id'";
 								$result=mysqli_query($link,$sql);
 								$row=mysqli_fetch_assoc($result);
 								$username=$row['User_Name'];
-								echo $username;?></p>
+								echo $username;?>	
+							</p>
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
 							</div>
 					</div>
@@ -165,11 +166,19 @@ function CountMic(){
 				var type = request.getResponseHeader("Content-Type");   // 取得回應類型
 				if (type.indexOf("application/json") === 0) {
 					var data = JSON.parse(request.responseText);
-					if (data.MicCount) {
-						document.getElementById("MicCount").innerHTML = data.MicCount;
+					if(data.MicOrder){
+						document.getElementById("MicTitle").innerHTML = "排麥順位";
+						document.getElementById("MicCount").innerHTML = data.MicOrder-1;
 					}
-					if (!data.MicCount){
-						document.getElementById("MicCount").innerHTML = null;
+					if(!data.MicOrder){
+						if (data.MicCount) {
+							document.getElementById("MicTitle").innerHTML = "目前排麥人數";
+							document.getElementById("MicCount").innerHTML = data.MicCount-1;
+						}
+						if (!data.MicCount){
+							document.getElementById("MicTitle").innerHTML = "目前排麥人數";
+							document.getElementById("MicCount").innerHTML = null;
+						}
 					}
 					if(data.Singer){
 						document.getElementById("singerid").innerHTML = data.Singer;
@@ -217,6 +226,7 @@ function CountMic(){
 						}
 						else if(data.StatusResult==1)
 						{
+							document.getElementById("GottentMic").style.display="none";
 							client.sound=false;
 							client.mic=true;
 						}
@@ -380,7 +390,7 @@ function CancelMic(){
 					<li><a id="queue3href"><b id='queue3id'></b></a></li>
 				</div>
 				<div class="mic_queue">
-					<li><p>目前排麥人數</p></li>
+					<li><p id="MicTitle"></p></li>
 					<li><img src="image/line.png"></li>
 					<li><p id="MicCount"></p></li>
 					<li><p id="vtresult" hidden="hidden"></p></li>
