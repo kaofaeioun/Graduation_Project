@@ -16,7 +16,9 @@
     <script type="text/javascript">
         <?php include("mysql_connect.php");
             if(!isset($_COOKIE['account'])): ?> 
-                location.replace("login.php");
+                $(document).ready(function(){
+                    $('#login').show();
+                });
         <?php else: ?>
             $(document).ready(function(){
                 $('#user').show();
@@ -50,7 +52,7 @@
                     <img src="photo.php?id=<?php echo $id?>">
                     <div class="user_info">
                         <ul>
-                            <li><p>Rank</p><img src="image/medal.png"></li>
+                            <li><p>Rank</p><img src="image/golden_3.png"></li>
                             <li><p>勝場數</p><b2>94</b2>場</li>
                             <li><p>勝場率</p><b3>87</b3>%</li>
                         </ul>
@@ -88,7 +90,7 @@
                     <li><a href="battle.php"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
                     <li><a href="channel.php"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
                     <li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
-                    <li><a href="setting.php"><img src="image/menu_setting.png" width="15%"> &nbsp<b>規則說明</b></a></li>
+                    <li><a href="setting.php"><img src="image/rules.png" width="15%"> &nbsp<b>規則說明</b></a></li>
                 </ul>
             </div>
         </div>
@@ -148,7 +150,8 @@
                             <li><img src="image/platnum.png" ><div class="words">▲ 白金 Mic</div></li>
                             <li><img src="image/diamond.png" ><div class="words">▲ 鑽石 Mic</div></li>
                         </ul>
-                       
+                       其中每個階級再分為3個等級，3為最高。達到該階級等級3之後，再升一等即可晉升下一個階級。<br>
+                       如：一位階級為銀3的使用者，再升一等後即可晉升為金1。<br>
                        演唱者在每個階級，皆會有屬於該階級的徽章。
                     </li>
                 </ul>
@@ -184,7 +187,7 @@
                 <li><a href="battle.php"><img src="image/menu_battle.png"></a></li>
                 <li><a href="channel.php"><img src="image/personal.png"></a></li>
                 <li><a href="personalinfo.php"><img src="image/person_info.png"></a></li>
-                <li><a href="setting.php"><img src="image/setting_chosen.png"></a></li>
+                <li><a href="setting.php"><img src="image/rules_chosen.png"></a></li>
             </ul>
         </footer>
     </div>
