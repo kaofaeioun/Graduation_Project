@@ -34,14 +34,22 @@
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
 			<script type="text/javascript">
-                $(document).ready(function(){
-                    $('#user').click(function() { 
-                        //指定呼叫按鈕
-                        $('.user_info').fadeToggle(300);
-                        //顯示隱藏的div
-                    });
-                });
-            </script>
+				$(document).ready(function(){
+  					$('#user').click(function(e){
+						$('.user_info').fadeIn();
+						e.stopPropagation();
+						e.preventDefault();
+					});
+					$(document).click(function(){
+						$('.user_info').fadeOut();
+					});
+					$('.user_info').click(function(e){
+						e.stopPropagation();
+						e.preventDefault();
+						return false;
+					});
+				});
+			</script>
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="user" id="user">
@@ -55,6 +63,12 @@
                         <span class="arrow_bottom_int"></span>
                         <span class="arrow_bottom_out"></span>  
                         	<div class="bot_area">
+                        		<p><?php 
+								$sql="SELECT User_Name From User WHERE User_id='$id'";
+								$result=mysqli_query($link,$sql);
+								$row=mysqli_fetch_assoc($result);
+								$username=$row['User_Name'];
+								echo $username;?></p>
 								<input type="button" class="logout" value="登出"
 								onclick="location='logoutconnect.php'">
 							</div>	    

@@ -58,11 +58,19 @@
 			<h1><img src="image/Logo2.png"></h1>
 			<script type="text/javascript">
 				$(document).ready(function(){
-  					$('#user').click(function() { 
-  						//指定呼叫按鈕
-    					$('.user_info').fadeToggle(300);
-    					//顯示隱藏的div
-  					});
+  					$('#user').click(function(e){
+						$('.user_info').fadeIn();
+						e.stopPropagation();
+						e.preventDefault();
+					});
+					$(document).click(function(){
+						$('.user_info').fadeOut();
+					});
+					$('.user_info').click(function(e){
+						e.stopPropagation();
+						e.preventDefault();
+						return false;
+					});
 				});
 			</script>
 			<div class="toolbar">
