@@ -65,28 +65,37 @@ table {
     clear: both;
 }
 .setting_person{
+    display: none;
     margin-left: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     border-left: 2px solid grey;
 }
-.setting_person p{
-    font-size: 20px;
-    margin-bottom: 5px;
-    float: left;
-}
 .setting_person ul{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .setting_person li {
     line-height: 50px;
     margin-left: 10px;
     box-sizing: border-box;
 }
-
+.medalpic li{
+    height: 80px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 15px;
+}
+.medalpic img{
+    width: 80px;
+    height: 80px;
+}
 /*----------------------------------------------------------------------------*/
 h4{
     font-size: 22px;
     font-weight: 100;
+    margin-top: 30px;
+    margin-left: 30% ;
+    cursor: pointer;
+
 }
 .button-wrap {
     width: 90px;
