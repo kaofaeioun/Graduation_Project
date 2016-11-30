@@ -268,8 +268,6 @@ function CancelMic(){
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數"><b>87</b></li>
-						<script type="text/javascript">
-						</script>
 					</div>
 					<?php
 						$sqlTrack = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID=''";
