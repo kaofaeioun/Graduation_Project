@@ -268,31 +268,7 @@ function CancelMic(){
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
 						<li><img src="image/like.png" original title="追蹤人數"><b>87</b></li>
-						<button id="reset">龜苓膏</button>
 						<script type="text/javascript">
-						$(document).on("click", "#reset",function() {
-							function datareset(msg){
-								for (var i = 0; i<window.data.length; i++){
-									var el = window.data[i];
-									if (el.name == msg && el.vote !== 0){
-										el.vote--;
-									}
-								}
-							}
-							function resetvotes(){
-								pubnub.history({
-									channel:"Vote2",
-									start:0,
-									callback: function(msg) {
-										var vote_history = msg[0];
-										for (var i = 0; i < vote_history.length; i++) {
-											datareset(vote_history[i]);
-										}
-									}
-								});
-							}
-							resetvotes();
-						});
 						</script>
 					</div>
 					<?php
@@ -332,7 +308,7 @@ function CancelMic(){
 								s=s+60;
 								CountMic();
 								$(document).ready(function() {
-  									$(".board").load("/ArMen.html");
+  									$(".board").load("/ArMen.php");
   									console.log("HEY");
 								});
 							}if(s<30){
@@ -404,8 +380,6 @@ function CancelMic(){
 					</div>";
 					}
 				?>
-
-
 	<script>
 	$( document ).on( "click", "#GetMic", function() {
     // 發送 Ajax 查詢請求並處理

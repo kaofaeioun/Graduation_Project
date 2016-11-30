@@ -21,7 +21,7 @@ $(function() {
   }
 
   /* Body插入svg g標籤*/
-  var svg = d3.select("body .board")
+  var svg = d3.select("body .circle_area")
     .append("svg")
     .attr("id","circleSvg")
     .append("g");
