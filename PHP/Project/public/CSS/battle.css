@@ -91,7 +91,7 @@ table {
     width: 100%;  
     height: 40px;
     line-height: 40px;
-    text-align: center;
+    text-align: left;
     float: none;
     margin-bottom: 10px;
 }
@@ -103,6 +103,7 @@ table {
     font-size: 30px;
     color: #fff;
     float: left;
+    margin-right: 25px;
 }
 .top5 a{
     text-decoration: none;
@@ -142,7 +143,7 @@ table {
     width: 100%;  
     height: 40px;
     line-height: 40px;
-    text-align: center;
+    text-align: left;
     float: none;
     margin-bottom: 10px;
 }
@@ -154,6 +155,7 @@ table {
     font-size: 24px;
     color: #fff;
     float: left;
+    margin-right: 25px;
 }
 .top10 a{
     text-decoration: none;
