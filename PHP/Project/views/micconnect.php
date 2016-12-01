@@ -31,6 +31,8 @@ function MicCancel(){
 		$sql4="SELECT count(Mic_ID) FROM Mic where Mic_ID is not null";
 		$result4=mysqli_query($link,$sql4);
 		$row4=mysqli_fetch_row($result4);
+		$sql5="UPDATE User SET `User_Status`='0' where `User_ID`='$id' ";
+		$result5=mysqli_query($link,$sql5);
 		echo json_encode(array('Count_B' => $row4[0]));
 	    return;  
 }

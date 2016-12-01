@@ -289,14 +289,15 @@ function CountMic(){
 						document.getElementById("timeresult").innerHTML="true";
 					}
 					if(data.StatusResult){
+						console.log(data.StatusResult);
 						if(data.StatusResult==0){
-							document.getElementById("GottentMic").style.display="block";
+							//document.getElementById("GottentMic").style.display="block";
 							client.sound=true;
 							client.mic=false;
 						}
 						else if(data.StatusResult==1)
 						{
-							document.getElementById("GottentMic").style.display="none";
+							//document.getElementById("GottentMic").style.display="none";
 							client.sound=false;
 							client.mic=true;
 						}
