@@ -10,13 +10,12 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script><!-- search -->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
-    <link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
     <title>MicMusic</title>
 </head>
 <body>
     <script type="text/javascript">
         <?php include("mysql_connect.php");
-            if(!isset($_COOKIE['account'])): ?>
+            if(!isset($_COOKIE['account'])): ?> 
                 $(document).ready(function(){
                     $('#login').show();
                 });
@@ -122,17 +121,17 @@
                             </b3>%</li>
                         </ul>
                         <span class="arrow_bottom_int"></span>
-                        <span class="arrow_bottom_out"></span>
+                        <span class="arrow_bottom_out"></span> 
                             <div class="bot_area">
-                                <p><?php
+                                <p><?php 
                                 $sql="SELECT User_Name From User WHERE User_id='$id'";
                                 $result=mysqli_query($link,$sql);
                                 $row=mysqli_fetch_assoc($result);
                                 $username=$row['User_Name'];
                                 echo $username;?></p>
                                 <input type="button" class="logout" value="登出" onclick="location='logoutconnect.php'">
-                            </div>
-                    </div>
+                            </div>       
+                    </div>   
                 </div>
                 <div class="search">
                     <form action="fans.php" method="GET" name="font1">
@@ -145,9 +144,9 @@
                         </script>
                         <input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
                         <input type="image" class="search_image" src="image/search.png" id="search_image">
-
+                        
                     </form>
-
+                    
                 </div>
             </div>
             <div class="menu">
@@ -164,7 +163,7 @@
     <div class="wrap">
         <div class="content">
             <h2>常見問題<b>/</b><br>MicMusic 大亂鬥暨積分階級規則</h2>
-            <script>
+            <script> 
                 $(document).ready(function(){
                     $(".question1").click(function(){
                         $("#setting_person1").slideToggle("slow");
@@ -175,12 +174,12 @@
             <div class="setting_person" id="setting_person1">
                 <ul>
                     <li>
-                       在大亂鬥模式裡排麥進行唱歌後，會有60秒的時間試唱。在這60秒時間的前30秒過後，系統將會顯示投票按鈕讓頻道內的觀眾進行投票。而60秒一到，系統則會計算投票結果，並依據觀眾的投票比例顯示「成功」或「失敗」，決定演唱者能否續唱。演唱者能夠藉由大亂鬥模式獲得積分，贏取階級。
+                       在大亂鬥模式裡排麥進行唱歌後，會有60秒的時間試唱。前30秒過後，系統將會顯示投票按鈕讓頻道內的觀眾進行投票。當60秒一到，系統則會計算投票結果，並依據觀眾的投票比例顯示「成功」或「失敗」，決定演唱者能否續唱。演唱者能夠藉由大亂鬥模式獲得積分，贏取階級。
                     </li>
                 </ul>
             </div>
            <!--  6666666666666666666666666666666666 -->
-           <script>
+           <script> 
                 $(document).ready(function(){
                     $(".question2").click(function(){
                         $("#setting_person2").slideToggle("slow");
@@ -191,12 +190,12 @@
             <div class="setting_person" id="setting_person2">
                 <ul>
                     <li>
-                       使用者的階級由大亂鬥模式中續唱次數獲得的積分決定。系統將會判斷您的大亂鬥續唱次數，經計算之後給予演唱者階級。例：無階級晉升到銅Mic需要獲得2場續唱次數。
+                       使用者的階級由大亂鬥模式中續唱次數決定，經計算之後給予演唱者階級。例：獲得2場續唱次數即可從無階級晉升到銅Mic。
                     </li>
                 </ul>
             </div>
             <!-- 666666666666666666666666666666666666666666 -->
-            <script>
+            <script> 
                 $(document).ready(function(){
                     $(".question3").click(function(){
                         $("#setting_person3").slideToggle("slow");
@@ -207,6 +206,7 @@
             <div class="setting_person" id="setting_person3">
                 <ul>
                     <li>
+                       MicMusic的階級共分為6階。<br> 
                        階級由低到高，分別為：無階級、銅 Mic、銀 Mic、金 Mic、白金 Mic、鑽石 Mic。<br>
                         <ul class="medalpic">
                             <li><img src="image/bronze.png" ><div class="words">▲ 銅 Mic</div></li>
@@ -222,7 +222,7 @@
                 </ul>
             </div>
             <!-- 666666666666666666666666666666666666666666666 -->
-            <script>
+            <script> 
                 $(document).ready(function(){
                     $(".question4").click(function(){
                         $("#setting_person4").slideToggle("slow");
@@ -233,14 +233,14 @@
             <div class="setting_person" id="setting_person4">
                 <ul>
                     <li>
-                       個人台：演唱者需要金MIC階級以上，才能獲得開啟個人台經營的權利。 <br>
+                       個人台：演唱者需要金MIC階級以上，才能獲得建立個人台的權限。 <br>
                        排行榜：每月MicMusic將會依照階級推出新的排行榜，演唱者可以透過爬到更高的階級，在排行榜上嶄露頭角，吸引更多追隨者。
 
                     </li>
                 </ul>
             </div>
-
-        </div>
+                
+        </div>         
     </div>
 
     <div class="footer_space">
