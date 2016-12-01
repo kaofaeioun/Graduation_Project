@@ -189,52 +189,70 @@
 	<hr>
 	<div class="wrap">
 		<div id="content">
-			<h2>大亂鬥頻道選擇<b>/</b><br>Battle Choice</h2>
-			<div class="bar">
-				<ul>
-					<li><a href="battle_channel_1.php"><div class="battle_channel" style="background: #FF2D2D;"></div></a><p>頻道1</p>目前人次：9527<br>排麥人數：33</li>
-					<li><a href=""><div class="battle_channel" style="background: #0080FF;"></div></a><p>頻道2</p>目前人數：8763<br>收藏人數：27</li>
-				</ul>
-			</div>
-			<h2>排行榜<b>/</b><br>TOP 3</h2>
-			<div class="top5">
-				<ul>
-					<?PHP
-						$sql="SELECT User_ID From User Order by User_Wins DESC";
-						$result=mysqli_query($link,$sql);
-						$singer[1]=mysqli_result($result, 0,0);
-						$singer[2]=mysqli_result($result, 1,0);
-						$singer[3]=mysqli_result($result, 2,0);
-						for ($i=1; $i < 4; $i++) { 
-							echo "<li>".$i.".<a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a></li>";
-						}
+			<ul>
+				<li>
+					<h2>大亂鬥頻道選擇<b>/</b><br>Battle Choice</h2>
+					<div class="bar">
+						<ul>
+							<li><a href="battle_channel_1.php"><div class="battle_channel" style="background: #FF2D2D;"></div></a><p>頻道1</p>目前人次：9527<br>排麥人數：33</li>					
+						</ul>
+					</div>
+				</li>
+				<li>
+					<h2>排行榜<b>/</b><br>TOP 10</h2>
+					<div class="top5">
+						<ul>
+							<?PHP
+								$sql="SELECT User_ID From User Order by User_Wins DESC";
+								$result=mysqli_query($link,$sql);
+								$singer[1]=mysqli_result($result, 0,0);
+								$singer[2]=mysqli_result($result, 1,0);
+								$singer[3]=mysqli_result($result, 2,0);
+								$singer[4]=mysqli_result($result, 3,0);
+								$singer[5]=mysqli_result($result, 4,0);
 
-						function mysqli_result($res, $row, $field=0) { 
-						    $res->data_seek($row); 
-						    $datarow = $res->fetch_array(); 
-						    return $datarow[$field];    
-						}
-					?>
-					<?PHP
-						$sql="SELECT User_ID From User Order by User_Wins DESC";
-						$result=mysqli_query($link,$sql);
-
-						$singer[4]=mysqli_result($result, 3,0);
-						$singer[5]=mysqli_result($result, 4,0);
-						$singer[6]=mysqli_result($result, 5,0);
-						$singer[7]=mysqli_result($result, 6,0);
-						$singer[8]=mysqli_result($result, 7,0);
-						$singer[9]=mysqli_result($result, 8,0);
-						$singer[10]=mysqli_result($result, 9,0);
-					?>
-				</ul>
-			</div>
+								for ($i=1; $i < 6; $i++) { 
+									echo "<li><div class='top_title'>".$i. "</div><a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a></li>";
+								}								
+								function mysqli_result($res, $row, $field=0) { 
+								    $res->data_seek($row); 
+								    $datarow = $res->fetch_array(); 
+								    return $datarow[$field];    
+								}
+							?>
+						</ul>				
+					</div>
+					<script> 
+		                $(document).ready(function(){
+		                    $(".top_slide").click(function(){
+		                        $(".top10").slideToggle("slow");
+		                    });
+		                });
+		            </script>
+					<p class="top_slide">第6~10名</p>
+					<div class="top10">
+						<ul>		
+							<?PHP
+								$sql="SELECT User_ID From User Order by User_Wins DESC";
+								$result=mysqli_query($link,$sql);
+								$singer[6]=mysqli_result($result, 5,0);
+								$singer[7]=mysqli_result($result, 6,0);
+								$singer[8]=mysqli_result($result, 7,0);
+								$singer[9]=mysqli_result($result, 8,0);
+								$singer[10]=mysqli_result($result, 9,0);
+								for ($i=6; $i < 11; $i++) { 
+									echo "<li><div class='top_title_2'>".$i."</div><a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a></li>";
+								}		
+							?>
+						</ul>							
+					</div>	
+				</li>
+			</ul>
 		</div>
 
-		在線人數:
+		<div class="fuckU">在線人數:
 				<div id="Countmanshow"></div>
 				<script type="text/javascript" src="countman.php"></script>
-
 				<!-- 66666666666666666666666666666666666666666666666666666666666666666666 -->
 				<script>
 					Countman();
@@ -269,6 +287,7 @@
 					}
 
 				</script>
+		</div>
 	</div>
 	<div class="footer_space">
 		<footer>
