@@ -286,7 +286,10 @@
 							</li>
 							<?php
 								if(isset($rowget['User_ID'])){
-									echo "<li>勝場數<img src='image/win.png' alt=''>87</li>";
+									echo "<li><a class='link-1'>勝場數<img src='image/win.png'>";
+									echo $row['User_Wins'];
+									echo "</a>";
+									echo "</li>";
 								}
 							?>
 							</ul>
@@ -300,9 +303,9 @@
 					function AutoPadding() {
 						var img_width = document.getElementById("bigphoto").width;
 						var img_height = document.getElementById("bigphoto").height;
-						if (img_width < 900 && img_height < 700){
+						if (img_width < 900 && img_height < 600){
 							$(document).ready(function(){
-								var img_padding_h = (700-img_height)/2;
+								var img_padding_h = (600-img_height)/2;
 								var img_padding_w = (900-img_width)/2;
 								$('.entire_photo').css("padding-top",img_padding_h);
 								$('.entire_photo').css("padding-bottom",img_padding_h);
@@ -311,7 +314,7 @@
 							});
 						}
 						else if (img_width > img_height){
-							var img_padding = (700-img_height)/2;
+							var img_padding = (600-img_height)/2;
 							$(document).ready(function(){
 								$('.entire_photo').css("padding-top",img_padding);
 								$('.entire_photo').css("padding-bottom",img_padding);
@@ -332,7 +335,7 @@
 					if(isset($rowget['User_ID'])){
 					echo "<img src='photo.php?id=".$rowget['User_ID']."' id='userimg'>
 						<div id='myModal' class='modal'>
-							<div class='entire_photo' style='width: 900px;height: 700px;background-color:black;box-sizing: border-box;margin:auto;'>
+							<div class='entire_photo' style='width: 900px;height: 600px;background-color:black;box-sizing: border-box;margin:auto;'>
 								<img class='modal-content' id='bigphoto'>
 							</div>
 						</div>";
