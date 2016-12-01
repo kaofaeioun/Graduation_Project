@@ -248,6 +248,7 @@ function CountMic(){
 						}
 					}
 					if(data.Singer){
+						document.getElementById("singerid").innerHTML = data.Singer;
 						document.getElementById("singname").innerHTML = data.SingerName;
 						document.getElementById("singerhref").href = "fans.php?name="+data.Singer;
 					}
@@ -463,68 +464,69 @@ function calculate() {
 							count++;
 							var offset = new Date().getTime() - (startTime + count * 1000);
 							var nextTime = 1000 - offset;
-							if (nextTime < 0) nextTime = 0;
+						if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
-							if(s==0){
-									VoteCount = 0;		
-								if(data[0].vote<data[1].vote){
-									document.getElementById("failed").style.display ="block";
-									Countwin();
-									WinResult();
+					if(s==0){
+							VoteCount = 0;		
+						if(data[0].vote<data[1].vote){
+							document.getElementById("failed").style.display ="block";
+							Countwin();
+							WinResult();
 									//紀錄成功續唱
-									s=s+120;
-									}
-								else{
-									Countlose();
-									LoseResult();
-									function datareset(msg){
-							      for (var i = 0; i<window.data.length; i++){
-							        var el = window.data[i];
+							s=s+120;
+						}
+						else{
+							Countlose();
+							LoseResult();
+						function datareset(msg){
+							for (var i = 0; i<window.data.length; i++){
+							    var el = window.data[i];
 							        if (el.vote !== 0 && el.name === msg){
 							          el.vote -= 1;
 							          console.log(el.name+":"+el.vote);
-							        }
-							      }
-							    }
-							    function resetvotes(){
-							      pubnub.history({
-							        channel:"Vote2",
-							        start:0,
-							        callback: function(msg) {
-							          var vote_history = msg[0];
-							          for (var i = 0; i < vote_history.length; i++) {
+							    	}
+								}
+							}
+						function resetvotes(){
+							pubnub.history({
+							    channel:"Vote2",
+							    start:0,
+							    callback: function(msg) {
+							        var vote_history = msg[0];
+							        for (var i = 0; i < vote_history.length; i++) {
 							            datareset(vote_history[i]);
 							          }
 							        }
-							      });
-							    }
-							    resetvotes();
-									s=s+60;
-								}
+							    });
 							}
-							if(s==59||s==119){
-								CountMic();
-							}
-							if(s<30){
-								if(document.getElementById('vtresult').innerHTML!="true"){
-									draw(data);
-									if(VoteCount !== 0){
-										document.getElementById("Dislike").style.visibility = "hidden";
-										document.getElementById("Like").style.visibility= "hidden";
-									} else {
-										document.getElementById("Dislike").style.visibility = "visible";
-										document.getElementById("Like").style.visibility ="visible";
-									}
-								}
-								document.getElementById("circleSvg").style.visibility ="visible";
-							}if(s>30){
-								document.getElementById("circleSvg").style.visibility = "hidden";
+							resetvotes();
+								s=s+60;
+						}
+					}	
+					if(s==59||s==119){
+						CountMic();
+					}
+					if(s<30){
+						if(document.getElementById('vtresult').innerHTML!="true"){
+							draw(data);
+							if(VoteCount !== 0){
 								document.getElementById("Dislike").style.visibility = "hidden";
 								document.getElementById("Like").style.visibility= "hidden";
+							} else {
+								document.getElementById("Dislike").style.visibility = "visible";
+								document.getElementById("Like").style.visibility ="visible";
 							}
-							
 						}
-						setTimeout(showTime, 1000);
+							document.getElementById("circleSvg").style.visibility ="visible";
+					}
+					if(s>30){
+							document.getElementById("circleSvg").style.visibility = "hidden";
+							document.getElementById("Dislike").style.visibility = "hidden";
+							document.getElementById("Like").style.visibility= "hidden";
+					}
+							
+				}
+					setTimeout(showTime, 1000);
 					</script>
 				<script type="text/javascript">
 					$( document ).on( "click", "#Like", function() {
