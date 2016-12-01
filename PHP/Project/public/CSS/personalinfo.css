@@ -200,7 +200,6 @@ table {
     border-bottom: 1px solid grey;
     text-align: left;
     display: inline-block;
-
 }
 .name_blank{
     text-align: right;
@@ -322,23 +321,60 @@ table {
 }
 #track_list{
     text-align: center;
-}
-#track_list a{
-    text-decoration: none;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
 }
 #track_list li{
-    line-height: 200%;
-    width: 32%;
-    font-size: 120%;
-    border-bottom: none;
+    width: 31%;
     display: inline-block;
     text-align: center;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
+    float: none;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor: default;
 }
 #track_list img{
     display: none;
 }
+#track_list a{
+    text-decoration: none;
+}
+.topbar p{
+    margin-top: 30px;
+    font-size: 20px;
+}
+.wins{
+    color: #00CDCD;
+    font-size: 18px;
+}
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+nav {
+  text-align: center;
+}
+#nav-1 {
+  background: #ffffff;
+}
 
+.link-1 {
+  transition: 0.5s ease;
+  background: #ffffff;
+  color: #00CDCD;
+  font-size: 18px;
+  text-decoration: none;
+  border-top: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  padding: 15px 0;
+  margin: 0 20px;
+}
+.link-1:hover {
+  border-top: 4px solid #00CDCD;
+  border-bottom: 4px solid #00CDCD;
+  padding: 6px 0; 
+}
 /*----------------------------------------------button--------------------------------------------------*/
                                         
 .typ-subhed {

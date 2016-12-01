@@ -12,14 +12,13 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/pic_adjust.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
-	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<title>MicMusic</title>
 </head>
 <body>
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
-			if(!isset($_COOKIE['account'])): ?>
+			if(!isset($_COOKIE['account'])): ?>	
 				location.replace("login.php");
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
@@ -28,7 +27,7 @@
 			});
 		<?php endif; ?>
 	</script>
-
+	
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
@@ -126,14 +125,14 @@
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<p><?php
+								<p><?php 
 								$sql="SELECT User_Name From User WHERE User_id='$id'";
 								$result=mysqli_query($link,$sql);
 								$row=mysqli_fetch_assoc($result);
 								$username=$row['User_Name'];
 								echo $username;?></p>
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
-							</div>
+							</div>										
 					</div>
 				</div>
 				<div class="search">
@@ -147,9 +146,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-
+						
 					</form>
-
+					
 				</div>
 			</div>
 			<div class="menu">
@@ -186,7 +185,7 @@
 				<form action="" method="POST" enctype="multipart/form-data">
 				<div class="dialog">
 					<input type="submit" class="send" value="確定" id="send">
-					<input type="button" class="cancel" value="取消" onclick="loadImageFileCancel()">
+					<input type="button" class="cancel" value="取消" onclick="loadImageFileCancel()">				
 				</div>
 				<div class="change_ok">更換成功!</div>
 				<div class="change_fail">更換失敗!</div>
@@ -194,13 +193,13 @@
 				<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
 				<input type="file" name="upload" id="upload" onchange="loadImageFile()"/>
 			</div>
-
+			
 			<!-- 傳圖片到資料庫 -->
 			<?php
 				if(isset($_COOKIE['account'])){
 					if(isset($_FILES["upload"]["size"])){
 						if ($_FILES["upload"]["size"]<2000000&&$_FILES["upload"]["size"]>0){
-						$id=$_COOKIE['account'];
+						$id=$_COOKIE['account'];	
 				        $file = fopen($_FILES["upload"]["tmp_name"], "rb");
 				        $fileContents = fread($file, filesize($_FILES["upload"]["tmp_name"]));
 				        fclose($file);
@@ -215,7 +214,7 @@
 				        echo "<script>$('.change_fail').delay(800).fadeOut(500)</script>";
 						}
 					}
-				}
+				}		
 			?>
 			<!-- END -->
 
@@ -231,7 +230,7 @@
 				function loadImageFile() {
 					if (document.getElementById("upload").files.length === 0){return;}//沒有上傳即return
 						var oFile = document.getElementById("upload").files[0];
-					if (!rFilter.test(oFile.type)) {
+					if (!rFilter.test(oFile.type)) { 
 						alert("請上傳圖片");
 						return;
 					}else {
@@ -240,48 +239,66 @@
 							oFReader.readAsDataURL(oFile);
 							PicAutoMid();
 						});
-					}
+					}				
 				}
 				function loadImageFileCancel(){
 					$(".dialog").fadeOut();
 					document.getElementById("userimg").src ="photo.php?id=<?php echo $id?>" ;
 					PicAutoMid();
-				}
+				}	
 			</script>
 			<!-- END -->
+							<ul id="track_list">
+								<li>
 
+									<nav id="nav-1">
+									  <a class="link-1" href="fansMenu_Followers.php">追蹤名單
+									  <?php
+										$sql2="SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$id'";
+										$trackresult = mysqli_query($link,$sql2);
+										$row2 = mysqli_fetch_assoc($trackresult);
+										echo $row2['total'];
+									  ?>
+									  </a>
+									</nav>
+									<img src="image/track.png" alt=""><br>
+									
+									</a>	
+								</li>
+
+								<li>
+									<nav id="nav-1">
+									  <a class="link-1" href="fansMenu_Fans.php">粉絲名單
+									  <img src="image/tracked.png" alt=""><br>
+									  <?php
+										$sql2="SELECT COUNT(Track_ID) as total FROM Track where Tracked_ID='$id'";
+										$trackresult = mysqli_query($link,$sql2);
+										$row2 = mysqli_fetch_assoc($trackresult);
+										echo $row2['total'];
+									  ?>
+									  </a>
+									</nav>
+									
+									
+									</a>
+								</li>
+								<li class="wins"><b>勝場數</b>
+								<img src="image/win.png" alt=""><br>
+								<?PHP
+	                                    $an = $_COOKIE['account'];
+	                                    $sql="SELECT User_Wins From User where User_ID= '$an'";
+	                                    $result = mysqli_query($link,$sql);
+	                                    $row = mysqli_fetch_assoc($result);
+	                                    echo $row['User_Wins'];
+	                                ?>
+								</li>
+							</ul>
+				<ul>
 				<div class="profile">
-					<li>
-						<ul id="track_list">
-							<li>
-								<a href="fansMenu_Followers.php"><b>追蹤名單</b>
-								<img src="image/track.png" alt=""><br>
-								<?php
-									$sql2="SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$id'";
-									$trackresult = mysqli_query($link,$sql2);
-									$row2 = mysqli_fetch_assoc($trackresult);
-									echo $row2['total'];
-								?>
-								</a>
-							</li>
-
-							<li>
-								<a href="fansMenu_Fans.php"><b>粉絲名單</b>
-								<img src="image/tracked.png" alt=""><br>
-								<?php
-									$sql2="SELECT COUNT(Track_ID) as total FROM Track where Tracked_ID='$id'";
-									$trackresult = mysqli_query($link,$sql2);
-									$row2 = mysqli_fetch_assoc($trackresult);
-									echo $row2['total'];
-								?>
-								</a>
-							</li>
-							<li><b>勝場數</b>
-							<img src="image/win.png" alt=""><br>87
-							</li>
-						</ul>
-					</li>
-					<ul>
+						
+							
+						
+						
 					<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 						<script>
 							$( document ).on( "click", "#change", function() {
@@ -299,19 +316,19 @@
 						<li id="changename">
 							<b>修改姓名/Edit Name:</b>
 							<div id="change_name_blank">
-
+							
 									<input type="text" id="correctinfo" placeholder="按此編輯你的姓名" required="" value='<?php echo $name; ?>' >
 									<input type="button" id="changeinfoName" value="確定修改" >
 							<script type="text/javascript">
 							</script>
-
+								
 							<script type="text/JavaScript">
 									document.getElementById("changeinfoName").onclick = function() {
 											var x=document.getElementById("correctinfo").value;
 										if(x.length==0){
 											alert("姓名不得為空");
 										}
-										else{
+										else{	
 											var request = new XMLHttpRequest();
 											request.open("GET", "changeinfo.php?changed=User_Name&correctinfo="+ document.getElementById("correctinfo").value);
 											request.send();
@@ -319,13 +336,13 @@
  											"<img id='change' src='image/pen.png'>";
  											$("#changename").slideUp();
  										}
- 									}
+ 									}			
 							</script>
 
 							</div>
 						</li>
 						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
-
+						
 						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 						<script>
 							$( document ).on( "click", "#change1", function() {
@@ -339,10 +356,10 @@
 						<li id="changeemail">
 							<b>修改電子郵件/Edit E-mail:</b>
 							<div id="change_name_blank">
-
+							
 									<input type="email" id="correctinfoEmail" placeholder="按此編輯你的E-mail" value="<?php echo $email; ?>">
 									<input type="button" id="changeinfoEmail" value="確定修改">
-
+								
 							<script type="text/JavaScript">
 									document.getElementById("changeinfoEmail").onclick = function() {
 										var y=document.getElementById("correctinfoEmail").value;
@@ -357,7 +374,7 @@
  											"<img id='change1' src='image/pen.png'>";
  											$("#changeemail").slideUp();
 										}
-									}
+									}	
 							</script>
 
 							</div>
@@ -376,11 +393,11 @@
 						<li id="changeHobby">
 							<b>修改興趣/Edit Hobby:</b>
 							<div id="change_name_blank">
-
+						
 									<input type="text" id="correctinfoHobby" placeholder="按此編輯你的興趣" value=<?php echo $hobby; ?>>
 									<input type="button" id="changeinfoHobby" value="確定修改">
-
-
+							
+									
 							<script type="text/JavaScript">
 									document.getElementById("changeinfoHobby").onclick = function() {
 											var request = new XMLHttpRequest();
@@ -407,11 +424,11 @@
 						<li id="changeFavSinger">
 							<b>修改喜歡的歌手/Edit Favorate Singer:</b>
 							<div id="change_name_blank">
-
+							
 									<input type="text" id="correctinfoFavSinger" placeholder="按此編輯喜歡的歌手" value=<?php echo $favsinger;?>>
 									<input type="button" id="changeinfoFavSinger" value="確定修改">
-
-
+							
+									
 							<script type="text/JavaScript">
 									document.getElementById("changeinfoFavSinger").onclick = function() {
 											var request = new XMLHttpRequest();
@@ -438,11 +455,11 @@
 						<li id="changeFav_Songs">
 							<b>修改喜歡的歌/Edit Favorate Songs:</b>
 							<div id="change_name_blank">
-
+							
 									<input type="text" id="correctinfoFav_Songs" placeholder="按此編輯喜歡的歌" value=<?php echo $favsong;?>>
 									<input type="button" id="changeinfoFav_Songs" value="確定修改">
-
-
+							
+									
 							<script type="text/JavaScript">
 									document.getElementById("changeinfoFav_Songs").onclick = function() {
 											var request = new XMLHttpRequest();
@@ -463,7 +480,7 @@
 						</li>
 						<!-- 6666666666666666666666666666666666666666666666666666666666666666666666666666 -->
 
-						<div class="clear"></div>
+						<div class="clear"></div>	
 					</ul>
 				</div>
 			<div class="clear"></div>
