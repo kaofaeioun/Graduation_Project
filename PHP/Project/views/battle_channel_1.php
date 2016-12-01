@@ -14,6 +14,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/battle_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<link rel="stylesheet" href="CSS/animate.css">
 	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<script>
 		var client = { //is observerd
@@ -89,37 +90,37 @@
                                 $result = mysqli_query($link,$sql);
                                 $row = mysqli_fetch_assoc($result);
                                 if ($row['Level']=='無階級') {
-                                    echo "<img src='image/bronze.png'>";
+                                    echo "<img src='image/bronze.png'>";
                                 }elseif ($row['Level']=='銅MIC I') {
-                                    echo "<img src='image/bronze_1.png'>";
+                                    echo "<img src='image/bronze_1.png'>";
                                 }elseif ($row['Level']=='銅MIC II') {
-                                    echo "<img src='image/bronze_2.png'>";
+                                    echo "<img src='image/bronze_2.png'>";
                                 }elseif ($row['Level']=='銅MIC III') {
-                                    echo "<img src='image/bronze_3.png'>";
+                                    echo "<img src='image/bronze_3.png'>";
                                 }elseif ($row['Level']=='銀Mic I') {
-                                    echo "<img src='image/silver_1.png'>";
+                                    echo "<img src='image/silver_1.png'>";
                                 }elseif ($row['Level']=='銀Mic II') {
-                                    echo "<img src='image/silver_2.png'>";
+                                    echo "<img src='image/silver_2.png'>";
                                 }elseif ($row['Level']=='銀Mic III') {
-                                    echo "<img src='image/silver_3.png'>";
+                                    echo "<img src='image/silver_3.png'>";
                                 }elseif ($row['Level']=='金Mic I') {
-                                    echo "<img src='image/golden_1.png'>";
+                                    echo "<img src='image/golden_1.png'>";
                                 }elseif ($row['Level']=='金Mic II') {
-                                    echo "<img src='image/golden_2.png'>";
+                                    echo "<img src='image/golden_2.png'>";
                                 }elseif ($row['Level']=='金Mic III') {
-                                    echo "<img src='image/golden_3.png'>";
+                                    echo "<img src='image/golden_3.png'>";
                                 }elseif ($row['Level']=='白金Mic I') {
-                                    echo "<img src='image/platnum_1.png'>";
+                                    echo "<img src='image/platnum_1.png'>";
                                 }elseif ($row['Level']=='白金Mic II') {
-                                    echo "<img src='image/platnum_2.png'>";
+                                    echo "<img src='image/platnum_2.png'>";
                                 }elseif ($row['Level']=='白金Mic III') {
-                                    echo "<img src='image/platnum_3.png'>";
+                                    echo "<img src='image/platnum_3.png'>";
                                 }elseif ($row['Level']=='鑽石Mic I') {
-                                    echo "<img src='image/diamond_1.png'>";
+                                    echo "<img src='image/diamond_1.png'>";
                                 }elseif ($row['Level']=='鑽石Mic II') {
-                                    echo "<img src='image/diamond_2.png'>";
+                                    echo "<img src='image/diamond_2.png'>";
                                 }elseif ($row['Level']=='鑽石Mic III') {
-                                    echo "<img src='image/diamond_3.png'>";
+                                    echo "<img src='image/diamond_3.png'>";
                                 }
                             ?>
                             </li>
@@ -192,18 +193,21 @@
 	</div>
 	<hr>
 	<div class="wrap">
+		<img src="image/good.png" id="failed" class="failed" style="height: 150px;width: 200px;margin: auto; display: none">
 		<div id="content">
 			<b><h2>大亂鬥模式 頻道1/Channel 1</h2></b>
 			<div class="main">
 				<div class="vote">
-					<div class="board" id="board">
+					<div class="board">
 						<div class="circle_area">
 							<div class="circle_1" id="circle"></div>
 							<div class="circle_2" id="CountDown"></div>
+							<p id="timeresult" hidden="hidden"></p>
 							<script src="http://d3js.org/d3.v3.min.js"></script>
 							<script type="text/javascript" src="./js/ArMen.js"></script>
 						</div>
 					</div>
+
 					<!-- 小視窗 -->
 					<script>
 						$(document).ready(function(){
@@ -244,7 +248,6 @@ function CountMic(){
 						}
 					}
 					if(data.Singer){
-						document.getElementById("singerid").innerHTML = data.Singer;
 						document.getElementById("singname").innerHTML = data.SingerName;
 						document.getElementById("singerhref").href = "fans.php?name="+data.Singer;
 					}
@@ -255,15 +258,15 @@ function CountMic(){
 						document.getElementById('TrackedNum').innerHTML=null;
 					}
 					if(data.Singer1){
-						document.getElementById("queue1id").innerHTML = data.Singer1+"("+data.Singer1Name+")";
+						document.getElementById("queue1id").innerHTML = data.Singer1Name;
 						document.getElementById("queue1href").href = "fans.php?name="+data.Singer1;
 					}
 					if(data.Singer2){
-						document.getElementById("queue2id").innerHTML = data.Singer2+"("+data.Singer2Name+")";
+						document.getElementById("queue2id").innerHTML = data.Singer2Name;
 						document.getElementById("queue2href").href = "fans.php?name="+data.Singer2;
 					}
 					if(data.Singer3){
-						document.getElementById("queue3id").innerHTML = data.Singer3+"("+data.Singer3Name+")";
+						document.getElementById("queue3id").innerHTML = data.Singer3Name;
 						document.getElementById("queue3href").href = "fans.php?name="+data.Singer3;
 					}
 					if(!data.Singer){
@@ -282,8 +285,12 @@ function CountMic(){
 					if(data.VoteResult){
 						document.getElementById("vtresult").innerHTML="true";
 					}
+					if(data.TimeResult){
+						document.getElementById("timeresult").innerHTML="true";
+					}
 					if(data.StatusResult){
 						if(data.StatusResult==0){
+							document.getElementById("GottentMic").style.display="block";
 							client.sound=true;
 							client.mic=false;
 						}
@@ -302,11 +309,29 @@ function CountMic(){
 	}
 }
 	CountMic();
-function CancelMic(){
+function LoseResult(){
 	var request = new XMLHttpRequest();
 		request.open("GET", "cancelmic.php?singer="+document.getElementById('singerid').innerHTML+"");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
+}		
+function Countlose(){		
+	var request =new XMLHttpRequest();
+		request.open("GET", "pointcountlose.php?singer="+document.getElementById('singerid').innerHTML+"id=<?php echo $_COOKIE['account'];?>");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+}			
+function WinResult(){
+	var request = new XMLHttpRequest();
+		request.open("GET", "success.php?singer="+document.getElementById('singerid').innerHTML+"id=<?php echo $_COOKIE['account'];?>");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+}		
+function Countwin(){		
+	var request =new XMLHttpRequest();
+		request.open("GET", "pointcountwin.php?singer="+document.getElementById('singerid').innerHTML+"id=<?php echo $_COOKIE['account'];?>");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();	
 }
 	</script>
 					<div class="track">
@@ -371,15 +396,15 @@ function CancelMic(){
 						$rowTrack = mysqli_fetch_assoc($resultTrack);
 					?>
 				</div>
-				<?php
-					date_default_timezone_set("Asia/Taipei");
-				  $DateTime_Now = gmdate("Y-m-d H:i:s"); //取回伺服器 GMT 標準時間
-				  $DataTime_Begin = "1970-01-01 00:00:00"; //設定時間起始格式
-				  $TimeSpan = (strtotime($DateTime_Now) - strtotime($DataTime_Begin)) * 1000;
-				?>
-				<script type="text/javascript">
-				var VoteCount = 0;
-				$(document).ready(function(){
+	<?php
+		date_default_timezone_set("Asia/Taipei");
+		$DateTime_Now = gmdate("Y-m-d H:i:s"); //取回伺服器 GMT 標準時間
+		$DataTime_Begin = "1970-01-01 00:00:00"; //設定時間起始格式
+		$TimeSpan = (strtotime($DateTime_Now) - strtotime($DataTime_Begin)) * 1000;
+	?>
+<script type="text/javascript">
+var VoteCount = 0;
+	$(document).ready(function(){
 					$("#Like").click(function(){
 						document.getElementById("Dislike").style.visibility = "hidden";
 						document.getElementById("Like").style.visibility= "hidden";
@@ -393,17 +418,44 @@ function CancelMic(){
 						console.log("Dislike");
 					});
 				});
-					 var systemTime = parseInt('<?=$TimeSpan;?>');
-				   function calculate() {
-				    var t = new Date(systemTime);
-				    s = "0" + t.getSeconds();
-				    s = s.substring(s.length - 2, s.length + 1);
-					s = 60-s;
-					document.getElementById('CountDown').innerHTML= s+"s";
-				   }
-				   calculate();
-					var startTime = new Date().getTime();
-					var count = 0;
+function TimeGet(){
+	var request = new XMLHttpRequest();
+		request.open("GET", "timeget.php?singer="+document.getElementById('singerid').innerHTML+"");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+	request.onreadystatechange = function() {
+						        // 伺服器請求完成
+		if (request.readyState === 4) {
+						            // 伺服器回應成功
+			if (request.status === 200) {
+				var type = request.getResponseHeader("Content-Type");   // 取得回應類型
+				if (type.indexOf("application/json") === 0) {
+					var data = JSON.parse(request.responseText);
+					if(data.TimeNow1){
+						s=data.TimeNow1;
+						document.getElementById('CountDown').innerHTML= s+"s";
+					}
+				}
+			}
+		}
+	}
+}
+function calculate() {
+	var systemTime = parseInt('<?=$TimeSpan;?>');
+	var t = new Date(systemTime);
+	s = "0" + t.getSeconds();
+	s = s.substring(s.length - 2, s.length + 1);
+	s = 60-s;
+	document.getElementById('CountDown').innerHTML= s+"s";
+}
+			if(document.getElementById('timeresult').innerHTML!="true"){
+				 calculate();//為不是續唱者取系統時間
+			}
+			else{
+				TimeGet();//為續唱者取續唱時間
+			}
+			var startTime = new Date().getTime();
+			var count = 0;
 					function showTime() {
 							s -= 1;
 							document.getElementById('CountDown').innerHTML= s+"s";
@@ -413,10 +465,18 @@ function CancelMic(){
 							if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
 							if(s==0){
-								VoteCount = 0;
-								CancelMic();
-								s=s+60;
-							    function datareset(msg){
+									VoteCount = 0;		
+								if(data[0].vote<data[1].vote){
+									document.getElementById("failed").style.display ="block";
+									Countwin();
+									WinResult();
+									//紀錄成功續唱
+									s=s+120;
+									}
+								else{
+									Countlose();
+									LoseResult();
+									function datareset(msg){
 							      for (var i = 0; i<window.data.length; i++){
 							        var el = window.data[i];
 							        if (el.vote !== 0 && el.name === msg){
@@ -438,13 +498,15 @@ function CancelMic(){
 							      });
 							    }
 							    resetvotes();
+									s=s+60;
+								}
 							}
-							if(s==59){
+							if(s==59||s==119){
 								CountMic();
 							}
 							if(s<30){
 								if(document.getElementById('vtresult').innerHTML!="true"){
-								draw(data);
+									draw(data);
 									if(VoteCount !== 0){
 										document.getElementById("Dislike").style.visibility = "hidden";
 										document.getElementById("Like").style.visibility= "hidden";
@@ -459,6 +521,7 @@ function CancelMic(){
 								document.getElementById("Dislike").style.visibility = "hidden";
 								document.getElementById("Like").style.visibility= "hidden";
 							}
+							
 						}
 						setTimeout(showTime, 1000);
 					</script>
