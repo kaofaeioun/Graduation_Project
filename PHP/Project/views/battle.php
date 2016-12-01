@@ -14,7 +14,7 @@
 		// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
 		$sql="UPDATE UserStatus SET Status_Time='$t' WHERE User_ID='$user_now' && Status='$Status'";
 		$result=mysqli_query($link,$sql);
-
+		
 	}else{
 		date_default_timezone_set('Asia/Taipei');
 		$t= date("Y/m/d H:i:s");
@@ -34,8 +34,8 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  
+
 	<title>MicMusic</title>
 </head>
 <body onunload="if(event.clientY<0) document.location=document.location.href">
@@ -45,7 +45,7 @@
 				$(document).ready(function(){
 					$('#login').show();
 				});
-
+		
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
@@ -150,15 +150,15 @@
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<p><?php
+								<p><?php 
 								$sql="SELECT User_Name From User WHERE User_id='$id'";
 								$result=mysqli_query($link,$sql);
 								$row=mysqli_fetch_assoc($result);
 								$username=$row['User_Name'];
 								echo $username;?></p>
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
-							</div>
-					</div>
+							</div>			
+					</div>	
 				</div>
 				<div class="search">
 					<form action="fans.php" method="GET" name="font1">
@@ -171,9 +171,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-
+						
 					</form>
-
+					
 				</div>
 			</div>
 			<div class="menu">
@@ -196,6 +196,39 @@
 					<li><a href=""><div class="battle_channel" style="background: #0080FF;"></div></a><p>頻道2</p>目前人數：8763<br>收藏人數：27</li>
 				</ul>
 			</div>
+			<h2>排行榜<b>/</b><br>TOP 3</h2>
+			<div class="top5">
+				<ul>
+					<?PHP
+						$sql="SELECT User_ID From User Order by User_Wins DESC";
+						$result=mysqli_query($link,$sql);
+						$singer[1]=mysqli_result($result, 0,0);
+						$singer[2]=mysqli_result($result, 1,0);
+						$singer[3]=mysqli_result($result, 2,0);
+						for ($i=1; $i < 4; $i++) { 
+							echo "<li>".$i.".<a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a></li>";
+						}
+
+						function mysqli_result($res, $row, $field=0) { 
+						    $res->data_seek($row); 
+						    $datarow = $res->fetch_array(); 
+						    return $datarow[$field];    
+						}
+					?>
+					<?PHP
+						$sql="SELECT User_ID From User Order by User_Wins DESC";
+						$result=mysqli_query($link,$sql);
+
+						$singer[4]=mysqli_result($result, 3,0);
+						$singer[5]=mysqli_result($result, 4,0);
+						$singer[6]=mysqli_result($result, 5,0);
+						$singer[7]=mysqli_result($result, 6,0);
+						$singer[8]=mysqli_result($result, 7,0);
+						$singer[9]=mysqli_result($result, 8,0);
+						$singer[10]=mysqli_result($result, 9,0);
+					?>
+				</ul>
+			</div>
 		</div>
 
 		在線人數:
@@ -214,7 +247,7 @@
 					        if (request.readyState === 4) {
 					            if (request.status === 200) {
 					                var type = request.getResponseHeader("Content-Type");
-					                if (type.indexOf("application/json") === 0) {
+					                if (type.indexOf("application/json") === 0) {               
 					                    var data = JSON.parse(request.responseText);
 					                    if (data.msg) {
 					                        document.getElementById("Countmanshow").innerHTML = data.msg;
@@ -225,13 +258,13 @@
 					            }
 					        }
 					    }
-
+						
 						setTimeout("Countman()",60000);
 
 						// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
 						// $result3=mysqli_query($link,$sql3);
 						// $row3=mysqli_fetch_assoc($result3);
-
+						
 						// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
 					}
 
