@@ -202,8 +202,8 @@
 					<h2>排行榜<b>/</b><br>TOP 10</h2>
 					<div class="top5">
 						<div class="subtitle">
-							<h4>ID</h4>
-							<h5>勝場數</h5>
+							<h5>ID</h5>
+							<h6>勝場數</h6>
 						</div>
 						<ul>
 							<?PHP
