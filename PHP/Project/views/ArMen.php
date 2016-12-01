@@ -12,18 +12,7 @@
 			<div class="circle_1" id="circle"></div>
 			<div class="circle_2" id="CountDown"></div>
 		</div>
-		<script>
-			$(document).ready(function(){
-				$("#Like").click(function(){
-					$("#Like").fadeOut();
-					$("#Dislike").fadeOut();
-				});
-				$("#Dislike").click(function(){
-					$("#Like").fadeOut();
-					$("#Dislike").fadeOut();
-				});
-			});
-		</script>
+
 		<script type="text/javascript">
 		$(function() {
 			window.data = [{name: "Dislike", vote: 0, color:"#ED1B2E"},
@@ -83,7 +72,7 @@
 					.attr("class", "")
 					.on("click", function(d) {
 						sendData(d.name);
-						d.vote = d.vote - <?php echo $_GET["times"]?> ;
+						d.vote = d.vote - <?php echo $_GET["times"];?> ;
 						console.log(d.name+"SendVote");
 					});
 				bars.exit()
@@ -155,6 +144,18 @@
 			}
 
 		});
+		</script>
+		<script>
+			$(document).ready(function(){
+				$("#Like").click(function(){
+					$("#Like").fadeOut();
+					$("#Dislike").fadeOut();
+				});
+				$("#Dislike").click(function(){
+					$("#Like").fadeOut();
+					$("#Dislike").fadeOut();
+				});
+			});
 		</script>
 </body>
 </html>
