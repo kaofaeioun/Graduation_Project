@@ -196,7 +196,7 @@
 			<b><h2>大亂鬥模式 頻道1/Channel 1</h2></b>
 			<div class="main">
 				<div class="vote">
-					<div class="board">
+					<div class="board" id="board">
 						<div class="circle_area">
 							<div class="circle_1" id="circle"></div>
 							<div class="circle_2" id="CountDown"></div>
@@ -204,7 +204,6 @@
 							<script type="text/javascript" src="./js/ArMen.js"></script>
 						</div>
 					</div>
-
 					<!-- 小視窗 -->
 					<script>
 						$(document).ready(function(){
@@ -380,6 +379,7 @@ function CancelMic(){
 				?>
 				<script type="text/javascript">
 				   var systemTime = parseInt('<?=$TimeSpan;?>');
+					 var i = 0;
 				   function calculate() {
 				    var t = new Date(systemTime);
 				    s = "0" + t.getSeconds();
@@ -396,14 +396,15 @@ function CancelMic(){
 							count++;
 							var offset = new Date().getTime() - (startTime + count * 1000);
 							var nextTime = 1000 - offset;
+
 							if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
 							if(s==0){
 								CancelMic();
-								$(document).ready(function() {
-  									$(".board").load("/ArMen.php");
-  									console.log("HEY");
-								});
+								i++;
+								console.log(i);
+								$(".board").load("/ArMen.php?times="+i);
+  							console.log("HEY");
 								s=s+60;
 							}
 							if(s==59){

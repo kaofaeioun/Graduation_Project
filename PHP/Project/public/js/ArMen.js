@@ -1,4 +1,3 @@
-$(function() {
   window.data = [{name: "Dislike", vote: 0, color:"#ED1B2E"},
                 {name: "Like", vote: 0, color:"#376FFF"}];
 
@@ -37,7 +36,6 @@ $(function() {
   var arc = d3.svg.arc()
     .outerRadius(radius * 1)
     .innerRadius(radius * 0.75);
-
   svg.append("g")
     .attr("class", "fans");
   svg.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
@@ -61,14 +59,12 @@ $(function() {
       });
     bars.exit()
       .remove();
-
     var fan = svg.select(".fans").selectAll("path.fan")
       .data(pie(data));
     var fanEnter = fan.enter()
       .insert("path")
       .style("fill", function (d) {return d.data.color;})
       .attr("class", "fan");
-
     fan.transition().duration(1000)
       .attrTween("d", function(d){
         this._current = this._current || d;
@@ -82,11 +78,36 @@ $(function() {
       .remove();
     };
 
+    function datareset(msg){
+      for (var i = 0; i<window.data.length; i++){
+        var el = window.data[i];
+        if (el.vote !== 0 && el.name === msg){
+          el.vote -= 1;
+          console.log(el.name+":"+el.vote);
+        }
+      }
+    }
+    function resetvotes(){
+      pubnub.history({
+        channel:"Vote2",
+        start:0,
+        callback: function(msg) {
+          var vote_history = msg[0];
+          for (var i = 0; i < vote_history.length; i++) {
+            datareset(vote_history[i]);
+          }
+        }
+      });
+    }
+    draw(data);
+    resetvotes();
+
   function increment(msg) {
     for (var i=0; i<window.data.length; i++) {
       var el = window.data[i];
       if (el.name == msg) {
         el.vote += 1;
+        console.log(el.name+"SendCount"+el.vote);
       }
     }
     draw(data);
@@ -103,27 +124,3 @@ $(function() {
       }
     });
   }
-  function datareset(msg){
-    for (var i = 0; i<window.data.length; i++){
-      var el = window.data[i];
-      if (el.vote !== 0 && el.name === msg){
-        el.vote -= 1;
-        console.log(el.name+":"+el.vote);
-      }
-    }
-  }
-  function resetvotes(){
-    pubnub.history({
-      channel:"Vote2",
-      start:0,
-      callback: function(msg) {
-        var vote_history = msg[0];
-        for (var i = 0; i < vote_history.length; i++) {
-          datareset(vote_history[i]);
-        }
-      }
-    });
-  }
-  draw(data);
-  resetvotes();
-});
