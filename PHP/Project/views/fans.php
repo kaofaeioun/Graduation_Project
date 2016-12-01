@@ -200,7 +200,7 @@
 				?>
 				<div class="leftbar">
 					<ul>
-					<div class="madelevel">
+					<div class="medalevel">
 						<?PHP
 							$an = $_GET['name'];
 							$sql="SELECT Level From User where User_ID= '$an'";
@@ -285,15 +285,15 @@
 								</a>
 							</li>
 							<?php
+								$sql="SELECT User_Wins From User Where User_ID='$an'";
+								$result=mysqli_query($link,$sql);
+								$row=mysqli_fetch_row($result);
 								if(isset($rowget['User_ID'])){
-									echo "<li><a class='link-1'>勝場數<img src='image/win.png'>";
-									echo $row['User_Wins'];
-									echo "</a>";
-									echo "</li>";
+									echo "<li class='wins'>勝場數<img src='image/win.png' alt=''>".$row[0]."</li>";
 								}
 							?>
 							</ul>
-						</li>
+					</li>
 
 					</ul>
 
@@ -335,7 +335,7 @@
 					if(isset($rowget['User_ID'])){
 					echo "<img src='photo.php?id=".$rowget['User_ID']."' id='userimg'>
 						<div id='myModal' class='modal'>
-							<div class='entire_photo' style='width: 900px;height: 600px;background-color:black;box-sizing: border-box;margin:auto;'>
+							<div class='entire_photo' style='width: 900px;height:600px;background-color:black;box-sizing: border-box;margin:auto;'>
 								<img class='modal-content' id='bigphoto'>
 							</div>
 						</div>";

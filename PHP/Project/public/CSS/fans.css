@@ -92,7 +92,7 @@ h2{
     line-height: 60px;
     text-align: left;
 }
-.madelevel{
+.medalevel{
     width: 100px;
     height: 100px;
     margin-top: 25px;
@@ -100,7 +100,7 @@ h2{
     display: block;
     float: left;
 }
-.madelevel img{
+.medalevel img{
     width: 100px;
     height: 100px;
 }
@@ -145,6 +145,10 @@ a{
 .topbar p{
     margin-top: 30px;
     font-size: 20px;
+}
+.wins{
+    color: #00CDCD;
+    font-size: 18px;
 }
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 nav {
