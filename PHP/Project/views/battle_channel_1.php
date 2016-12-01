@@ -288,6 +288,12 @@ function CountMic(){
 					}
 					if(data.TimeResult){
 						document.getElementById("timeresult").innerHTML="true";
+						TimeGet();
+						console.log('ttttt');
+					}
+					if(!data.TimeResult){
+						calculate();
+						console.log('ccccc');
 					}
 					if(data.StatusResult){
 						console.log(data.StatusResult);
@@ -313,25 +319,25 @@ function CountMic(){
 	CountMic();
 function LoseResult(){
 	var request = new XMLHttpRequest();
-		request.open("GET", "cancelmic.php?singer="+document.getElementById('singerid').innerHTML+"");
+		request.open("GET", "cancelmic.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
 }		
 function Countlose(){		
 	var request =new XMLHttpRequest();
-		request.open("GET", "pointcountlose.php?singer="+document.getElementById('singerid').innerHTML+"id=<?php echo $_COOKIE['account'];?>");
+		request.open("GET", "pointcountlose.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
 }			
 function WinResult(){
 	var request = new XMLHttpRequest();
-		request.open("GET", "success.php?singer="+document.getElementById('singerid').innerHTML+"id=<?php echo $_COOKIE['account'];?>");
+		request.open("GET", "success.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
 }		
 function Countwin(){		
 	var request =new XMLHttpRequest();
-		request.open("GET", "pointcountwin.php?singer="+document.getElementById('singerid').innerHTML+"id=<?php echo $_COOKIE['account'];?>");
+		request.open("GET", "pointcountwin.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();	
 }
@@ -450,12 +456,6 @@ function calculate() {
 	s = 60-s;
 	document.getElementById('CountDown').innerHTML= s+"s";
 }
-			if(document.getElementById('timeresult').innerHTML!="true"){
-				 calculate();//為不是續唱者取系統時間
-			}
-			else{
-				TimeGet();//為續唱者取續唱時間
-			}
 			var startTime = new Date().getTime();
 			var count = 0;
 					function showTime() {
@@ -588,7 +588,6 @@ function calculate() {
                     var data = JSON.parse(request.responseText);
                     if(data.Count_A){
                         document.getElementById("MicCount").innerHTML = data.Count_A;
-                        CountMic();
                     }
                 }
             } else {
@@ -615,7 +614,6 @@ function calculate() {
                     var data = JSON.parse(request.responseText);
                     if(data.Count_B){
                         document.getElementById("MicCount").innerHTML = data.Count_B;
-                        CountMic();
                     }
                 }
             } else {
