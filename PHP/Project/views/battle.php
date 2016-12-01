@@ -201,6 +201,10 @@
 				<li>
 					<h2>排行榜<b>/</b><br>TOP 10</h2>
 					<div class="top5">
+						<div class="subtitle">
+							<h4>ID</h4>
+							<h5>勝場數</h5>
+						</div>
 						<ul>
 							<?PHP
 								$sql="SELECT User_ID From User Order by User_Wins DESC";
@@ -211,8 +215,15 @@
 								$singer[4]=mysqli_result($result, 3,0);
 								$singer[5]=mysqli_result($result, 4,0);
 
+								$sql2="SELECT User_Wins From User Order by User_Wins DESC";
+								$result2=mysqli_query($link,$sql2);
+								$point[1]=mysqli_result($result2, 0,0);
+								$point[2]=mysqli_result($result2, 1,0);
+								$point[3]=mysqli_result($result2, 2,0);
+								$point[4]=mysqli_result($result2, 3,0);
+								$point[5]=mysqli_result($result2, 4,0);
 								for ($i=1; $i < 6; $i++) { 
-									echo "<li><div class='top_title'>".$i. "</div><a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a></li>";
+									echo "<li><div class='top_title'>".$i. "</div><a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
 								}								
 								function mysqli_result($res, $row, $field=0) { 
 								    $res->data_seek($row); 
@@ -240,8 +251,17 @@
 								$singer[8]=mysqli_result($result, 7,0);
 								$singer[9]=mysqli_result($result, 8,0);
 								$singer[10]=mysqli_result($result, 9,0);
+
+								$sql2="SELECT User_Wins From User Order by User_Wins DESC";
+								$result2=mysqli_query($link,$sql2);
+								$point[6]=mysqli_result($result2, 5,0);
+								$point[7]=mysqli_result($result2, 6,0);
+								$point[8]=mysqli_result($result2, 7,0);
+								$point[9]=mysqli_result($result2, 8,0);
+								$point[10]=mysqli_result($result2, 9,0);
+
 								for ($i=6; $i < 11; $i++) { 
-									echo "<li><div class='top_title_2'>".$i."</div><a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a></li>";
+									echo "<li><div class='top_title_2'>".$i."</div><a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
 								}		
 							?>
 						</ul>							
@@ -250,7 +270,7 @@
 			</ul>
 		</div>
 
-		<div class="fuckU">在線人數:
+				在線人數:
 				<div id="Countmanshow"></div>
 				<script type="text/javascript" src="countman.php"></script>
 				<!-- 66666666666666666666666666666666666666666666666666666666666666666666 -->
@@ -287,20 +307,19 @@
 					}
 
 				</script>
-		</div>
 	</div>
 	<div class="footer_space">
-		<footer>
-				<h3>MicMusic</h3>
-				<p>© 2016 All rights reserved.</p>
-				<p>NUKIM 106專題開發</p>
-				<ul>
+	<footer>
+		<h3>MicMusic</h3>
+		<p>© 2016 All rights reserved.</p>
+		<p>NUKIM 106專題開發</p>
+		<ul>
 			<li><a href="battle.php"><img src="image/battle_chosen.png"></a></li>
 			<li><a href="channel.php"><img src="image/personal.png"></a></li>
 			<li><a href="personalinfo.php"><img src="image/person_info.png"></a></li>
 			<li><a href="setting.php"><img src="image/rules.png"></a></li>
-			</ul>
-		</footer>
+		</ul>
+	</footer>
 	</div>
 </body>
 </html>

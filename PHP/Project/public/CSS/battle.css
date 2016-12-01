@@ -78,7 +78,7 @@ table {
     margin-left: 25%;
 }
 .top5{
-    height: 280px;
+    height: 330px;
     padding-left: 20%;
     padding-right: 20%;
     box-sizing: border-box;
@@ -86,6 +86,26 @@ table {
 .top5 ul{
     box-sizing: border-box;
     font-size: 20px;
+}
+.subtitle{
+    height: 50px;
+    line-height: 50px;
+}
+h4{
+    width: 220px;
+    font-weight: 200;
+    font-size: 18px;
+    text-align: center;
+    float: left;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+h5{
+    width: 80px;
+    font-weight: 200;
+    font-size: 18px;
+    float: right;
+    text-align: right;
 }
 #content .top5 li{
     width: 100%;  
@@ -111,6 +131,10 @@ table {
 }
 .top5 a:hover{
     color: #02CBCE;
+}
+.cool{
+    float: right;
+    color: #456990;
 }
 .top_slide{
     width: 200px;
@@ -182,11 +206,6 @@ table {
     font-size: 22px;
     padding-bottom: 5px;
     border-bottom: 1.5px dotted #272727;
-}
-.fuckU{
-    position: absolute;
-    left: 10px;
-    bottom: 150px;
 }
 .clear{
     float: none;
