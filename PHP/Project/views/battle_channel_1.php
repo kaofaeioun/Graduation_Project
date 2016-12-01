@@ -378,8 +378,22 @@ function CancelMic(){
 				  $TimeSpan = (strtotime($DateTime_Now) - strtotime($DataTime_Begin)) * 1000;
 				?>
 				<script type="text/javascript">
-				   var systemTime = parseInt('<?=$TimeSpan;?>');
-					 var i = 0;
+				var VoteCount = 0;
+				$(document).ready(function(){
+					$("#Like").click(function(){
+						document.getElementById("Dislike").style.visibility = "hidden";
+						document.getElementById("Like").style.visibility= "hidden";
+						VoteCount++;
+						console.log("Like");
+					});
+					$("#Dislike").click(function(){
+						document.getElementById("Dislike").style.visibility = "hidden";
+						document.getElementById("Like").style.visibility= "hidden";
+						VoteCount++;
+						console.log("Dislike");
+					});
+				});
+					 var systemTime = parseInt('<?=$TimeSpan;?>');
 				   function calculate() {
 				    var t = new Date(systemTime);
 				    s = "0" + t.getSeconds();
@@ -396,24 +410,48 @@ function CancelMic(){
 							count++;
 							var offset = new Date().getTime() - (startTime + count * 1000);
 							var nextTime = 1000 - offset;
-
 							if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
 							if(s==0){
+								VoteCount = 0;
 								CancelMic();
-								i++;
-								console.log(i);
-								$(".board").load("/ArMen.php?times="+i);
-  							console.log("HEY");
 								s=s+60;
+							    function datareset(msg){
+							      for (var i = 0; i<window.data.length; i++){
+							        var el = window.data[i];
+							        if (el.vote !== 0 && el.name === msg){
+							          el.vote -= 1;
+							          console.log(el.name+":"+el.vote);
+							        }
+							      }
+							    }
+							    function resetvotes(){
+							      pubnub.history({
+							        channel:"Vote2",
+							        start:0,
+							        callback: function(msg) {
+							          var vote_history = msg[0];
+							          for (var i = 0; i < vote_history.length; i++) {
+							            datareset(vote_history[i]);
+							          }
+							        }
+							      });
+							    }
+							    resetvotes();
 							}
 							if(s==59){
 								CountMic();
 							}
 							if(s<30){
 								if(document.getElementById('vtresult').innerHTML!="true"){
-								document.getElementById("Dislike").style.visibility = "visible";
-								document.getElementById("Like").style.visibility ="visible";
+								draw(data);
+									if(VoteCount !== 0){
+										document.getElementById("Dislike").style.visibility = "hidden";
+										document.getElementById("Like").style.visibility= "hidden";
+									} else {
+										document.getElementById("Dislike").style.visibility = "visible";
+										document.getElementById("Like").style.visibility ="visible";
+									}
 								}
 								document.getElementById("circleSvg").style.visibility ="visible";
 							}if(s>30){
@@ -423,18 +461,6 @@ function CancelMic(){
 							}
 						}
 						setTimeout(showTime, 1000);
-					</script>
-					<script>
-						$(document).ready(function(){
-							$("#Like").click(function(){
-								$("#Like").fadeOut();
-								$("#Dislike").fadeOut();
-							});
-							$("#Dislike").click(function(){
-								$("#Like").fadeOut();
-								$("#Dislike").fadeOut();
-							});
-						});
 					</script>
 				<script type="text/javascript">
 					$( document ).on( "click", "#Like", function() {

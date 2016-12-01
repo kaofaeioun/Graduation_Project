@@ -100,7 +100,7 @@
       });
     }
     draw(data);
-    resetvotes();
+    //resetvotes();
 
   function increment(msg) {
     for (var i=0; i<window.data.length; i++) {
