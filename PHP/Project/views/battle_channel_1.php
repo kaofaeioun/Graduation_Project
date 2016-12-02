@@ -516,7 +516,7 @@ function calculate() {
 					if(s==60){
 						WinResult();
 					}	
-					if(s<30){
+					if(s<30||s>1){
 						if(document.getElementById('vtresult').innerHTML!="true"&&document.getElementById('singresult').innerHTML==""){
 							draw(data);
 							if(VoteCount !== 0){
@@ -529,7 +529,7 @@ function calculate() {
 						}
 							document.getElementById("circleSvg").style.visibility ="visible";
 					}
-					if(s>30){
+					if(s>30||s<1){
 							document.getElementById("circleSvg").style.visibility = "hidden";
 							document.getElementById("Dislike").style.visibility = "hidden";
 							document.getElementById("Like").style.visibility= "hidden";
