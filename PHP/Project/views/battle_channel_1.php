@@ -145,7 +145,7 @@
 
                                     $wins=$row['User_Wins'];
                                     $loses=$row2['User_Loses'];
-                                    @$percent=round($wins/($wins+$loses)*100,1);
+																		@$percent=round($wins/($wins+$loses)*100,1);
                                     echo $percent;
                                 ?>
                             </b3>%</li>
@@ -295,11 +295,6 @@ function CountMic(){
 							console.log("sing1");
 							calculate();
 						}
-						else if(data.SingResult=="0"){
-							document.getElementById("singresult").innerHTML="0";
-							console.log("sing0");
-							calculate();
-						}
 					}
 					if(!data.SingResult){
 						console.log("nosing");
@@ -331,24 +326,24 @@ function LoseResult(){
 		request.open("GET", "cancelmic.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
-}		
-function Countlose(){		
+}
+function Countlose(){
 	var request =new XMLHttpRequest();
 		request.open("GET", "pointcountlose.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
-}			
+}
 function WinResult(){
 	var request = new XMLHttpRequest();
 		request.open("GET", "success.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
-}		
-function Countwin(){		
+}
+function Countwin(){
 	var request =new XMLHttpRequest();
 		request.open("GET", "pointcountwin.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		request.send();	
+		request.send();
 }
 	</script>
 					<div class="track">
@@ -415,28 +410,8 @@ function Countwin(){
 				</div>
 <script type="text/javascript">
 var VoteCount = 0;
-function datareset(msg){
-	for (var i = 0; i<window.data.length; i++){
-		var el = window.data[i];
-	if (el.vote !== 0 && el.name === msg){
-		el.vote -= 1;
-	console.log(el.name+":"+el.vote);
-	}
-	}
-}
-function resetvotes(){
-	pubnub.history({
-	channel:"Vote2",
-	start:0,
-	callback: function(msg) {
-		var vote_history = msg[0];
-		for (var i = 0; i < vote_history.length; i++) {
-			datareset(vote_history[i]);
-			}
-		}
-	});
-}
-$(document).ready(function(){
+var NowStatus = 0;
+	$(document).ready(function(){
 					$("#Like").click(function(){
 						document.getElementById("Dislike").style.visibility = "hidden";
 						document.getElementById("Like").style.visibility= "hidden";
@@ -462,25 +437,30 @@ function calculate() {
 			if (request.status === 200) {
 				var type = request.getResponseHeader("Content-Type");   // 取得回應類型
 				if (type.indexOf("application/json") === 0) {
-					var data = JSON.parse(request.responseText);	
+					var data = JSON.parse(request.responseText);
 					var systemTime = parseInt(data.TimeSpan);
 					var t = new Date(systemTime);
-					if(document.getElementById('singresult').innerHTML=="2"){
+					if(document.getElementById('singresult').innerHTML==""){
+						s = "0" + t.getSeconds();
+						s = s.substring(s.length - 2, s.length + 1);
+						s = 60-s;
+					}
+					else if(document.getElementById('singresult').innerHTML=="1"){
+						s = "0" + t.getSeconds();
+						s = s.substring(s.length - 2, s.length + 1);
+						s = 60-s;
+					}
+					else if(document.getElementById('singresult').innerHTML=="2"){
 						s = "0" + t.getSeconds();
 						s = s.substring(s.length - 2, s.length + 1);
 						s=120-s;
 					}
-					else{
-						s = "0" + t.getSeconds();
-						s = s.substring(s.length - 2, s.length + 1);
-						s=60-s;
-					}
 					document.getElementById('CountDown').innerHTML= s+"s";
 				}
 			}
-		}		
+		}
 	}
-}		
+}
 			var startTime = new Date().getTime();
 			var count = 0;
 					function showTime() {
@@ -489,35 +469,54 @@ function calculate() {
 							count++;
 							var offset = new Date().getTime() - (startTime + count * 1000);
 							var nextTime = 1000 - offset;
-						if (nextTime < 0) nextTime = 0;
+					if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
 					if(s==0){
-							VoteCount = 0;		
+							VoteCount = 0;
+							NowStatus = 0;
 						if(data[0].vote<data[1].vote){
 							Countwin();
 							WinResult();
-							resetvotes();
+									//紀錄成功續唱
 							s=s+120;
-							console.log("zzzzzz");
-							CountMic();
-						}
-						else if(data[0].vote>data[1].vote){
-							Countlose();
-							LoseResult();
-							resetvotes();
-							CountMic();
 						}
 						else{
-							resetvotes();
+							Countlose();
 							LoseResult();
-							CountMic();
+						function datareset(msg){
+							for (var i = 0; i<window.data.length; i++){
+							    var el = window.data[i];
+							        if (el.vote !== 0 && el.name === msg){
+							          el.vote -= 1;
+							          console.log(el.name+":"+el.vote);
+							    	}
+								}
+							}
+						function resetvotes(){
+							pubnub.history({
+							    channel:"Vote2",
+							    start:0,
+							    callback: function(msg) {
+							        var vote_history = msg[0];
+							        for (var i = 0; i < vote_history.length; i++) {
+							            datareset(vote_history[i]);
+							          }
+							        }
+							    });
+							}
+							resetvotes();
+								s=s+60;
 						}
+					}
+					if(s==59||s==119){
+						CountMic();
+
 					}
 					if(s==60){
 						WinResult();
-					}	
-					if(s<30||s>1){
-						if(document.getElementById('vtresult').innerHTML!="true"&&document.getElementById('singresult').innerHTML=="0"){
+					}
+					if(s<30){
+						if(document.getElementById('vtresult').innerHTML!="true"){
 							draw(data);
 							if(VoteCount !== 0){
 								document.getElementById("Dislike").style.visibility = "hidden";
@@ -526,14 +525,19 @@ function calculate() {
 								document.getElementById("Dislike").style.visibility = "visible";
 								document.getElementById("Like").style.visibility ="visible";
 							}
+							if(NowStatus !== 1){
+								window.location.assign("/battle.php");
+							}
 						}
 							document.getElementById("circleSvg").style.visibility ="visible";
 					}
-					if(s>30||s<1){
+					if(s>30){
+							NowStatus = 1;
 							document.getElementById("circleSvg").style.visibility = "hidden";
 							document.getElementById("Dislike").style.visibility = "hidden";
 							document.getElementById("Like").style.visibility= "hidden";
 					}
+
 				}
 					setTimeout(showTime, 1000);
 					</script>
