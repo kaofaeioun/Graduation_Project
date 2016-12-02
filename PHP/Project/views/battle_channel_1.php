@@ -218,27 +218,6 @@
 						});
 					</script>
 <script type="text/javascript">
-function datareset(msg){
-	for (var i = 0; i<window.data.length; i++){
-		var el = window.data[i];
-		if (el.vote !== 0 && el.name === msg){
-			 el.vote -= 1;
-			console.log(el.name+":"+el.vote);
-			}
-		}
-	}
-function resetvotes(){
-	pubnub.history({
-	channel:"Vote2",
-	start:0,
-	callback: function(msg) {
-	var vote_history = msg[0];
-	for (var i = 0; i < vote_history.length; i++) {
-	datareset(vote_history[i]);
-	}
-	}
-});
-}
 function CountMic(){
 		var request = new XMLHttpRequest();
 		request.open("GET", "countmic.php?id=<?php echo $id;?>");
@@ -310,13 +289,16 @@ function CountMic(){
 							document.getElementById("singresult").innerHTML="2";
 							console.log("sing2");
 							calculate();
-						//	resetvotes();
 						}
 						else if(data.SingResult=="1"){
 							document.getElementById("singresult").innerHTML="1";
 							console.log("sing1");
 							calculate();
-						//	resetvotes();
+						}
+						else if(data.SingResult=="0"){
+							document.getElementById("singresult").innerHTML="1";
+							console.log("sing0");
+							calculate();
 						}
 					}
 					if(!data.SingResult){
@@ -521,12 +503,18 @@ function calculate() {
 							WinResult();
 							resetvotes();
 							s=s+120;
+							console.log("zzzzzz");
 							CountMic();
 						}
-						else{
+						else if(data[0].vote>data[1].vote){
 							Countlose();
 							LoseResult();
 							resetvotes();
+							CountMic();
+						}
+						else{
+							resetvotes();
+							LoseResult();
 							CountMic();
 						}
 					}
