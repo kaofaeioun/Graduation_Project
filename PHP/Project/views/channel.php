@@ -8,24 +8,23 @@
 	<link rel="stylesheet" href="CSS/all.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
-	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<title>MicMusic</title>
 </head>
 <body>
 	<script type="text/javascript">
-		<?php include 'mysql_connect.php';
-            if (!isset($_COOKIE['account'])): ?>
+		<?php include("mysql_connect.php");
+			if(!isset($_COOKIE['account'])): ?>
 				$(document).ready(function(){
 					$('#login').show();
-				});
-		<?php else: $id = $_COOKIE['account']; ?>
-			$(document).ready(function(){
+				});		
+		<?php else: $id=$_COOKIE['account']; ?>			
+			$(document).ready(function(){				
 				$('#user').show();
 			});
 		<?php endif; ?>
 	</script>
-
+	
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
@@ -55,40 +54,40 @@
                             <li><p>Rank</p>
                             <?PHP
                                 $an = $_COOKIE['account'];
-                                $sql = "SELECT Level From User where User_ID= '$an'";
-                                $result = mysqli_query($link, $sql);
+                                $sql="SELECT Level From User where User_ID= '$an'";
+                                $result = mysqli_query($link,$sql);
                                 $row = mysqli_fetch_assoc($result);
-                                if ($row['Level'] == '無階級') {
+                                if ($row['Level']=='無階級') {
                                     echo "<img src='image/bronze.png'>";
-                                } elseif ($row['Level'] == '銅MIC I') {
+                                }elseif ($row['Level']=='銅MIC I') {
                                     echo "<img src='image/bronze_1.png'>";
-                                } elseif ($row['Level'] == '銅MIC II') {
+                                }elseif ($row['Level']=='銅MIC II') {
                                     echo "<img src='image/bronze_2.png'>";
-                                } elseif ($row['Level'] == '銅MIC III') {
+                                }elseif ($row['Level']=='銅MIC III') {
                                     echo "<img src='image/bronze_3.png'>";
-                                } elseif ($row['Level'] == '銀Mic I') {
+                                }elseif ($row['Level']=='銀Mic I') {
                                     echo "<img src='image/silver_1.png'>";
-                                } elseif ($row['Level'] == '銀Mic II') {
+                                }elseif ($row['Level']=='銀Mic II') {
                                     echo "<img src='image/silver_2.png'>";
-                                } elseif ($row['Level'] == '銀Mic III') {
+                                }elseif ($row['Level']=='銀Mic III') {
                                     echo "<img src='image/silver_3.png'>";
-                                } elseif ($row['Level'] == '金Mic I') {
+                                }elseif ($row['Level']=='金Mic I') {
                                     echo "<img src='image/golden_1.png'>";
-                                } elseif ($row['Level'] == '金Mic II') {
+                                }elseif ($row['Level']=='金Mic II') {
                                     echo "<img src='image/golden_2.png'>";
-                                } elseif ($row['Level'] == '金Mic III') {
+                                }elseif ($row['Level']=='金Mic III') {
                                     echo "<img src='image/golden_3.png'>";
-                                } elseif ($row['Level'] == '白金Mic I') {
+                                }elseif ($row['Level']=='白金Mic I') {
                                     echo "<img src='image/platnum_1.png'>";
-                                } elseif ($row['Level'] == '白金Mic II') {
+                                }elseif ($row['Level']=='白金Mic II') {
                                     echo "<img src='image/platnum_2.png'>";
-                                } elseif ($row['Level'] == '白金Mic III') {
+                                }elseif ($row['Level']=='白金Mic III') {
                                     echo "<img src='image/platnum_3.png'>";
-                                } elseif ($row['Level'] == '鑽石Mic I') {
+                                }elseif ($row['Level']=='鑽石Mic I') {
                                     echo "<img src='image/diamond_1.png'>";
-                                } elseif ($row['Level'] == '鑽石Mic II') {
+                                }elseif ($row['Level']=='鑽石Mic II') {
                                     echo "<img src='image/diamond_2.png'>";
-                                } elseif ($row['Level'] == '鑽石Mic III') {
+                                }elseif ($row['Level']=='鑽石Mic III') {
                                     echo "<img src='image/diamond_3.png'>";
                                 }
                             ?>
@@ -96,8 +95,8 @@
                             <li><p>勝場數</p><b2>
                                 <?PHP
                                     $an = $_COOKIE['account'];
-                                    $sql = "SELECT User_Wins From User where User_ID= '$an'";
-                                    $result = mysqli_query($link, $sql);
+                                    $sql="SELECT User_Wins From User where User_ID= '$an'";
+                                    $result = mysqli_query($link,$sql);
                                     $row = mysqli_fetch_assoc($result);
                                     echo $row['User_Wins'];
                                 ?>
@@ -105,17 +104,17 @@
                             <li><p>勝場率</p><b3>
                                 <?PHP
                                     $an = $_COOKIE['account'];
-                                    $sql = "SELECT User_Wins FROM User where User_ID= '$an'";
-                                    $result = mysqli_query($link, $sql);
-                                    $row = mysqli_fetch_assoc($result);
+                                    $sql="SELECT User_Wins FROM User where User_ID= '$an'";
+                                    $result = mysqli_query($link,$sql);
+                                    $row=mysqli_fetch_assoc($result);
 
-                                    $sql2 = "SELECT User_Loses FROM User where User_ID= '$an'";
-                                    $result2 = mysqli_query($link, $sql2);
-                                    $row2 = mysqli_fetch_assoc($result2);
+                                    $sql2="SELECT User_Loses FROM User where User_ID= '$an'";
+                                    $result2= mysqli_query($link,$sql2);
+                                    $row2=mysqli_fetch_assoc($result2);
 
-                                    $wins = $row['User_Wins'];
-                                    $loses = $row2['User_Loses'];
-                                    @$percent = round($wins / ($wins + $loses) * 100,1);
+                                    $wins=$row['User_Wins'];
+                                    $loses=$row2['User_Loses'];
+                                    @$percent=$wins/($wins+$loses)*100;
                                     echo $percent;
                                 ?>
                             </b3>%</li>
@@ -123,14 +122,14 @@
 						<span class="arrow_bottom_int"></span>
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<p><?php
-                                $sql = "SELECT User_Name From User WHERE User_id='$id'";
-                                $result = mysqli_query($link, $sql);
-                                $row = mysqli_fetch_assoc($result);
-                                $username = $row['User_Name'];
-                                echo $username; ?></p>
+								<p><?php 
+								$sql="SELECT User_Name From User WHERE User_id='$id'";
+								$result=mysqli_query($link,$sql);
+								$row=mysqli_fetch_assoc($result);
+								$username=$row['User_Name'];
+								echo $username;?></p>
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
-							</div>
+							</div>			
 					</div>
 				</div>
 				<div class="search">
@@ -144,9 +143,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-
+						
 					</form>
-
+					
 				</div>
 			</div>
 			<div class="menu">
@@ -175,8 +174,23 @@
 				</ul>
 			</div>
 			<div class="clear"></div>
+		</div>	
+	</div>
+
+	<div class="gridcontainer clearfix">
+	<div class="grid_3">
+		<div class="fmcircle_out">
+			<a href="#web">
+				<div class="fmcircle_border">
+					<div class="fmcircle_in fmcircle_blue">
+						<span>我要開台!</span><img src="image/microphone1.png" />
+					</div>
+				</div>
+			</a>
 		</div>
 	</div>
+
+</div>
 	<div class="footer_space">
 	<footer>
 		<h3>MicMusic</h3>
