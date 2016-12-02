@@ -252,7 +252,7 @@
 								<li>
 
 									<nav id="nav-1">
-									  <a class="link-1" href="fansMenu_Followers.php">追蹤名單
+									  <a class="link-1" href="fansMenu_Followers.php"><b>追蹤名單</b>
 									  <?php
 										$sql2="SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$id'";
 										$trackresult = mysqli_query($link,$sql2);
@@ -268,7 +268,7 @@
 
 								<li>
 									<nav id="nav-1">
-									  <a class="link-1" href="fansMenu_Fans.php">粉絲名單
+									  <a class="link-1" href="fansMenu_Fans.php"><b>粉絲名單</b>
 									  <img src="image/tracked.png" alt=""><br>
 									  <?php
 										$sql2="SELECT COUNT(Track_ID) as total FROM Track where Tracked_ID='$id'";
