@@ -387,16 +387,16 @@
 					PicAutoMid();
 				</script>
 				<script>
-					$(function() {
+					/*$(function() {
 						var pb = PUBNUB.init(PUBNUB.setup);
-						$("followed").click(function() {
+						$( document ).on( "click", "#follow", function() {
 							pb.publish({
 								channel: PUBNUB.setup.channel,
 								message: {
 								    iconUrl   : 'images/icon.png',
 								    type      : 'basic',
 								    title     : new Date(),
-								    message   : "用戶" + <?php echo $usernow;?> + "追蹤了"+<?php echo $an;?>,
+								    message   : "用戶 + <?php echo $usernow;?> + 追蹤了+<?php echo $an;?>",
 								    priority  : 1,
 								    buttons: [
 								        {title: 'I want in', iconUrl: 'images/icon.png'}
@@ -404,14 +404,14 @@
 								}
 							});
 						});
-						$("follow").click(function() {
+						$( document ).on( "click", "#followed", function() {
 							pb.publish({
 								channel: PUBNUB.setup.channel,
 								message: {
 									iconUrl   : 'images/icon.png',
 									type      : 'basic',
 									title     : new Date(),
-									message   : "用戶" + <?php echo $usernow;?> + "取消追蹤了"+<?php echo $an;?>,
+									message   : "用戶 + <?php echo $usernow;?> + 取消追蹤了+<?php echo $an;?>",
 									priority  : 1,
 									buttons: [
 											{title: 'I want in', iconUrl: 'images/icon.png'}
@@ -419,17 +419,43 @@
 								}
 							})
 						});
-					});
+					});*/
 				</script>
 					<script type="text/javascript">
+							var pb = PUBNUB.init(PUBNUB.setup);
 							$( document ).on( "click", "#followed", function() {
-
+								pb.publish({
+								channel: PUBNUB.setup.channel,
+								message: {
+									iconUrl   : 'images/icon.png',
+									type      : 'basic',
+									title     : new Date(),
+									message   : "用戶 <?php echo $usernow;?> 取消追蹤了<?php echo $an;?>",
+									priority  : 1,
+									buttons: [
+											{title: 'I want in', iconUrl: 'images/icon.png'}
+									]
+								}
+							});
   								var request = new XMLHttpRequest();
 							    request.open("GET", "followcancel.php?Track_ID=<?php echo $usernow;?>&Tracked_ID=<?php echo $an;?>");
 							    request.send();
 							    $('#followed').attr('id','follow');
 							});
 							$( document ).on( "click", "#follow", function() {
+								pb.publish({
+								channel: PUBNUB.setup.channel,
+								message: {
+								    iconUrl   : 'images/icon.png',
+								    type      : 'basic',
+								    title     : new Date(),
+								    message   : "用戶  <?php echo $usernow;?>  追蹤了<?php echo $an;?>",
+								    priority  : 1,
+								    buttons: [
+								        {title: 'I want in', iconUrl: 'images/icon.png'}
+								    ]
+								}
+								});
   								var request = new XMLHttpRequest();
 							    request.open("GET", "follow.php?Track_ID=<?php echo $usernow;?>&Tracked_ID=<?php echo $an;?>");
 							    request.send();
