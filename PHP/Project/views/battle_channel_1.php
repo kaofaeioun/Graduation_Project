@@ -145,7 +145,7 @@
 
                                     $wins=$row['User_Wins'];
                                     $loses=$row2['User_Loses'];
-                                    @$percent=$wins/($wins+$loses)*100;
+                                    @$percent=round($wins/($wins+$loses)*100,1);
                                     echo $percent;
                                 ?>
                             </b3>%</li>
@@ -296,7 +296,7 @@ function CountMic(){
 							calculate();
 						}
 						else if(data.SingResult=="0"){
-							document.getElementById("singresult").innerHTML="1";
+							document.getElementById("singresult").innerHTML="0";
 							console.log("sing0");
 							calculate();
 						}
@@ -517,7 +517,7 @@ function calculate() {
 						WinResult();
 					}	
 					if(s<30||s>1){
-						if(document.getElementById('vtresult').innerHTML!="true"&&document.getElementById('singresult').innerHTML==""){
+						if(document.getElementById('vtresult').innerHTML!="true"&&document.getElementById('singresult').innerHTML=="0"){
 							draw(data);
 							if(VoteCount !== 0){
 								document.getElementById("Dislike").style.visibility = "hidden";
