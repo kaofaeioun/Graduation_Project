@@ -48,7 +48,7 @@ include('mysql_connect.php');
 		WHERE User_ID =  '$id'";
 	$result12=mysqli_query($link,$sql12);	
 	$row12=mysqli_fetch_row($result12);
-	$sql13="SELECT EndTime from Mic where User_ID='$singer'";
+	$sql13="SELECT SingResult from Mic where User_ID='$singer'";
 	$result13=mysqli_query($link,$sql13);	
 	$row13=mysqli_fetch_row($result13);
 function mysqli_result($res, $row, $field=0) { 
@@ -56,7 +56,7 @@ function mysqli_result($res, $row, $field=0) {
     $datarow = $res->fetch_array(); 
     return $datarow[$field];    
 }	
-	$data =array('MicCount'=>$row2[0],'Singer'=>$singer,'SingerName'=>$singerName[0],'Singer1'=>$singer1,'Singer1Name'=>$singer1Name[0],'Singer2'=>$singer2,'Singer2Name'=>$singer2Name[0] ,'Singer3'=>$singer3,'Singer3Name'=>$singer3Name[0],'VoteResult'=>$voteResult[0],'StatusResult'=>$statusresult[0],'TrackedNum'=>$row11['total'],'MicOrder'=>$row12[0],'TimeResult'=>$row13[0]);
+	$data =array('MicCount'=>$row2[0],'Singer'=>$singer,'SingerName'=>$singerName[0],'Singer1'=>$singer1,'Singer1Name'=>$singer1Name[0],'Singer2'=>$singer2,'Singer2Name'=>$singer2Name[0] ,'Singer3'=>$singer3,'Singer3Name'=>$singer3Name[0],'VoteResult'=>$voteResult[0],'StatusResult'=>$statusresult[0],'TrackedNum'=>$row11['total'],'MicOrder'=>$row12[0],'SingResult'=>$row13[0]);
 
  	echo isset($data) ? json_encode($data) : json_encode(array('msg' => 'error！'));
 
