@@ -3,12 +3,12 @@
 <html lang="en">
 <head>
 	<?php
-		include("mysql_connect.php");
-		$id=$_COOKIE['account'];
-		$sqlID = "SELECT User_Name FROM User where User_ID = '$id'";
-		$resultID = mysqli_query($link, $sqlID);
-		$rowID = mysqli_fetch_row($resultID);
-	?>
+        include 'mysql_connect.php';
+        $id = $_COOKIE['account'];
+        $sqlID = "SELECT User_Name FROM User where User_ID = '$id'";
+        $resultID = mysqli_query($link, $sqlID);
+        $rowID = mysqli_fetch_row($resultID);
+    ?>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -18,9 +18,9 @@
 	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<script>
 		var client = { //is observerd
-			"userid" : "<?php echo $id;?>",
+			"userid" : "<?php echo $id; ?>",
 			"pp" : "../img/profile.jpg", //Profil Pic
-			"nn" : "<?php echo $rowID[0];?>", //Nickname
+			"nn" : "<?php echo $rowID[0]; ?>", //Nickname
 			"mg" : 4/100, // minGain
 			"mic" : false,
 			"sound" : true
@@ -42,18 +42,18 @@
 
 <body>
 	<script type="text/javascript">
-		<?php include("mysql_connect.php");
-			if(!isset($_COOKIE['account'])): ?>
+		<?php include 'mysql_connect.php';
+            if (!isset($_COOKIE['account'])): ?>
 				$(document).ready(function(){
 					$('#login').show();
 				});
-		<?php else: $id=$_COOKIE['account'];
-		?>
+		<?php else: $id = $_COOKIE['account'];
+        ?>
 			$(document).ready(function(){
 				$('#user').show();
 			});
 		<?php endif;
-		?>
+        ?>
 	</script>
 
 	<div class="wrap">
@@ -80,46 +80,46 @@
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div class="container"></div>
 				<div class="user" id="user">
-					<img src="photo.php?id=<?php echo $id;?>">
+					<img src="photo.php?id=<?php echo $id; ?>">
 					<div class="user_info">
 						<ul>
                             <li><p>Rank</p>
                             <?PHP
                                 $an = $_COOKIE['account'];
-                                $sql="SELECT Level From User where User_ID= '$an'";
-                                $result = mysqli_query($link,$sql);
+                                $sql = "SELECT Level From User where User_ID= '$an'";
+                                $result = mysqli_query($link, $sql);
                                 $row = mysqli_fetch_assoc($result);
-                                if ($row['Level']=='無階級') {
+                                if ($row['Level'] == '無階級') {
                                     echo "<img src='image/bronze.png'>";
-                                }elseif ($row['Level']=='銅MIC I') {
+                                } elseif ($row['Level'] == '銅MIC I') {
                                     echo "<img src='image/bronze_1.png'>";
-                                }elseif ($row['Level']=='銅MIC II') {
+                                } elseif ($row['Level'] == '銅MIC II') {
                                     echo "<img src='image/bronze_2.png'>";
-                                }elseif ($row['Level']=='銅MIC III') {
+                                } elseif ($row['Level'] == '銅MIC III') {
                                     echo "<img src='image/bronze_3.png'>";
-                                }elseif ($row['Level']=='銀Mic I') {
+                                } elseif ($row['Level'] == '銀Mic I') {
                                     echo "<img src='image/silver_1.png'>";
-                                }elseif ($row['Level']=='銀Mic II') {
+                                } elseif ($row['Level'] == '銀Mic II') {
                                     echo "<img src='image/silver_2.png'>";
-                                }elseif ($row['Level']=='銀Mic III') {
+                                } elseif ($row['Level'] == '銀Mic III') {
                                     echo "<img src='image/silver_3.png'>";
-                                }elseif ($row['Level']=='金Mic I') {
+                                } elseif ($row['Level'] == '金Mic I') {
                                     echo "<img src='image/golden_1.png'>";
-                                }elseif ($row['Level']=='金Mic II') {
+                                } elseif ($row['Level'] == '金Mic II') {
                                     echo "<img src='image/golden_2.png'>";
-                                }elseif ($row['Level']=='金Mic III') {
+                                } elseif ($row['Level'] == '金Mic III') {
                                     echo "<img src='image/golden_3.png'>";
-                                }elseif ($row['Level']=='白金Mic I') {
+                                } elseif ($row['Level'] == '白金Mic I') {
                                     echo "<img src='image/platnum_1.png'>";
-                                }elseif ($row['Level']=='白金Mic II') {
+                                } elseif ($row['Level'] == '白金Mic II') {
                                     echo "<img src='image/platnum_2.png'>";
-                                }elseif ($row['Level']=='白金Mic III') {
+                                } elseif ($row['Level'] == '白金Mic III') {
                                     echo "<img src='image/platnum_3.png'>";
-                                }elseif ($row['Level']=='鑽石Mic I') {
+                                } elseif ($row['Level'] == '鑽石Mic I') {
                                     echo "<img src='image/diamond_1.png'>";
-                                }elseif ($row['Level']=='鑽石Mic II') {
+                                } elseif ($row['Level'] == '鑽石Mic II') {
                                     echo "<img src='image/diamond_2.png'>";
-                                }elseif ($row['Level']=='鑽石Mic III') {
+                                } elseif ($row['Level'] == '鑽石Mic III') {
                                     echo "<img src='image/diamond_3.png'>";
                                 }
                             ?>
@@ -127,8 +127,8 @@
                             <li><p>勝場數</p><b2>
                                 <?PHP
                                     $an = $_COOKIE['account'];
-                                    $sql="SELECT User_Wins From User where User_ID= '$an'";
-                                    $result = mysqli_query($link,$sql);
+                                    $sql = "SELECT User_Wins From User where User_ID= '$an'";
+                                    $result = mysqli_query($link, $sql);
                                     $row = mysqli_fetch_assoc($result);
                                     echo $row['User_Wins'];
                                 ?>
@@ -136,17 +136,17 @@
                             <li><p>勝場率</p><b3>
                                 <?PHP
                                     $an = $_COOKIE['account'];
-                                    $sql="SELECT User_Wins FROM User where User_ID= '$an'";
-                                    $result = mysqli_query($link,$sql);
-                                    $row=mysqli_fetch_assoc($result);
+                                    $sql = "SELECT User_Wins FROM User where User_ID= '$an'";
+                                    $result = mysqli_query($link, $sql);
+                                    $row = mysqli_fetch_assoc($result);
 
-                                    $sql2="SELECT User_Loses FROM User where User_ID= '$an'";
-                                    $result2= mysqli_query($link,$sql2);
-                                    $row2=mysqli_fetch_assoc($result2);
+                                    $sql2 = "SELECT User_Loses FROM User where User_ID= '$an'";
+                                    $result2 = mysqli_query($link, $sql2);
+                                    $row2 = mysqli_fetch_assoc($result2);
 
-                                    $wins=$row['User_Wins'];
-                                    $loses=$row2['User_Loses'];
-                                    @$percent=$wins/($wins+$loses)*100;
+                                    $wins = $row['User_Wins'];
+                                    $loses = $row2['User_Loses'];
+                                    @$percent = $wins / ($wins + $loses) * 100;
                                     echo $percent;
                                 ?>
                             </b3>%</li>
@@ -155,11 +155,11 @@
 						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
 							<p><?php
-								$sql="SELECT User_Name From User WHERE User_id='$id'";
-								$result=mysqli_query($link,$sql);
-								$row=mysqli_fetch_assoc($result);
-								$username=$row['User_Name'];
-								echo $username;?>
+                                $sql = "SELECT User_Name From User WHERE User_id='$id'";
+                                $result = mysqli_query($link, $sql);
+                                $row = mysqli_fetch_assoc($result);
+                                $username = $row['User_Name'];
+                                echo $username; ?>
 							</p>
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
 							</div>
@@ -222,7 +222,7 @@
 <script type="text/javascript">
 function CountMic(){
 		var request = new XMLHttpRequest();
-		request.open("GET", "countmic.php?id=<?php echo $id;?>");
+		request.open("GET", "countmic.php?id=<?php echo $id; ?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
 	request.onreadystatechange = function() {
@@ -317,61 +317,61 @@ function CountMic(){
 	}
 }
 	CountMic();
-function LoseResult(){
+function LoseResult(){//cut Mic
 	var request = new XMLHttpRequest();
-		request.open("GET", "cancelmic.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
+		request.open("GET", "cancelmic.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account']; ?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
-}		
-function Countlose(){		
+}
+function Countlose(){//計入敗場
 	var request =new XMLHttpRequest();
-		request.open("GET", "pointcountlose.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
+		request.open("GET", "pointcountlose.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account']; ?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
-}			
-function WinResult(){
+}
+function WinResult(){//給觀眾判定
 	var request = new XMLHttpRequest();
-		request.open("GET", "success.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
+		request.open("GET", "success.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account']; ?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
-}		
-function Countwin(){		
+}
+function Countwin(){//計入勝場
 	var request =new XMLHttpRequest();
-		request.open("GET", "pointcountwin.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account'];?>");
+		request.open("GET", "pointcountwin.php?singer="+document.getElementById('singerid').innerHTML+"&id=<?php echo $_COOKIE['account']; ?>");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		request.send();	
+		request.send();
 }
 	</script>
 					<div class="track">
 						<?php
-							$usernow = $_COOKIE['account'];
-							$sql1 = "SELECT User_ID FROM Mic where 1";
-							$result1 =mysqli_query($link,$sql1);
-							$row1=mysqli_fetch_row($result1);
-							$singer=$row1[0];
-							$sql2 = "SELECT Track_time FROM Track where Track_ID='$usernow' && Tracked_ID='$singer'";
-							$result2 = mysqli_query($link,$sql2);
-							$row2 = mysqli_fetch_row($result2);
-							if (isset($row2[0])) {
-								echo "
+                            $usernow = $_COOKIE['account'];
+                            $sql1 = 'SELECT User_ID FROM Mic where 1';
+                            $result1 = mysqli_query($link, $sql1);
+                            $row1 = mysqli_fetch_row($result1);
+                            $singer = $row1[0];
+                            $sql2 = "SELECT Track_time FROM Track where Track_ID='$usernow' && Tracked_ID='$singer'";
+                            $result2 = mysqli_query($link, $sql2);
+                            $row2 = mysqli_fetch_row($result2);
+                            if (isset($row2[0])) {
+                                echo "
 									<div id='pic'>
 										<input type='checkbox' id='tracked' checked>
 									</div>
 								";
-							}else{
-								echo "
+                            } else {
+                                echo "
 									<div id='pic'>
 										<input type='checkbox' id='notrack'>
 									</div>
 								";
-							}
-						?>
+                            }
+                        ?>
 						<div id="square"></div>
 						<script type="text/javascript">
 								$( document ).on( "click", "#tracked", function() {
 	  								var i = document.getElementById('singerid').innerHTML;
 	  								var request = new XMLHttpRequest();
-								    request.open("GET", "followcancel.php?Tracked_ID="+i+"&Track_ID=<?php echo $id;?>");
+								    request.open("GET", "followcancel.php?Tracked_ID="+i+"&Track_ID=<?php echo $id; ?>");
 								    request.send();
 								    $('#tracked').attr('id','notrack');
 								    document.getElementById("square").innerHTML = ("取消追蹤!");
@@ -379,7 +379,7 @@ function Countwin(){
 								$( document ).on( "click", "#notrack", function() {
 									var i = document.getElementById('singerid').innerHTML;
 	  								var request = new XMLHttpRequest();
-								    request.open("GET", "follow.php?Tracked_ID="+i+"&Track_ID=<?php echo $id;?>");
+								    request.open("GET", "follow.php?Tracked_ID="+i+"&Track_ID=<?php echo $id; ?>");
 								    request.send();
 								    $('#notrack').attr('id','tracked');
 								    document.getElementById("square").innerHTML = ("成功追蹤!");
@@ -399,17 +399,17 @@ function Countwin(){
 						</script>
 					</div>
 					<?php
-						$sqlTrack = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID=''";
-						$resultTrack = mysqli_query($link,$sqlTrack);
-						$rowTrack = mysqli_fetch_assoc($resultTrack);
-					?>
+                        $sqlTrack = "SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID=''";
+                        $resultTrack = mysqli_query($link, $sqlTrack);
+                        $rowTrack = mysqli_fetch_assoc($resultTrack);
+                    ?>
 				</div>
 	<?php
-		date_default_timezone_set("Asia/Taipei");
-		$DateTime_Now = gmdate("Y-m-d H:i:s"); //取回伺服器 GMT 標準時間
-		$DataTime_Begin = "1970-01-01 00:00:00"; //設定時間起始格式
-		$TimeSpan = (strtotime($DateTime_Now) - strtotime($DataTime_Begin)) * 1000;
-	?>
+        date_default_timezone_set('Asia/Taipei');
+        $DateTime_Now = gmdate('Y-m-d H:i:s'); //取回伺服器 GMT 標準時間
+        $DataTime_Begin = '1970-01-01 00:00:00'; //設定時間起始格式
+        $TimeSpan = (strtotime($DateTime_Now) - strtotime($DataTime_Begin)) * 1000;
+    ?>
 <script type="text/javascript">
 var VoteCount = 0;
 	$(document).ready(function(){
@@ -431,7 +431,7 @@ function TimeGet(){
 		request.open("GET", "timeget.php?singer="+document.getElementById('singerid').innerHTML+"");
 		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		request.send();
-	request.onreadystatechange = function() {
+		request.onreadystatechange = function() {
 						        // 伺服器請求完成
 		if (request.readyState === 4) {
 						            // 伺服器回應成功
@@ -440,7 +440,7 @@ function TimeGet(){
 				if (type.indexOf("application/json") === 0) {
 					var data = JSON.parse(request.responseText);
 					if(data.TimeNow1){
-						s=data.TimeNow1;
+						s=data.TimeNow1; //取不到值
 						document.getElementById('CountDown').innerHTML= s+"s";
 					}
 				}
@@ -449,7 +449,7 @@ function TimeGet(){
 	}
 }
 function calculate() {
-	var systemTime = parseInt('<?=$TimeSpan;?>');
+	var systemTime = parseInt('<?=$TimeSpan; ?>');
 	var t = new Date(systemTime);
 	s = "0" + t.getSeconds();
 	s = s.substring(s.length - 2, s.length + 1);
@@ -467,7 +467,7 @@ function calculate() {
 						if (nextTime < 0) nextTime = 0;
 								setTimeout(showTime, nextTime);
 					if(s==0){
-							VoteCount = 0;		
+							VoteCount = 0;
 						if(data[0].vote<data[1].vote){
 							document.getElementById("failed").style.display ="block";
 							Countwin();
@@ -502,7 +502,7 @@ function calculate() {
 							resetvotes();
 								s=s+60;
 						}
-					}	
+					}
 					if(s==59||s==119){
 						CountMic();
 					}
@@ -524,7 +524,7 @@ function calculate() {
 							document.getElementById("Dislike").style.visibility = "hidden";
 							document.getElementById("Like").style.visibility= "hidden";
 					}
-							
+
 				}
 					setTimeout(showTime, 1000);
 					</script>
@@ -533,13 +533,13 @@ function calculate() {
 	  					var i = document.getElementById("singerid").innerHTML;
 	  					console.log(i);
 	  					var request = new XMLHttpRequest();
-						request.open("GET", "voteconnect.php?singer="+i+"&id=<?php echo $id;?>");
+						request.open("GET", "voteconnect.php?singer="+i+"&id=<?php echo $id; ?>");
 						 request.send();
 					});
 					$( document ).on( "click", "#Dislike", function() {
 						var i = document.getElementById("singerid").innerHTML;
 	  					var request = new XMLHttpRequest();
-						request.open("GET", "voteconnect.php?singer="+i+"&id=<?php echo $id;?>");
+						request.open("GET", "voteconnect.php?singer="+i+"&id=<?php echo $id; ?>");
 						request.send();
 					});
 				</script>
@@ -555,21 +555,20 @@ function calculate() {
 					<li><p id="vtresult" hidden="hidden"></p></li>
 				</div>
 				<?php
-					$id = $_COOKIE['account'];
-					$sqlMic = "SELECT User_ID FROM Mic where User_ID='$id'";
-					$resultMic=mysqli_query($link,$sqlMic);
-					$rowMic = mysqli_fetch_row($resultMic);
-					if (isset($rowMic[0])) {
-					echo "<div class='get_mic'>
+                    $id = $_COOKIE['account'];
+                    $sqlMic = "SELECT User_ID FROM Mic where User_ID='$id'";
+                    $resultMic = mysqli_query($link, $sqlMic);
+                    $rowMic = mysqli_fetch_row($resultMic);
+                    if (isset($rowMic[0])) {
+                        echo "<div class='get_mic'>
 						<li><input type='checkbox' id='GottentMic' checked><p id='qwer'></p></li>
 					</div>";
-					}
-					else{
-					echo "<div class='get_mic'>
+                    } else {
+                        echo "<div class='get_mic'>
 						<li><input type='checkbox' id='GetMic'><p id='qwer'></p></li>
 					</div>";
-					}
-				?>
+                    }
+                ?>
 	<script>
 	$( document ).on( "click", "#GetMic", function() {
     // 發送 Ajax 查詢請求並處理
