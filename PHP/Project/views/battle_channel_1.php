@@ -145,7 +145,7 @@
 
                                     $wins=$row['User_Wins'];
                                     $loses=$row2['User_Loses'];
-																		@$percent=round($wins/($wins+$loses)*100,1);
+									@$percent=round($wins/($wins+$loses)*100,1);
                                     echo $percent;
                                 ?>
                             </b3>%</li>
@@ -287,14 +287,17 @@ function CountMic(){
 					if(data.SingResult){
 						if(data.SingResult=="2"){
 							document.getElementById("singresult").innerHTML="2";
-							console.log("sing2");
-							calculate();
+							console.log("sing2");		
 						}
 						else if(data.SingResult=="1"){
 							document.getElementById("singresult").innerHTML="1";
-							console.log("sing1");
-							calculate();
+							console.log("sing1");	
 						}
+						else{
+							document.getElementById("singresult").innerHTML="0";
+							console.log("sing0");
+						}
+						calculate();
 					}
 					if(!data.SingResult){
 						console.log("nosing");
@@ -411,6 +414,27 @@ function Countwin(){
 <script type="text/javascript">
 var VoteCount = 0;
 var NowStatus = 0;
+function datareset(msg){
+	for (var i = 0; i<window.data.length; i++){
+	var el = window.data[i];
+	if (el.vote !== 0 && el.name === msg){
+		el.vote -= 1;
+			console.log(el.name+":"+el.vote);
+			}
+		}
+	}
+function resetvotes(){
+	pubnub.history({
+		channel:"Vote2",
+		start:0,
+		 callback: function(msg) {
+			var vote_history = msg[0];
+			for (var i = 0; i < vote_history.length; i++) {
+			datareset(vote_history[i]);
+		}
+	}
+});
+}
 	$(document).ready(function(){
 					$("#Like").click(function(){
 						document.getElementById("Dislike").style.visibility = "hidden";
@@ -440,20 +464,14 @@ function calculate() {
 					var data = JSON.parse(request.responseText);
 					var systemTime = parseInt(data.TimeSpan);
 					var t = new Date(systemTime);
-					if(document.getElementById('singresult').innerHTML==""){
+					if(document.getElementById('singresult').innerHTML=="2"){
+						s = "0" + t.getSeconds();
+						s = s.substring(s.length - 2, s.length + 1);
+						s = 120-s;
+					}else{
 						s = "0" + t.getSeconds();
 						s = s.substring(s.length - 2, s.length + 1);
 						s = 60-s;
-					}
-					else if(document.getElementById('singresult').innerHTML=="1"){
-						s = "0" + t.getSeconds();
-						s = s.substring(s.length - 2, s.length + 1);
-						s = 60-s;
-					}
-					else if(document.getElementById('singresult').innerHTML=="2"){
-						s = "0" + t.getSeconds();
-						s = s.substring(s.length - 2, s.length + 1);
-						s=120-s;
 					}
 					document.getElementById('CountDown').innerHTML= s+"s";
 				}
@@ -469,43 +487,27 @@ function calculate() {
 							count++;
 							var offset = new Date().getTime() - (startTime + count * 1000);
 							var nextTime = 1000 - offset;
-					if (nextTime < 0) nextTime = 0;
-								setTimeout(showTime, nextTime);
+							if (nextTime < 0) nextTime = 0;
+							setTimeout(showTime, nextTime);
 					if(s==0){
-							VoteCount = 0;
-							NowStatus = 0;
+						VoteCount = 0;
+						NowStatus = 0;
 						if(data[0].vote<data[1].vote){
 							Countwin();
 							WinResult();
-									//紀錄成功續唱
+							resetvotes();
 							s=s+120;
 						}
-						else{
+						else if(data[0].vote>data[1].vote){
 							Countlose();
 							LoseResult();
-						function datareset(msg){
-							for (var i = 0; i<window.data.length; i++){
-							    var el = window.data[i];
-							        if (el.vote !== 0 && el.name === msg){
-							          el.vote -= 1;
-							          console.log(el.name+":"+el.vote);
-							    	}
-								}
-							}
-						function resetvotes(){
-							pubnub.history({
-							    channel:"Vote2",
-							    start:0,
-							    callback: function(msg) {
-							        var vote_history = msg[0];
-							        for (var i = 0; i < vote_history.length; i++) {
-							            datareset(vote_history[i]);
-							          }
-							        }
-							    });
-							}
 							resetvotes();
-								s=s+60;
+							CountMic();	
+						}
+						else{
+							LoseResult();
+							resetvotes();
+							CountMic();
 						}
 					}
 					if(s==59||s==119){
@@ -515,8 +517,11 @@ function calculate() {
 					if(s==60){
 						WinResult();
 					}
-					if(s<30){
-						if(document.getElementById('vtresult').innerHTML!="true"){
+					if(s<30&&s>1){
+						if(NowStatus !== 1){
+						//		window.location.assign("/battle.php");
+							}
+						if(document.getElementById('vtresult').innerHTML!="true"&&document.getElementById('singresult').innerHTML=="0"){
 							draw(data);
 							if(VoteCount !== 0){
 								document.getElementById("Dislike").style.visibility = "hidden";
@@ -525,9 +530,7 @@ function calculate() {
 								document.getElementById("Dislike").style.visibility = "visible";
 								document.getElementById("Like").style.visibility ="visible";
 							}
-							if(NowStatus !== 1){
-								window.location.assign("/battle.php");
-							}
+							
 						}
 							document.getElementById("circleSvg").style.visibility ="visible";
 					}
