@@ -64,7 +64,7 @@ table {
     display: none;
 }
 .bar{
-    height: 500px;
+    height: 400px;
     margin-bottom: 10px;
     text-align: center;
     margin-right: auto;
@@ -88,10 +88,11 @@ table {
     font-size: 20px;
 }
 .subtitle{
-    height: 50px;
-    line-height: 50px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
 }
-h4{
+h5{
     width: 220px;
     font-weight: 200;
     font-size: 18px;
@@ -100,7 +101,7 @@ h4{
     padding-left: 30px;
     box-sizing: border-box;
 }
-h5{
+h6{
     width: 80px;
     font-weight: 200;
     font-size: 18px;
@@ -108,7 +109,7 @@ h5{
     text-align: right;
 }
 #content .top5 li{
-    width: 100%;  
+    width: 100%;
     height: 40px;
     line-height: 40px;
     text-align: left;
@@ -153,7 +154,7 @@ h5{
     -webkit-transition: 0.5s;
 }
 .top10{
-    height: 200px;
+    height: 250px;
     padding-left: 20%;
     padding-right: 20%;
     box-sizing: border-box;
@@ -164,7 +165,7 @@ h5{
     font-size: 18px;
 }
 #content .top10 li{
-    width: 100%;  
+    width: 100%;
     height: 40px;
     line-height: 40px;
     text-align: left;
@@ -200,7 +201,7 @@ h5{
     opacity: 0.8;
 }
 .bar p{
-    font-weight: 400;
+    font-weight: 200;
     text-align: center;
     margin-bottom:15px;
     font-size: 22px;
@@ -213,12 +214,16 @@ h5{
 /*-------------------------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width:800px) {
-    
+
     #content{
-        width: 50%;
+        width: 70%;
         margin-left: auto;
         margin-right: auto;
         min-width: 100px;
+    }
+    #content li{
+        width: 100%;
+        float: none;
     }
     #content b{
         display: none;
@@ -233,22 +238,49 @@ h5{
     }
     .bar{
         width: 100%;
+        height: 330px;
     }
     .battle_channel{
-        margin-bottom: 10px;
+        width:200px;
+        height:200px;
+        margin-right: auto;
+        margin-left: auto;
     }
     .bar li{
         margin: 20px 0px 0px 0px;
         line-height: 20px;
+    }
+    .top5{
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+    .top5 ul{
+        font-size: 18px;
+    }
+    .top_title{
+        width: 35px;
+        margin-right: 15px;
+        line-height: 35px;
+        font-size: 26px;
+    }
+    .subtitle{
+        line-height: 40px;
+    }
+    h5{
+        width: 180px;
+    }
+    h6{
+        width: 60px;
+    }
+    .top10{
+        padding-right: 5%;
+        padding-left: 5%;
     }
 }
 
 /*-------------------------------------------------------------------------------------------------------------*/
 
 @media only screen and (max-width:500px){
-    #content{
-        width: 70%;
-    }
     .battle_channel{
         width:200px;
         height:200px;
@@ -256,4 +288,8 @@ h5{
     .bar li{
         width: 200px;
     }
+    h5{
+        width: 160px;
+    }
+
 }
