@@ -20,11 +20,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/fans.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
+	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/pic_adjust.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
-	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
+	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+	<script src="./nojs/pubnub-setup.js"></script>
 	<script type='text/javascript'>
 		document.createElement("b1")
 	</script>
@@ -186,7 +188,6 @@
 					<li><a href="setting.php"><img src="image/rules.png" width="15%"> &nbsp<b>規則說明</b></a></li>
 				</ul>
 			</div>
-
 		</div>
 	</div>
 	<hr>
@@ -381,6 +382,44 @@
 	</script>
 				<script type="text/javascript">
 					PicAutoMid();
+				</script>
+				<script type="text/javascript">
+					PicAutoMid();
+				</script>
+				<script>
+					$(function() {
+						var pb = PUBNUB.init(PUBNUB.setup);
+						$("followed").click(function() {
+							pb.publish({
+								channel: PUBNUB.setup.channel,
+								message: {
+								    iconUrl   : 'images/icon.png',
+								    type      : 'basic',
+								    title     : new Date(),
+								    message   : "用戶" + <?php echo $usernow;?> + "追蹤了"+<?php echo $an;?>,
+								    priority  : 1,
+								    buttons: [
+								        {title: 'I want in', iconUrl: 'images/icon.png'}
+								    ]
+								}
+							});
+						});
+						$("follow").click(function() {
+							pb.publish({
+								channel: PUBNUB.setup.channel,
+								message: {
+									iconUrl   : 'images/icon.png',
+									type      : 'basic',
+									title     : new Date(),
+									message   : "用戶" + <?php echo $usernow;?> + "取消追蹤了"+<?php echo $an;?>,
+									priority  : 1,
+									buttons: [
+											{title: 'I want in', iconUrl: 'images/icon.png'}
+									]
+								}
+							})
+						});
+					});
 				</script>
 					<script type="text/javascript">
 							$( document ).on( "click", "#followed", function() {
