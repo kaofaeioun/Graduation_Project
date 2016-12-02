@@ -470,6 +470,11 @@ function calculate() {
 						s = s.substring(s.length - 2, s.length + 1);
 						s = 60-s;
 					}
+					else if(document.getElementById('singresult').innerHTML=="0"){
+						s = "0" + t.getSeconds();
+						s = s.substring(s.length - 2, s.length + 1);
+						s = 60-s;
+					}
 					else if(document.getElementById('singresult').innerHTML=="1"){
 						s = "0" + t.getSeconds();
 						s = s.substring(s.length - 2, s.length + 1);
