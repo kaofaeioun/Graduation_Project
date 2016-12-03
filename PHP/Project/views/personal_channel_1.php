@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script type="text/javascript"> 
+	<script type="text/javascript">
 	<?PHP
 			include ("mysql_connect.php");
 			$an=$_GET['name'];
@@ -23,7 +23,7 @@
 		$t= date("Y/m/d H:i:s");
 		$sql="UPDATE UserStatus SET Status_Time='$t' WHERE User_ID='$user_now' && Status='$Status'";
 		$result=mysqli_query($link,$sql);
-		
+
 	}else{
 		date_default_timezone_set('Asia/Taipei');
 		$t= date("Y/m/d H:i:s");
@@ -36,9 +36,17 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/personal_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
+	<script type="text/javascript" src="./js/jquery.nouislider.min.js"></script>
+	<script type="text/javascript" src="./js/material.min.js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
+	<script type="text/javascript" src="./js/ripples.min.js"></script>
+	<script type="text/javascript" src="./js/smooth.js"></script>
+	<script type="text/javascript" src="./js/resampler.js"></script>
+	<script type="text/javascript" src="./js/selfvoip.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<title>MicMusic</title>
 </head>
 <body>
@@ -47,7 +55,7 @@
 		if(!isset($_COOKIE['account'])): ?>
 			$(document).ready(function(){
 				$('#login').show();
-			});		
+			});
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
@@ -78,7 +86,7 @@
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
 				<div id="user">
-					<img src="photo.php?id=<?php echo $id?>">					
+					<img src="photo.php?id=<?php echo $id?>">
 					<div class="user_info">
 						<ul>
                             <li><p>Rank</p>
@@ -150,16 +158,16 @@
                             </b3>%</li>
                         </ul>
 						<span class="arrow_bottom_int"></span>
-						<span class="arrow_bottom_out"></span>	
+						<span class="arrow_bottom_out"></span>
 							<div class="bot_area">
-								<p><?php 
+								<p><?php
 								$sql="SELECT User_Name From User WHERE User_id='$id'";
 								$result=mysqli_query($link,$sql);
 								$row=mysqli_fetch_assoc($result);
 								$username=$row['User_Name'];
 								echo $username;?></p>
 								<input type="button" class="logout" value="登出" onclick="location='logoutconnect.php'">
-							</div>	
+							</div>
 					</div>
 				</div>
 				<div class="search">
@@ -173,9 +181,9 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-						
+
 					</form>
-					
+
 				</div>
 			</div>
 			<div class="menu">
@@ -193,7 +201,7 @@
 		<div id="content">
 			<h2>
 			【
-			<?php 
+			<?php
 			$an=$_GET['name'];
 			echo $an;
 			?>】的房間
@@ -206,7 +214,7 @@
 					<img src="image/onair.gif" class="onair">
 						<div class="clear"></div>
 					</div>
-					
+
 					<script>
 						$(document).ready(function(){
   							$('#pic').click(function(){
@@ -217,7 +225,7 @@
   							});
 						});
 					</script>
-					
+
 					<div class="track">
 						<?php
 							$an=$_GET['name'];
@@ -283,7 +291,7 @@
 				</div>
 				<input type="text" placeholder="留言......" class="reply"></input>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 	<div class="footer_space">

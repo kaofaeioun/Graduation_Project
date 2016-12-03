@@ -429,7 +429,7 @@
 								message: {
 									iconUrl   : 'images/icon.png',
 									type      : 'basic',
-									title     : new Date(),
+									title     : "MicMusic",
 									message   : "用戶 <?php echo $usernow;?> 取消追蹤了<?php echo $an;?>",
 									priority  : 1,
 									buttons: [
@@ -448,7 +448,7 @@
 								message: {
 								    iconUrl   : 'images/icon.png',
 								    type      : 'basic',
-								    title     : new Date(),
+								    title     : "MicMusic",
 								    message   : "用戶  <?php echo $usernow;?>  追蹤了<?php echo $an;?>",
 								    priority  : 1,
 								    buttons: [
