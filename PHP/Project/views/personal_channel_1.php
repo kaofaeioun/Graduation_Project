@@ -36,6 +36,16 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/personal_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<script>
+		var client = { //is observerd
+			"userid" : "<?php echo $id;?>",
+			"pp" : "../img/profile.jpg", //Profil Pic
+			"nn" : "<?php echo $rowID[0];?>", //Nickname
+			"mg" : 4/100, // minGain
+			"mic" : false,
+			"sound" : true
+		}
+	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
 	<script type="text/javascript" src="./js/jquery.nouislider.min.js"></script>

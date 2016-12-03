@@ -4,20 +4,38 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<link rel="stylesheet" href="CSS/channel.css">
+	<link rel="stylesheet" href="CSS/personal_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>
+		var client = { //is observerd
+			"userid" : "<?php echo $id;?>",
+			"pp" : "../img/profile.jpg", //Profil Pic
+			"nn" : "<?php echo $rowID[0];?>", //Nickname
+			"mg" : 4/100, // minGain
+			"mic" : true,
+			"sound" : false
+		}
+	</script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
+	<script type="text/javascript" src="./js/jquery.nouislider.min.js"></script>
+	<script type="text/javascript" src="./js/material.min.js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
+	<script type="text/javascript" src="./js/ripples.min.js"></script>
+	<script type="text/javascript" src="./js/smooth.js"></script>
+	<script type="text/javascript" src="./js/resampler.js"></script>
+	<script type="text/javascript" src="./js/selfvoip.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<title>MicMusic</title>
 </head>
 <body>
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
-			if(!isset($_COOKIE['account'])): ?>
-				$(document).ready(function(){
-					$('#login').show();
-				});
+		if(!isset($_COOKIE['account'])): ?>
+			$(document).ready(function(){
+				$('#login').show();
+			});
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
@@ -47,8 +65,8 @@
 			</script>
 			<div class="toolbar">
 				<a href="login.php"><input type="button" id="login" value="登入"></a>
-			<div class="user" id="user">
-				<img src="photo.php?id=<?php echo $id?>">
+				<div id="user">
+					<img src="photo.php?id=<?php echo $id?>">
 					<div class="user_info">
 						<ul>
                             <li><p>Rank</p>
@@ -114,7 +132,7 @@
 
                                     $wins=$row['User_Wins'];
                                     $loses=$row2['User_Loses'];
-                                   @$percent=round($wins/($wins+$loses)*100,1);
+                                    @$percent=$wins/($wins+$loses)*100;
                                     echo $percent;
                                 ?>
                             </b3>%</li>
@@ -128,7 +146,7 @@
 								$row=mysqli_fetch_assoc($result);
 								$username=$row['User_Name'];
 								echo $username;?></p>
-								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
+								<input type="button" class="logout" value="登出" onclick="location='logoutconnect.php'">
 							</div>
 					</div>
 				</div>
@@ -150,10 +168,9 @@
 			</div>
 			<div class="menu">
 				<ul>
-					<a href="battle.php"><li><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></li></a>
+					<li><a href="battle.php"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
 					<li><a href="channel.php"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
-					<li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a>
-					</li>
+					<li><a href="personalinfo.php"><img src="image/menu_person_info.png" width="15%"> &nbsp<b>我的資料</b></a></li>
 					<li><a href="setting.php"><img src="image/rules.png" width="15%"> &nbsp<b>規則說明</b></a></li>
 				</ul>
 			</div>
@@ -162,47 +179,88 @@
 	<hr>
 	<div class="wrap">
 		<div id="content">
-			<h2>熱門頻道<b>/</b><br>Popular Channel</h2>
-			<div class="bar">
-				<ul>
-					<li><a href="personal_channel_1.php?an=948794crown"><div class="bar_item" style="background: #20A4F3;"></div></a>在線人數：9527<br>收藏人數：666
-					</li>
-					<li><a href="#"><div class="bar_item" style="background: #FF3366;"></div></a>在線人數：8763<br>收藏人數：870
-					</li>
-					<li><a href="#"><div class="bar_item" style="background: #F9C22E;"></div></a>在線人數：6666<br>收藏人數：426
-					</li>
-				</ul>
-			</div>
-			<div class="clear"></div>
-		</div>
-	</div>
+			<b1><h2>
+			<?php
+			$an=$_GET['name'];
+			echo $an;
+			?>的房間</h2></b1>
+			<div class="main">
+				<div class="personal_area">
+					<div class="board">
+						<div class="tool_bar">
+							<li><a><img src="image/shape.png" original title="素材庫" onclick=""></a></li>
+							<li><a><img src="image/photo.png" original title="匯入圖片"></a></li>
+							<li><a><img src="image/text.png" original title="字型樣式"></a></li>
+						</div>
+						<div class="clear"></div>
+					</div>
 
-	<div class="gridcontainer clearfix">
-	<div class="grid_3">
-		<div class="fmcircle_out">
-			<a href="#web">
-				<div class="fmcircle_border">
-					<div class="fmcircle_in fmcircle_blue">
-						<span>我要開台!</span><img src="image/microphone1.png" />
+					<script type="text/javascript">
+						$(document).ready(function(){
+  							$('.square').hide();
+  							//隱藏要呼叫的div
+  							$('#pic').click(function() {
+  								//指定呼叫按鈕
+    							$('.square').fadeToggle(500);
+    							//顯示隱藏的div
+    							$('.square').delay(800).fadeOut(500);
+  							});
+						});
+					</script>
+
+					<script>
+						function changeSrc(){
+							var imgObj = document.getElementById("pic");
+							if (imgObj.getAttribute("src",2) == "image/cancerlike.png"){
+	  							imgObj.src = "image/like.png";
+							}
+							else{
+								imgObj.src = "image/cancerlike.png";
+							}
+						}
+					</script>
+
+					<div class="track">
+						<div class="square">
+							<span class="arrow_top_int"></span>
+							追蹤成功!
+						</div>
+						<img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()">
+						<?php
+							$sql="SELECT User_Name From User WHERE User_ID='$an'";
+							$result=mysqli_query($link,$sql);
+							$row=mysqli_fetch_row($result);
+							echo $row[0];
+						?>
+					</div>
+					<div class="personal_info">
+						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
+						<li><img src="image/like.png" original title="追蹤人數">87</li>
 					</div>
 				</div>
-			</a>
+
+				<div class="clear"></div>
+
+				<div class="chatroom">
+
+				</div>
+				<input type="text" placeholder="留言......" class="reply"></input>
+			</div>
 		</div>
 	</div>
 
-</div>
 	<div class="footer_space">
-	<footer>
-		<h3>MicMusic</h3>
-		<p>© 2016 All rights reserved.</p>
-		<p>NUKIM 106專題開發</p>
-		<ul>
-			<li><a href="battle.php"><img src="image/menu_battle.png"></a></li>
-			<li><a href="channel.php"><img src="image/personal_chosen.png"></a></li>
-			<li><a href="personalinfo.php"><img src="image/person_info.png"></a></li>
-			<li><a href="setting.php"><img src="image/rules.png"></a></li>
-		</ul>
-	</footer>
+		<footer>
+			<h3>MicMusic</h3>
+			<p>© 2016 All rights reserved.</p>
+			<p>NUKIM 106專題開發</p>
+			<ul>
+				<li><a href="battle.php"><img src="image/battle.png"></a></li>
+				<li><a href="channel.php"><img src="image/personal_chosen.png"></a></li>
+				<li><a href="personalinfo.php"><img src="image/person_info.png"></a></li>
+				<li><a href="setting.php"><img src="image/rules.png"></a></li>
+			</ul>
+		</footer>
 	</div>
-</body>
+	</body>
 </html>
