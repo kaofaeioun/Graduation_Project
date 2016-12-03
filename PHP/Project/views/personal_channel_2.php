@@ -9,7 +9,7 @@
 	<?php
 			include ("mysql_connect.php");
 			$an=$_GET['name'];
-			$id="948794crown";
+			$id="ericlee";
 			$sqlID = "SELECT User_Name FROM User where User_ID = '$an'";
 			$resultID = mysqli_query($link, $sqlID);
 			$rowID = mysqli_fetch_row($resultID);
@@ -38,7 +38,7 @@
 	<script type="text/javascript" src="./js/ripples.min.js"></script>
 	<script type="text/javascript" src="./js/smooth.js"></script>
 	<script type="text/javascript" src="./js/resampler.js"></script>
-	<script type="text/javascript" src="./js/selfvoip1.js"></script>
+	<script type="text/javascript" src="./js/selfvoip2.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
   <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<title>MicMusic</title>
@@ -193,7 +193,7 @@
 	<hr>
 	<div class="wrap">
 		<div id="content">
-			<b1><h2>948794crown的房間</h2></b1>
+			<b1><h2>ericlee的房間</h2></b1>
 			<div class="main">
 				<div class="personal_area">
 					<div class="board">
@@ -237,7 +237,7 @@
 						</div>
 						<img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()">
 						<?php
-							$sql="SELECT User_Name From User WHERE User_ID='948794crown'";
+							$sql="SELECT User_Name From User WHERE User_ID='ericlee'";
 							$result=mysqli_query($link,$sql);
 							$row=mysqli_fetch_row($result);
 							echo $row[0];
