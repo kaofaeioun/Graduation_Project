@@ -170,19 +170,25 @@
 						$resultsearch=mysqli_query($link,$sqlsearch);
 						$row[0]=mysqli_result($resultsearch,0,0);
 						$row[1]=mysqli_result($resultsearch,1,0);
+						$sql1="SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID='948794crown'";
+						$result1=mysqli_query($link,$sql1);
+						$row1=mysqli_fetch_row($result1);
+						$sql2="SELECT COUNT(DISTINCT Track_ID) as total FROM Track where Tracked_ID='ericlee'";
+						$result2=mysqli_query($link,$sql2);
+						$row2=mysqli_fetch_row($result2);
 						function mysqli_result($res, $row, $field=0) {
 								    $res->data_seek($row);
 								    $datarow = $res->fetch_array();
 								    return $datarow[$field];
 								}
 						if($row[0]){
-							echo "<li><a href='personal_channelHOST.php?name=".$an."'><div class='bar_item' style='background: #20A4F3;''></div></a>
-								ID：".$row[0]."<br>在線人數：9527<br>追蹤人數：666
+							echo "<li><a href='personal_channel_1.php?name=".$an."'><div class='bar_item' style='background: #20A4F3;''></div></a>
+								ID：".$row[0]."<br>追蹤人數：".$row1[0]."
 								</li>";
 						}
 						if($row[1]){
-							echo "<li><a href='personal_channelHOST.php?name=".$an."'><div class='bar_item' style='background: #20A4F3;''></div></a>
-								ID：".$row[1]."<br>在線人數：9527<br>追蹤人數：666
+							echo "<li><a href='personal_channel_2.php?name=".$an."'><div class='bar_item' style='background: #20A4F3;''></div></a>
+								ID：".$row[1]."<br>追蹤人數：".$row2[0]."
 								</li>";
 						}		
 					?>
@@ -224,7 +230,10 @@
 					if(data.success){
 						var x="<?php echo $an;?>";
 						if(x=="948794crown"){
-							window.location="personal_channelHOST.php?name=948794crown";
+							window.location="personal_channel_1.php?name=948794crown";
+						}
+						else(x=="ericlee"){
+							window.location="personal_channel_2.php?name=948794crown";
 						}
 					}
 					else if(data.fail){
