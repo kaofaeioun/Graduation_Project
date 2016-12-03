@@ -254,6 +254,7 @@ function CountMic(){
 						document.getElementById("MicCount").innerHTML = data.MicOrder-1;
 					}
 					if(!data.MicOrder){
+
 						if (data.MicCount) {
 							document.getElementById("MicTitle").innerHTML = "目前排麥人數";
 							document.getElementById("MicCount").innerHTML = data.MicCount;
@@ -264,6 +265,11 @@ function CountMic(){
 						}
 					}
 					if(data.Singer){
+						var x="<?php echo $id;?>";
+						if(x==data.Singer){
+						document.getElementById("notrack").style.visibility="hidden";
+						document.getElementById("GottentMic").style.visibility="hidden";
+						}	
 						document.getElementById("singerid").innerHTML = data.Singer;
 						document.getElementById("singname").innerHTML = data.SingerName;
 						document.getElementById("singerhref").href = "fans.php?name="+data.Singer;
@@ -322,14 +328,14 @@ function CountMic(){
 							calculate();
 					}
 					if(data.StatusResult){
-						if(data.StatusResult==0){
-							//document.getElementById("GottentMic").style.display="block";
+						if(data.StatusResult=="0"){
+							//document.getElementById("GetMic").style.visibility="visible";
 							client.sound=true;
 							client.mic=false;
 						}
-						else if(data.StatusResult==1)
-						{
-							//document.getElementById("GottentMic").style.display="none";
+						else if(data.StatusResult=="1")
+						{	
+							//document.getElementById("GottentMic").style.visibility="hidden";
 							client.sound=false;
 							client.mic=true;
 						}
@@ -523,12 +529,12 @@ function calculate() {
 							Countlose();
 							LoseResult();
 							resetvotes();
-							CountMic();
+							s=s+60;
 						}
 						else{
 							LoseResult();
 							resetvotes();
-							CountMic();
+							s=s+60;
 						}
 					}
 					if(s==59||s==119){

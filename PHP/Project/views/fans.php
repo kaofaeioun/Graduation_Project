@@ -262,7 +262,7 @@
 								<?php
 									if(isset($rowget['User_ID'])){
 									echo "<nav id='nav-1'><a href='fansMenu_tagFollowers.php?name=".$an."'class='link-1'>追蹤名單<img src='image/track.png' >";
-									$sql = "SELECT COUNT(Track_ID) as total FROM Track where Track_ID='$an'";
+									$sql = "SELECT COUNT(DISTINCT Tracked_ID) as total FROM Track where Track_ID='$an'";
 									$result = mysqli_query($link,$sql);
 									$row2 = mysqli_fetch_assoc($result);
 									echo $row2['total'];
@@ -385,6 +385,41 @@
 				</script>
 				<script type="text/javascript">
 					PicAutoMid();
+				</script>
+				<script>
+					/*$(function() {
+						var pb = PUBNUB.init(PUBNUB.setup);
+						$( document ).on( "click", "#follow", function() {
+							pb.publish({
+								channel: PUBNUB.setup.channel,
+								message: {
+								    iconUrl   : 'images/icon.png',
+								    type      : 'basic',
+								    title     : new Date(),
+								    message   : "用戶 + <?php echo $usernow;?> + 追蹤了+<?php echo $an;?>",
+								    priority  : 1,
+								    buttons: [
+								        {title: 'I want in', iconUrl: 'images/icon.png'}
+								    ]
+								}
+							});
+						});
+						$( document ).on( "click", "#followed", function() {
+							pb.publish({
+								channel: PUBNUB.setup.channel,
+								message: {
+									iconUrl   : 'images/icon.png',
+									type      : 'basic',
+									title     : new Date(),
+									message   : "用戶 + <?php echo $usernow;?> + 取消追蹤了+<?php echo $an;?>",
+									priority  : 1,
+									buttons: [
+											{title: 'I want in', iconUrl: 'images/icon.png'}
+									]
+								}
+							})
+						});
+					});*/
 				</script>
 					<script type="text/javascript">
 							var pb = PUBNUB.init(PUBNUB.setup);

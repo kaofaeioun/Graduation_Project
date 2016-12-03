@@ -176,7 +176,7 @@
 				<ul>
 					<?php
 						$now = $_GET['name'];
-						$sql = "SELECT Tracked_ID FROM Track where Track_ID = '$now' order by Tracked_ID";
+						$sql = "SELECT Distinct Tracked_ID FROM Track where Track_ID = '$now' order by Tracked_ID";
 						$result=mysqli_query($link,$sql);
 						$row2=mysqli_num_rows($result);
 						for ($i = 0; $i < $row2; $i++) { 

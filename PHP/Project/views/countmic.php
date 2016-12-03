@@ -35,7 +35,7 @@ include('mysql_connect.php');
 	$sql10="SELECT User_Status FROM User where User_ID='$id'";
 	$result10=mysqli_query($link,$sql10);
 	$statusresult=mysqli_fetch_row($result10);
-	$sql11="SELECT COUNT(Tracked_ID) as total FROM Track where Tracked_ID='$singer'";
+	$sql11="SELECT COUNT(Distinct Tracked_ID) as total FROM Track where Tracked_ID='$singer'";
 	$result11 = mysqli_query($link,$sql11);
 	$row11 = mysqli_fetch_assoc($result11);
 	$sql12="SELECT MicOrder
