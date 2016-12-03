@@ -14,8 +14,7 @@
 	<link rel="stylesheet" href="CSS/all.css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
-	<link rel="Shortcut icon" type="image/x-icon" href="image/favicon.ico">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<script type='text/javascript'>
 	</script>
 	<title>MicMusic</title>
@@ -23,7 +22,7 @@
 <body>
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
-			if(!isset($_COOKIE['account'])): ?>
+			if(!isset($_COOKIE['account'])): ?>	
 				location.replace("login.php");
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
@@ -121,23 +120,23 @@
 
                                     $wins=$row['User_Wins'];
                                     $loses=$row2['User_Loses'];
-                                    @$percent = round($wins / ($wins + $loses) * 100,1);
+                                    @$percent=round($wins/($wins+$loses)*100,1);
                                     echo $percent;
                                 ?>
                             </b3>%</li>
                         </ul>
                         <span class="arrow_bottom_int"></span>
-                        <span class="arrow_bottom_out"></span>
+                        <span class="arrow_bottom_out"></span>  
                         	<div class="bot_area">
-                        		<p><?php
+                        		<p><?php 
 								$sql="SELECT User_Name From User WHERE User_id='$id'";
 								$result=mysqli_query($link,$sql);
 								$row=mysqli_fetch_assoc($result);
 								$username=$row['User_Name'];
 								echo $username;?></p>
 								<input type="button" class="logout" value="登出"onclick="location='logoutconnect.php'">
-							</div>
-                    </div>
+							</div>	    
+                    </div>	
 				</div>
 				<div class="search">
 					<form action="fans.php" method="GET" name="font1">
@@ -150,12 +149,12 @@
 						</script>
 						<input type="text" class="search_blank" placeholder="輸入ID找歌手" name="name" id="searchinfo">
 						<input type="image" class="search_image" src="image/search.png" id="search_image">
-
+						
 					</form>
-
+					
 				</div>
 			</div>
-			<div class="menu">
+			<div class="menu">	
 				<ul>
 					<li><a href="battle.php"><img src="image/menu_battle.png" width="15%">  &nbsp<b>大亂鬥</b></a></li>
 					<li><a href="channel.php"><img src="image/menu_personal.png" width="15%"> &nbsp<b>個人頻道</b></a></li>
@@ -169,10 +168,10 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>粉絲名單/Followers</h2>
-
+				
 			<div class="clear"></div>
 
-
+			
 			<div class="list">
 				<ul>
 					<?php
@@ -181,7 +180,7 @@
 						$result=mysqli_query($link,$sql);
 						$row=mysqli_num_rows($result);
 
-						for ($i = 0; $i < $row ; $i++) {
+						for ($i = 0; $i < $row ; $i++) { 
 							$row2=mysqli_fetch_row($result);
 							echo "
 							<li>
@@ -197,7 +196,7 @@
 							</div>
 							<a>
 							</li>
-
+								
 								";
 
 							}
@@ -210,7 +209,7 @@
 				</ul>
 			</div>
 
-		</div>
+		</div>	
 	</div>
 
 	<!-- 11111111111111111111111111111111111111111111 -->

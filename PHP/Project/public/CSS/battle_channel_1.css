@@ -135,7 +135,7 @@ table {
     float: left;
     position: relative;
 }
-.congrats_bg{
+#congrats_bg{
     border-top-left-radius:5px;
     position: absolute;
     top: 0;
@@ -144,6 +144,7 @@ table {
     height: 100%;
     background: #3da1d1;
     z-index: 2;
+    display: none;
 }
 .congrats {
     position: absolute;
@@ -156,7 +157,6 @@ table {
     left: 0;
     right: 0;
 }
-
 h5{
     transform-origin: 50% 50%;
     font-size:40px;
@@ -301,7 +301,7 @@ h5{
 #pic{
     float: left;
 }
-#singer{
+#singname{
     margin-left: 5px;
     width: 200px;
     font-size: 20px;

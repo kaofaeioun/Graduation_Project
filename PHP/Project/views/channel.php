@@ -114,7 +114,7 @@
 
                                     $wins=$row['User_Wins'];
                                     $loses=$row2['User_Loses'];
-                                    @$percent=$wins/($wins+$loses)*100;
+                                   @$percent=round($wins/($wins+$loses)*100,1);
                                     echo $percent;
                                 ?>
                             </b3>%</li>

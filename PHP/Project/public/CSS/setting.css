@@ -89,13 +89,12 @@ table {
     height: 80px;
 }
 /*----------------------------------------------------------------------------*/
-h4{
+h5{
     font-size: 22px;
     font-weight: 100;
     margin-top: 30px;
-    margin-left: 30% ;
+    margin-left: 30%;
     cursor: pointer;
-
 }
 .button-wrap {
     width: 90px;
@@ -127,13 +126,13 @@ h4{
 .button-active .button-switch { left:49px; }
 .button-in, 
 .button-out {
-  position:absolute; 
-  transition:all 0.2s ease;
-  padding-top:15px;
-  font-size:0.8em;
-  text-transform:uppercase;
-  font-weight:bold;
-  box-sizing: border-box;
+    position:absolute; 
+    transition:all 0.2s ease;
+    padding-top:15px;
+    font-size:0.8em;
+    text-transform:uppercase;
+    font-weight:bold;
+    box-sizing: border-box;
 }
 .button-in { margin-left:76px; }
 .button-out { margin-left:18px; }
@@ -154,6 +153,9 @@ h4{
     .content h2>br{
         display: block;
     }
+    h5{
+        margin-left: 25%;
+    }
     .setting_person{
         margin-left: 5%;
         margin-right: 5%;
@@ -167,4 +169,11 @@ h4{
         height: 20px;
     }
     .button-active .button-switch { left:44px; }
+}
+
+@media only screen and (max-width:800px) {
+    h5{
+        margin-left: 20%;
+        font-size: 20px;
+    }
 }

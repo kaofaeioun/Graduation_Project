@@ -4,7 +4,7 @@
 <head>
 	<?php
 		include("mysql_connect.php");
-		$id=$_COOKIE['account'];
+		@$id=$_COOKIE['account'];
 		$sqlID = "SELECT User_Name FROM User where User_ID = '$id'";
 		$resultID = mysqli_query($link, $sqlID);
 		$rowID = mysqli_fetch_row($resultID);
@@ -34,6 +34,9 @@
 	<script type="text/javascript" src="./js/smooth.js"></script>
 	<script type="text/javascript" src="./js/resampler.js"></script>
 	<script type="text/javascript" src="./js/voip.js"></script>
+	<script type="text/javascript" src="./js/congratulation.js"></script>
+	<script type="text/javascript" src="./js/TweenMax.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<title>MicMusic</title>
@@ -43,9 +46,7 @@
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
 			if(!isset($_COOKIE['account'])): ?>
-				$(document).ready(function(){
-					$('#login').show();
-				});
+				location.replace("login.php");
 		<?php else: $id=$_COOKIE['account'];
 		?>
 			$(document).ready(function(){
@@ -216,6 +217,12 @@
 							<script type="text/javascript" src="./js/ArMen.js"></script>
 						</div>
 					</div>
+					<!-- 成功動畫 -->
+					<div id="congrats_bg">
+						<div class="congrats">
+							<h5>Congratulations!</h5>
+						</div>
+					</div>
 
 					<!-- 小視窗 -->
 					<script>
@@ -362,7 +369,7 @@ function Countwin(){
 	</script>
 					<div class="track">
 						<?php
-							$usernow = $_COOKIE['account'];
+							@$usernow = $_COOKIE['account'];
 							$sql1 = "SELECT User_ID FROM Mic where 1";
 							$result1 =mysqli_query($link,$sql1);
 							$row1=mysqli_fetch_row($result1);
@@ -407,7 +414,7 @@ function Countwin(){
 
 					</div>
 						<a id='singerhref'>
-						<b id="singerid"></b>
+						<b id="singerid" hidden="hidden"></b>
 						<b id="singname"></b>
 						</a>
 					<div class="vote_info">
@@ -504,6 +511,7 @@ function calculate() {
 						VoteCount = 0;
 						NowStatus = 0;
 						if(data[0].vote<data[1].vote){
+							Congratulation();
 							Countwin();
 							WinResult();
 							resetvotes();
@@ -586,7 +594,7 @@ function calculate() {
 					<li><p id="vtresult" hidden="hidden"></p></li>
 				</div>
 				<?php
-					$id = $_COOKIE['account'];
+					@$id = $_COOKIE['account'];
 					$sqlMic = "SELECT User_ID FROM Mic where User_ID='$id'";
 					$resultMic=mysqli_query($link,$sqlMic);
 					$rowMic = mysqli_fetch_row($resultMic);

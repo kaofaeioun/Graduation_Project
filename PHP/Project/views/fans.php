@@ -4,7 +4,7 @@
 		echo "<meta http-equiv=REFRESH CONTENT=0;url=login.php>";
 	}
 	if (isset($_GET['name'])) {
-		$an = $_GET['name'];
+		@$an = $_GET['name'];
 		$sqlget= "SELECT * FROM User where User_ID = '$an'";
 		$resultget = mysqli_query($link,$sqlget);
 		$rowget = mysqli_fetch_assoc($resultget);
@@ -342,7 +342,7 @@
 						</div>";
 					}
 						$usernow = $_COOKIE['account'];
-						$an = @$_GET['name'];
+						@$an = $_GET['name'];
 						$sql = "SELECT Track_time FROM Track where Track_ID='$usernow' && Tracked_ID='$an'";
 						$result = mysqli_query($link,$sql);
 						$row = mysqli_fetch_row($result);
@@ -471,7 +471,7 @@
 				<ul>
 					<?php
 							if (isset($_GET['name'])) {
-								$an = $_GET['name'];
+								@$an = $_GET['name'];
 								$sql= "SELECT * FROM User where User_ID = '$an'";
 								$result = mysqli_query($link,$sql);
 								$row = mysqli_fetch_assoc($result);
