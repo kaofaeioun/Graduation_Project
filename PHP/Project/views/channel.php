@@ -182,12 +182,12 @@
 								    return $datarow[$field];
 								}
 						if($row[0]){
-							echo "<li><a href='personal_channel_1.php?name=".$an."'><div class='bar_item' style='background: #20A4F3;''></div></a>
+							echo "<li><a href='personal_channel_1.php?name=".$an."'><div class='bar_item'><img src='photo.php?id=948794crown'></div></a>
 								ID：".$row[0]."<br>追蹤人數：".$row1[0]."
 								</li>";
 						}
 						if($row[1]){
-							echo "<li><a href='personal_channel_2.php?name=".$an."'><div class='bar_item' style='background: #20A4F3;''></div></a>
+							echo "<li><a href='personal_channel_2.php?name=".$an."'><div class='bar_item'><img src='photo.php?id=ericlee'></div></a>
 								ID：".$row[1]."<br>追蹤人數：".$row2[0]."
 								</li>";
 						}		
@@ -232,7 +232,7 @@
 						if(x=="948794crown"){
 							window.location="personal_channel_1.php?name=948794crown";
 						}
-						else(x=="ericlee"){
+						else if(x=="ericlee"){
 							window.location="personal_channel_2.php?name=948794crown";
 						}
 					}
