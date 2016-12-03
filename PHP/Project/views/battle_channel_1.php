@@ -54,7 +54,18 @@
 		<?php endif;
 		?>
 	</script>
+	<div class="alert_bg">
 
+	</div>
+	<div id="alert_window">
+
+			<h2><img src="image/icon.png" alt="">提醒您</h2>
+			<p>
+				目前正在進行投票，為維持投票公平性，暫不開放進入。<br>
+				您可在下一輪演唱開始時進入，請稍後...
+			</p>
+			<input type="button" value="我知道了" class="alert_btn">
+	</div>
 	<div class="wrap">
 		<div class="header">
 			<h1><img src="image/Logo2.png"></h1>
@@ -287,11 +298,11 @@ function CountMic(){
 					if(data.SingResult){
 						if(data.SingResult=="2"){
 							document.getElementById("singresult").innerHTML="2";
-							console.log("sing2");		
+							console.log("sing2");
 						}
 						else if(data.SingResult=="1"){
 							document.getElementById("singresult").innerHTML="1";
-							console.log("sing1");	
+							console.log("sing1");
 						}
 						else{
 							document.getElementById("singresult").innerHTML="0";
@@ -502,7 +513,7 @@ function calculate() {
 							Countlose();
 							LoseResult();
 							resetvotes();
-							CountMic();	
+							CountMic();
 						}
 						else{
 							LoseResult();
@@ -519,8 +530,12 @@ function calculate() {
 					}
 					if(s<30&&s>1){
 						if(NowStatus !== 1){
-						//		window.location.assign("/battle.php");
-							}
+							$("#alert_window").fadeIn();
+							$(".alert_bg").fadeIn();
+							$(".alert_btn").click(function(){
+								window.location.assign("/battle.php");
+							});
+						}
 						if(document.getElementById('vtresult').innerHTML!="true"&&document.getElementById('singresult').innerHTML=="0"){
 							draw(data);
 							if(VoteCount !== 0){
@@ -530,7 +545,7 @@ function calculate() {
 								document.getElementById("Dislike").style.visibility = "visible";
 								document.getElementById("Like").style.visibility ="visible";
 							}
-							
+
 						}
 							document.getElementById("circleSvg").style.visibility ="visible";
 					}
