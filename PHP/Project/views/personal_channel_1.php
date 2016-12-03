@@ -207,41 +207,57 @@
 
 					<script type="text/javascript">
 						$(document).ready(function(){
-  							$('.square').hide();
-  							//隱藏要呼叫的div
   							$('#pic').click(function() {
   								//指定呼叫按鈕
-    							$('.square').fadeToggle(500);
+    							$('#square').fadeToggle(500);
     							//顯示隱藏的div
-    							$('.square').delay(800).fadeOut(500);
+    							$('#square').delay(800).fadeOut(500);
   							});
 						});
 					</script>
 
-					<script>
-						function changeSrc(){
-							var imgObj = document.getElementById("pic");
-							if (imgObj.getAttribute("src",2) == "image/cancerlike.png"){
-	  							imgObj.src = "image/like.png";
-							}
-							else{
-								imgObj.src = "image/cancerlike.png";
-							}
-						}
-					</script>
-
 					<div class="track">
-						<div class="square">
-							<span class="arrow_top_int"></span>
-							追蹤成功!
-						</div>
-						<img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()">
 						<?php
 							$sql="SELECT User_Name From User WHERE User_ID='948794crown'";
 							$result=mysqli_query($link,$sql);
 							$row=mysqli_fetch_row($result);
 							echo $row[0];
-						?>	
+
+							$sql2 = "SELECT Track_time FROM Track where Track_ID='$an' && Tracked_ID='948794crown'";
+							$result2 = mysqli_query($link,$sql2);
+							$row2 = mysqli_fetch_row($result2);
+
+							if (isset($row2[0])) {
+								echo "
+									<div id='pic'>
+										<input type='checkbox' id='tracked' checked>
+									</div>
+								";
+							}else{
+								echo "
+									<div id='pic'>
+										<input type='checkbox' id='notrack'>
+									</div>
+								";
+							}
+						?>
+						<div id="square"></div>
+						<script type="text/javascript">
+								$( document ).on( "click", "#tracked", function() {
+	  								var request = new XMLHttpRequest();
+								    request.open("GET", "followcancel.php?Tracked_ID=948794crown&Track_ID=<?php echo $an;?>");
+								    request.send();
+								    $('#tracked').attr('id','notrack');
+								    document.getElementById("square").innerHTML = ("取消追蹤!");
+								});
+								$( document ).on( "click", "#notrack", function() {
+	  								var request = new XMLHttpRequest();
+								    request.open("GET", "follow.php?Tracked_ID=948794crown&Track_ID=<?php echo $an;?>");
+								    request.send();
+								    $('#notrack').attr('id','tracked');
+								    document.getElementById("square").innerHTML = ("成功追蹤!");
+								});
+						</script>	
 					</div>
 					<div class="personal_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
