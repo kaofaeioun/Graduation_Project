@@ -386,41 +386,6 @@
 				<script type="text/javascript">
 					PicAutoMid();
 				</script>
-				<script>
-					/*$(function() {
-						var pb = PUBNUB.init(PUBNUB.setup);
-						$( document ).on( "click", "#follow", function() {
-							pb.publish({
-								channel: PUBNUB.setup.channel,
-								message: {
-								    iconUrl   : 'images/icon.png',
-								    type      : 'basic',
-								    title     : new Date(),
-								    message   : "用戶 + <?php echo $usernow;?> + 追蹤了+<?php echo $an;?>",
-								    priority  : 1,
-								    buttons: [
-								        {title: 'I want in', iconUrl: 'images/icon.png'}
-								    ]
-								}
-							});
-						});
-						$( document ).on( "click", "#followed", function() {
-							pb.publish({
-								channel: PUBNUB.setup.channel,
-								message: {
-									iconUrl   : 'images/icon.png',
-									type      : 'basic',
-									title     : new Date(),
-									message   : "用戶 + <?php echo $usernow;?> + 取消追蹤了+<?php echo $an;?>",
-									priority  : 1,
-									buttons: [
-											{title: 'I want in', iconUrl: 'images/icon.png'}
-									]
-								}
-							})
-						});
-					});*/
-				</script>
 					<script type="text/javascript">
 							var pb = PUBNUB.init(PUBNUB.setup);
 							$( document ).on( "click", "#followed", function() {
