@@ -154,7 +154,7 @@ h6{
     -webkit-transition: 0.5s;
 }
 .top10{
-    height: 250px;
+    height: 350px;
     padding-left: 20%;
     padding-right: 20%;
     box-sizing: border-box;
@@ -162,7 +162,7 @@ h6{
 }
 .top10 ul{
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 20px;
 }
 #content .top10 li{
     width: 100%;  
@@ -275,6 +275,7 @@ h6{
     .top10{
         padding-right: 5%;
         padding-left: 5%;
+        height: 300px;
     }
 }
 

@@ -233,6 +233,7 @@
 							?>
 						</ul>
 					</div>
+
 					<script>
 		                $(document).ready(function(){
 		                    $(".top_slide").click(function(){
@@ -240,6 +241,7 @@
 		                    });
 		                });
 		            </script>
+		            
 					<p class="top_slide">第6~10名</p>
 					<div class="top10">
 						<ul>
@@ -269,44 +271,6 @@
 				</li>
 			</ul>
 		</div>
-
-				在線人數:
-				<div id="Countmanshow"></div>
-				<script type="text/javascript" src="countman.php"></script>
-				<!-- 66666666666666666666666666666666666666666666666666666666666666666666 -->
-				<script>
-					Countman();
-					function Countman(){
-						var request = new XMLHttpRequest();
-    					request.open("POST", "countman.php");
-    					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-					    request.send();
-					    request.onreadystatechange = function() {
-					        if (request.readyState === 4) {
-					            if (request.status === 200) {
-					                var type = request.getResponseHeader("Content-Type");
-					                if (type.indexOf("application/json") === 0) {
-					                    var data = JSON.parse(request.responseText);
-					                    if (data.msg) {
-					                        document.getElementById("Countmanshow").innerHTML = data.msg;
-					                    }
-					                }
-					            } else {
-					                alert("發生錯誤" + request.status);
-					            }
-					        }
-					    }
-
-						setTimeout("Countman()",60000);
-
-						// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
-						// $result3=mysqli_query($link,$sql3);
-						// $row3=mysqli_fetch_assoc($result3);
-
-						// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
-					}
-
-				</script>
 	</div>
 	<div class="footer_space">
 	<footer>
