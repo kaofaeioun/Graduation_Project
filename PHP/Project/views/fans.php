@@ -398,7 +398,10 @@
 									type      : 'basic',
 									title     : "MicMusic",
 									message   : "用戶 <?php echo $usernow;?> 取消追蹤了<?php echo $an;?>",
-									priority  : 1
+									priority  : 1,
+									buttons: [
+											{title: '', iconUrl: ''}
+									]
 								}
 							});
   								var request = new XMLHttpRequest();
@@ -414,7 +417,10 @@
 								    type      : 'basic',
 								    title     : "MicMusic",
 								    message   : "用戶  <?php echo $usernow;?>  追蹤了<?php echo $an;?>",
-								    priority  : 1
+								    priority  : 1,
+								    buttons: [
+											{title: '', iconUrl: ''}
+									]
 								}
 								});
   								var request = new XMLHttpRequest();
