@@ -510,6 +510,8 @@ function calculate() {
 					if(s==0){
 						VoteCount = 0;
 						NowStatus = 0;
+						$("#alert_window").delay(600).fadeOut(500);
+						$(".alert_bg").delay(600).fadeOut(500);
 						if(data[0].vote<data[1].vote){
 							Congratulation();
 							Countwin();
