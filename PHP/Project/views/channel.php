@@ -176,12 +176,12 @@
 								    return $datarow[$field];
 								}
 						if($row[0]){
-							echo "<li><a href='personal_channelHOST.php?name=".$an.";?>''><div class='bar_item' style='background: #20A4F3;''></div></a>
+							echo "<li><a href='personal_channelHOST.php?name=".$an."'><div class='bar_item' style='background: #20A4F3;''></div></a>
 								ID：".$row[0]."<br>在線人數：9527<br>追蹤人數：666
 								</li>";
 						}
 						if($row[1]){
-							echo "<li><a href='personal_channelHOST.php?name=".$an.";?>''><div class='bar_item' style='background: #20A4F3;''></div></a>
+							echo "<li><a href='personal_channelHOST.php?name=".$an."'><div class='bar_item' style='background: #20A4F3;''></div></a>
 								ID：".$row[1]."<br>在線人數：9527<br>追蹤人數：666
 								</li>";
 						}		
