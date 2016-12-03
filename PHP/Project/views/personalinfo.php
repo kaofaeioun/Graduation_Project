@@ -188,7 +188,7 @@
 					<input type="button" class="cancel" value="取消" onclick="loadImageFileCancel()">				
 				</div>
 				<div class="change_ok">更換成功!</div>
-				<div class="change_fail">更換失敗!</div>
+				<div class="change_fail">更換失敗，請上傳小於2MB之照片!</div>
 				<img src="photo.php?id=<?php echo $id?>" id="userimg">
 				<span class="upload_area"><img src="image/camera.png" width="28px" height="25px" style="padding-top: 4px">&nbsp 更換大頭貼照</span>
 				<input type="file" name="upload" id="upload" onchange="loadImageFile()"/>
@@ -317,7 +317,7 @@
 							<b>修改姓名/Edit Name:</b>
 							<div id="change_name_blank">
 							
-									<input type="text" id="correctinfo" placeholder="按此編輯你的姓名" required="" value='<?php echo $name; ?>' >
+									<input type="text" id="correctinfo" placeholder="按此編輯你的姓名" required="" value='<?php echo $name; ?>' maxlength="12">
 									<input type="button" id="changeinfoName" value="確定修改" >
 							<script type="text/javascript">
 							</script>
@@ -351,13 +351,13 @@
 						</script>
 						<li>
 							<b>電子郵件/E-mail</b>
-							<div class="name_blank" id="showemail"><?php echo $email; ?><img id="change1" src="image/pen.png" alt=""></div>
+							<div class="name_blank" id="showemail"><?php echo $email; ?><img id="change1" src="image/pen.png" ></div>
 						</li>
 						<li id="changeemail">
 							<b>修改電子郵件/Edit E-mail:</b>
 							<div id="change_name_blank">
 							
-									<input type="email" id="correctinfoEmail" placeholder="按此編輯你的E-mail" value="<?php echo $email; ?>">
+									<input type="email" id="correctinfoEmail" placeholder="按此編輯你的E-mail" value="<?php echo $email; ?>" maxlength="30">
 									<input type="button" id="changeinfoEmail" value="確定修改">
 								
 							<script type="text/JavaScript">
@@ -394,7 +394,7 @@
 							<b>修改興趣/Edit Hobby:</b>
 							<div id="change_name_blank">
 						
-									<input type="text" id="correctinfoHobby" placeholder="按此編輯你的興趣" value=<?php echo $hobby; ?>>
+									<input type="text" id="correctinfoHobby" placeholder="按此編輯你的興趣" value="<?php echo $hobby; ?>"maxlength="20">
 									<input type="button" id="changeinfoHobby" value="確定修改">
 							
 									
@@ -425,7 +425,7 @@
 							<b>修改喜歡的歌手/Edit Favorate Singer:</b>
 							<div id="change_name_blank">
 							
-									<input type="text" id="correctinfoFavSinger" placeholder="按此編輯喜歡的歌手" value=<?php echo $favsinger;?>>
+									<input type="text" id="correctinfoFavSinger" placeholder="按此編輯喜歡的歌手" value="<?php echo $favsinger;?>" maxlength="20">
 									<input type="button" id="changeinfoFavSinger" value="確定修改">
 							
 									
@@ -456,7 +456,7 @@
 							<b>修改喜歡的歌/Edit Favorate Songs:</b>
 							<div id="change_name_blank">
 							
-									<input type="text" id="correctinfoFav_Songs" placeholder="按此編輯喜歡的歌" value=<?php echo $favsong;?>>
+									<input type="text" id="correctinfoFav_Songs" placeholder="按此編輯喜歡的歌" value="<?php echo $favsong;?>" maxlength="20">
 									<input type="button" id="changeinfoFav_Songs" value="確定修改">
 							
 									
