@@ -165,12 +165,28 @@
 			<h2>熱門頻道<b>/</b><br>Popular Channel</h2>
 			<div class="bar">
 				<ul>
-					<li><a href="personal_channel_1.php?an=948794crown"><div class="bar_item" style="background: #20A4F3;"></div></a>在線人數：9527<br>收藏人數：666
-					</li>
-					<li><a href="#"><div class="bar_item" style="background: #FF3366;"></div></a>在線人數：8763<br>收藏人數：870
-					</li>
-					<li><a href="#"><div class="bar_item" style="background: #F9C22E;"></div></a>在線人數：6666<br>收藏人數：426
-					</li>
+					<?php
+						$sqlsearch="SELECT User_ID FROM Personal where Status='1' Order by Personal_ID ASC";
+						$resultsearch=mysqli_query($link,$sqlsearch);
+						$row[0]=mysqli_result($resultsearch,0,0);
+						$row[1]=mysqli_result($resultsearch,1,0);
+						function mysqli_result($res, $row, $field=0) {
+								    $res->data_seek($row);
+								    $datarow = $res->fetch_array();
+								    return $datarow[$field];
+								}
+						if($row[0]){
+							echo "<li><a href='personal_channelHOST.php?name=".$an.";?>''><div class='bar_item' style='background: #20A4F3;''></div></a>
+								ID：".$row[0]."<br>在線人數：9527<br>追蹤人數：666
+								</li>";
+						}
+						if($row[1]){
+							echo "<li><a href='personal_channelHOST.php?name=".$an.";?>''><div class='bar_item' style='background: #20A4F3;''></div></a>
+								ID：".$row[1]."<br>在線人數：9527<br>追蹤人數：666
+								</li>";
+						}		
+					?>
+					
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -180,7 +196,7 @@
 	<div class="gridcontainer clearfix">
 	<div class="grid_3">
 		<div class="fmcircle_out">
-			<a href="#web">
+			<a href="#web" onclick="broadcast()">
 				<div class="fmcircle_border">
 					<div class="fmcircle_in fmcircle_blue">
 						<span>我要開台!</span><img src="image/microphone1.png" />
@@ -191,6 +207,35 @@
 	</div>
 
 </div>
+<script type="text/javascript">
+		function broadcast(){
+			var request = new XMLHttpRequest();
+		request.open("GET", "broadcast.php?id=<?php echo $id;?>");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+	request.onreadystatechange = function() {
+						        // 伺服器請求完成
+		if (request.readyState === 4) {
+						            // 伺服器回應成功
+			if (request.status === 200) {
+				var type = request.getResponseHeader("Content-Type");   // 取得回應類型
+				if (type.indexOf("application/json") === 0) {
+					var data = JSON.parse(request.responseText);
+					if(data.success){
+						var x="<?php echo $an;?>";
+						if(x=="948794crown"){
+							window.location="personal_channelHOST.php?name=948794crown";
+						}
+					}
+					else if(data.fail){
+						alert("fail");
+					}
+				}
+			}
+		}
+	}
+}
+</script>
 	<div class="footer_space">
 	<footer>
 		<h3>MicMusic</h3>

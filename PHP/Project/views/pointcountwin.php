@@ -13,13 +13,13 @@ if($id==$singer){
 		$sql="UPDATE User SET Level='無階級' WHERE User_ID='$id'";
 		$result=mysqli_query($link,$sql);
 	}elseif ($point<=3) {
-		$sql="UPDATE User SET Level='銅MIC I' WHERE User_ID='$id'";
+		$sql="UPDATE User SET Level='銅Mic I' WHERE User_ID='$id'";
 		$result=mysqli_query($link,$sql);
 	}elseif ($point<=5) {
-		$sql="UPDATE User SET Level='銅MIC II' WHERE User_ID='$id'";
+		$sql="UPDATE User SET Level='銅Mic II' WHERE User_ID='$id'";
 		$result=mysqli_query($link,$sql);
 	}elseif ($point<=8) {
-		$sql="UPDATE User SET Level='銅MIC III' WHERE User_ID='$id'";
+		$sql="UPDATE User SET Level='銅Mic III' WHERE User_ID='$id'";
 		$result=mysqli_query($link,$sql);
 	}elseif ($point<=17) {
 		$sql="UPDATE User SET Level='銀Mic I' WHERE User_ID='$id'";

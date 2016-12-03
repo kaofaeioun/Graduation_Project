@@ -6,15 +6,29 @@
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	<link rel="stylesheet" href="CSS/personal_channel_1.css">
 	<link rel="stylesheet" href="CSS/all.css">
+	<?php
+			include ("mysql_connect.php");
+			$an=$_GET['name'];
+			$id="948794crown";
+			$sqlID = "SELECT User_Name FROM User where User_ID = '$an'";
+			$resultID = mysqli_query($link, $sqlID);
+			$rowID = mysqli_fetch_row($resultID);
+	?>
 	<script>
 		var client = { //is observerd
-			"userid" : "<?php echo $id;?>",
+			"userid" : "<?php echo $an;?>",
 			"pp" : "../img/profile.jpg", //Profil Pic
 			"nn" : "<?php echo $rowID[0];?>", //Nickname
 			"mg" : 4/100, // minGain
 			"mic" : true,
 			"sound" : false
 		}
+		var a="<?php echo $an;?>";
+		var b="<?php echo $id;?>";
+		if(a!=b){
+				client.mic=false;
+				client.sound=true;	
+			}
 	</script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
@@ -179,11 +193,7 @@
 	<hr>
 	<div class="wrap">
 		<div id="content">
-			<b1><h2>
-			<?php
-			$an=$_GET['name'];
-			echo $an;
-			?>的房間</h2></b1>
+			<b1><h2>948794crown的房間</h2></b1>
 			<div class="main">
 				<div class="personal_area">
 					<div class="board">
@@ -227,11 +237,11 @@
 						</div>
 						<img src="image/cancerlike.png" original title="我要追蹤" id="pic" onclick="changeSrc()">
 						<?php
-							$sql="SELECT User_Name From User WHERE User_ID='$an'";
+							$sql="SELECT User_Name From User WHERE User_ID='948794crown'";
 							$result=mysqli_query($link,$sql);
 							$row=mysqli_fetch_row($result);
 							echo $row[0];
-						?>
+						?>	
 					</div>
 					<div class="personal_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
@@ -241,10 +251,10 @@
 
 				<div class="clear"></div>
 
-				<div class="chatroom">
+				<div class="chatroom" id="chatContent">
 
 				</div>
-				<input type="text" placeholder="留言......" class="reply"></input>
+				<input id="chatInput" type="text" placeholder="留言......" class="reply">
 			</div>
 		</div>
 	</div>
