@@ -98,13 +98,16 @@ table {
 }
 .top5{
     height: 330px;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 15%;
+    padding-right: 15%;
     box-sizing: border-box;
 }
 .top5 ul{
     box-sizing: border-box;
     font-size: 20px;
+}
+.top5 li>img{
+    width: 40px;
 }
 .subtitle{
     height: 30px;
@@ -174,14 +177,17 @@ h6{
 }
 .top10{
     height: 350px;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 15%;
+    padding-right: 15%;
     box-sizing: border-box;
     display: none;
 }
 .top10 ul{
     box-sizing: border-box;
     font-size: 20px;
+}
+.top10 li>img{
+    width: 40px;
 }
 #content .top10 li{
     width: 100%;  

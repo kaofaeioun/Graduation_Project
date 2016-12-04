@@ -61,37 +61,37 @@
                                 $result = mysqli_query($link,$sql);
                                 $row = mysqli_fetch_assoc($result);
                                 if ($row['Level']=='無階級') {
-                                    echo "<img src='image/bronze.png'>";
+                                    echo "<img src='image/bronze.png'>";
                                 }elseif ($row['Level']=='銅MIC I') {
-                                    echo "<img src='image/bronze_1.png'>";
+                                    echo "<img src='image/bronze_1.png'>";
                                 }elseif ($row['Level']=='銅MIC II') {
-                                    echo "<img src='image/bronze_2.png'>";
+                                    echo "<img src='image/bronze_2.png'>";
                                 }elseif ($row['Level']=='銅MIC III') {
-                                    echo "<img src='image/bronze_3.png'>";
+                                    echo "<img src='image/bronze_3.png'>";
                                 }elseif ($row['Level']=='銀Mic I') {
-                                    echo "<img src='image/silver_1.png'>";
+                                    echo "<img src='image/silver_1.png'>";
                                 }elseif ($row['Level']=='銀Mic II') {
-                                    echo "<img src='image/silver_2.png'>";
+                                    echo "<img src='image/silver_2.png'>";
                                 }elseif ($row['Level']=='銀Mic III') {
-                                    echo "<img src='image/silver_3.png'>";
+                                    echo "<img src='image/silver_3.png'>";
                                 }elseif ($row['Level']=='金Mic I') {
-                                    echo "<img src='image/golden_1.png'>";
+                                    echo "<img src='image/golden_1.png'>";
                                 }elseif ($row['Level']=='金Mic II') {
-                                    echo "<img src='image/golden_2.png'>";
+                                    echo "<img src='image/golden_2.png'>";
                                 }elseif ($row['Level']=='金Mic III') {
-                                    echo "<img src='image/golden_3.png'>";
+                                    echo "<img src='image/golden_3.png'>";
                                 }elseif ($row['Level']=='白金Mic I') {
-                                    echo "<img src='image/platnum_1.png'>";
+                                    echo "<img src='image/platnum_1.png'>";
                                 }elseif ($row['Level']=='白金Mic II') {
-                                    echo "<img src='image/platnum_2.png'>";
+                                    echo "<img src='image/platnum_2.png'>";
                                 }elseif ($row['Level']=='白金Mic III') {
-                                    echo "<img src='image/platnum_3.png'>";
+                                    echo "<img src='image/platnum_3.png'>";
                                 }elseif ($row['Level']=='鑽石Mic I') {
-                                    echo "<img src='image/diamond_1.png'>";
+                                    echo "<img src='image/diamond_1.png'>";
                                 }elseif ($row['Level']=='鑽石Mic II') {
-                                    echo "<img src='image/diamond_2.png'>";
+                                    echo "<img src='image/diamond_2.png'>";
                                 }elseif ($row['Level']=='鑽石Mic III') {
-                                    echo "<img src='image/diamond_3.png'>";
+                                    echo "<img src='image/diamond_3.png'>";
                                 }
                             ?>
                             </li>
@@ -231,6 +231,13 @@
 						</div>
 						<ul>
 							<?PHP
+								$sqlphoto="SELECT Level From User Order by User_Wins DESC";
+                                $resultphoto = mysqli_query($link,$sqlphoto);
+  								$singerphoto[1]=mysqli_result($resultphoto, 0,0);
+								$singerphoto[2]=mysqli_result($resultphoto, 1,0);
+								$singerphoto[3]=mysqli_result($resultphoto, 2,0);
+								$singerphoto[4]=mysqli_result($resultphoto, 3,0);
+								$singerphoto[5]=mysqli_result($resultphoto, 4,0);                              
 								$sql="SELECT User_ID From User Order by User_Wins DESC";
 								$result=mysqli_query($link,$sql);
 								$singer[1]=mysqli_result($result, 0,0);
@@ -247,7 +254,41 @@
 								$point[4]=mysqli_result($result2, 3,0);
 								$point[5]=mysqli_result($result2, 4,0);
 								for ($i=1; $i < 6; $i++) {
-									echo "<li><div class='top_title'>".$i. "</div><a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
+									echo "<li><div class='top_title'>".$i. "</div>";
+								if ($singerphoto[$i]=='無階級') {
+                                    echo "<img src='image/bronze.png'>";
+                                }elseif ($singerphoto[$i]=='銅MIC I') {
+                                    echo "<img src='image/bronze_1.png'>";
+                                }elseif ($singerphoto[$i]=='銅MIC II') {
+                                    echo "<img src='image/bronze_2.png'>";
+                                }elseif ($singerphoto[$i]=='銅MIC III') {
+                                    echo "<img src='image/bronze_3.png'>";
+                                }elseif ($singerphoto[$i]=='銀Mic I') {
+                                    echo "<img src='image/silver_1.png'>";
+                                }elseif ($singerphoto[$i]=='銀Mic II') {
+                                    echo "<img src='image/silver_2.png'>";
+                                }elseif ($singerphoto[$i]=='銀Mic III') {
+                                    echo "<img src='image/silver_3.png'>";
+                                }elseif ($singerphoto[$i]=='金Mic I') {
+                                    echo "<img src='image/golden_1.png'>";
+                                }elseif ($singerphoto[$i]=='金Mic II') {
+                                    echo "<img src='image/golden_2.png'>";
+                                }elseif ($singerphoto[$i]=='金Mic III') {
+                                    echo "<img src='image/golden_3.png'>";
+                                }elseif ($singerphoto[$i]=='白金Mic I') {
+                                    echo "<img src='image/platnum_1.png'>";
+                                }elseif ($singerphoto[$i]=='白金Mic II') {
+                                    echo "<img src='image/platnum_2.png'>";
+                                }elseif ($singerphoto[$i]=='白金Mic III') {
+                                    echo "<img src='image/platnum_3.png'>";
+                                }elseif ($singerphoto[$i]=='鑽石Mic I') {
+                                    echo "<img src='image/diamond_1.png'>";
+                                }elseif ($singerphoto[$i]=='鑽石Mic II') {
+                                    echo "<img src='image/diamond_2.png'>";
+                                }elseif ($singerphoto[$i]=='鑽石Mic III') {
+                                    echo "<img src='image/diamond_3.png'>";
+                                }
+									echo "<a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
 								}
 								function mysqli_result($res, $row, $field=0) {
 								    $res->data_seek($row);
@@ -270,6 +311,13 @@
 					<div class="top10">
 						<ul>
 							<?PHP
+								$sqlphoto="SELECT Level From User Order by User_Wins DESC";
+                                $resultphoto = mysqli_query($link,$sqlphoto);
+  								$singerphoto[6]=mysqli_result($resultphoto, 5,0);
+								$singerphoto[7]=mysqli_result($resultphoto, 6,0);
+								$singerphoto[8]=mysqli_result($resultphoto, 7,0);
+								$singerphoto[9]=mysqli_result($resultphoto, 8,0);
+								$singerphoto[10]=mysqli_result($resultphoto, 9,0);
 								$sql="SELECT User_ID From User Order by User_Wins DESC";
 								$result=mysqli_query($link,$sql);
 								$singer[6]=mysqli_result($result, 5,0);
@@ -287,7 +335,41 @@
 								$point[10]=mysqli_result($result2, 9,0);
 
 								for ($i=6; $i < 11; $i++) {
-									echo "<li><div class='top_title_2'>".$i."</div><a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
+									echo "<li><div class='top_title_2'>".$i."</div>";
+									if ($singerphoto[$i]=='無階級') {
+                                    echo "<img src='image/bronze.png'>";
+                                }elseif ($singerphoto[$i]=='銅MIC I') {
+                                    echo "<img src='image/bronze_1.png'>";
+                                }elseif ($singerphoto[$i]=='銅MIC II') {
+                                    echo "<img src='image/bronze_2.png'>";
+                                }elseif ($singerphoto[$i]=='銅MIC III') {
+                                    echo "<img src='image/bronze_3.png'>";
+                                }elseif ($singerphoto[$i]=='銀Mic I') {
+                                    echo "<img src='image/silver_1.png'>";
+                                }elseif ($singerphoto[$i]=='銀Mic II') {
+                                    echo "<img src='image/silver_2.png'>";
+                                }elseif ($singerphoto[$i]=='銀Mic III') {
+                                    echo "<img src='image/silver_3.png'>";
+                                }elseif ($singerphoto[$i]=='金Mic I') {
+                                    echo "<img src='image/golden_1.png'>";
+                                }elseif ($singerphoto[$i]=='金Mic II') {
+                                    echo "<img src='image/golden_2.png'>";
+                                }elseif ($singerphoto[$i]=='金Mic III') {
+                                    echo "<img src='image/golden_3.png'>";
+                                }elseif ($singerphoto[$i]=='白金Mic I') {
+                                    echo "<img src='image/platnum_1.png'>";
+                                }elseif ($singerphoto[$i]=='白金Mic II') {
+                                    echo "<img src='image/platnum_2.png'>";
+                                }elseif ($singerphoto[$i]=='白金Mic III') {
+                                    echo "<img src='image/platnum_3.png'>";
+                                }elseif ($singerphoto[$i]=='鑽石Mic I') {
+                                    echo "<img src='image/diamond_1.png'>";
+                                }elseif ($singerphoto[$i]=='鑽石Mic II') {
+                                    echo "<img src='image/diamond_2.png'>";
+                                }elseif ($singerphoto[$i]=='鑽石Mic III') {
+                                    echo "<img src='image/diamond_3.png'>";
+                                }
+									echo "<a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
 								}
 							?>
 						</ul>
