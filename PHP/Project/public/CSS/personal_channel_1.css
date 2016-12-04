@@ -57,6 +57,46 @@ table {
 #content h2>br{
     display: none;
 }
+.changename {
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+    text-align: center;
+}
+.changename b{
+    font-size: 20px;
+}
+#change_name_blank{
+    width: 450px;
+    text-align: center;
+    margin-right:auto;
+    margin-left:auto;
+}
+#correctinfo{
+    text-align: center;
+}
+#change_name_blank input{
+    width: 100%;
+    display: block;
+    border-style: none;
+    line-height: 20px;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif,微軟正黑體;
+}
+#changeinfoName{
+    width: 120px;
+    line-height: 30px;
+    border: 0;
+    font-size: 18px;
+    margin-top: 10px;
+    font-family:微軟正黑體;
+    cursor: pointer;
+    background-color: #01abad;
+    color: #fff;
+    font-weight: 200;
+    border-radius: 3px;
+}
 .clear{
     clear: both;
 }
@@ -194,30 +234,25 @@ table {
 /*-------------------------------------------------------------------------------------*/
 .button
 {
- display: block;
+  display: block;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
   color: #0C5;
-
   position: relative;
-
   font-size: 24px;
   line-height: 24px;
   font-family: "Nunito", sans-serif;
   font-weight: 300;
-
-margin-right: auto;
-margin-left: auto;
-margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
   width: 220px;
   height:40px;
-
   background: #FF0000;
   border: 1px solid #FF0000;
   color: #FFF;
-  overflow: hidden;
-  
+  overflow: hidden; 
   transition: all 0.5s;
 }
 
@@ -234,7 +269,7 @@ margin-top: 20px;
   display: inline-block;
   position: relative;
   padding-right: 0;
-  
+  font-family:微軟正黑體;
   transition: padding-right 0.5s;
 }
 

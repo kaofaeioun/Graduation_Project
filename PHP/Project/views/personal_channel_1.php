@@ -202,13 +202,55 @@
 	<hr>
 	<div class="wrap">
 		<div id="content">
-			<b1><h2>948794crown的房間</h2></b1>
+				<script>
+					$( document ).on( "click", "#change", function() {
+							$(".changename").slideToggle("slow");
+					});
+				</script>
+			<b1><h2>
+				<div class="name_blank" id="showName">
+				<?php 
+					$sql="SELECT Title From Personal where User_ID='948794crown'";
+					$result=mysqli_query($link,$sql);
+					$row=mysqli_fetch_row($result);
+					echo $row[0];
+				?>
+				<img id="change" src="image/pen.png" style="cursor: pointer;">
+				</div>
+			</h2></b1>
+			<div class="changename">
+				<div id="change_name_blank">
+					<input type="text" id="correctinfo" placeholder="按此編輯你的狀態" value='<?php echo $row[0];?>' maxlength="20">
+					<div class="clear"></div>
+					<button id="changeinfoName">確定修改</button>
+				</div>
+			</div>
+				<script type="text/JavaScript">
+					document.getElementById("changeinfoName").onclick = function() {
+						var x=document.getElementById("correctinfo").value;
+						if(x.length==0){
+							alert("狀態欄不能為空呦，分享一下狀態吧~");
+						}else{	
+							var request = new XMLHttpRequest();
+							request.open("GET", "changetitle.php?account=948794crown&changed=Title&correctinfo="+ document.getElementById("correctinfo").value);
+							request.send();
+ 							document.getElementById("showName").innerHTML=document.getElementById("correctinfo").value+
+ 							"<img id='change' src='image/pen.png'>";
+ 							$(".changename").slideUp();
+ 						}
+ 					}			
+				</script>				
+			</div>
 		<div class="gridcontainer clearfix">
 			<div class="grid_3">
 				<div class="fmcircle_out">
-					<button onclick="unbroadcast()" class="button">
+				<?php
+				if($an=='948794crown'){ 
+					echo "<button onclick='unbroadcast()' class='button'>
 						<span>我要關台</span>
-					</button>
+					</button>";
+				}
+				?>
 				</div>
 			</div>
 		</div>
