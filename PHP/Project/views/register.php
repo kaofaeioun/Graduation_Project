@@ -130,7 +130,7 @@
 		        fclose($file);
 		        $fileContents = base64_encode($fileContents);
    			}
-				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer,Fav_Songs,Photo) VALUES('$id','$pwd','$name','$mail','$hobby','$favsinger','$favsong','$fileContents')";
+				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer,Fav_Songs,Photo,Level) VALUES('$id','$pwd','$name','$mail','$hobby','$favsinger','$favsong','$fileContents','無階級')";
 				$result2=mysqli_query($link,$sql2);
 
 				$sql3="INSERT INTO `UserStatus` (Status,User_ID) VALUES ('948794crown','$id')";

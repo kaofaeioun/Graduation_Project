@@ -203,6 +203,22 @@
 	<div class="wrap">
 		<div id="content">
 			<b1><h2>ericlee的房間</h2></b1>
+<div class="gridcontainer clearfix">
+			<div class="grid_3">
+				<div class="fmcircle_out">
+					<button onclick="unbroadcast()">我要關台</button>
+				</div>
+			</div>
+		</div>
+<script type="text/javascript">
+		function unbroadcast(){
+			var request = new XMLHttpRequest();
+		request.open("GET", "unbroadcast.php?id=ericlee");
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		request.send();
+		window.location="channel.php";
+}
+</script>			
 			<div class="main">
 				<div class="personal_area">
 					<div class="board">
