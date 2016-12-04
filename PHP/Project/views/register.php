@@ -132,8 +132,12 @@
    			}
 				$sql2="INSERT INTO `User`(User_ID,User_PWD,User_Name,Email,Hobby,Fav_Singer,Fav_Songs,Photo) VALUES('$id','$pwd','$name','$mail','$hobby','$favsinger','$favsong','$fileContents')";
 				$result2=mysqli_query($link,$sql2);
+
+				$sql3="INSERT INTO `UserStatus` (Status,User_ID) VALUES ('948794crown','$id')";
+				$result3=mysqli_query($link,$sql3);
+
 				echo "<script>document.getElementById('msg').innerHTML = ('註冊成功!')</script>";
-				//echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
+				echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
 			}
 		}
 	

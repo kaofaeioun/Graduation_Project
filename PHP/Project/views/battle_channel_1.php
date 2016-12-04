@@ -13,7 +13,7 @@
 	include ("mysql_connect.php");
 	$Status="battle.php";
 	$user_now=@$_COOKIE['account'];
-	$sql="SELECT Status_Time FROM UserStatus WHERE User_ID='$user_now' && Status='$Status'";
+	$sql="SELECT Status_Time FROM UserStatus WHERE User_ID='$user_now'";
 	$result=mysqli_query($link,$sql);
 	$row=mysqli_fetch_assoc($result);
 	if (isset($row)){
@@ -23,7 +23,7 @@
 		date_default_timezone_set('Asia/Taipei');
 		$t= date("Y/m/d H:i:s");
 		// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
-		$sql="UPDATE UserStatus SET Status_Time='$t' WHERE User_ID='$user_now' && Status='$Status'";
+		$sql="UPDATE UserStatus SET Status_Time='$t',Status='$Status'WHERE User_ID='$user_now' ";
 		$result=mysqli_query($link,$sql);
 
 	}else{

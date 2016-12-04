@@ -14,6 +14,15 @@
 			$resultID = mysqli_query($link, $sqlID);
 			$rowID = mysqli_fetch_row($resultID);
 	?>
+	<?php
+		include ("mysql_connect.php");
+		$Status="948794crown";
+		$user_now=@$_COOKIE['account'];
+		date_default_timezone_set('Asia/Taipei');
+		$t= date("Y/m/d H:i:s");
+		$sql3="UPDATE UserStatus SET Status_Time='$t',Status='$Status' WHERE User_ID='$user_now'";
+		$result=mysqli_query($link,$sql3);
+	?>
 	<script>
 		var client = { //is observerd
 			"userid" : "<?php echo $an;?>",
@@ -276,8 +285,26 @@
 						</script>	
 					</div>
 					<div class="personal_info">
-						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
-						<li><img src="image/like.png" original title="追蹤人數">87</li>
+						<li><img src="image/watcher.png" original title="目前觀看人數">
+							<?php
+								date_default_timezone_set('Asia/Taipei');
+								$t = date("Y/m/d H:i:s");
+								$AT = strtotime($t)-300;
+								$t = date("Y/m/d H:i:s" ,$AT);
+								$sql="SELECT COUNT(User_ID) FROM UserStatus WHERE Status_Time > '$t' && Status='948794crown'";
+								$result=mysqli_query($link,$sql);
+								$row1=mysqli_fetch_row($result);
+								echo $row1[0];
+							?>
+						</li>
+						<li><img src="image/like.png" original title="追蹤人數">
+							<?PHP
+								$sql="SELECT Count(Tracked_ID) From Track WHERE Tracked_ID='948794crown'";
+								$result=mysqli_query($link,$sql);
+								$row=mysqli_fetch_row($result);
+								echo $row[0];
+							?>
+						</li>
 					</div>
 				</div>
 
