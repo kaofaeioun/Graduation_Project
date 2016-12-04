@@ -68,6 +68,10 @@ table {
     float: left;
     margin-left: 70px;
 }
+.aaaa{
+    display: block;
+    margin-top: 10px;
+}
 .cccc{
     text-align: left;
     float: left;
@@ -77,10 +81,6 @@ table {
     text-align: left;
     float: left;
     width: 30px;
-}
-.aaaa{
-    display: block;
-    margin-top: 10px;
 }
 .bar{
     height: 400px;
@@ -182,6 +182,14 @@ h6{
 .top_slide:hover{
     opacity: 1;
     -webkit-transition: 0.5s;
+}
+.madelpic{
+    float: left;
+}
+
+.alink{
+    display: block;
+    float: left;
 }
 .top10{
     height: 350px;

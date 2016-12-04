@@ -256,39 +256,39 @@
 								for ($i=1; $i < 6; $i++) {
 									echo "<li><div class='top_title'>".$i. "</div>";
 								if ($singerphoto[$i]=='無階級') {
-                                    echo "<img src='image/bronze.png'>";
+                                    echo "<img src='image/bronze.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銅MIC I') {
-                                    echo "<img src='image/bronze_1.png'>";
+                                    echo "<img src='image/bronze_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銅MIC II') {
-                                    echo "<img src='image/bronze_2.png'>";
+                                    echo "<img src='image/bronze_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銅MIC III') {
-                                    echo "<img src='image/bronze_3.png'>";
+                                    echo "<img src='image/bronze_3.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銀Mic I') {
-                                    echo "<img src='image/silver_1.png'>";
+                                    echo "<img src='image/silver_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銀Mic II') {
-                                    echo "<img src='image/silver_2.png'>";
+                                    echo "<img src='image/silver_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銀Mic III') {
-                                    echo "<img src='image/silver_3.png'>";
+                                    echo "<img src='image/silver_3.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='金Mic I') {
-                                    echo "<img src='image/golden_1.png'>";
+                                    echo "<img src='image/golden_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='金Mic II') {
-                                    echo "<img src='image/golden_2.png'>";
+                                    echo "<img src='image/golden_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='金Mic III') {
-                                    echo "<img src='image/golden_3.png'>";
+                                    echo "<img src='image/golden_3.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='白金Mic I') {
-                                    echo "<img src='image/platnum_1.png'>";
+                                    echo "<img src='image/platnum_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='白金Mic II') {
-                                    echo "<img src='image/platnum_2.png'>";
+                                    echo "<img src='image/platnum_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='白金Mic III') {
-                                    echo "<img src='image/platnum_3.png'>";
+                                    echo "<img src='image/platnum_3.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='鑽石Mic I') {
-                                    echo "<img src='image/diamond_1.png'>";
+                                    echo "<img src='image/diamond_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='鑽石Mic II') {
-                                    echo "<img src='image/diamond_2.png'>";
+                                    echo "<img src='image/diamond_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='鑽石Mic III') {
-                                    echo "<img src='image/diamond_3.png'>";
+                                    echo "<img src='image/diamond_3.png' class='madelpic'>";
                                 }
-									echo "<a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
+									echo "<a class='alink' href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
 								}
 								function mysqli_result($res, $row, $field=0) {
 								    $res->data_seek($row);
@@ -335,41 +335,41 @@
 								$point[10]=mysqli_result($result2, 9,0);
 
 								for ($i=6; $i < 11; $i++) {
-									echo "<li><div class='top_title_2'>".$i."</div>";
-									if ($singerphoto[$i]=='無階級') {
-                                    echo "<img src='image/bronze.png'>";
+									echo "<li><div class='top_title'>".$i. "</div>";
+								if ($singerphoto[$i]=='無階級') {
+                                    echo "<img src='image/bronze.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銅MIC I') {
-                                    echo "<img src='image/bronze_1.png'>";
+                                    echo "<img src='image/bronze_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銅MIC II') {
-                                    echo "<img src='image/bronze_2.png'>";
+                                    echo "<img src='image/bronze_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銅MIC III') {
-                                    echo "<img src='image/bronze_3.png'>";
+                                    echo "<img src='image/bronze_3.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銀Mic I') {
-                                    echo "<img src='image/silver_1.png'>";
+                                    echo "<img src='image/silver_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銀Mic II') {
-                                    echo "<img src='image/silver_2.png'>";
+                                    echo "<img src='image/silver_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='銀Mic III') {
-                                    echo "<img src='image/silver_3.png'>";
+                                    echo "<img src='image/silver_3.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='金Mic I') {
-                                    echo "<img src='image/golden_1.png'>";
+                                    echo "<img src='image/golden_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='金Mic II') {
-                                    echo "<img src='image/golden_2.png'>";
+                                    echo "<img src='image/golden_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='金Mic III') {
-                                    echo "<img src='image/golden_3.png'>";
+                                    echo "<img src='image/golden_3.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='白金Mic I') {
-                                    echo "<img src='image/platnum_1.png'>";
+                                    echo "<img src='image/platnum_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='白金Mic II') {
-                                    echo "<img src='image/platnum_2.png'>";
+                                    echo "<img src='image/platnum_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='白金Mic III') {
-                                    echo "<img src='image/platnum_3.png'>";
+                                    echo "<img src='image/platnum_3.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='鑽石Mic I') {
-                                    echo "<img src='image/diamond_1.png'>";
+                                    echo "<img src='image/diamond_1.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='鑽石Mic II') {
-                                    echo "<img src='image/diamond_2.png'>";
+                                    echo "<img src='image/diamond_2.png' class='madelpic'>";
                                 }elseif ($singerphoto[$i]=='鑽石Mic III') {
-                                    echo "<img src='image/diamond_3.png'>";
+                                    echo "<img src='image/diamond_3.png' class='madelpic'>";
                                 }
-									echo "<a href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
+									echo "<a class='alink' href='fans.php?name=".$singer[$i]."'>".$singer[$i]."</a><div class='cool'>".$point[$i]."</div></li>";
 								}
 							?>
 						</ul>

@@ -130,6 +130,7 @@ table {
 .button span 
 {
   display: inline-block;
+  font-family: 微軟正黑體;
   position: relative;
   padding-right: 0;
   cursor: pointer;

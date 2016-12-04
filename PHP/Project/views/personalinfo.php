@@ -209,7 +209,7 @@
 				        echo "<script>$('.change_ok').fadeIn(500)</script>";
 				        echo "<script>$('.change_ok').delay(800).fadeOut(500)</script>";
 					}
-					elseif($_FILES["upload"]["size"]>2000000||$_FILES["upload"]["size"]==0){
+					else if($_FILES["upload"]["size"]>2000000||$_FILES["upload"]["size"]==0){
 						echo "<script>$('.change_fail').fadeIn(500)</script>";
 				        echo "<script>$('.change_fail').delay(800).fadeOut(500)</script>";
 						}
