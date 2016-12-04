@@ -183,9 +183,16 @@
 								    return $datarow[$field];
 								}
 						if($row[0]){
-							echo "<li><a href='personal_channel_1.php?name=".$an."'><div class='bar_item'><img src='photo.php?id=948794crown'></div></a>
+							if($row[0]=="ericlee"){
+								echo "<li><a href='personal_channel_2.php?name=".$an."'><div class='bar_item'><img src='photo.php?id=948794crown'></div></a>
 								ID：".$row[0]."<br>追蹤人數：".$row1[0]."
 								</li>";
+							}
+							else{
+								echo "<li><a href='personal_channel_1.php?name=".$an."'><div class='bar_item'><img src='photo.php?id=948794crown'></div></a>
+								ID：".$row[0]."<br>追蹤人數：".$row1[0]."
+								</li>";
+							}
 						}
 						if($row[1]){
 							echo "<li><a href='personal_channel_2.php?name=".$an."'><div class='bar_item'><img src='photo.php?id=ericlee'></div></a>
