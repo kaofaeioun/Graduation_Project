@@ -132,7 +132,7 @@ table {
   display: inline-block;
   position: relative;
   padding-right: 0;
-  
+  cursor: pointer;
   transition: padding-right 0.5s;
 }
 

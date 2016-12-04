@@ -607,13 +607,17 @@ function calculate() {
 						CountMic();
 
 					}
+					if(s==15){
+						CountMic();
+					}
 					if(s==60){
 						WinResult();
 					}
-					if(s<30&&s>1){
+					if(s<15&&s>1){
 						if(NowStatus !== 1){
 							$("#alert_window").fadeIn();
 							$(".alert_bg").fadeIn();
+							window.setTimeout("window.location.assign('/battle.php')",2000);
 							$(".alert_btn").click(function(){
 								window.location.assign("/battle.php");
 							});
@@ -631,7 +635,7 @@ function calculate() {
 						}
 							document.getElementById("circleSvg").style.visibility ="visible";
 					}
-					if(s>30){
+					if(s>15){
 							NowStatus = 1;
 							document.getElementById("circleSvg").style.visibility = "hidden";
 							document.getElementById("Dislike").style.visibility = "hidden";
