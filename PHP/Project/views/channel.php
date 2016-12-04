@@ -210,7 +210,9 @@
 	<div class="gridcontainer clearfix">
 	<div class="grid_3">
 		<div class="fmcircle_out">
-		<button onclick="broadcast()">我要開台</button>
+			<button onclick="broadcast()" class="button">
+				<span>我要開台</span>
+			</button>
 		</div>
 	</div>
 

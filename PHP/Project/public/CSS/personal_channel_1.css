@@ -192,7 +192,83 @@ table {
 }
 
 /*-------------------------------------------------------------------------------------*/
+.button
+{
+ display: block;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  color: #0C5;
 
+  position: relative;
+
+  font-size: 24px;
+  line-height: 24px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+
+margin-right: auto;
+margin-left: auto;
+margin-top: 20px;
+  width: 220px;
+  height:40px;
+
+  background: #FF0000;
+  border: 1px solid #FF0000;
+  color: #FFF;
+  overflow: hidden;
+  
+  transition: all 0.5s;
+}
+
+.button:hover, .button:active 
+{
+  text-decoration: none;
+  color: #FF0000;
+  border-color: #FF0000;
+  background: #FFF;
+}
+
+.button span 
+{
+  display: inline-block;
+  position: relative;
+  padding-right: 0;
+  
+  transition: padding-right 0.5s;
+}
+
+.button span:after 
+{
+  content: '☹';  
+  position: absolute;
+  top: 0;
+  right: -18px;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -12px;
+
+  background: rgba(0, 0, 0, 0);
+
+
+}
+
+.button:hover span, .button:active span 
+{
+  padding-right: 30px;
+}
+
+.button:hover span:after, .button:active span:after 
+{
+  transition: opacity 0.5s, top 0.5s, right 0.5s;
+  opacity: 1;
+  border-color: #0C5;
+  right: 0;
+  top: 50%;
+}
+
+/*-------------------------------------------------------------------------------------*/
 @media only screen and (max-width:800px) {
     #content{
         width: 100%;
