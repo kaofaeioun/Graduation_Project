@@ -9,6 +9,30 @@
 		$resultID = mysqli_query($link, $sqlID);
 		$rowID = mysqli_fetch_row($resultID);
 	?>
+	<?php
+	include ("mysql_connect.php");
+	$Status="battle.php";
+	$user_now=@$_COOKIE['account'];
+	$sql="SELECT Status_Time FROM UserStatus WHERE User_ID='$user_now' && Status='$Status'";
+	$result=mysqli_query($link,$sql);
+	$row=mysqli_fetch_assoc($result);
+	if (isset($row)){
+		// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
+		// $result3=mysqli_query($link,$sql3);
+		// $row3=mysqli_fetch_assoc($result3);
+		date_default_timezone_set('Asia/Taipei');
+		$t= date("Y/m/d H:i:s");
+		// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
+		$sql="UPDATE UserStatus SET Status_Time='$t' WHERE User_ID='$user_now' && Status='$Status'";
+		$result=mysqli_query($link,$sql);
+
+	}else{
+		date_default_timezone_set('Asia/Taipei');
+		$t= date("Y/m/d H:i:s");
+		$sql="INSERT INTO UserStatus (Status,User_ID,Status_Time) VALUES ('$Status','$user_now','$t')";
+		$result2=mysqli_query($link,$sql);
+	}
+	?>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -424,7 +448,38 @@ function Countwin(){
 						<b id="singname"></b>
 						</a>
 					<div class="vote_info">
-						<li><img src="image/watcher.png" original title="目前觀看人數">8888</li>
+						<li><img src="image/watcher.png" original title="目前觀看人數">
+						<div id="Countmanshow"></div>
+						<script type="text/javascript" src="countman.php"></script>
+						<!-- 66666666666666666666666666666666666666666666666666666666666666666666 -->
+						<script>
+							Countman();
+							function Countman(){
+								var request = new XMLHttpRequest();
+		    					request.open("POST", "countman.php");
+		    					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+							    request.send();
+							    request.onreadystatechange = function() {
+							        if (request.readyState === 4) {
+							            if (request.status === 200) {
+							                var type = request.getResponseHeader("Content-Type");
+							                if (type.indexOf("application/json") === 0) {               
+							                    var data = JSON.parse(request.responseText);
+							                    if (data.msg) {
+							                        document.getElementById("Countmanshow").innerHTML = data.msg;
+							                    }
+							                }
+							            } else {
+							                alert("發生錯誤" + request.status);
+							            }
+							        }
+							    }
+								
+								setTimeout("Countman()",60000);
+							}
+
+						</script>
+						</li>
 						<li><img src="image/like.png" original title="追蹤人數"><b id="TrackedNum"></b></li>
 						<script type="text/javascript">
 						</script>

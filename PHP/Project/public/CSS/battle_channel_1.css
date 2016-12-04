@@ -325,6 +325,10 @@ h5{
     width:30px;
     margin-right: 10px;
 }
+#Countmanshow{
+    float: right;
+    line-height: 30px;
+}
 .queue{
     width: 40%;
     float: right;

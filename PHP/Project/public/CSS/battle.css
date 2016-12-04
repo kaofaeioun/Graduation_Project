@@ -63,6 +63,25 @@ table {
 #content h2>br{
     display: none;
 }
+.qwer{
+    width: 100px;
+    float: left;
+    margin-left: 70px;
+}
+.cccc{
+    text-align: left;
+    float: left;
+    width: 30px;
+}
+#Countmanshow{
+    text-align: left;
+    float: left;
+    width: 30px;
+}
+.aaaa{
+    display: block;
+    margin-top: 10px;
+}
 .bar{
     height: 400px;
     margin-bottom: 10px;
@@ -246,6 +265,7 @@ h6{
         margin-right: auto;
         margin-left: auto;
     }
+    
     .bar li{
         margin: 20px 0px 0px 0px;
         line-height: 20px;

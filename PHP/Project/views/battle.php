@@ -1,28 +1,3 @@
-<?php
-	include ("mysql_connect.php");
-	$Status="battle.php";
-	$user_now=@$_COOKIE['account'];
-	$sql="SELECT Status_Time FROM UserStatus WHERE User_ID='$user_now' && Status='$Status'";
-	$result=mysqli_query($link,$sql);
-	$row=mysqli_fetch_assoc($result);
-	if (isset($row)){
-		// $sql3="SELECT Status_Time From UserStatus WHERE User_ID='$user_now'";
-		// $result3=mysqli_query($link,$sql3);
-		// $row3=mysqli_fetch_assoc($result3);
-		date_default_timezone_set('Asia/Taipei');
-		$t= date("Y/m/d H:i:s");
-		// $timegap=strtotime($t) - strtotime($row3['Status_Time']);
-		$sql="UPDATE UserStatus SET Status_Time='$t' WHERE User_ID='$user_now' && Status='$Status'";
-		$result=mysqli_query($link,$sql);
-
-	}else{
-		date_default_timezone_set('Asia/Taipei');
-		$t= date("Y/m/d H:i:s");
-		$sql="INSERT INTO UserStatus (Status,User_ID,Status_Time) VALUES ('$Status','$user_now','$t')";
-		$result2=mysqli_query($link,$sql);
-	}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,7 +169,56 @@
 					<h2>大亂鬥頻道選擇<b>/</b><br>Battle Choice</h2>
 					<div class="bar">
 						<ul>
-							<li><a href="battle_channel_1.php"><div class="battle_channel" style="background: #FF2D2D;"></div></a><p>頻道1</p>目前人次：9527<br>排麥人數：33</li>					
+							<li><a href="battle_channel_1.php"><div class="battle_channel" style="background: #FF2D2D;"></div></a><p>頻道1</p>
+							<div class="qwerqwer">
+								<div class="qwer">目前人次：</div>
+								<div id="Countmanshow"></div>
+									<script type="text/javascript" src="countman.php"></script>
+									<!-- 66666666666666666666666666666666666666666666666666666666666666666666 -->
+									<script>
+										Countman();
+										function Countman(){
+											var request = new XMLHttpRequest();
+					    					request.open("POST", "countman.php");
+					    					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+										    request.send();
+										    request.onreadystatechange = function() {
+										        if (request.readyState === 4) {
+										            if (request.status === 200) {
+										                var type = request.getResponseHeader("Content-Type");
+										                if (type.indexOf("application/json") === 0) {               
+										                    var data = JSON.parse(request.responseText);
+										                    if (data.msg) {
+										                        document.getElementById("Countmanshow").innerHTML = data.msg;
+										                    }
+										                }
+										            } else {
+										                alert("發生錯誤" + request.status);
+										            }
+										        }
+										    }
+											
+											setTimeout("Countman()",60000);
+										}
+
+									</script>
+							</div>
+							
+							<br>
+							<div class="aaaa">
+								<div class="qwer">排麥人數：</div>
+								<div class="cccc">
+									<?PHP
+										$sql="SELECT COUNT(User_ID) FROM Mic";
+										$result=mysqli_query($link,$sql);
+										@$row=mysqli_fetch_array($result);
+										echo $row[0];
+									?>
+								</div>
+							</div>
+							
+								
+							</li>					
 						</ul>
 					</div>
 				</li>
