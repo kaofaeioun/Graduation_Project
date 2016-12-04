@@ -52,6 +52,23 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>登入<b>/</b><br>Login</h2>
+			<div id="msg" style="
+				width:270px;
+			    height:40px;
+			    background-color:#fff;
+			    text-align: center;
+			    line-height: 30px;
+			    padding-top: 10px; 
+			    color: #4A4A4A;
+			    position: absolute;
+			    top:200px;
+			    left: 40%;
+			    border: 0.5px solid #c5c5c5;
+			    box-shadow: 0 0 15px rgba(0,0,0,.18);
+			    z-index: 2;
+			    cursor: default;
+			    display: none;
+			"></div>
 				<div class="profile_pic"><img src="image/icon.PNG"></div>
 				<div class="profile">
 					<form method="post" action="">
@@ -84,15 +101,24 @@
 		    			$result = mysqli_query($link,$sql);
 					 	$row=mysqli_fetch_row($result);
 					 	if($row[0]==null){
-					 		echo "<script>document.getElementById('msg').innerHTML = ('無此帳號!')</script>";
+					 		echo "<script>
+							document.getElementById('msg').style.display='block';
+					 		document.getElementById('msg').innerHTML = ('無此帳號!');
+					 		$('#msg').delay(1500).fadeOut(500);</script>";
 					 	}
 					 	else if($row[1]==$passwd && $row[0]==$account){
 	        					setcookie('account',$account,time()+3600*10);
 	        					echo '<meta http-equiv=REFRESH CONTENT=0;url=battle.php>';
 	      				}else if($row[1]!=$passwd){
-	        					echo "<script>document.getElementById('msg').innerHTML = ('密碼輸入錯誤!')</script>";
+	        					echo "<script>
+	        					document.getElementById('msg').style.display='block';
+	        					document.getElementById('msg').innerHTML = ('密碼輸入錯誤!');
+	        					$('#msg').delay(1500).fadeOut(500);</script>";
 	      				}else{
-	    					echo "<script>document.getElementById('msg').innerHTML = ('無此帳號!')</script>";
+	    					echo "
+							document.getElementById('msg').style.display='block';
+	    					<script>document.getElementById('msg').innerHTML = ('無此帳號!');
+	    					$('#msg').delay(1500).fadeOut(500);</script>";
   							}
 
   					}

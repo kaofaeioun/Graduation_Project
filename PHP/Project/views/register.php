@@ -52,6 +52,23 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>註冊<b>/</b><br>Register</h2>
+			<div id="msg" style="
+				width:270px;
+			    height:40px;
+			    background-color:#fff;
+			    text-align: center;
+			    line-height: 30px;
+			    padding-top: 10px; 
+			    color: #4A4A4A;
+			    position: absolute;
+			    top:200px;
+			    left: 40%;
+			    border: 0.5px solid #c5c5c5;
+			    box-shadow: 0 0 15px rgba(0,0,0,.18);
+			    z-index: 2;
+			    cursor: default;
+			    display: none;
+			"></div>
 			<form action="" method="post" enctype="multipart/form-data">
 			<div class="photo">
 				<img id="userimg" src="image/user_image.png">					
@@ -84,7 +101,6 @@
 						<li>
 							<input type="text" class="name_blank" name="favsong" placeholder="請輸入喜歡的歌/Favorate Song(如:六個姐姐一個哥哥)" maxlength="20">
 						</li>
-						<div id="msg"></div>
 						<div class="clear"></div>	
 						<button type="Submit" class="ctrl-standard typ-subhed fx-sliderIn" id="sub">Submit</button>
 					</ul>
@@ -118,10 +134,18 @@
 			$result = mysqli_query($link,$sql);
 			$row = mysqli_fetch_row($result);
 			if($row[0] == $id ){
-				echo "<script>document.getElementById('msg').innerHTML = ('此帳號已有人使用過!')</script>";
+				echo "<script>
+				document.getElementById('msg').style.display='block';
+				document.getElementById('msg').innerHTML = ('此帳號已有人使用過!');
+    				$('#msg').delay(1500).fadeOut(500);</script>";
+
 			}
 			else if($pwd!=$repwd){ 
-	      	 	echo "<script>document.getElementById('msg').innerHTML = ('確認密碼錯誤!')</script>";
+	      	 	echo "<script>
+	      	 	document.getElementById('msg').style.display='block';
+	      	 	document.getElementById('msg').innerHTML = ('確認密碼錯誤!');
+	      	 		$('#msg').delay(1500).fadeOut(500);</script>";
+
 			}
 			else{
 				if (isset($_FILES["upload"]["size"])){
@@ -136,7 +160,10 @@
 				$sql3="INSERT INTO `UserStatus` (Status,User_ID) VALUES ('948794crown','$id')";
 				$result3=mysqli_query($link,$sql3);
 
-				echo "<script>document.getElementById('msg').innerHTML = ('註冊成功!')</script>";
+				echo "<script>
+				document.getElementById('msg').style.display='block';
+				document.getElementById('msg').innerHTML = ('註冊成功!');
+					$('#msg').delay(1500).fadeOut(500);</script>";
 				echo '<meta http-equiv=REFRESH CONTENT=2;url=login.php>';
 			}
 		}
@@ -146,7 +173,7 @@
 			<div class="clear"></div>
 		</div>	
 	</div>
-
+					
 	<div class="footer_space">
 	<footer>
 		<h3>MicMusic</h3>
