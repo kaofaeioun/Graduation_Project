@@ -19,11 +19,11 @@
                 $(document).ready(function(){
                     $('#login').show();
                 });
-        <?php else: ?>
+        <?php else: $id=$_COOKIE['account']; ?>
             $(document).ready(function(){
                 $('#user').show();
             });
-        <?php endif; $id=$_COOKIE['account']; ?>
+        <?php endif;  ?>
     </script>
 
     <div class="wrap">
