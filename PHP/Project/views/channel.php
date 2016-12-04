@@ -18,6 +18,7 @@
 				$(document).ready(function(){
 					$('#login').show();
 				});
+			window.location="login.php";
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
@@ -202,13 +203,7 @@
 	<div class="gridcontainer clearfix">
 	<div class="grid_3">
 		<div class="fmcircle_out">
-			<a href="#web" onclick="broadcast()">
-				<div class="fmcircle_border">
-					<div class="fmcircle_in fmcircle_blue">
-						<span>我要開台!</span><img src="image/microphone1.png" />
-					</div>
-				</div>
-			</a>
+		<button onclick="broadcast()">我要開台</button>
 		</div>
 	</div>
 
@@ -228,16 +223,19 @@
 				if (type.indexOf("application/json") === 0) {
 					var data = JSON.parse(request.responseText);
 					if(data.success){
-						var x="<?php echo $an;?>";
+						var x="<?php echo $id;?>";
 						if(x=="948794crown"){
 							window.location="personal_channel_1.php?name=948794crown";
 						}
 						else if(x=="ericlee"){
 							window.location="personal_channel_2.php?name=948794crown";
 						}
+						else{
+							alert('目前寫死的 你達到金牌以上 可我無法服務');
+						}
 					}
-					else if(data.fail){
-						alert("fail");
+					else{
+						alert("您未達金牌");
 					}
 				}
 			}
