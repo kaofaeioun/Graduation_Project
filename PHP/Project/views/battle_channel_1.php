@@ -335,6 +335,9 @@ function CountMic(){
 					if(data.VoteResult){
 						document.getElementById("vtresult").innerHTML="true";
 					}
+					if(!data.VoteResult){
+						document.getElementById("vtresult").innerHTML= null;
+					}
 					if(data.SingResult){
 						if(data.SingResult=="2"){
 							document.getElementById("singresult").innerHTML="2";
@@ -452,7 +455,7 @@ function Countwin(){
 						</a>
 					<div class="vote_info">
 						<li><img src="image/watcher.png" original title="目前觀看人數">
-						<div id="Countmanshow"></div>
+						<div id="Countmanshow" class="Countmanshow"></div>
 						<script type="text/javascript" src="countman.php"></script>
 						<!-- 66666666666666666666666666666666666666666666666666666666666666666666 -->
 						<script>
@@ -483,7 +486,7 @@ function Countwin(){
 
 						</script>
 						</li>
-						<li><img src="image/like.png" original title="追蹤人數"><b id="TrackedNum"></b></li>
+						<li><img src="image/like.png" original title="追蹤人數"><div class="Countmanshow" id="TrackedNum"></div></li>
 						<script type="text/javascript">
 						</script>
 					</div>
@@ -590,7 +593,7 @@ function calculate() {
 							resetvotes();
 							s=s+120;
 						}
-						else if(data[0].vote>=data[1].vote){
+						else if(data[0].vote>data[1].vote){
 							failed();
 							Countlose();
 							LoseResult();
@@ -624,16 +627,16 @@ function calculate() {
 						}
 						if(document.getElementById('vtresult').innerHTML!="true"&&document.getElementById('singresult').innerHTML=="0"){
 							draw(data);
-							if(VoteCount !== 0){
+							if(VoteCount !==0){
 								document.getElementById("Dislike").style.visibility = "hidden";
 								document.getElementById("Like").style.visibility= "hidden";
 							} else {
 								document.getElementById("Dislike").style.visibility = "visible";
 								document.getElementById("Like").style.visibility ="visible";
 							}
-
+								document.getElementById("circleSvg").style.visibility ="visible";
 						}
-							document.getElementById("circleSvg").style.visibility ="visible";
+							
 					}
 					if(s>15){
 							NowStatus = 1;

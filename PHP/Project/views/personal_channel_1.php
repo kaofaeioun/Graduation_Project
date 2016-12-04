@@ -155,7 +155,7 @@
 
                                     $wins=$row['User_Wins'];
                                     $loses=$row2['User_Loses'];
-                                    @$percent=$wins/($wins+$loses)*100;
+                                    @$percent=round($wins/($wins+$loses)*100,1);
                                     echo $percent;
                                 ?>
                             </b3>%</li>
@@ -214,8 +214,11 @@
 					$result=mysqli_query($link,$sql);
 					$row=mysqli_fetch_row($result);
 					echo $row[0];
+					if($an=='948794crown'){
+						echo "<img id='change' src='image/pen.png' style='cursor: pointer;'>";
+					}
 				?>
-				<img id="change" src="image/pen.png" style="cursor: pointer;">
+				
 				</div>
 			</h2></b1>
 			<div class="changename">
@@ -267,9 +270,6 @@
 				<div class="personal_area">
 					<div class="board">
 						<div class="tool_bar">
-							<li><a><img src="image/shape.png" original title="素材庫" onclick=""></a></li>
-							<li><a><img src="image/photo.png" original title="匯入圖片"></a></li>
-							<li><a><img src="image/text.png" original title="字型樣式"></a></li>
 						</div>
 						<div class="clear"></div>
 					</div>
