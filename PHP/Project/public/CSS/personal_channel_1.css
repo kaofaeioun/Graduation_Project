@@ -52,7 +52,7 @@ table {
 
 /*-------------------------------------------------------------------------------------------------------------*/
 #content b{
-    font-weight: 200;
+    font-weight:200;
 }
 #content h2>br{
     display: none;
@@ -66,6 +66,9 @@ table {
 }
 .changename b{
     font-size: 20px;
+}
+b{
+    font-weight: 200;
 }
 #change_name_blank{
     width: 450px;
@@ -212,6 +215,13 @@ table {
     box-sizing: border-box;
     overflow: auto;
 }
+.chatroom a{
+    text-decoration: none;
+    color: #4A4A4A;
+}
+.chatroom a:hover{
+    color: #01abad;
+}
 .reply{
     width: 100%;
     height: 35px;
@@ -262,6 +272,7 @@ table {
   color: #FF0000;
   border-color: #FF0000;
   background: #FFF;
+  cursor: pointer;
 }
 
 .button span 
@@ -271,6 +282,7 @@ table {
   padding-right: 0;
   font-family:微軟正黑體;
   transition: padding-right 0.5s;
+
 }
 
 .button span:after 
@@ -283,10 +295,7 @@ table {
   width: 20px;
   height: 20px;
   margin-top: -12px;
-
   background: rgba(0, 0, 0, 0);
-
-
 }
 
 .button:hover span, .button:active span 
