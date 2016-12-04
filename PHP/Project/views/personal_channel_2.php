@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="CSS/all.css">
 	<?php
 			include ("mysql_connect.php");
+			if(!@$_COOKIE['account']){
+				echo '<meta http-equiv=REFRESH CONTENT=0;url=login.php>';
+			}
 			$an=$_GET['name'];
 			$id="ericlee";
 			$sqlID = "SELECT User_Name FROM User where User_ID = '$an'";
