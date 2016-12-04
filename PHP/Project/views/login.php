@@ -52,24 +52,9 @@
 	<div class="wrap">
 		<div id="content">
 			<h2>登入<b>/</b><br>Login</h2>
-			<div id="msg" style="
-				width:270px;
-			    height:40px;
-			    background-color:#fff;
-			    text-align: center;
-			    line-height: 30px;
-			    padding-top: 10px; 
-			    color: #4A4A4A;
-			    position: absolute;
-			    top:200px;
-			    left: 40%;
-			    border: 0.5px solid #c5c5c5;
-			    box-shadow: 0 0 15px rgba(0,0,0,.18);
-			    z-index: 2;
-			    cursor: default;
-			    display: none;
-			"></div>
-				<div class="profile_pic"><img src="image/icon.PNG"></div>
+			<div class="profile_pic"><img src="image/icon.PNG">
+				<div id="msg"></div>
+			</div>
 				<div class="profile">
 					<form method="post" action="">
 						<div class="profile_blank">
@@ -81,7 +66,6 @@
 								<li>
 									<input type="password" class="name_blank" placeholder="請輸入密碼/Password" name="pwd" Maxlength="20" required="">
 								</li>
-								<div id="msg"></div>
 								<div class="clear"></div>
 								<b1>
 									<button type="submit" class="ctrl-standard typ-subhed fx-sliderIn" id ="sub">Submit</button>

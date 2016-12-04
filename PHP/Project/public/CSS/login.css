@@ -104,9 +104,21 @@ h2{
   float: left;
 }
 #msg{
-    margin-top: 10px;
-    font-size: 20px;
-    color: #EF233C;
+  width:200px;
+  height:40px;
+  background-color:#fff;
+  text-align: center;
+  line-height: 30px;
+  padding-top: 10px; 
+  color: #4A4A4A;
+  position: absolute;
+  top:350px;
+  left: 44.4%;
+  border: 0.5px solid #c5c5c5;
+  box-shadow: 0 0 15px rgba(0,0,0,.18);
+  z-index: 2;
+  cursor: default;
+  display: none;
 }
 .name_blank{
     font-style: border;
