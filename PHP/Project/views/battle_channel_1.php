@@ -590,7 +590,7 @@ function calculate() {
 							resetvotes();
 							s=s+120;
 						}
-						else if(data[0].vote>data[1].vote){
+						else if(data[0].vote>=data[1].vote){
 							failed();
 							Countlose();
 							LoseResult();
