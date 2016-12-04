@@ -9,6 +9,8 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
+	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
+	<script src="./nojs/pubnub-setup.js">
 	<title>MicMusic</title>
 </head>
 <body>
@@ -234,9 +236,37 @@
 					if(data.success){
 						var x="<?php echo $id;?>";
 						if(x=="948794crown"){
+							var pb = PUBNUB.init(PUBNUB.setup);
+							pb.publish({
+								channel: PUBNUB.setup.channel,
+								message: {
+									iconUrl   : 'images/icon.png',
+									type      : 'basic',
+									title     : "MicMusic",
+									message   : "用戶 948794crown開台了",
+									priority  : 1,
+									buttons: [
+											{title: '', iconUrl: ''}
+									]
+								}
+							});
 							window.location="personal_channel_1.php?name=948794crown";
 						}
 						else if(x=="ericlee"){
+							var pb = PUBNUB.init(PUBNUB.setup);
+							pb.publish({
+								channel: PUBNUB.setup.channel,
+								message: {
+									iconUrl   : 'images/icon.png',
+									type      : 'basic',
+									title     : "MicMusic",
+									message   : "用戶 ericlee開台了",
+									priority  : 1,
+									buttons: [
+											{title: '', iconUrl: ''}
+									]
+								}
+							});
 							window.location="personal_channel_2.php?name=948794crown";
 						}
 						else{
