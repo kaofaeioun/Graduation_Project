@@ -124,26 +124,40 @@ h2{
 	border-bottom-left-radius:5px;
 }
 #upload{
-	 cursor: pointer;
-	 width: 100%;
-	 height: 100%;
-	 filter: alpha(opacity=1);
-	 -moz-opacity: 0.01;
-	 opacity: 0.01;
-	 position: absolute;
-	 right: 0;
-	 top: 0;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
+	filter: alpha(opacity=1);
+	-moz-opacity: 0.01;
+	opacity: 0.01;
+  position: absolute;
+	right: 0;
+	top: 0;
 }
 #msg{
+  width:250px;
+  height:40px;
+  background-color:#fff;
+  text-align: center;
+  line-height: 30px;
+  padding-top: 10px; 
   font-size: 20px;
-  color: #EF233C;
-  margin-top: 10px;
+  color: #4A4A4A;
+  position: absolute;
+  top:100px;
+  left: 38%;
+  border: 0.5px solid #c5c5c5;
+  box-shadow: 0 0 15px rgba(0,0,0,.18);
+  z-index: 2;
+  cursor: default;
+  display: none;
 }
 .profile{
     font-family: 'Quicksand', sans-serif,微軟正黑體; 
     color: #696969;
     line-height: 35px;
     text-align: center;
+    position: relative;
 }
 .profile li{
     display: block;
