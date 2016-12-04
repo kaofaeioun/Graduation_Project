@@ -178,6 +178,20 @@ h5{
     z-index: 1;
     display: none;
 }
+.failed_bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: none;
+}
+.failed_bg img{
+    border-top-left-radius:5px;
+    width: 100%;
+    height: 100%;
+}
 .board{
     width:100%;
     height: 250px;

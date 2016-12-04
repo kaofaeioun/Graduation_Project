@@ -247,7 +247,10 @@
 							<h5>Congratulations!</h5>
 						</div>
 					</div>
-
+					
+					<div class="failed_bg">
+						<img src="image/failed.gif">
+					</div>
 					<!-- 小視窗 -->
 					<script>
 						$(document).ready(function(){
@@ -490,6 +493,13 @@ function Countwin(){
 						$rowTrack = mysqli_fetch_assoc($resultTrack);
 					?>
 				</div>
+
+				<script type="text/javascript">
+					function failed(){
+						$('.failed_bg').show();
+						$('.failed_bg').delay(2500).fadeOut(300);
+					}
+				</script>
 <script type="text/javascript">
 var VoteCount = 0;
 var NowStatus = 0;
@@ -581,6 +591,7 @@ function calculate() {
 							s=s+120;
 						}
 						else if(data[0].vote>data[1].vote){
+							failed();
 							Countlose();
 							LoseResult();
 							resetvotes();
