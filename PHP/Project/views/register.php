@@ -131,6 +131,12 @@
 	      	 		$('#msg').delay(1500).fadeOut(500);</script>";
 
 			}
+			elseif($_FILES["upload"]["size"]>2000000||$_FILES["upload"]["size"]==0){
+					echo "<script>
+				document.getElementById('msg').style.display='block';
+				document.getElementById('msg').innerHTML = ('請上傳小於2MB的照片!');
+    				$('#msg').delay(1500).fadeOut(500);</script>";
+				}
 			else{
 				if (isset($_FILES["upload"]["size"])){
 		        $file = fopen($_FILES["upload"]["tmp_name"], "rb");

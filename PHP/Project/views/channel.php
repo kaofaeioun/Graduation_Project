@@ -10,17 +10,14 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"><!-- search -->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>  <!-- search -->
 	<script type="text/javascript" src="http://cdn.pubnub.com/pubnub-3.4.4.js"></script>
-	<script src="./nojs/pubnub-setup.js">
+	<script src="./nojs/pubnub-setup.js"></script>
 	<title>MicMusic</title>
 </head>
 <body>
 	<script type="text/javascript">
 		<?php include("mysql_connect.php");
 			if(!isset($_COOKIE['account'])): ?>
-				$(document).ready(function(){
-					$('#login').show();
-				});
-			window.location="login.php";
+				location.replace("login.php");
 		<?php else: $id=$_COOKIE['account']; ?>
 			$(document).ready(function(){
 				$('#user').show();
